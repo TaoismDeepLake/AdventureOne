@@ -1,8 +1,8 @@
 [
 {
-  "modid": "untitled",
-  "name": "Idealland Framework",
-  "description": "A modding framework presented by Idealland.",
+  "modid": "adven_one",
+  "name": "Adventure One",
+  "description": "A prototype adventure mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://www.mcmod.cn/class/2421.html",
