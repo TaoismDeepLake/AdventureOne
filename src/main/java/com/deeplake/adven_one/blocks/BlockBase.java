@@ -2,7 +2,7 @@ package com.deeplake.adven_one.blocks;
 
 import java.util.Random;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
 import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.util.IHasModel;
@@ -44,6 +44,6 @@ public class BlockBase extends Block implements IHasModel
 	
 	@Override
 	public void registerModels() {
-		IdlFramework.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		Idealland.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 }

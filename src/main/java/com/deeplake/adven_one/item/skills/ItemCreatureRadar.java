@@ -2,7 +2,7 @@ package com.deeplake.adven_one.item.skills;
 
 import java.util.List;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.util.CommonFunctions;
 import com.deeplake.adven_one.util.IDLGeneral;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTDef;
@@ -55,7 +55,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
                     //stack.writeToNBT(tagCompound);
                     //net.minecraft.item.ItemMonsterPlacer.applyEntityIdToItemStack(stack, name);
                     CommonFunctions.SafeSendMsgToPlayer(playerIn, getUnlocalizedName() + ".msg.success");
-                    IdlFramework.LogWarning(IDLNBTUtil.getNBT(stack).toString());
+                    Idealland.LogWarning(IDLNBTUtil.getNBT(stack).toString());
                     activateCoolDown(playerIn, stack);
                 }
 
@@ -128,7 +128,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
 
             Vec3d pos = entityIn.getPositionEyes(1.0F);
 
-            IdlFramework.Log("update:", IDLNBTUtil.getNBT(stack).toString());
+            Idealland.Log("update:", IDLNBTUtil.getNBT(stack).toString());
 
             Class s = getCreatureFromStack(stack);
             if (s == null)
@@ -152,7 +152,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
             int detectionPre = IDLNBTUtil.GetInt(stack, IDLNBTDef.STATE);
             if (detectionPre != detection)//optimize
             {
-                IdlFramework.LogWarning("Changed to " + detection);
+                Idealland.LogWarning("Changed to " + detection);
                 IDLNBTUtil.SetInt(stack, IDLNBTDef.STATE, detection);
                 CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP) entityIn, msgKey, TextFormatting.YELLOW, detection);
                 //worldIn.playSound();

@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.entity;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -40,7 +40,7 @@ public class ModEntityInit {
                 entity,
                 name,
                 id,
-                IdlFramework.instance,
+                Idealland.instance,
                 range,
                 1,
                 true,

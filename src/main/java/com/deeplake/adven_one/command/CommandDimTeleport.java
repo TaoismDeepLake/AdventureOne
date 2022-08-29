@@ -2,8 +2,8 @@ package com.deeplake.adven_one.command;
 
 import java.util.List;
 
+import com.deeplake.adven_one.Idealland;
 import com.google.common.collect.Lists;
-import com.deeplake.adven_one.IdlFramework;
 import com.deeplake.adven_one.util.CommonFunctions;
 import com.deeplake.adven_one.util.Teleport;
 import net.minecraft.command.CommandBase;
@@ -16,7 +16,7 @@ import net.minecraft.util.text.TextFormatting;
 
 public class CommandDimTeleport extends CommandBase {
 
-    private final List<String> aliases = Lists.newArrayList(IdlFramework.MODID, "tp", "tpdim", "tpdimension", "chuansong");
+    private final List<String> aliases = Lists.newArrayList(Idealland.MODID, "tp", "tpdim", "tpdimension", "chuansong");
 
     @Override
     public String getName() {

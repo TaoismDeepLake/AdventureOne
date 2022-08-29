@@ -2,7 +2,7 @@ package com.deeplake.adven_one.item.skills;
 
 import java.util.List;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
 import com.deeplake.adven_one.item.ItemBase;
 import com.deeplake.adven_one.util.CommonDef;
@@ -243,7 +243,7 @@ public class ItemSkillBase extends ItemBase {
                             CommonFunctions.SafeSendMsgToPlayer(TextFormatting.RED, (EntityPlayer) caster, MessageDef.NOT_CASTABLE_MAINHAND);
                         }
                         else {
-                            IdlFramework.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
+                            Idealland.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
                         }
                     }
                 } else if (hand == EnumHand.OFF_HAND)
@@ -255,7 +255,7 @@ public class ItemSkillBase extends ItemBase {
                             CommonFunctions.SafeSendMsgToPlayer(TextFormatting.RED, (EntityPlayer) caster, MessageDef.NOT_CASTABLE_OFFHAND);
                         }
                         else {
-                            IdlFramework.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
+                            Idealland.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
                         }
                     }
             }

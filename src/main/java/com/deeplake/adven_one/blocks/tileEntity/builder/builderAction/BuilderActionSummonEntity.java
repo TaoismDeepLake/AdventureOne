@@ -2,7 +2,7 @@ package com.deeplake.adven_one.blocks.tileEntity.builder.builderAction;
 
 import java.lang.reflect.InvocationTargetException;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -44,7 +44,7 @@ public class BuilderActionSummonEntity extends BuilderActionBase {
 
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
-            IdlFramework.LogWarning("A building process failed to summon creature");
+            Idealland.LogWarning("A building process failed to summon creature");
         }
         return super.Execute(world, ori_pos);
     }

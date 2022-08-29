@@ -3,7 +3,7 @@ package com.deeplake.adven_one.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.util.sound.ModSoundEvent;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -17,9 +17,9 @@ public class ModSoundHandler {
 
     public static void soundRegister()
     {
-        IdlFramework.Log("Registering %s sounds.", SOUNDS.size());
+        Idealland.Log("Registering %s sounds.", SOUNDS.size());
         ForgeRegistries.SOUND_EVENTS.registerAll(ModSoundHandler.SOUNDS.toArray(new SoundEvent[0]));
-        IdlFramework.Log("Registered %s sounds.", SOUNDS.size());
+        Idealland.Log("Registered %s sounds.", SOUNDS.size());
     }
 
 }

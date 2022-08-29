@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.util.CommonDef;
 import com.deeplake.adven_one.util.CommonFunctions;
 import com.deeplake.adven_one.util.EntityUtil;
@@ -142,7 +142,7 @@ public class ItemSkillTrueSL extends ItemArknightsSkillBase {
                         }
                     }
                     else {
-                        IdlFramework.Log("%s is not in front");
+                        Idealland.Log("%s is not in front");
                     }
                 }
             }

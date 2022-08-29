@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.blocks.builder;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.BlockBase;
 import com.deeplake.adven_one.blocks.tileEntity.builder.TileEntityBuilderBase;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
@@ -35,7 +35,7 @@ public class BlockBuilderBase extends BlockBase implements ITileEntityProvider {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-            IdlFramework.Log("Instantiate failed");
+            Idealland.Log("Instantiate failed");
         }
         return t;
     }

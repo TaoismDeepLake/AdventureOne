@@ -2,7 +2,7 @@ package com.deeplake.adven_one.item.food;
 
 import java.util.List;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
 import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.util.CommonFunctions;
@@ -72,7 +72,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
     @Override
     public void registerModels()
     {
-        IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
+        Idealland.proxy.registerItemRenderer(this, 0, "inventory");
     }
 
     public ItemFoodBase(String name, int amount, float saturation, boolean isWolfFood) {

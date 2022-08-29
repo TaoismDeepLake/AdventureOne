@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.blocks.tileEntity.orbs;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.world.ExplosionEvent;
@@ -19,7 +19,7 @@ public class TileEntityDeBoomOrb extends TileEntityOrbBase implements ITickable 
 		{
 			event.setCanceled(true);
 			PlaySoundHere();
-			IdlFramework.Log("Stopped an explosion");
+			Idealland.Log("Stopped an explosion");
 		}
 	}
 

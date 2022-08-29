@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.item.misc;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.item.ItemBase;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraft.entity.Entity;
@@ -48,7 +48,7 @@ public class ItemSummon extends ItemBase {
             {
                 EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
                 entityLivingBase.setPosition(pos.getX() + 0.5f,pos.getY() + 1f,pos.getZ() + 0.5f);
-                IdlFramework.Log("Spawned: %s @ %s", entityLivingBase.getName(), entityLivingBase.getPosition());
+                Idealland.Log("Spawned: %s @ %s", entityLivingBase.getName(), entityLivingBase.getPosition());
                 worldIn.spawnEntity(entityLivingBase);
 //                if (entityLivingBase instanceof EntityLiving)
 //                {
@@ -57,7 +57,7 @@ public class ItemSummon extends ItemBase {
             }
             else {
                 if (doWarn)
-                    IdlFramework.LogWarning("Trying to summon a non-living entity");
+                    Idealland.LogWarning("Trying to summon a non-living entity");
             }
         }
 

@@ -56,4 +56,18 @@ public class ModConfig {
 //        @Config.RequiresMcRestart
 //        public int SPAWN_TAINTER = 100;
     }
+
+    @Config.LangKey("configgui.idealland.category.Menu0.WorldGenConf")
+    @Config.Comment("World Generate")
+    public static final WorldGenConf WORLD_GEN_CONF = new WorldGenConf();
+
+    public static class WorldGenConf {
+
+        @Config.LangKey("adv_one.conf.world.dim_id")
+        @Config.Comment("DIM Adventure One")
+        @Config.RequiresMcRestart
+        public int DIM_ONE_ID = 1118;
+
+        public float TREE_DENSITY = 0.01f;
+    }
 }

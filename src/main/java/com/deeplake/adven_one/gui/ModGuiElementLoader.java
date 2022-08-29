@@ -2,7 +2,7 @@ package com.deeplake.adven_one.gui;
 
 import javax.annotation.Nullable;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.gui.expOne.ContainerDemo;
 import com.deeplake.adven_one.gui.expOne.GuiContainerDemo;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +19,7 @@ public class ModGuiElementLoader implements IGuiHandler {
 
     public ModGuiElementLoader()
     {
-        NetworkRegistry.INSTANCE.registerGuiHandler(IdlFramework.instance, this);
+        NetworkRegistry.INSTANCE.registerGuiHandler(Idealland.instance, this);
     }
 
     @Nullable

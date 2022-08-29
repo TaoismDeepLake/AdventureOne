@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.blocks.tileEntity.orbs;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ITickable;
@@ -21,7 +21,7 @@ public class TileEntityNullifyOrb extends TileEntityOrbBase implements ITickable
 		if (aabb == null)
 		{
 			world.setBlockState(pos, Blocks.AIR.getDefaultState());
-			IdlFramework.LogWarning("A Nullify Orb @%s is not working correctly. Removing it.", pos);
+			Idealland.LogWarning("A Nullify Orb @%s is not working correctly. Removing it.", pos);
 			invalidate();
 			return;
 		}

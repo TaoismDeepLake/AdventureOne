@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.init;
 
 import com.deeplake.adven_one.blocks.ModBlocks;
+import com.deeplake.adven_one.command.CommandDimTeleport;
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.enchantments.ModEnchantmentInit;
 import com.deeplake.adven_one.entity.ModEntityInit;
@@ -8,6 +9,7 @@ import com.deeplake.adven_one.entity.RenderHandler;
 import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.util.IHasModel;
 import com.deeplake.adven_one.util.ModSoundHandler;
+import com.deeplake.adven_one.world.dimension.InitDimension;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -96,6 +98,6 @@ public class RegistryHandler {
 
 	public static void serverRegistries(FMLServerStartingEvent event)
     {
-        //event.registerServerCommand(new CommandDimTeleport());
+        event.registerServerCommand(new CommandDimTeleport());
     }
 }

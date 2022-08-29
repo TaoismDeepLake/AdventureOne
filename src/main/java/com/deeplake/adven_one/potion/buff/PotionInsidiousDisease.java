@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nonnull;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.potion.EffectTuple;
 import net.minecraft.entity.EntityLivingBase;
 
@@ -39,7 +39,7 @@ public class PotionInsidiousDisease extends BasePotion {
 
     @Override
     public void performEffect(@Nonnull EntityLivingBase living, int amplified) {
-        IdlFramework.Log("Perform");
+        Idealland.Log("Perform");
         for (EffectTuple t:
                 tuples
              ) {

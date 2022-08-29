@@ -3,7 +3,7 @@ package com.deeplake.adven_one.util;
 import java.util.Calendar;
 import java.util.Random;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.ModBlocks;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
 import com.deeplake.adven_one.item.ItemBase;
@@ -191,7 +191,7 @@ public class CommonFunctions {
     }
 
     public static void LogPlayerAction(EntityLivingBase living, String action){
-        IdlFramework.Log(String.format("%s(%s): %s",living.getName(), living.getUniqueID(), action));
+        Idealland.Log(String.format("%s(%s): %s",living.getName(), living.getUniqueID(), action));
     }
 
     public static boolean RepairItem(ItemStack stack, int amount)
@@ -266,20 +266,20 @@ public class CommonFunctions {
             {
                 player.experience -= costLeft;
                 costLeft = 0;
-                IdlFramework.Log("A");
+                Idealland.Log("A");
             }
             else {
                 costLeft -= player.experience;
-                IdlFramework.Log("B");
+                Idealland.Log("B");
                 if (player.experienceLevel > 0)
                 {
                     player.experienceLevel--;
                     player.experience = XPForLevel(player.experienceLevel);
-                    IdlFramework.Log(String.format("player.experience = %d", XPForLevel(player.experienceLevel)));
+                    Idealland.Log(String.format("player.experience = %d", XPForLevel(player.experienceLevel)));
                 }
             }
         }
-        IdlFramework.Log(String.format("Lv= %s, xp = %s", player.experienceLevel, player.experience));
+        Idealland.Log(String.format("Lv= %s, xp = %s", player.experienceLevel, player.experience));
         return true;
     }
 

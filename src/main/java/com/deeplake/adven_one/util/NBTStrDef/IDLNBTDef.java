@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.util.NBTStrDef;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 
 public class IDLNBTDef {
 	public static final String TOOL_PICKAXE = "pickaxe";
@@ -81,7 +81,7 @@ public class IDLNBTDef {
 
 	public static final String MODE = "mode";
 
-	public static final String STARTER_KIT_VERSION_TAG = "last_starter_kit_" + IdlFramework.MODID;
+	public static final String STARTER_KIT_VERSION_TAG = "last_starter_kit_" + Idealland.MODID;
     public static final int CUR_STARTER_KIT_VERSION = 2;
 
 	//edict

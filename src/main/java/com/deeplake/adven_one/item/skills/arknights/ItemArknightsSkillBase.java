@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.item.skills.arknights;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.item.skills.ItemSkillBase;
 import com.deeplake.adven_one.util.CommonDef;
 import com.deeplake.adven_one.util.CommonFunctions;
@@ -116,7 +116,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
                     dura = 0;
                     IDLSkillNBT.SetCasting(stack, false);
                     activateCoolDownArknights(stack);
-                    IdlFramework.Log("%s casting complete.", entityIn);
+                    Idealland.Log("%s casting complete.", entityIn);
                 }
 
                 IDLSkillNBT.SetDura(stack, dura);

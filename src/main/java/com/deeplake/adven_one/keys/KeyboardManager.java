@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.keys;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.proxy.ClientProxy;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -20,7 +20,7 @@ public class KeyboardManager {
              ClientProxy.KEY_BINDINGS) {
             ClientRegistry.registerKeyBinding(key);
         }
-        IdlFramework.Log("Registered %d keys", ClientProxy.KEY_BINDINGS.size());
+        Idealland.Log("Registered %d keys", ClientProxy.KEY_BINDINGS.size());
     }
 
     @SideOnly(Side.CLIENT)

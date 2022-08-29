@@ -2,7 +2,7 @@ package com.deeplake.adven_one.item;
 
 import java.util.List;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.entity.projectiles.EntityIdlProjectile;
 import com.deeplake.adven_one.entity.projectiles.ProjectileArgs;
 import com.deeplake.adven_one.gui.ModGuiElementLoader;
@@ -70,7 +70,7 @@ public class ItemDebug extends ItemBase{
             boolean judge2 = enchantment.canApplyAtEnchantingTable(testItemStack);
             boolean judge3 = flag && enchantment.isAllowedOnBooks();
 
-            IdlFramework.Log("[%s]Lv %d to %d, canApplyAtEnchantingTable = %s, judgement[%s,%s,%s]",
+            Idealland.Log("[%s]Lv %d to %d, canApplyAtEnchantingTable = %s, judgement[%s,%s,%s]",
                     enchantment.getName(),
                     enchantment.getMinLevel(),
                     enchantment.getMaxLevel(),
@@ -81,11 +81,11 @@ public class ItemDebug extends ItemBase{
             {
                 for (int i = enchantment.getMaxLevel(); i >= enchantment.getMinLevel() ; --i)
                 {
-                    IdlFramework.Log("[%s] Lv.%d available range = %d to %d", enchantment.getName(), i,
+                    Idealland.Log("[%s] Lv.%d available range = %d to %d", enchantment.getName(), i,
                             enchantment.getMinEnchantability(i), enchantment.getMaxEnchantability(i));
                     if (p_185291_0_ >= enchantment.getMinEnchantability(i) && p_185291_0_ <= enchantment.getMaxEnchantability(i))
                     {
-                        IdlFramework.Log("[%s] successfully elected", enchantment.getName());
+                        Idealland.Log("[%s] successfully elected", enchantment.getName());
                         break;
                     }
                 }
@@ -103,7 +103,7 @@ public class ItemDebug extends ItemBase{
         if (index == 2 && !worldIn.isRemote) {
             EntityIdlProjectile bullet = new EntityIdlProjectile(worldIn, new ProjectileArgs(4f), playerIn, 0, 0.05, 0);
             worldIn.spawnEntity(bullet);
-            IdlFramework.Log("bullet pos = %s", bullet.getPosition());
+            Idealland.Log("bullet pos = %s", bullet.getPosition());
             worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 1f, 1f);
             //return
         }
@@ -114,7 +114,7 @@ public class ItemDebug extends ItemBase{
             if (index == 3)
             {
                 BlockPos pos = playerIn.getPosition();
-                playerIn.openGui(IdlFramework.instance, ModGuiElementLoader.GUI_RESEARCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                playerIn.openGui(Idealland.instance, ModGuiElementLoader.GUI_RESEARCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
             }
             //else
 

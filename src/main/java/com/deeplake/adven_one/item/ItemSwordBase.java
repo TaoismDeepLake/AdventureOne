@@ -2,7 +2,7 @@ package com.deeplake.adven_one.item;
 
 import java.util.List;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
 import com.deeplake.adven_one.util.CommonFunctions;
 import com.deeplake.adven_one.util.IDLSkillNBT;
@@ -110,7 +110,7 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 	@Override
 	public void registerModels() 
 	{
-		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
+		Idealland.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 	@SideOnly(Side.CLIENT)

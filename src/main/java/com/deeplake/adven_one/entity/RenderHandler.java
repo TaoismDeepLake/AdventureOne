@@ -1,6 +1,6 @@
 package com.deeplake.adven_one.entity;
 
-import com.deeplake.adven_one.IdlFramework;
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.entity.creatures.moroon.EntityMoroonUnitBase;
 import com.deeplake.adven_one.entity.creatures.render.RenderBullet;
 import com.deeplake.adven_one.entity.creatures.render.RenderMoroonHumanoid;
@@ -13,7 +13,7 @@ public class RenderHandler {
     public static void registerEntityRenders() {
         RenderingRegistry.registerEntityRenderingHandler(EntityMoroonUnitBase.class, RenderMoroonHumanoid::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityIdlProjectile.class, renderManager -> new RenderBullet<>(renderManager, new ResourceLocation(IdlFramework.MODID,
+        RenderingRegistry.registerEntityRenderingHandler(EntityIdlProjectile.class, renderManager -> new RenderBullet<>(renderManager, new ResourceLocation(Idealland.MODID,
                 "textures/entity/projectiles/bullet_norm.png")));
     }
 }

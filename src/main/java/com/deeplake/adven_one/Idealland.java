@@ -9,7 +9,6 @@ import com.deeplake.adven_one.keys.KeyboardManager;
 import com.deeplake.adven_one.meta.MetaUtil;
 import com.deeplake.adven_one.network.NetworkHandler;
 import com.deeplake.adven_one.proxy.ProxyBase;
-import com.deeplake.adven_one.util.CommonDef;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -23,8 +22,8 @@ import org.apache.logging.log4j.Logger;
 
 //To let the player be a traveling god who plays yin-yang magic.
 
-@Mod(modid = IdlFramework.MODID, name = IdlFramework.NAME, version = IdlFramework.VERSION)//dependencies = "required-after:Forge@[14.23.5.2705,)"
-public class IdlFramework {
+@Mod(modid = Idealland.MODID, name = Idealland.NAME, version = Idealland.VERSION)//dependencies = "required-after:Forge@[14.23.5.2705,)"
+public class Idealland {
     public static final String MODID = "adven_one";
     public static final String NAME = "Adventure One";
     public static final String VERSION = "0.0.1";
@@ -34,7 +33,7 @@ public class IdlFramework {
     public static final boolean SHOW_WARN = true;
 
     @Mod.Instance
-    public static IdlFramework instance;
+    public static Idealland instance;
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static ProxyBase proxy;
@@ -88,10 +87,10 @@ public class IdlFramework {
     private void TrashTalking() {
         if (MetaUtil.isIDLLoaded)
         {
-            IdlFramework.Log("[Idealland Framework] Bow to Idealland.");
+            Idealland.Log("[Idealland Framework] Bow to Idealland.");
         }
         else {
-            IdlFramework.Log("[Idealland Framework] Made with Idealland Framework.");
+            Idealland.Log("[Idealland Framework] Made with Idealland Framework.");
         }
     }
 
