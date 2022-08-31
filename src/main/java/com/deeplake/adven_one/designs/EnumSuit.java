@@ -45,7 +45,7 @@ public enum EnumSuit {
 
     public void createDefaultTier(int tier)
     {
-        tierHashMap.put(tier, new SetTier(tier, name));
+        tierHashMap.put(tier, new SetTier(tier, name, this));
     }
 
 
@@ -68,5 +68,9 @@ public enum EnumSuit {
 
     public Biome getBiome() {
         return biome;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -45,9 +45,6 @@ local function GenBlock(_blockName)
 	GenBlockState();
 end
 
-
-
-
 local function GenItem(_typeName, _itemName)
 	print("Creating:".._typeName.." ".._itemName)
 	local path = string.format("src\\main\\resources\\assets\\%s\\models\\item\\%s.json", modName, _itemName);
@@ -59,11 +56,40 @@ local function GenItem(_typeName, _itemName)
 	outFile:close();
 end
 
+local function GenItemTier(_typeName, _itemName, tier)
+	print("Creating:".._typeName.." ".._itemName)
+	local path = string.format("src\\main\\resources\\assets\\%s\\models\\item\\%s.json", modName, _itemName);
+	outFile = io.open(path,"w");
+
+	local content = string.format('{"parent": "item/handheld","textures": {"layer0":"%s:items/%s/%s",\n"layer1":"%s:items/overlay_%d"}}\n', modName, _typeName, _itemName, modName, tier );
+	outFile:write(content);
+
+	outFile:close();
+end
+
+local function GenSet(_setName)
+    GenBlock(_setName.."_planks");
+    GenBlock(_setName.."_dirt");
+    GenBlock(_setName.."_stone");
+
+    for i = 1, 4 do
+        GenItemTier("misc", string.format("%s_%d_%s", _setName, i, "gem"), i);
+        GenItemTier("misc", string.format("%s_%d_%s", _setName, i, "sword"), i);
+        GenItemTier("misc", string.format("%s_%d_%s", _setName, i, "pickaxe"), i);
+        for x = 0, 3 do
+            GenItemTier("misc", string.format("%s_%d_%s%d", _setName, i, "armor", x), i);
+        end
+
+        GenBlock(string.format("%s_%d_%s", _setName, i, "ore"));
+    end
+end
+
 --  GenItem("misc", "idl_ai_terminal");
+GenSet("suit_test")
+GenSet("suit_test_2")
 
-
-GenBlock("suit_test_2_stone");
-GenBlock("suit_test_stone");
+-- GenBlock("suit_test_2_stone");
+-- GenBlock("suit_test_stone");
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");
