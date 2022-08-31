@@ -1,11 +1,13 @@
 package com.deeplake.adven_one.init;
 
 import com.deeplake.adven_one.blocks.ModBlocks;
+import com.deeplake.adven_one.blocks.blockSuit.IBlockSuit;
 import com.deeplake.adven_one.command.CommandDimTeleport;
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.enchantments.ModEnchantmentInit;
 import com.deeplake.adven_one.entity.ModEntityInit;
 import com.deeplake.adven_one.entity.RenderHandler;
+import com.deeplake.adven_one.item.ItemBlockBase;
 import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.util.IHasModel;
 import com.deeplake.adven_one.util.ModSoundHandler;
@@ -50,7 +52,13 @@ public class RegistryHandler {
 
 	public static void addToItems(Block block)
 	{
-		ModItems.ITEMS.add(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+		if (block instanceof IBlockSuit)
+		{
+			ModItems.ITEMS.add(new ItemBlockBase(block).setRegistryName(block.getRegistryName()));
+		}
+		else {
+			ModItems.ITEMS.add(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+		}
 	}
 
 	@SideOnly(Side.CLIENT)

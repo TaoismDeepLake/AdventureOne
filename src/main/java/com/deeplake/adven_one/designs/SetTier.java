@@ -1,13 +1,11 @@
 package com.deeplake.adven_one.designs;
 
-import com.deeplake.adven_one.blocks.blockBasic.BlockOreBase;
-import com.deeplake.adven_one.item.ItemArmorBase;
-import com.deeplake.adven_one.item.ItemBase;
-import com.deeplake.adven_one.item.ItemPickaxeBase;
-import com.deeplake.adven_one.item.ItemSwordBase;
-import com.deeplake.adven_one.item.armor.ItemArmorSuitBase;
-import com.deeplake.adven_one.item.tools.ItemPickaxeSuitBase;
-import com.deeplake.adven_one.item.weapon.ItemSwordSuitBase;
+import com.deeplake.adven_one.Idealland;
+import com.deeplake.adven_one.blocks.blockSuit.BlockOreSuitBase;
+import com.deeplake.adven_one.item.suit.ItemArmorSuitBase;
+import com.deeplake.adven_one.item.suit.ItemGemSuit;
+import com.deeplake.adven_one.item.suit.ItemPickaxeSuitBase;
+import com.deeplake.adven_one.item.suit.ItemSwordSuitBase;
 import net.minecraft.block.Block;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -47,8 +45,8 @@ public class SetTier {
     public SetTier(int tier, String name, EnumSuit enumSuit) {
         this.tier = tier;
         this.suit = enumSuit;
-        gem = new ItemBase(String.format("%s_%d_gem", name, tier));
-        gem_ore = new BlockOreBase(String.format("%s_%d_ore", name, tier), gem);
+        gem = new ItemGemSuit(this);
+        gem_ore = new BlockOreSuitBase(this);
 //        sword = new ItemSwordBase(String.format("%s_%d_sword", name, tier), Item.ToolMaterial.DIAMOND);
 //        pick = new ItemPickaxeBase(String.format("%s_%d_pickaxe", name, tier), Item.ToolMaterial.DIAMOND);
         toolMaterial = EnumHelper.addToolMaterial(name, tier, 100, 2*tier, 0.0f, 5 * tier).setRepairItem(new ItemStack(gem));
@@ -129,5 +127,13 @@ public class SetTier {
 
     public EnumSuit getSuit() {
         return suit;
+    }
+
+    public String getTransKey(){
+        return String.format("%s.%s.%d", Idealland.MODID, getSuit().getName(), getTier());
+    }
+
+    public String getSuitName(){
+        return suit.getName();
     }
 }

@@ -2,8 +2,12 @@ package com.deeplake.adven_one.designs;
 
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.BlockBase;
+import com.deeplake.adven_one.blocks.blockSuit.BlockDirtSuitBase;
+import com.deeplake.adven_one.blocks.blockSuit.BlockPlanksSuitBase;
+import com.deeplake.adven_one.blocks.blockSuit.BlockStoneSuitBase;
 import com.deeplake.adven_one.world.biome.BiomeSuit;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.biome.Biome;
@@ -32,9 +36,9 @@ public enum EnumSuit {
 
     public void createInternalDefault()
     {
-        WOOD_PLANKS = new BlockBase(String.format("%s_%s", name, "planks"), Material.WOOD);
-        DIRT = new BlockBase(String.format("%s_%s", name, "dirt"), Material.WOOD);
-        STONE = new BlockBase(String.format("%s_%s", name, "stone"), Material.WOOD);
+        WOOD_PLANKS = new BlockPlanksSuitBase(this);
+        DIRT = new BlockDirtSuitBase(this);
+        STONE = new BlockStoneSuitBase(this);
         createDefaultTier(1);
         createDefaultTier(2);
         createDefaultTier(3);
@@ -47,7 +51,6 @@ public enum EnumSuit {
     {
         tierHashMap.put(tier, new SetTier(tier, name, this));
     }
-
 
     public static void init() {
         SET_ONE.createInternalDefault();

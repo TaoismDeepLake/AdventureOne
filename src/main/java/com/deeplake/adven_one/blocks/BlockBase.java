@@ -3,7 +3,9 @@ package com.deeplake.adven_one.blocks;
 import java.util.Random;
 
 import com.deeplake.adven_one.Idealland;
+import com.deeplake.adven_one.blocks.blockSuit.IBlockSuit;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
+import com.deeplake.adven_one.item.ItemBlockBase;
 import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.Block;
@@ -22,7 +24,13 @@ public class BlockBase extends Block implements IHasModel
 		setCreativeTab(ModCreativeTabsList.IDL_MISC);;
 		
 		ModBlocks.BLOCKS.add(this);
-		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+		if (this instanceof IBlockSuit)
+		{
+			ModItems.ITEMS.add(new ItemBlockBase(this).setRegistryName(this.getRegistryName()));
+		}
+		else {
+			ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+		}
 
 		setHardness(5.0F);
 		//setResistance(1000.0F);
