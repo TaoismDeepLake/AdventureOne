@@ -2,13 +2,18 @@ package com.deeplake.adven_one.item.suit;
 
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.SetTier;
+import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.item.ItemArmorBase;
+import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
 public class ItemArmorSuitBase extends ItemArmorBase {
-//    public ItemArmorSuitBase(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
+    public static final String NAME_IN = "Armor modifier";
+    //    public ItemArmorSuitBase(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
 //        super(name, materialIn, renderIndexIn, equipmentSlotIn);
 //    }
 
@@ -27,5 +32,16 @@ public class ItemArmorSuitBase extends ItemArmorBase {
     public String getItemStackDisplayName(ItemStack stack) {
         return I18n.format(String.format("%s.armor%d",Idealland.MODID, armorType.getIndex()),
                 I18n.format(tier.getTransKey()));
+    }
+
+    @Override
+    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot equipmentSlot, ItemStack stack) {
+        Multimap<String, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot, stack);
+        if (equipmentSlot == this.armorType)
+        {
+            map.put(ModAttributes.DEF_TIER.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[equipmentSlot.getIndex()], NAME_IN, tier.getTier()*0.25, 0));
+        }
+
+        return map;
     }
 }
