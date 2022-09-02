@@ -3,6 +3,7 @@ package com.deeplake.adven_one.util;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 
 public class PlayerUtil {
     public static int FindItemInIvtrGeneralized(EntityPlayer player, Class<? extends Item> itemClass)
@@ -76,5 +77,10 @@ public class PlayerUtil {
             player.dropItem(stack, false);
         }
         return result;
+    }
+
+    public static void setCoolDown(EntityPlayer player, EnumHand hand)
+    {
+        player.getCooldownTracker().setCooldown(player.getHeldItem(hand).getItem(), CommonDef.TICK_PER_SECOND);
     }
 }

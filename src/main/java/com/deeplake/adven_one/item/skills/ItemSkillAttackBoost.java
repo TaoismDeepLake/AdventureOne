@@ -36,7 +36,7 @@ public class ItemSkillAttackBoost extends ItemSkillBase {
                 List<EntityLivingBase> entities = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(basePos.addVector(-base_range, -base_range, -base_range), basePos.addVector(base_range, base_range, base_range)));
                 for (EntityLivingBase living: entities
                 ) {
-                    if (EntityUtil.getAttitude(playerIn, living) == EntityUtil.ATTITUDE.FRIEND)
+                    if (EntityUtil.getAttitude(playerIn, living) == EntityUtil.EnumAttitude.FRIEND)
                     {
                         living.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 3* CommonDef.TICK_PER_TURN, IDLSkillNBT.getLevel(stack) - 1));
                     }

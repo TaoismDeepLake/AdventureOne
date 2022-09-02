@@ -37,7 +37,7 @@ public class ItemHealingGun extends ItemAdaptingBase {
         //IdlFramework.Log("found %d targets", entities.size());
         for (EntityLivingBase target: entities
         ) {
-            if (EntityUtil.getAttitude(entityLiving, target) == EntityUtil.ATTITUDE.FRIEND)
+            if (EntityUtil.getAttitude(entityLiving, target) == EntityUtil.EnumAttitude.FRIEND)
             {
                 if (worldIn.isRemote)
                 {

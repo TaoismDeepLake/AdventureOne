@@ -129,7 +129,7 @@ public class ItemSkillTrueSL extends ItemArknightsSkillBase {
             List<EntityLivingBase> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(basePos.addVector(-base_range, -base_range, -base_range), basePos.addVector(base_range, base_range, base_range)));
             for (EntityLivingBase living: entities
             ) {
-                if (EntityUtil.getAttitude(player, living) == EntityUtil.ATTITUDE.HATE)
+                if (EntityUtil.getAttitude(player, living) == EntityUtil.EnumAttitude.HATE)
                 {
                     boolean isForwad = player.getForward().dotProduct(living.getPositionVector().subtract(player.getPositionVector())) >= 0;
                     if (isForwad)

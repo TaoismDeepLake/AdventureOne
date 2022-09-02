@@ -42,7 +42,7 @@ public class EventsHandleTierCombat {
         {
             EntityLivingBase livingBase = (EntityLivingBase) event.getAttacker();
             double atkTier = livingBase.getEntityAttribute(ModAttributes.ATK_TIER).getAttributeValue();
-            double defTier = livingBase.getEntityAttribute(ModAttributes.DEF_TIER).getAttributeValue();
+            double defTier = event.getEntityLiving().getEntityAttribute(ModAttributes.DEF_TIER).getAttributeValue();
 
             double delta = atkTier - defTier;
             if (delta > -0.01)

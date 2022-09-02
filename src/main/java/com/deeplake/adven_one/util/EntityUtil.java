@@ -6,10 +6,12 @@ import java.util.Random;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
+import com.deeplake.adven_one.entity.creatures.ICustomFaction;
 import com.google.common.base.Predicate;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.entity.creatures.EntityModUnit;
 import com.deeplake.adven_one.meta.MetaUtil;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -171,6 +173,25 @@ public class EntityUtil {
         return world.getEntitiesWithinAABB(clazz, IDLGeneral.ServerAABB(center.addVector(-range, -range, -range), center.addVector(range, range, range)) , filter);
     }
 
+    public static boolean isAlone(World world, EntityLivingBase entity, float range) {
+        List<EntityLivingBase> nearbyAtk = EntityUtil.getEntitiesWithinAABB(world, EntityLivingBase.class, entity.getPositionVector(), range, null);
+        for (EntityLivingBase creature : nearbyAtk) {
+            if (creature == entity) {
+                continue;
+            }
+
+            if (EntityUtil.getAttitude(entity, creature) == EntityUtil.EnumAttitude.FRIEND) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static <T extends Entity> List<T> getEntitiesWithinAABB(World world, Class <? extends T > clazz, BlockPos center, float range, @Nullable Predicate <? super T > filter)
+    {
+        Vec3d vec3d = CommonFunctions.getVecFromBlockPos(center);
+        return world.getEntitiesWithinAABB(clazz, IDLGeneral.ServerAABB(vec3d.addVector(-range, -range, -range), vec3d.addVector(range, range, range)) , filter);
+    }
     public static Vec3d GetRandomAroundUnderfoot(EntityLivingBase entity, float radius)
     {
         float angle = entity.getRNG().nextFloat() * 6.282f;
@@ -276,35 +297,21 @@ public class EntityUtil {
         }
     }
 
-    public static ATTITUDE getAttitude(EntityLivingBase subject, EntityLivingBase object)
-    {
-        if (subject == null || object == null)
-        {
-            return ATTITUDE.IGNORE;
-        }
-
-        if (subject.isOnSameTeam(object))
-        {
-            return ATTITUDE.FRIEND;
-        }
-        return getAttitude(faction(subject), faction(object));
-    }
-
-    public static ATTITUDE getAttitude(Faction subject, EntityLivingBase object)
+    public static EnumAttitude getAttitude(Faction subject, EntityLivingBase object)
     {
         return getAttitude(subject, faction(object));
     }
 
-    public static ATTITUDE getAttitude(Faction subject, Faction object)
+    public static EnumAttitude getAttitude(Faction subject, Faction object)
     {
         if (subject == object)
         {
-            return ATTITUDE.FRIEND;
+            return EnumAttitude.FRIEND;
         }
 
         if (subject == Faction.CRITTER || object == Faction.CRITTER)
         {
-            return ATTITUDE.IGNORE;
+            return EnumAttitude.IGNORE;
         }
 
         switch (subject)
@@ -314,25 +321,25 @@ public class EntityUtil {
                 switch (object)
                 {
                     case IDEALLAND:
-                        return ATTITUDE.FRIEND;
+                        return EnumAttitude.FRIEND;
                     case MOB_VANILLA:
                     case MOB_VAN_ZOMBIE:
                     case MOROON:
-                        return ATTITUDE.HATE;
+                        return EnumAttitude.HATE;
                     default:
-                        return ATTITUDE.IGNORE;
+                        return EnumAttitude.IGNORE;
                 }
             case MOB_VANILLA:
                 switch (object)
                 {
                     case IDEALLAND:
                     case PLAYER:
-                        return ATTITUDE.HATE;
+                        return EnumAttitude.HATE;
                     case MOB_VAN_ZOMBIE:
-                        return ATTITUDE.FRIEND;
+                        return EnumAttitude.FRIEND;
 
                     default:
-                        return ATTITUDE.IGNORE;
+                        return EnumAttitude.IGNORE;
                 }
 
             case MOB_VAN_ZOMBIE:
@@ -340,13 +347,13 @@ public class EntityUtil {
                 {
                     case IDEALLAND:
                     case PLAYER:
-                        return ATTITUDE.HATE;
+                        return EnumAttitude.HATE;
 
                     case MOB_VANILLA:
-                        return ATTITUDE.FRIEND;
+                        return EnumAttitude.FRIEND;
 
                     default:
-                        return ATTITUDE.IGNORE;
+                        return EnumAttitude.IGNORE;
                 }
 
             case MOROON:
@@ -355,13 +362,13 @@ public class EntityUtil {
                     case IDEALLAND:
                     case MOB_VAN_ZOMBIE:
                     case PLAYER:
-                        return ATTITUDE.HATE;
+                        return EnumAttitude.HATE;
 
                     default:
-                        return ATTITUDE.IGNORE;
+                        return EnumAttitude.IGNORE;
                 }
         }
-        return ATTITUDE.IGNORE;
+        return EnumAttitude.IGNORE;
     }
 
     public static Vec3d GetRandomAround(EntityLivingBase entity, float radius)
@@ -382,7 +389,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.FRIEND);
+            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)== EnumAttitude.FRIEND);
         }
     };
 
@@ -390,7 +397,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable();
+            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)== EnumAttitude.HATE) && (p_apply_1_).attackable();
         }
     };
 
@@ -398,7 +405,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable() && !p_apply_1_.onGround;
+            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)== EnumAttitude.HATE) && (p_apply_1_).attackable() && !p_apply_1_.onGround;
         }
     };
 
@@ -406,7 +413,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  p_apply_1_ != null && (getAttitude(Faction.MOROON, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable();
+            return  p_apply_1_ != null && (getAttitude(Faction.MOROON, p_apply_1_)== EnumAttitude.HATE) && (p_apply_1_).attackable();
         }
     };
 
@@ -561,7 +568,7 @@ public class EntityUtil {
         CRITTER,
     }
 
-    public enum ATTITUDE{
+    public enum EnumAttitude {
         HATE,
         IGNORE,
         FRIEND
@@ -587,5 +594,163 @@ public class EntityUtil {
             return false;
         }
         return entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + (double)entity.getEyeHeight(), entity.posZ));
+    }
+
+    public enum EnumFaction {
+        PLAYER((byte) 0),
+        IDEALLAND((byte) 1, 1.0f, 1.0f, 0.7f),
+        MOB_VANILLA((byte) 2, 1.0f, 0.5f, 0.5f),
+        MOB_VAN_ZOMBIE((byte) 3, 0.4f, 1f, 0.4f),
+        MOROON((byte) 4, 0.9f, 0.3f, 0.8f),
+        CRITTER((byte) 5);
+
+        public final byte index;
+        float r = 1.0f, g = 1.0f, b = 1.0f;
+
+        EnumFaction(byte index, float r, float g, float b) {
+            this.index = index;
+            this.r = r;
+            this.g = g;
+            this.b = b;
+        }
+
+        EnumFaction(byte index) {
+            this.index = index;
+        }
+
+        public static EnumFaction fromIndex(byte index) {
+            for (EnumFaction faction :
+                    EnumFaction.values()) {
+                if (faction.index == index) {
+                    return faction;
+                }
+            }
+
+            Idealland.LogWarning("Trying to parse non-existing faction : %s", index);
+            return CRITTER;
+        }
+
+        public void applyColor() {
+            GlStateManager.color(r, g, b);
+        }
+    }
+
+    public static EnumFaction getFaction(EntityLivingBase creature)
+    {
+        if (creature instanceof ICustomFaction) {
+            return ((ICustomFaction) creature).getFaction();
+        }
+
+        if (isMoroonTeam(creature))
+        {
+            return EnumFaction.MOROON;
+        } else if (isIdeallandTeam(creature))
+        {
+            return EnumFaction.IDEALLAND;
+        }else if (creature instanceof EntityZombie)
+        {
+            return EnumFaction.MOB_VAN_ZOMBIE;
+        }
+        else if (creature instanceof IMob)
+        {
+            return EnumFaction.MOB_VANILLA;
+        }else if (creature instanceof EntityPlayer)
+        {
+            return EnumFaction.PLAYER;
+        }else
+        {
+            return EnumFaction.CRITTER;
+        }
+    }
+
+    public static EnumAttitude getAttitude(EntityLivingBase subject, EntityLivingBase object)
+    {
+        if (subject == null || object == null)
+        {
+            return EntityUtil.EnumAttitude.IGNORE;
+        }
+
+        if (subject.isOnSameTeam(object))
+        {
+            return EntityUtil.EnumAttitude.FRIEND;
+        }
+        return getAttitude(getFaction(subject), getFaction(object));
+    }
+
+    public static EnumAttitude getAttitude(EnumFaction subject, EntityLivingBase object)
+    {
+        return getAttitude(subject, getFaction(object));
+    }
+
+    public static EnumAttitude getAttitude(EnumFaction subject, EnumFaction object) {
+        if (subject == null || object == null) {
+            return EntityUtil.EnumAttitude.IGNORE;
+        }
+
+        if (subject == object)
+        {
+            return EntityUtil.EnumAttitude.FRIEND;
+        }
+
+        if (subject == EnumFaction.CRITTER || object == EnumFaction.CRITTER)
+        {
+            return EntityUtil.EnumAttitude.IGNORE;
+        }
+
+        switch (subject)
+        {
+            case PLAYER:
+            case IDEALLAND:
+                switch (object)
+                {
+                    case IDEALLAND:
+                        return EntityUtil.EnumAttitude.FRIEND;
+                    case MOB_VANILLA:
+                    case MOB_VAN_ZOMBIE:
+                    case MOROON:
+                        return EntityUtil.EnumAttitude.HATE;
+                    default:
+                        return EntityUtil.EnumAttitude.IGNORE;
+                }
+            case MOB_VANILLA:
+                switch (object)
+                {
+                    case IDEALLAND:
+                    case PLAYER:
+                        return EntityUtil.EnumAttitude.HATE;
+                    case MOB_VAN_ZOMBIE:
+                        return EntityUtil.EnumAttitude.FRIEND;
+
+                    default:
+                        return EntityUtil.EnumAttitude.IGNORE;
+                }
+
+            case MOB_VAN_ZOMBIE:
+                switch (object)
+                {
+                    case IDEALLAND:
+                    case PLAYER:
+                        return EntityUtil.EnumAttitude.HATE;
+
+                    case MOB_VANILLA:
+                        return EntityUtil.EnumAttitude.FRIEND;
+
+                    default:
+                        return EntityUtil.EnumAttitude.IGNORE;
+                }
+
+            case MOROON:
+                switch (object)
+                {
+                    case IDEALLAND:
+                    case MOB_VAN_ZOMBIE:
+                    case PLAYER:
+                        return EntityUtil.EnumAttitude.HATE;
+
+                    default:
+                        return EntityUtil.EnumAttitude.IGNORE;
+                }
+        }
+        return EntityUtil.EnumAttitude.IGNORE;
     }
 }

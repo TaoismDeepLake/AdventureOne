@@ -23,6 +23,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -346,5 +347,10 @@ public class CommonFunctions {
     public static void addToEventBus(Object target)
     {
         MinecraftForge.EVENT_BUS.register(target);
+    }
+
+    public static Vec3d getVecFromBlockPos(BlockPos pos)
+    {
+        return new Vec3d(pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f);
     }
 }

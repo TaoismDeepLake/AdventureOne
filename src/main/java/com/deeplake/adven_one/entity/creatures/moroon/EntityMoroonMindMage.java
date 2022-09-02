@@ -85,7 +85,7 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
                 if (getRank() > 1)
                 {
                     //strong mind mages resists mind magic, won't attack allies
-                    if (EntityUtil.getAttitude(this, getAttackTarget()) == EntityUtil.ATTITUDE.FRIEND)
+                    if (EntityUtil.getAttitude(this, getAttackTarget()) == EntityUtil.EnumAttitude.FRIEND)
                     {
                         setAttackTarget(null);
                     }
@@ -109,18 +109,18 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
                         }
                     }
 
-                    EntityUtil.ATTITUDE attitude = EntityUtil.getAttitude(this, living);
-                    if (attitude == EntityUtil.ATTITUDE.FRIEND) {
+                    EntityUtil.EnumAttitude enumAttitude = EntityUtil.getAttitude(this, living);
+                    if (enumAttitude == EntityUtil.EnumAttitude.FRIEND) {
                         ApplyMindControlToFriend(living);
                     }
-                    else if (attitude == EntityUtil.ATTITUDE.HATE || living == getAttackTarget())
+                    else if (enumAttitude == EntityUtil.EnumAttitude.HATE || living == getAttackTarget())
                     {
                         ApplyMindControlToEnemy(living);
                     }
                     else if (living instanceof EntityLiving)
                     {
                         EntityLivingBase theirTarget = ((EntityLiving) living).getAttackTarget();
-                        if (EntityUtil.getAttitude(this, theirTarget) == EntityUtil.ATTITUDE.FRIEND)
+                        if (EntityUtil.getAttitude(this, theirTarget) == EntityUtil.EnumAttitude.FRIEND)
                         {
                             ApplyMindControlToEnemy(living);
                         }
@@ -218,7 +218,7 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
             //change their targets
             EntityLiving entityLiving = (EntityLiving) livingBase;
             EntityLivingBase theirTarget = ((EntityLiving) livingBase).getAttackTarget();
-            if (EntityUtil.getAttitude(this, theirTarget) != EntityUtil.ATTITUDE.HATE)
+            if (EntityUtil.getAttitude(this, theirTarget) != EntityUtil.EnumAttitude.HATE)
             {
                 //try to make them attack only if the path ready
                 EntityLivingBase myTarget = getAttackTarget();
