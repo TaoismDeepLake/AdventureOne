@@ -185,7 +185,7 @@ public class EntityModUnit extends EntityCreature {
 //            tasks.addTask(0, new EntityAIMechInterfere(this));
         }
 
-        if (is_pinned_on_ground) {
+        if (!is_pinned_on_ground) {
             if (can_swim) {
                 this.tasks.addTask(1, new EntityAISwimming(this));
             }
