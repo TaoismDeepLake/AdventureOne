@@ -31,9 +31,22 @@ public class WorldGenUtil {
     public static final IBlockState MOB_SPAWNER = Blocks.MOB_SPAWNER.getDefaultState();
     public static final IBlockState BOX = Blocks.CHEST.getDefaultState();
     public static final IBlockState BEDROCK = Blocks.BEDROCK.getDefaultState();
+    public static final IBlockState LANTERN = Blocks.SEA_LANTERN.getDefaultState();
+    public static final IBlockState TALLGRASS = Blocks.TALLGRASS.getDefaultState();
+    public static final IBlockState GRASS = Blocks.GRASS.getDefaultState();
 
     public static final int PREVENT_CASCADE_FLAGS = BlockFlags.TO_CLIENT | BlockFlags.IGNORE_OB;
     public static final int PREVENT_CASCADE_FLAGS_2 = PREVENT_CASCADE_FLAGS | BlockFlags.CLIENT_DONT_RENDER;
+    public static IBlockState CLAY = Blocks.CLAY.getDefaultState();
+    public static IBlockState SAND = Blocks.SAND.getDefaultState();
+    public static IBlockState DIRT = Blocks.DIRT.getDefaultState();
+    public static IBlockState STONE = Blocks.STONE.getDefaultState();
+    public static IBlockState COAL = Blocks.COAL_ORE.getDefaultState();
+    public static IBlockState IRON = Blocks.IRON_ORE.getDefaultState();
+    public static IBlockState REDS = Blocks.REDSTONE_ORE.getDefaultState();
+    public static IBlockState GOLD = Blocks.GOLD_ORE.getDefaultState();
+    public static IBlockState LAPIS = Blocks.LAPIS_ORE.getDefaultState();
+    public static IBlockState DIAMOND = Blocks.DIAMOND_ORE.getDefaultState();
 
     static Rotation[] rotation = Rotation.values();
 

@@ -68,6 +68,25 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public int DIM_ONE_ID = 1118;
 
-        public float TREE_DENSITY = 0.01f;
+        //Per Chunk
+        public float TREE_DENSITY = 0.001f;
+
+        public int IRON_DENSITY = 16;
+
+        public int REDSTONE_DENSITY = 8;
+        public int COAL_DENSITY = 8;
+
+        public int GOLD_DENSITY = 8;
+        public int LAPIS_DENSITY = 8;
+
+        public int DIAMOND_DENSITY = 8;
+
+        public int T1_DENSITY = 1;
+        public int T1_DENSITY_PLUS = 2;
+
+        public int BEDROCK_DENSITY_PLUS = 2;
+
+
+
     }
 }

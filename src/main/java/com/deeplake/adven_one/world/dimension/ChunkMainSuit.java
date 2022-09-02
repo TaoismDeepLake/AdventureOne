@@ -25,8 +25,7 @@ public class ChunkMainSuit extends WorldChunkBase {
     public IBlockState SUIT_DIRT;
     public IBlockState SUIT_STONE;
     public IBlockState SUIT_PLANKS;
-    public IBlockState DIRT = Blocks.DIRT.getDefaultState();
-    public IBlockState STONE = Blocks.STONE.getDefaultState();
+
 
     BiomeProvider provider;
     World world;
@@ -35,8 +34,6 @@ public class ChunkMainSuit extends WorldChunkBase {
         world = worldIn;
         provider = worldIn.getBiomeProvider();
         this.rand = rand;
-
-
     }
 
     @Override
@@ -51,25 +48,89 @@ public class ChunkMainSuit extends WorldChunkBase {
             SUIT_STONE = suit.getSTONE().getDefaultState();
             SUIT_PLANKS = suit.getWOOD_PLANKS().getDefaultState();
 
-            for (int _y = 1; _y < 100; _y++) {
-                for (int _x = 0; _x < CHUNK_SIZE; _x++)
+            //Base Part
+
+            for (int _x = 0; _x < CHUNK_SIZE; _x++)
+            {
+                for (int _z = 0; _z < CHUNK_SIZE; _z++)
                 {
-                    for (int _z = 0; _z < CHUNK_SIZE; _z++)
-                    {
-                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, SUIT_STONE);
-                    }
+                    int curY = 127;
+                    int depth = 4;
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, SUIT_DIRT);
+
+                    depth = 2;
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.CLAY);
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.DIRT);
+
+                    depth = 4;
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.SAND);
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.STONE);
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, SUIT_DIRT);
+
+                    depth = 12;
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, SUIT_STONE);
+
+                    depth = 14;
+                    curY -= depth;
+//                    for (int _y = curY + depth; _y > curY; _y--) {
+//                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, AIR);
+//                    }
+
+                    depth = 63;
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, SUIT_STONE);
+
+                    depth = 1;
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.BEDROCK);
+
+                    //Inner Sea of Stars
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.LANTERN);
+
+                    depth = 11;
+                    curY -= depth;
+//                    for (int _y = curY + depth; _y >= curY; _y--) {
+//                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, AIR);
+//                    }
+
+                    depth = 1;
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.TALLGRASS);
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.GRASS);
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.DIRT);
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.BEDROCK);
                 }
             }
 
-            for (int _y = 100; _y < seaLevel; _y++) {
-                for (int _x = 0; _x < CHUNK_SIZE; _x++)
-                {
-                    for (int _z = 0; _z < CHUNK_SIZE; _z++)
-                    {
-                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, WATER);
-                    }
-                }
-            }
+//            for (int _y = 100; _y < seaLevel; _y++) {
+//                for (int _x = 0; _x < CHUNK_SIZE; _x++)
+//                {
+//                    for (int _z = 0; _z < CHUNK_SIZE; _z++)
+//                    {
+//                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, WATER);
+//                    }
+//                }
+//            }
 
             //trees
             for (int _x = 0; _x < CHUNK_SIZE; _x++)
@@ -84,6 +145,12 @@ public class ChunkMainSuit extends WorldChunkBase {
                     }
                 }
             }
+        }
+    }
+
+    private void fill(int curY, int depth, Chunk chunk, int _x, int _z, IBlockState SUIT_DIRT) {
+        for (int _y = curY + depth; _y > curY; _y--) {
+            WorldGenUtil.setBlockState(chunk, _x, _y, _z, SUIT_DIRT);
         }
     }
 }
