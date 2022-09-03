@@ -51,10 +51,35 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public boolean SPAWN = true;
 
-//        @Config.LangKey("entity.moroon_tainter.name")
-//        @Config.Comment("Spawn Moroon Tainter")
-//        @Config.RequiresMcRestart
-//        public int SPAWN_TAINTER = 100;
+        @Config.LangKey("conf.spawn_t1")
+        @Config.Comment("Monster Spawn T1")
+        @Config.RequiresMcRestart
+        public int SPAWN_T1 = 100;
+
+        @Config.LangKey("conf.spawn_t1m")
+        @Config.Comment("Monster Spawn T1m")
+        @Config.RequiresMcRestart
+        public int SPAWN_T1M = 100;
+
+        @Config.LangKey("conf.spawn_t2")
+        @Config.Comment("Monster Spawn T2")
+        @Config.RequiresMcRestart
+        public int SPAWN_T2 = 100;
+
+        @Config.LangKey("conf.spawn_t2m")
+        @Config.Comment("Monster Spawn T2m")
+        @Config.RequiresMcRestart
+        public int SPAWN_T2M = 100;
+
+        @Config.LangKey("conf.spawn_t3")
+        @Config.Comment("Monster Spawn T3")
+        @Config.RequiresMcRestart
+        public int SPAWN_T3 = 100;
+
+        @Config.LangKey("conf.spawn_t3m")
+        @Config.Comment("Monster Spawn T3m")
+        @Config.RequiresMcRestart
+        public int SPAWN_T3M = 100;
     }
 
     @Config.LangKey("configgui.idealland.category.Menu0.WorldGenConf")
@@ -85,6 +110,9 @@ public class ModConfig {
         public int T1_DENSITY_PLUS = 2;
 
         public int BEDROCK_DENSITY_PLUS = 2;
+
+        @Config.Comment("Sparseness of hole")
+        public int CHUNK_PER_HOLE = 20;
 
 
 

@@ -66,10 +66,10 @@ public class ChunkMainSuit extends WorldChunkBase {
                     depth = 4;
 
                     curY -= depth;
-                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.SAND);
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.STONE);
 
                     curY -= depth;
-                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.STONE);
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.SAND);
 
                     curY -= depth;
                     fill(curY, depth, chunk, _x, _z, SUIT_DIRT);

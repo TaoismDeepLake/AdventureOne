@@ -19,27 +19,11 @@ public class RenderMoroonHumanoid extends RenderBiped<EntityModUnit> {
     {
         super(renderManagerIn, new ModelPlayer(1f, false), 0.5F);
         this.addLayer(new LayerBipedArmor(this));
-        //this.addLayer(new LayerHeldItem(this));
-        //this.addLayer(new LayerArrow(this));
-//        this.addLayer(new LayerDeadmau5Head(this));
-//        this.addLayer(new LayerCape(this));
-//        this.addLayer(new LayerCustomHead(this.getMainModel().bipedHead));
-        //this.addLayer(new LayerElytra(this));
-        //this.addLayer(new LayerEntityOnShoulder(renderManager));
     }
 
 
     public RenderMoroonHumanoid(RenderManager renderManagerIn, ModelBiped modelBipedIn, float shadowSize) {
         super(renderManagerIn, modelBipedIn, shadowSize);
-//        LayerBipedArmor layerbipedarmor = new LayerBipedArmor(this)
-//        {
-//            protected void initArmor()
-//            {
-//                this.modelLeggings = new ModelZombie(0.5F, true);
-//                this.modelArmor = new ModelZombie(1.0F, true);
-//            }
-//        };
-//        this.addLayer(layerbipedarmor);
     }
 
     /**

@@ -85,8 +85,8 @@ local function GenSet(_setName)
 end
 
 --  GenItem("misc", "idl_ai_terminal");
-GenSet("suit_test")
-GenSet("suit_test_2")
+GenSet("suit_back")
+
 
 -- GenBlock("suit_test_2_stone");
 -- GenBlock("suit_test_stone");

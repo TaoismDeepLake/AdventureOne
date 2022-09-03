@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.deeplake.adven_one.entity.creatures.suit.EntityTier1Mob;
+import com.deeplake.adven_one.entity.creatures.suit.EntityTier1MobM;
+import com.deeplake.adven_one.world.biome.BiomeSuit;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.Biome;
@@ -22,6 +25,7 @@ public class ModSpawn {
         addNormalSpawn(biomeMap);
         addHumidSpawn(biomeMap);
         addOpenGroundSpawn(biomeMap);
+        addSuitBiomeSpawn(biomeMap);
     }
 
     //Mob
@@ -58,6 +62,17 @@ public class ModSpawn {
         for (Biome biome : Biome.REGISTRY) {
             //Example Spawn
             //add(biome, ModConfig.SPAWN_CONF.SPAWN_TAINTER, EntityMoroonTainter.class, 1, 4);
+        }
+    }
+
+    private static void addSuitBiomeSpawn(Map<Type, Set<Biome>> biomeMap) {
+        for (Biome biome : Biome.REGISTRY) {
+            if (biome instanceof BiomeSuit)
+            {
+                add(biome, ModConfig.SPAWN_CONF.SPAWN_T1, EntityTier1Mob.class, 1, 2);
+                add(biome, ModConfig.SPAWN_CONF.SPAWN_T1M, EntityTier1MobM.class, 2, 4);
+            }
+            //   add(biome, ModConfig.SPAWN_CONF.SPAWN_SKELETON_TOWER, EntitySpawnTower.class, 1, 1);
         }
     }
 

@@ -1,7 +1,7 @@
 package com.deeplake.adven_one.entity;
 
 import com.deeplake.adven_one.Idealland;
-import com.deeplake.adven_one.entity.creatures.suit.EntityDebugMob;
+import com.deeplake.adven_one.entity.creatures.suit.*;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -12,7 +12,14 @@ public class ModEntityInit {
     private static int ENTITY_NEXT_ID = 1;
     public static void registerEntities()
     {
-        registerEntity("debug_mob", EntityDebugMob.class);
+        registerEntity("debug_mob", EntitySuitMob.class);
+        registerEntity("default_mob_t1", EntityTier1Mob.class);
+        registerEntity("default_mob_t1m", EntityTier1MobM.class);
+        registerEntity("default_mob_t2", EntityTier2Mob.class);
+        registerEntity("default_mob_t2m", EntityTier2MobM.class);
+        registerEntity("default_mob_t3", EntityTier3Mob.class);
+        registerEntity("default_mob_t3m", EntityTier3MobM.class);
+
 //        registerEntity("moroon_tainter", EntityMoroonTainter.class,0xff00ff, 0x000033);
 //        registerEntity("idealland_whitetower_core", EntityIDLWhiteTowerCore.class, ENTITY_NEXT_ID, 128, 0xeeee00, 0xffffff);
 

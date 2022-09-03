@@ -7,6 +7,9 @@ import com.deeplake.adven_one.world.biome.BiomeSuit;
 import com.deeplake.adven_one.world.dimension.ChunkGenBase;
 import com.deeplake.adven_one.world.dimension.ChunkMainSuit;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 
@@ -46,6 +49,11 @@ public class PopulateMainSuit {
 
             spreadOre(chunk, x, z, 16, 31, WorldGenUtil.BEDROCK, ModConfig.WORLD_GEN_CONF.BEDROCK_DENSITY_PLUS);
             spreadOre(chunk, x, z, 16, 31, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
+
+            if (chunkGenBase.rand.nextInt(ModConfig.WORLD_GEN_CONF.CHUNK_PER_HOLE) == 0)
+            {
+                digHole(chunk, x, z);
+            }
         }
     }
 
@@ -65,4 +73,36 @@ public class PopulateMainSuit {
         }
     }
 
+    static Vec3i[] cycle = {
+        new Vec3i(1,0,1),
+        new Vec3i(0,0,1),
+        new Vec3i(-1,0,1),
+        new Vec3i(-1,0,0),
+        new Vec3i(-1,0,-1),
+        new Vec3i(0,0,-1),
+        new Vec3i(1,0,-1),
+        new Vec3i(1,0,0),
+    };
+
+    public void digHole(Chunk chunk, int x, int z)
+    {
+        int minDepth = 8;
+        int maxDepth = 32;
+        Random random = chunkGenBase.rand;
+        int depth = minDepth + random.nextInt(maxDepth - minDepth);
+
+        int maxY = 127;
+        int minY = maxY - depth;
+
+        BlockPos.MutableBlockPos pointer = new BlockPos.MutableBlockPos(7,maxY,7);
+
+        for (int _y = maxY; _y > minY; _y--)
+        {
+            for (int i = 0; i <= 3; i++)
+            {
+                BlockPos pos = pointer.add(cycle[_y % 8].getX(), _y-i, cycle[_y % 8].getZ());
+                WorldGenUtil.setBlockState(chunk, pos.getX(), pos.getY(), pos.getZ(), WorldGenUtil.AIR);
+            }
+        }
+    }
 }

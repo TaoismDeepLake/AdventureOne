@@ -20,7 +20,7 @@ import java.util.HashMap;
 public enum EnumSuit {
 
     SET_ONE("suit_test"),
-    SET_TWO("suit_test_2"),
+    SET_TWO("suit_back"),//backup
     ;
 
     final String name;
@@ -106,7 +106,7 @@ public enum EnumSuit {
     {
         OreDictionary.registerOre("plankWood", WOOD_PLANKS);
         OreDictionary.registerOre("dirt", DIRT);
-        OreDictionary.registerOre("stone", STONE);
+//        OreDictionary.registerOre("stone", STONE);
         OreDictionary.registerOre("cobblestone", STONE);
     }
 
