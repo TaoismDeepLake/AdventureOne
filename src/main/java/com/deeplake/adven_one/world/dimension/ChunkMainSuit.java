@@ -22,10 +22,6 @@ public class ChunkMainSuit extends WorldChunkBase {
 
     //need to do this for different biome
     public IBlockState WATER = Blocks.WATER.getDefaultState();
-    public IBlockState SUIT_DIRT;
-    public IBlockState SUIT_STONE;
-    public IBlockState SUIT_PLANKS;
-
 
     BiomeProvider provider;
     World world;
@@ -44,12 +40,12 @@ public class ChunkMainSuit extends WorldChunkBase {
         if (mainBiome instanceof BiomeSuit)
         {
             EnumSuit suit = ((BiomeSuit) mainBiome).getSuit();
-            SUIT_DIRT = suit.getDIRT().getDefaultState();
-            SUIT_STONE = suit.getSTONE().getDefaultState();
-            SUIT_PLANKS = suit.getWOOD_PLANKS().getDefaultState();
+            //thread safe
+            IBlockState SUIT_DIRT = suit.getDIRT().getDefaultState();
+            IBlockState SUIT_STONE = suit.getSTONE().getDefaultState();
+            IBlockState SUIT_PLANKS = suit.getWOOD_PLANKS().getDefaultState();
 
             //Base Part
-
             for (int _x = 0; _x < CHUNK_SIZE; _x++)
             {
                 for (int _z = 0; _z < CHUNK_SIZE; _z++)
@@ -84,9 +80,10 @@ public class ChunkMainSuit extends WorldChunkBase {
 
                     depth = 14;
                     curY -= depth;
-//                    for (int _y = curY + depth; _y > curY; _y--) {
-//                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, AIR);
-//                    }
+
+                    depth = 2;
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WATER);
 
                     depth = 63;
                     curY -= depth;
@@ -101,7 +98,7 @@ public class ChunkMainSuit extends WorldChunkBase {
                     curY -= depth;
                     fill(curY, depth, chunk, _x, _z, WorldGenUtil.LANTERN);
 
-                    depth = 11;
+                    depth = 10;
                     curY -= depth;
 //                    for (int _y = curY + depth; _y >= curY; _y--) {
 //                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, AIR);
@@ -119,6 +116,9 @@ public class ChunkMainSuit extends WorldChunkBase {
 
                     curY -= depth;
                     fill(curY, depth, chunk, _x, _z, WorldGenUtil.BEDROCK);
+
+                    curY -= depth;
+                    fill(curY, depth, chunk, _x, _z, WorldGenUtil.LANTERN);
                 }
             }
 
@@ -132,7 +132,7 @@ public class ChunkMainSuit extends WorldChunkBase {
 //                }
 //            }
 
-            //trees
+            //trees, best fit in populate, not here
             for (int _x = 0; _x < CHUNK_SIZE; _x++)
             {
                 for (int _z = 0; _z < CHUNK_SIZE; _z++)

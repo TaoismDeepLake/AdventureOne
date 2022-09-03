@@ -97,6 +97,7 @@ public class RegistryHandler {
 	public static void postInitReg()
 	{
 		//WorldType TYPE_ONE = new WorldTypeOne();
+		EnumSuit.initOreDict();
 	}
 
 	public static void initRegistries(FMLInitializationEvent event)

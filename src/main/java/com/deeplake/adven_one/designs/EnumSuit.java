@@ -5,12 +5,15 @@ import com.deeplake.adven_one.blocks.BlockBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockDirtSuitBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockPlanksSuitBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockStoneSuitBase;
+import com.deeplake.adven_one.util.WorldGenUtil;
 import com.deeplake.adven_one.world.biome.BiomeSuit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.HashMap;
 
@@ -39,6 +42,8 @@ public enum EnumSuit {
         WOOD_PLANKS = new BlockPlanksSuitBase(this);
         DIRT = new BlockDirtSuitBase(this);
         STONE = new BlockStoneSuitBase(this);
+
+
         createDefaultTier(1);
         createDefaultTier(2);
         createDefaultTier(3);
@@ -55,6 +60,10 @@ public enum EnumSuit {
     public static void init() {
         SET_ONE.createInternalDefault();
         SET_TWO.createInternalDefault();
+    }
+    public static void initOreDict() {
+        SET_ONE.registerOreDict();
+        SET_TWO.registerOreDict();
     }
 
     public Block getWOOD_PLANKS() {
@@ -75,5 +84,33 @@ public enum EnumSuit {
 
     public String getName() {
         return name;
+    }
+
+    public IBlockState getOreByTier(int tier)
+    {
+        IBlockState result = WorldGenUtil.AIR;
+        SetTier setTier = tierHashMap.get(tier);
+
+        if (setTier != null)
+        {
+            if (setTier.gem_ore != null)
+            {
+                result = setTier.gem_ore.getDefaultState();
+            }
+        }
+
+        return result;
+    }
+
+    public void registerOreDict()
+    {
+        OreDictionary.registerOre("plankWood", WOOD_PLANKS);
+        OreDictionary.registerOre("dirt", DIRT);
+        OreDictionary.registerOre("stone", STONE);
+        OreDictionary.registerOre("cobblestone", STONE);
+    }
+
+    public HashMap<Integer, SetTier> getTierMap() {
+        return tierHashMap;
     }
 }

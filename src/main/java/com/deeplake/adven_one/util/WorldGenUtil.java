@@ -2,6 +2,7 @@ package com.deeplake.adven_one.util;
 
 import com.deeplake.adven_one.Idealland;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
@@ -32,8 +33,11 @@ public class WorldGenUtil {
     public static final IBlockState BOX = Blocks.CHEST.getDefaultState();
     public static final IBlockState BEDROCK = Blocks.BEDROCK.getDefaultState();
     public static final IBlockState LANTERN = Blocks.SEA_LANTERN.getDefaultState();
-    public static final IBlockState TALLGRASS = Blocks.TALLGRASS.getDefaultState();
+    public static final IBlockState DEAD_BUSH = Blocks.TALLGRASS.getDefaultState();
+    public static final IBlockState TALLGRASS = Blocks.TALLGRASS.getDefaultState().withProperty(BlockTallGrass.TYPE, BlockTallGrass.EnumType.GRASS);
+    public static final IBlockState FERN = Blocks.TALLGRASS.getDefaultState().withProperty(BlockTallGrass.TYPE, BlockTallGrass.EnumType.FERN);
     public static final IBlockState GRASS = Blocks.GRASS.getDefaultState();
+    public static final IBlockState LAVA = Blocks.LAVA.getDefaultState();
 
     public static final int PREVENT_CASCADE_FLAGS = BlockFlags.TO_CLIENT | BlockFlags.IGNORE_OB;
     public static final int PREVENT_CASCADE_FLAGS_2 = PREVENT_CASCADE_FLAGS | BlockFlags.CLIENT_DONT_RENDER;
@@ -207,7 +211,7 @@ public class WorldGenUtil {
         }
 
         try {
-            chunk.setBlockState(new BlockPos(relX, y, relZ), state);
+            chunk.setBlockState(new BlockPos(chunk.getPos().getXStart() + relX, y, chunk.getPos().getZStart() + relZ), state);
         }
         catch (ArrayIndexOutOfBoundsException e)
         {

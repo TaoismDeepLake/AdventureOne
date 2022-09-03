@@ -6,10 +6,13 @@ import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.item.ItemArmorBase;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+
+import javax.annotation.Nullable;
 
 public class ItemArmorSuitBase extends ItemArmorBase {
     public static final String NAME_IN = "Armor modifier";
@@ -25,7 +28,7 @@ public class ItemArmorSuitBase extends ItemArmorBase {
 
     static String getName(SetTier tier, EntityEquipmentSlot equipmentSlotIn)
     {
-        return String.format("%s_%d_armor%d", tier.getSuit().getName(), tier.getTier(), equipmentSlotIn.getIndex());
+        return String.format("%s_%d_armor%d", tier.getSuit().getName(), tier.getTier(), 3 - equipmentSlotIn.getIndex());
     }
 
     @Override
@@ -43,5 +46,11 @@ public class ItemArmorSuitBase extends ItemArmorBase {
         }
 
         return map;
+    }
+
+    @Nullable
+    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
+    {
+        return null;
     }
 }
