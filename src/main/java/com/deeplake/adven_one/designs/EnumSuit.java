@@ -3,6 +3,7 @@ package com.deeplake.adven_one.designs;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.BlockBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockDirtSuitBase;
+import com.deeplake.adven_one.blocks.blockSuit.BlockLogSuitBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockPlanksSuitBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockStoneSuitBase;
 import com.deeplake.adven_one.util.WorldGenUtil;
@@ -26,6 +27,7 @@ public enum EnumSuit {
     final String name;
     final HashMap<Integer, SetTier> tierHashMap;
     Block WOOD_PLANKS;
+    Block WOOD_LOG;
     Block DIRT;
     Block STONE;
 
@@ -40,9 +42,9 @@ public enum EnumSuit {
     public void createInternalDefault()
     {
         WOOD_PLANKS = new BlockPlanksSuitBase(this);
+        WOOD_LOG = new BlockLogSuitBase(this);
         DIRT = new BlockDirtSuitBase(this);
         STONE = new BlockStoneSuitBase(this);
-
 
         createDefaultTier(1);
         createDefaultTier(2);
@@ -106,6 +108,7 @@ public enum EnumSuit {
     {
         OreDictionary.registerOre("plankWood", WOOD_PLANKS);
         OreDictionary.registerOre("dirt", DIRT);
+        OreDictionary.registerOre("logWood", WOOD_LOG);
 //        OreDictionary.registerOre("stone", STONE);
         OreDictionary.registerOre("cobblestone", STONE);
     }

@@ -71,6 +71,7 @@ local function GenSet(_setName)
     GenBlock(_setName.."_planks");
     GenBlock(_setName.."_dirt");
     GenBlock(_setName.."_stone");
+    GenBlock(_setName.."_log");
 
     for i = 1, 4 do
         GenItemTier("misc", string.format("%s_%d_%s", _setName, i, "gem"), i);
@@ -86,6 +87,7 @@ end
 
 --  GenItem("misc", "idl_ai_terminal");
 GenSet("suit_back")
+GenSet("suit_test")
 
 
 -- GenBlock("suit_test_2_stone");
