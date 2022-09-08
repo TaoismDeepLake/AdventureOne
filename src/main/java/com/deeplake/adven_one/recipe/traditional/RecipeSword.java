@@ -23,6 +23,6 @@ public class RecipeSword extends ShapedRecipes {
         recipeItems.add(gemIng);
         recipeItems.add(stickIng);
 
-        setRegistryName(Objects.requireNonNull(result.getRegistryName()));
+        setRegistryName(Objects.requireNonNull(result.getRegistryName())+"_2");
     }
 }

@@ -22,9 +22,11 @@ adven_one.suit_test.1=Test Suit T1
 adven_one.suit_test.2=Test Suit T2
 adven_one.suit_test.3=Test Suit T3
 
-adven_one.suit_test_2.1=Backup Suit T1
-adven_one.suit_test_2.2=Backup Suit T2
-adven_one.suit_test_2.3=Backup Suit T3
+adven_one.suit_back=Backup Suit
+adven_one.suit_back.1=Backup T1
+adven_one.suit_back.2=Backup T2
+adven_one.suit_back.3=Backup T3
+
 
 #Shared
 idealland.shared.press_shift=Hold SHIFT to examine info.

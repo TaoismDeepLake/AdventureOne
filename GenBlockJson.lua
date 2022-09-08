@@ -25,6 +25,16 @@ local function GenModelBlock()
 	outFile:close();
 end
 
+local function GenModelBlockColumn()
+	local path = string.format("src\\main\\resources\\assets\\%s\\models\\block\\%s.json", modName, blockName);
+	outFile = io.open(path,"w");
+
+	local content = string.format('{\n  "parent": "block/cube_column",\n  "textures": {\n      "end": "%s:blocks/%s_top",\n      "side": "%s:blocks/%s"\n  }\n}\n' , modName,blockName, modName,blockName);
+	outFile:write(content);
+
+	outFile:close();
+end
+
 local function GenBlockState()
 	local path = string.format("src\\main\\resources\\assets\\%s\\blockstates\\%s.json", modName, blockName);
 	outFile = io.open(path,"w");
@@ -37,12 +47,32 @@ local function GenBlockState()
 	outFile:close();
 end
 
+local function GenBlockStateCol()
+	local path = string.format("src\\main\\resources\\assets\\%s\\blockstates\\%s.json", modName, blockName);
+	outFile = io.open(path,"w");
+-- 	outFile:write('{\n');
+-- 	outFile:write('\t\"variants\": {\n');
+	local content = string.format('{\n  "variants": {\n      "axis=y":  { "model": "%s:%s" },\n      "axis=z":   { "model": "%s:%s", "x": 90 },\n      "axis=x":   { "model": "%s:%s", "x": 90, "y": 90 },\n      "axis=none": { "model": "%s:%s" }\n  }\n}\n', modName,blockName, modName,blockName, modName,blockName, modName,blockName );
+	outFile:write(content);
+-- 	outFile:write('\t}\n');
+-- 	outFile:write('}\n');
+	outFile:close();
+end
+
 local function GenBlock(_blockName)
 	blockName = _blockName;
 	print("Creating:"..blockName)
 	GenModelBlockItem();
 	GenModelBlock();
 	GenBlockState();
+end
+
+local function GenBlockCol(_blockName)
+	blockName = _blockName;
+	print("Creating:"..blockName)
+	GenModelBlockItem();
+	GenModelBlockColumn();
+	GenBlockStateCol();
 end
 
 local function GenItem(_typeName, _itemName)
@@ -71,7 +101,7 @@ local function GenSet(_setName)
     GenBlock(_setName.."_planks");
     GenBlock(_setName.."_dirt");
     GenBlock(_setName.."_stone");
-    GenBlock(_setName.."_log");
+    GenBlockCol(_setName.."_log");
 
     for i = 1, 4 do
         GenItemTier("misc", string.format("%s_%d_%s", _setName, i, "gem"), i);

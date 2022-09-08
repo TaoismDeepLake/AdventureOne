@@ -88,6 +88,10 @@ public enum EnumSuit {
         return name;
     }
 
+    public Block getWOOD_LOG() {
+        return WOOD_LOG;
+    }
+
     public IBlockState getOreByTier(int tier)
     {
         IBlockState result = WorldGenUtil.AIR;

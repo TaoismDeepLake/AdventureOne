@@ -23,9 +23,11 @@ public class SuitRecipesInit {
         {
             Item result;
             Item planks = Item.getItemFromBlock(suit.getWOOD_PLANKS());
+            Item log = Item.getItemFromBlock(suit.getWOOD_LOG());
             Item dirt = Item.getItemFromBlock(suit.getDIRT());
 
             r.register(new RecipeDoor(planks, Items.OAK_DOOR));
+            r.register(new RecipePlanks(log, planks));
 
             if (suit.getTierMap().get(1) != null)
             {

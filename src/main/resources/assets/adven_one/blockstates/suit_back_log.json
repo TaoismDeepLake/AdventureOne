@@ -1,5 +1,8 @@
 {
-	"variants": {
-		"normal": { "model": "adven_one:suit_back_log" }
-	}
+  "variants": {
+      "axis=y":  { "model": "adven_one:suit_back_log" },
+      "axis=z":   { "model": "adven_one:suit_back_log", "x": 90 },
+      "axis=x":   { "model": "adven_one:suit_back_log", "x": 90, "y": 90 },
+      "axis=none": { "model": "adven_one:suit_back_log" }
+  }
 }

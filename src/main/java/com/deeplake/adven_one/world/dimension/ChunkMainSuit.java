@@ -44,6 +44,7 @@ public class ChunkMainSuit extends WorldChunkBase {
             IBlockState SUIT_DIRT = suit.getDIRT().getDefaultState();
             IBlockState SUIT_STONE = suit.getSTONE().getDefaultState();
             IBlockState SUIT_PLANKS = suit.getWOOD_PLANKS().getDefaultState();
+            IBlockState SUIT_LOGS = suit.getWOOD_LOG().getDefaultState();
 
             //Base Part
             for (int _x = 0; _x < CHUNK_SIZE; _x++)
@@ -139,8 +140,9 @@ public class ChunkMainSuit extends WorldChunkBase {
                 {
                     if (rand.nextFloat() < ModConfig.WORLD_GEN_CONF.TREE_DENSITY)
                     {
-                        for (int _y = seaLevel; _y < seaLevel+8; _y++) {
-                            WorldGenUtil.setBlockState(chunk, _x, _y, _z, SUIT_PLANKS);
+                        int height = 2 + rand.nextInt(7);
+                        for (int _y = seaLevel; _y < seaLevel+height; _y++) {
+                            WorldGenUtil.setBlockState(chunk, _x, _y, _z, SUIT_LOGS);
                         }
                     }
                 }
