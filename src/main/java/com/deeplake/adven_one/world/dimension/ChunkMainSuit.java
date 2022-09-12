@@ -2,6 +2,7 @@ package com.deeplake.adven_one.world.dimension;
 
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.init.ModConfig;
+import com.deeplake.adven_one.util.MathU;
 import com.deeplake.adven_one.util.WorldGenUtil;
 import com.deeplake.adven_one.world.biome.BiomeSuit;
 import net.minecraft.block.state.IBlockState;
@@ -46,15 +47,39 @@ public class ChunkMainSuit extends WorldChunkBase {
             IBlockState SUIT_PLANKS = suit.getWOOD_PLANKS().getDefaultState();
             IBlockState SUIT_LOGS = suit.getWOOD_LOG().getDefaultState();
 
+            int yDelta = ModConfig.WORLD_GEN_CONF.MOUNTAIN_Y_DELTA;
+            int xSpan = ModConfig.WORLD_GEN_CONF.BIOME_X_SPAN;
+            int mountainThickness = ModConfig.WORLD_GEN_CONF.MOUNTAIN_THICKNESS;
+
             //Base Part
             for (int _x = 0; _x < CHUNK_SIZE; _x++)
             {
+                int phase = MathU.mod((x << 4) + _x, xSpan);
+
+                if (phase > mountainThickness)
+                {
+                    if (xSpan - phase < mountainThickness)
+                    {
+                        phase = xSpan - phase;
+                    }
+                }
+
                 for (int _z = 0; _z < CHUNK_SIZE; _z++)
                 {
+                    //walls that saparate the biomes
+                    int extraHeight = 0;
+                    if (phase < mountainThickness)
+                    {
+                        for (int i = phase; i < mountainThickness; i++)
+                        {
+                            extraHeight += rand.nextInt(yDelta);
+                        }
+                    }
+
                     int curY = 127;
                     int depth = 4;
                     curY -= depth;
-                    fill(curY, depth, chunk, _x, _z, SUIT_DIRT);
+                    fill(curY, depth+extraHeight, chunk, _x, _z, SUIT_DIRT);
 
                     depth = 2;
 
@@ -77,7 +102,11 @@ public class ChunkMainSuit extends WorldChunkBase {
 
                     depth = 12;
                     curY -= depth;
-                    fill(curY, depth, chunk, _x, _z, SUIT_STONE);
+                    int stalagmite = rand.nextInt(3) + rand.nextInt(3) + rand.nextInt(3) + rand.nextInt(3);
+                    fill(curY-stalagmite, depth+stalagmite, chunk, _x, _z, SUIT_STONE);
+
+                    //stalagmite
+//                    fill(curY, rand.nextInt(8), chunk, _x, _z, SUIT_STONE);
 
                     depth = 14;
                     curY -= depth;

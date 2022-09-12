@@ -98,6 +98,8 @@ public class ModConfig {
         @Config.Comment("In Blocks")
         @Config.RequiresMcRestart
         public int BIOME_X_SPAN = 128;
+        public int MOUNTAIN_THICKNESS = 6;
+        public int MOUNTAIN_Y_DELTA = 3;
 
         //Per Chunk
         public float TREE_DENSITY = 0.001f;

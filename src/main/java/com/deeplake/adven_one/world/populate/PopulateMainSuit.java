@@ -30,15 +30,15 @@ public class PopulateMainSuit {
             BiomeSuit biomeSuit = (BiomeSuit) biome;
             Chunk chunk = chunkGenBase.world.getChunkFromChunkCoords(x, z);
 
-            spreadOre(chunk, x, z, 115, 115, WorldGenUtil.COAL, ModConfig.WORLD_GEN_CONF.COAL_DENSITY);
+            spreadOre(chunk, x, z, 119, 119, WorldGenUtil.COAL, ModConfig.WORLD_GEN_CONF.COAL_DENSITY);
 
-            spreadOre(chunk, x, z, 114, 114, WorldGenUtil.REDS, ModConfig.WORLD_GEN_CONF.REDSTONE_DENSITY);
-            spreadOre(chunk, x, z, 114, 114, WorldGenUtil.IRON, ModConfig.WORLD_GEN_CONF.IRON_DENSITY);
+            spreadOre(chunk, x, z, 118, 118, WorldGenUtil.REDS, ModConfig.WORLD_GEN_CONF.REDSTONE_DENSITY);
+            spreadOre(chunk, x, z, 118, 118, WorldGenUtil.IRON, ModConfig.WORLD_GEN_CONF.IRON_DENSITY);
 
-            spreadOre(chunk, x, z, 113, 113, WorldGenUtil.GOLD, ModConfig.WORLD_GEN_CONF.GOLD_DENSITY);
-            spreadOre(chunk, x, z, 113, 113, WorldGenUtil.LAPIS, ModConfig.WORLD_GEN_CONF.LAPIS_DENSITY);
+            spreadOre(chunk, x, z, 117, 117, WorldGenUtil.GOLD, ModConfig.WORLD_GEN_CONF.GOLD_DENSITY);
+            spreadOre(chunk, x, z, 117, 117, WorldGenUtil.LAPIS, ModConfig.WORLD_GEN_CONF.LAPIS_DENSITY);
 
-            spreadOre(chunk, x, z, 112, 112, WorldGenUtil.DIAMOND, ModConfig.WORLD_GEN_CONF.DIAMOND_DENSITY);
+            spreadOre(chunk, x, z, 116, 116, WorldGenUtil.DIAMOND, ModConfig.WORLD_GEN_CONF.DIAMOND_DENSITY);
 
             spreadOre(chunk, x, z, 96, 107, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY);
 
@@ -91,17 +91,18 @@ public class PopulateMainSuit {
         Random random = chunkGenBase.rand;
         int depth = minDepth + random.nextInt(maxDepth - minDepth);
 
-        int maxY = 127;
+        int caveHeight = 4;
+        int maxY = 127+caveHeight;
         int minY = maxY - depth;
 
         BlockPos.MutableBlockPos pointer = new BlockPos.MutableBlockPos(7,maxY,7);
 
         for (int _y = maxY; _y > minY; _y--)
         {
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i < caveHeight; i++)
             {
-                BlockPos pos = pointer.add(cycle[_y % 8].getX(), _y-i, cycle[_y % 8].getZ());
-                WorldGenUtil.setBlockState(chunk, pos.getX(), pos.getY(), pos.getZ(), WorldGenUtil.AIR);
+                BlockPos pos = pointer.add(cycle[_y % 8].getX(), 0, cycle[_y % 8].getZ());
+                WorldGenUtil.setBlockState(chunk, pos.getX(), _y-i, pos.getZ(), WorldGenUtil.AIR);
             }
         }
     }

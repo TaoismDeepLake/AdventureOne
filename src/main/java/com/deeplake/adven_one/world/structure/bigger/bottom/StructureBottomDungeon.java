@@ -24,6 +24,8 @@ public class StructureBottomDungeon extends MapGenStructure {
     static final int ATTEMPTS = 100;
     Random random = new Random();
 
+    ////replace adven_one:suit_back_stone air
+
     public void resetRandom(int chunkX, int chunkZ) {
         random = world.setRandomSeed(chunkX, chunkZ, SEED_CONST);
     }
