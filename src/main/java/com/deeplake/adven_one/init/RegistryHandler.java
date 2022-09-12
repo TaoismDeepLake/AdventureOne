@@ -26,6 +26,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static com.deeplake.adven_one.world.structure.InitGiantStructures.registerWorldGen;
+
 @EventBusSubscriber
 public class RegistryHandler {
 	@SubscribeEvent
@@ -92,6 +94,8 @@ public class RegistryHandler {
 		InitDimension.registerDimensions();
 
 		ModEntityInit.registerEntities();
+
+		registerWorldGen();
 	}
 
 	public static void postInitReg()

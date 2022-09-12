@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
@@ -36,6 +37,8 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
+
+import javax.annotation.Nullable;
 
 public class CommonFunctions {
     public static void init(Block block, String name) {
@@ -352,5 +355,37 @@ public class CommonFunctions {
     public static Vec3d getVecFromBlockPos(BlockPos pos)
     {
         return new Vec3d(pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f);
+    }
+
+    public static boolean isVertical(EnumFacing facing) {
+        return facing == EnumFacing.DOWN || facing == EnumFacing.UP;
+    }
+
+    public static boolean isZDir(EnumFacing facing) {
+        return facing == EnumFacing.NORTH || facing == EnumFacing.SOUTH;
+    }
+
+    public static boolean isXDir(EnumFacing facing) {
+        return facing == EnumFacing.EAST || facing == EnumFacing.WEST;
+    }
+
+    public static boolean isNegativeDir(EnumFacing facing) {
+        return facing.getAxisDirection() == EnumFacing.AxisDirection.NEGATIVE;
+    }
+
+    public static boolean isPositiveDir(EnumFacing facing) {
+        return facing.getAxisDirection() == EnumFacing.AxisDirection.POSITIVE;
+    }
+
+    public static ItemStack copyAndSetCount(@Nullable ItemStack stack, int count)
+    {
+        if (stack == null || stack.isEmpty())
+        {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack result = stack.copy();
+        result.setCount(count);
+        return result;
     }
 }

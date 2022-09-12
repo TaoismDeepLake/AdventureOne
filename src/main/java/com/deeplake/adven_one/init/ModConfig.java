@@ -38,6 +38,7 @@ public class ModConfig {
     public static final DebugConf DEBUG_CONF = new DebugConf();
 
     public static class DebugConf {
+        public boolean DEBUG_MODE = false;
         public boolean SHOW_DEBUG_ARMOR = true;
     }
 
@@ -93,6 +94,11 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public int DIM_ONE_ID = 1118;
 
+
+        @Config.Comment("In Blocks")
+        @Config.RequiresMcRestart
+        public int BIOME_X_SPAN = 128;
+
         //Per Chunk
         public float TREE_DENSITY = 0.001f;
 
@@ -114,7 +120,43 @@ public class ModConfig {
         @Config.Comment("Sparseness of hole")
         public int CHUNK_PER_HOLE = 20;
 
+    }
 
+    @Config.LangKey("configgui.idealland.category.Menu0.DungeonGenConf")
+    @Config.Comment("Dungeon Generate")
+    public static final DungeonConf DUNGEON_CONF = new DungeonConf();
 
+    public static class DungeonConf {
+        public int BOTTOM_DUNGEON_Y = 32;
+
+        //include exterior
+        public int BOTTOM_DUNGEON_ROOM_XZ = 17;
+        public int BOTTOM_DUNGEON_ROOM_Y = 10;
+
+        public int notPassageLength = 6;
+        public int notPassageLengthY = 1;
+        public int xzPassageHeight = 5;
+        public int floorHeight = 2;
+        public int stepLightDistance = 4;
+
+        @Config.RangeInt(min = 0)
+        public int ingotPerBottomChestMin = 2;
+        @Config.RangeInt(min = 0)
+        public int ingotPerBottomChestDelta = 4;
+
+        @Config.RangeInt(min = 0)
+        public int torchPerBottomChestMin = 8;
+        @Config.RangeInt(min = 0)
+        public int torchPerBottomChestDelta = 24;
+
+        @Config.RangeInt(min = 0)
+        public int breadPerBottomChestMin = 2;
+        @Config.RangeInt(min = 0)
+        public int breadPerBottomChestDelta = 10;
+
+        @Config.RangeInt(min = 0)
+        public int stickPerBottomChestMin = 1;
+        @Config.RangeInt(min = 0)
+        public int stickPerBottomChestDelta = 7;
     }
 }

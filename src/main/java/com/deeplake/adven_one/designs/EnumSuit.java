@@ -13,7 +13,10 @@ import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.HashMap;
@@ -37,6 +40,27 @@ public enum EnumSuit {
     {
         this.name = name;
         tierHashMap = new HashMap<>();
+    }
+
+    public static EnumSuit getSuit(World world, BlockPos pos)
+    {
+        Biome biome = world.getBiome(pos);
+        if (biome instanceof BiomeSuit)
+        {
+            return ((BiomeSuit) biome).getSuit();
+        }
+        return SET_ONE;
+    }
+
+    public static EnumSuit getSuit(World world, StructureBoundingBox sbb)
+    {
+        BlockPos pos = new BlockPos(sbb.minX, sbb.minY, sbb.minZ);
+        Biome biome = world.getBiome(pos);
+        if (biome instanceof BiomeSuit)
+        {
+            return ((BiomeSuit) biome).getSuit();
+        }
+        return SET_ONE;
     }
 
     public void createInternalDefault()

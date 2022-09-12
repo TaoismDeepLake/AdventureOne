@@ -4,6 +4,7 @@ import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.world.biome.BiomeBase;
 import com.deeplake.adven_one.world.biome.InitBiome;
 
+import com.deeplake.adven_one.world.structure.bigger.bottom.StructureBottomDungeon;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
@@ -17,10 +18,13 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.ChunkGeneratorSettings;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
+import net.minecraft.world.gen.structure.MapGenStructure;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -47,10 +51,8 @@ public abstract class ChunkGenBase implements IChunkGenerator {
     public boolean genInitAnimals = true;
     public boolean genIce = true;
 
-//    ModGenStructureTest genStructureTest = new ModGenStructureTest();
-//    StructureBigDungeon genStructureDungeon = new StructureBigDungeon();
-//    StructureMazeDungeon genStructureMaze = new StructureMazeDungeon();
-//    StructureMazeTopless genStructureMaze3 = new StructureMazeTopless();
+    HashMap<String, MapGenStructure> giantList = new HashMap<>();
+    StructureBottomDungeon genBottomDungeon = new StructureBottomDungeon();
 
     public ChunkGenBase(World worldIn, long seed, boolean mapFeaturesEnabledIn, String generatorOptions) {
         this.world = worldIn;
@@ -64,6 +66,8 @@ public abstract class ChunkGenBase implements IChunkGenerator {
             this.settings = ChunkGeneratorSettings.Factory.jsonToFactory(generatorOptions).build();
             worldIn.setSeaLevel(this.settings.seaLevel);
         }
+
+        giantList.put(StructureBottomDungeon.NAME, genBottomDungeon);
     }
 
     //override this.
@@ -79,16 +83,8 @@ public abstract class ChunkGenBase implements IChunkGenerator {
             generateBedrockLayer(primer, ceilBedrockLevel);
         }
 
-//        if (ModConfig.DEBUG_CONF.DEBUG_MODE && ModConfig.DEBUG_CONF.CREATE_GIANT_STRUCTURES) {
-//            genStructureTest.generate(world, x, z, primer);
-//
-//            genStructureDungeon.generate(world, x, z, primer);
-//
-//            genStructureMaze.generate(world, x, z, primer);
-//
-//            genStructureMaze3.generate(world, x, z, primer);
-//        }
-
+        //GIANT
+        genBottomDungeon.generate(world, x, z, primer);
     }
 
     //override this.
@@ -220,25 +216,12 @@ public abstract class ChunkGenBase implements IChunkGenerator {
     }
 
     void populateStructure(int x, int z) {
-//        if (ModConfig.DEBUG_CONF.DEBUG_MODE) {
-//            final ChunkPos chunkCoord = new ChunkPos(x, z);
-//            if (ModConfig.DEBUG_CONF.CREATE_TEST_STRUCTURE_ONE) {
-//                genStructureTest.generateStructure(world, rand, chunkCoord);
-//            }
-//
-//            switch (ModConfig.DUNGEON_CONF.dungeonType) {
-//                case 1:
-//                    genStructureDungeon.generateStructure(world, rand, chunkCoord);
-//                    break;
-//
-//                case 2:
-//                    genStructureMaze.generateStructure(world, rand, chunkCoord);
-//                    break;
-//                case 3:
-//                    genStructureMaze3.generateStructure(world, rand, chunkCoord);
-//                    break;
-//            }
-//        }
+        final ChunkPos chunkCoord = new ChunkPos(x, z);
+
+        for (MapGenStructure structure : giantList.values())
+        {
+            structure.generateStructure(world,rand,chunkCoord);
+        }
     }
 
     private void populateIce(int x, int z, BlockPos blockpos, boolean flag) {
@@ -318,48 +301,29 @@ public abstract class ChunkGenBase implements IChunkGenerator {
 
     BlockPos checkStructures(World worldIn, String structureName, BlockPos position, boolean findUnexplored)
     {
-        switch (structureName)
+        if (giantList.containsKey(structureName))
         {
-//            case ModGenStructureTest.NAME:
-//                return genStructureTest.getNearestStructurePos(worldIn, position, findUnexplored);
-//
-//            case StructureBigDungeon.NAME:
-//                return genStructureDungeon.getNearestStructurePos(worldIn, position, findUnexplored);
-//
-//            case StructureMazeDungeon.NAME:
-//                return genStructureMaze.getNearestStructurePos(worldIn, position, findUnexplored);
-//
-//            case StructureMazeTopless.NAME:
-//                return genStructureMaze3.getNearestStructurePos(worldIn, position, findUnexplored);
-            default:
-                return BlockPos.ORIGIN;
+            return giantList.get(structureName).getNearestStructurePos(worldIn, position, findUnexplored);
         }
+
+        return BlockPos.ORIGIN;
     }
 
     @Override
     public void recreateStructures(Chunk chunkIn, int x, int z) {
-//        genStructureTest.generate(world, x, z, null);
-//        genStructureDungeon.generate(world, x, z, null);
-//        genStructureMaze.generate(world, x, z, null);
-//        genStructureMaze3.generate(world, x, z, null);
+        for (MapGenStructure structure : giantList.values())
+        {
+            structure.generate(world, x, z, null);
+        }
     }
 
     @Override
     public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
-        switch (structureName) {
-//            case ModGenStructureTest.NAME:
-//                return genStructureTest.isInsideStructure(pos);
-//
-//            case StructureBigDungeon.NAME:
-//                return genStructureDungeon.isInsideStructure(pos);
-//
-//            case StructureMazeDungeon.NAME:
-//                return genStructureMaze.isInsideStructure(pos);
-//
-//            case StructureMazeTopless.NAME:
-//                return genStructureMaze3.isInsideStructure(pos);
-            default:
-                return false;
+        if (giantList.containsKey(structureName))
+        {
+            return giantList.get(structureName).isInsideStructure(pos);
         }
+
+        return false;
     }
 }

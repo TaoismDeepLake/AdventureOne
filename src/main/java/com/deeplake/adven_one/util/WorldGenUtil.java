@@ -51,6 +51,7 @@ public class WorldGenUtil {
     public static IBlockState GOLD = Blocks.GOLD_ORE.getDefaultState();
     public static IBlockState LAPIS = Blocks.LAPIS_ORE.getDefaultState();
     public static IBlockState DIAMOND = Blocks.DIAMOND_ORE.getDefaultState();
+    public static IBlockState IRON_FENCE = Blocks.IRON_BARS.getDefaultState();
 
     static Rotation[] rotation = Rotation.values();
 
@@ -336,6 +337,7 @@ public class WorldGenUtil {
     //Note that if no ground, will return null!
     @Nullable
     public static BlockPos getGroundPos(Random random, World world, BlockPos pos) {
+
         int minHeight = 3;
 
         int groundY = world.getActualHeight() - 20;

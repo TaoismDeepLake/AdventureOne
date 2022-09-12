@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.world.dimension;
 
 import com.deeplake.adven_one.designs.EnumSuit;
+import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.world.biome.InitBiome;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -28,7 +29,7 @@ public class PeriodicBiomeProvider extends BiomeProvider {
         addBiomes();
         setSpawnableBiomes();
 
-        genLayerPeriodic = new GenLayerPeriodic(12, biomesList.size());
+        genLayerPeriodic = new GenLayerPeriodic(ModConfig.WORLD_GEN_CONF.BIOME_X_SPAN, biomesList.size());
     }
 
     void setSpawnableBiomes() {
