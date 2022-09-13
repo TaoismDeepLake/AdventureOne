@@ -2,7 +2,7 @@
 name: 中文BUG报告
 about: 中文的BUG反馈报告
 title: "[BUG]报告问题"
-labels: bug
+labels: bug, documentation, enhancement
 assignees: TaoismDeepLake
 
 ---
