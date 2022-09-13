@@ -8,6 +8,7 @@ import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 
 public class BlockMetalSuitBase extends BlockBase implements IHasModel, IBlockSuit {
     static final String NAME = "block";

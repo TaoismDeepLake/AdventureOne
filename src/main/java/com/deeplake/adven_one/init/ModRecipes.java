@@ -15,8 +15,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModRecipes {
-	
-	
 	public static void Init() {
 		//Only smelting recipes
 		for (EnumSuit suit : EnumSuit.values()) {
