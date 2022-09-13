@@ -42,10 +42,10 @@ public class ChunkMainSuit extends WorldChunkBase {
         {
             EnumSuit suit = ((BiomeSuit) mainBiome).getSuit();
             //thread safe
-            IBlockState SUIT_DIRT = suit.getDIRT().getDefaultState();
-            IBlockState SUIT_STONE = suit.getSTONE().getDefaultState();
-            IBlockState SUIT_PLANKS = suit.getWOOD_PLANKS().getDefaultState();
-            IBlockState SUIT_LOGS = suit.getWOOD_LOG().getDefaultState();
+            IBlockState SUIT_DIRT = suit.getDirt().getDefaultState();
+            IBlockState SUIT_STONE = suit.getStone().getDefaultState();
+            IBlockState SUIT_PLANKS = suit.getWoodPlanks().getDefaultState();
+            IBlockState SUIT_LOGS = suit.getWoodLog().getDefaultState();
 
             int yDelta = ModConfig.WORLD_GEN_CONF.MOUNTAIN_Y_DELTA;
             int xSpan = ModConfig.WORLD_GEN_CONF.BIOME_X_SPAN;

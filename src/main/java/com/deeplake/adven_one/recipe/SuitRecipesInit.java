@@ -6,7 +6,6 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.recipe.traditional.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -22,9 +21,9 @@ public class SuitRecipesInit {
         for (EnumSuit suit : EnumSuit.values())
         {
             Item result;
-            Item planks = Item.getItemFromBlock(suit.getWOOD_PLANKS());
-            Item log = Item.getItemFromBlock(suit.getWOOD_LOG());
-            Item dirt = Item.getItemFromBlock(suit.getDIRT());
+            Item planks = Item.getItemFromBlock(suit.getWoodPlanks());
+            Item log = Item.getItemFromBlock(suit.getWoodLog());
+            Item dirt = Item.getItemFromBlock(suit.getDirt());
 
             r.register(new RecipeDoor(planks, Items.OAK_DOOR));
             r.register(new RecipePlanks(log, planks));

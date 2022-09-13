@@ -28,7 +28,7 @@ public class ItemArmorSuitBase extends ItemArmorBase {
 
     static String getName(SetTier tier, EntityEquipmentSlot equipmentSlotIn)
     {
-        return String.format("%s_%d_armor%d", tier.getSuit().getName(), tier.getTier(), 3 - equipmentSlotIn.getIndex());
+        return String.format("%s_%d_armor%d", tier.getSuit().getName(), tier.getTier(), equipmentSlotIn.getIndex());
     }
 
     @Override

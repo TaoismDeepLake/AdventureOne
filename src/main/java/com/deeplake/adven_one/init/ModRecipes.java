@@ -1,7 +1,6 @@
 package com.deeplake.adven_one.init;
 
 import com.deeplake.adven_one.designs.EnumSuit;
-import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -22,9 +21,9 @@ public class ModRecipes {
 		//Only smelting recipes
 		for (EnumSuit suit : EnumSuit.values()) {
 			Item result;
-			Item planks = Item.getItemFromBlock(suit.getWOOD_PLANKS());
-			Item dirt = Item.getItemFromBlock(suit.getDIRT());
-			Item stone = Item.getItemFromBlock(suit.getSTONE());
+			Item planks = Item.getItemFromBlock(suit.getWoodPlanks());
+			Item dirt = Item.getItemFromBlock(suit.getDirt());
+			Item stone = Item.getItemFromBlock(suit.getStone());
 
 			GameRegistry.addSmelting(planks,
 					new ItemStack(Items.COAL),

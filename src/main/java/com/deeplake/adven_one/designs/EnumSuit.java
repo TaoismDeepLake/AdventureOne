@@ -1,7 +1,6 @@
 package com.deeplake.adven_one.designs;
 
 import com.deeplake.adven_one.Idealland;
-import com.deeplake.adven_one.blocks.BlockBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockDirtSuitBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockLogSuitBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockPlanksSuitBase;
@@ -9,8 +8,6 @@ import com.deeplake.adven_one.blocks.blockSuit.BlockStoneSuitBase;
 import com.deeplake.adven_one.util.WorldGenUtil;
 import com.deeplake.adven_one.world.biome.BiomeSuit;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockPlanks;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
@@ -29,10 +26,10 @@ public enum EnumSuit {
 
     final String name;
     final HashMap<Integer, SetTier> tierHashMap;
-    Block WOOD_PLANKS;
-    Block WOOD_LOG;
-    Block DIRT;
-    Block STONE;
+    Block woodPlanks;
+    Block woodLog;
+    Block dirt;
+    Block stone;
 
     Biome biome = Biomes.OCEAN;
 
@@ -65,17 +62,17 @@ public enum EnumSuit {
 
     public void createInternalDefault()
     {
-        WOOD_PLANKS = new BlockPlanksSuitBase(this);
-        WOOD_LOG = new BlockLogSuitBase(this);
-        DIRT = new BlockDirtSuitBase(this);
-        STONE = new BlockStoneSuitBase(this);
+        woodPlanks = new BlockPlanksSuitBase(this);
+        woodLog = new BlockLogSuitBase(this);
+        dirt = new BlockDirtSuitBase(this);
+        stone = new BlockStoneSuitBase(this);
 
         createDefaultTier(1);
         createDefaultTier(2);
         createDefaultTier(3);
         biome = new BiomeSuit(String.format("%s_%s", Idealland.MODID, name), this);
-        biome.fillerBlock = STONE.getDefaultState();
-        biome.topBlock = DIRT.getDefaultState();
+        biome.fillerBlock = stone.getDefaultState();
+        biome.topBlock = dirt.getDefaultState();
     }
 
     public void createDefaultTier(int tier)
@@ -92,16 +89,16 @@ public enum EnumSuit {
         SET_TWO.registerOreDict();
     }
 
-    public Block getWOOD_PLANKS() {
-        return WOOD_PLANKS;
+    public Block getWoodPlanks() {
+        return woodPlanks;
     }
 
-    public Block getDIRT() {
-        return DIRT;
+    public Block getDirt() {
+        return dirt;
     }
 
-    public Block getSTONE() {
-        return STONE;
+    public Block getStone() {
+        return stone;
     }
 
     public Biome getBiome() {
@@ -112,8 +109,8 @@ public enum EnumSuit {
         return name;
     }
 
-    public Block getWOOD_LOG() {
-        return WOOD_LOG;
+    public Block getWoodLog() {
+        return woodLog;
     }
 
     public IBlockState getOreByTier(int tier)
@@ -134,11 +131,11 @@ public enum EnumSuit {
 
     public void registerOreDict()
     {
-        OreDictionary.registerOre("plankWood", WOOD_PLANKS);
-        OreDictionary.registerOre("dirt", DIRT);
-        OreDictionary.registerOre("logWood", WOOD_LOG);
+        OreDictionary.registerOre("plankWood", woodPlanks);
+        OreDictionary.registerOre("dirt", dirt);
+        OreDictionary.registerOre("logWood", woodLog);
 //        OreDictionary.registerOre("stone", STONE);
-        OreDictionary.registerOre("cobblestone", STONE);
+        OreDictionary.registerOre("cobblestone", stone);
     }
 
     public HashMap<Integer, SetTier> getTierMap() {

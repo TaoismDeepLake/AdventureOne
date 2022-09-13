@@ -117,9 +117,9 @@ public class ComponentDungeonRoomBase extends ComponentBase {
     @Override
     public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn) {
         EnumSuit suit = EnumSuit.getSuit(worldIn, structureBoundingBoxIn);
-        setWallState(suit.getWOOD_PLANKS().getDefaultState());
-        setWall2(suit.getWOOD_LOG().getDefaultState());
-        setFloor(suit.getDIRT().getDefaultState());
+        setWallState(suit.getWoodPlanks().getDefaultState());
+        setWall2(suit.getWoodLog().getDefaultState());
+        setFloor(suit.getDirt().getDefaultState());
 
         buildExteriorWallAndClean(worldIn, randomIn, structureBoundingBoxIn);
 

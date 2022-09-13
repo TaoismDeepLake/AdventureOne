@@ -95,7 +95,10 @@ public class PopulateMainSuit {
         int maxY = 127+caveHeight;
         int minY = maxY - depth;
 
-        BlockPos.MutableBlockPos pointer = new BlockPos.MutableBlockPos(7,maxY,7);
+        int _x = 7;
+        int _z = 7;
+
+        BlockPos.MutableBlockPos pointer = new BlockPos.MutableBlockPos(_x,maxY,_z);
 
         for (int _y = maxY; _y > minY; _y--)
         {
@@ -103,6 +106,7 @@ public class PopulateMainSuit {
             {
                 BlockPos pos = pointer.add(cycle[_y % 8].getX(), 0, cycle[_y % 8].getZ());
                 WorldGenUtil.setBlockState(chunk, pos.getX(), _y-i, pos.getZ(), WorldGenUtil.AIR);
+                WorldGenUtil.setBlockState(chunk, _x, _y-i, _z, WorldGenUtil.AIR);
             }
         }
     }
