@@ -6,5 +6,6 @@ public class EntityTier1Mob extends EntitySuitMob{
     public EntityTier1Mob(World worldIn) {
         super(worldIn);
         setTierAll(1);
+        melee_atk = true;
     }
 }

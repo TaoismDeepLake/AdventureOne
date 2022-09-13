@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.designs;
 
 import com.deeplake.adven_one.Idealland;
+import com.deeplake.adven_one.blocks.blockSuit.BlockMetalSuitBase;
 import com.deeplake.adven_one.blocks.blockSuit.BlockOreSuitBase;
 import com.deeplake.adven_one.item.suit.ItemArmorSuitBase;
 import com.deeplake.adven_one.item.suit.ItemGemSuit;
@@ -19,6 +20,10 @@ public class SetTier {
     int tier;
     Item gem;
     Block gem_ore;
+
+
+
+    Block gemBlock;
     Item sword;
     Item pick;
 
@@ -47,17 +52,13 @@ public class SetTier {
         this.suit = enumSuit;
         gem = new ItemGemSuit(this);
         gem_ore = new BlockOreSuitBase(this);
-//        sword = new ItemSwordBase(String.format("%s_%d_sword", name, tier), Item.ToolMaterial.DIAMOND);
-//        pick = new ItemPickaxeBase(String.format("%s_%d_pickaxe", name, tier), Item.ToolMaterial.DIAMOND);
+        gemBlock = new BlockMetalSuitBase(this);
+
         toolMaterial = EnumHelper.addToolMaterial(name, tier, 100, 2*tier, 0.0f, 5 * tier).setRepairItem(new ItemStack(gem));
         armorMaterial = EnumHelper.addArmorMaterial(name, name, tier * 5, REDUCTION_AMOUNTS_DIAMOND, 6 + 2 * tier, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0).setRepairItem(new ItemStack(gem));
         sword = new ItemSwordSuitBase(this);
         pick = new ItemPickaxeSuitBase(this);
 
-//        armor0 = new ItemArmorBase(String.format("%s_%d_armor0", name, tier), ItemArmor.ArmorMaterial.CHAIN, 0,EntityEquipmentSlot.HEAD);
-//        armor1 = new ItemArmorBase(String.format("%s_%d_armor1", name, tier), ItemArmor.ArmorMaterial.CHAIN, 0,EntityEquipmentSlot.HEAD);
-//        armor2 = new ItemArmorBase(String.format("%s_%d_armor2", name, tier), ItemArmor.ArmorMaterial.CHAIN, 0,EntityEquipmentSlot.HEAD);
-//        armor3 = new ItemArmorBase(String.format("%s_%d_armor3", name, tier), ItemArmor.ArmorMaterial.CHAIN, 0,EntityEquipmentSlot.HEAD);
         armor0 = new ItemArmorSuitBase(this, EntityEquipmentSlot.HEAD);
         armor1 = new ItemArmorSuitBase(this, EntityEquipmentSlot.CHEST);
         armor2 = new ItemArmorSuitBase(this, EntityEquipmentSlot.LEGS);
@@ -135,5 +136,9 @@ public class SetTier {
 
     public String getSuitName(){
         return suit.getName();
+    }
+
+    public Block getGemBlock() {
+        return gemBlock;
     }
 }

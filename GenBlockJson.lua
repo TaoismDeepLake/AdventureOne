@@ -112,6 +112,7 @@ local function GenSet(_setName)
         end
 
         GenBlock(string.format("%s_%d_%s", _setName, i, "ore"));
+        GenBlock(string.format("%s_%d_%s", _setName, i, "block"));
     end
 end
 
