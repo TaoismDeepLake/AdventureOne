@@ -3,7 +3,6 @@ package com.deeplake.adven_one.item.suit;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.item.ItemBase;
-import com.sun.jna.WString;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 
