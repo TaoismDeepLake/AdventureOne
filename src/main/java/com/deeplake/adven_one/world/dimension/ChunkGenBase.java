@@ -5,6 +5,7 @@ import com.deeplake.adven_one.world.biome.BiomeBase;
 import com.deeplake.adven_one.world.biome.InitBiome;
 
 import com.deeplake.adven_one.world.structure.bigger.bottom.StructureBottomDungeon;
+import com.deeplake.adven_one.world.structure.bigger.top.StructureTopDungeon;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
@@ -53,6 +54,7 @@ public abstract class ChunkGenBase implements IChunkGenerator {
 
     HashMap<String, MapGenStructure> giantList = new HashMap<>();
     StructureBottomDungeon genBottomDungeon = new StructureBottomDungeon();
+    StructureTopDungeon genTopDungeon = new StructureTopDungeon();
 
     public ChunkGenBase(World worldIn, long seed, boolean mapFeaturesEnabledIn, String generatorOptions) {
         this.world = worldIn;
@@ -67,7 +69,9 @@ public abstract class ChunkGenBase implements IChunkGenerator {
             worldIn.setSeaLevel(this.settings.seaLevel);
         }
 
+        //GIANT
         giantList.put(StructureBottomDungeon.NAME, genBottomDungeon);
+        giantList.put(StructureTopDungeon.NAME, genTopDungeon);
     }
 
     //override this.
@@ -83,8 +87,10 @@ public abstract class ChunkGenBase implements IChunkGenerator {
             generateBedrockLayer(primer, ceilBedrockLevel);
         }
 
-        //GIANT
-        genBottomDungeon.generate(world, x, z, primer);
+        for (MapGenStructure structure : giantList.values())
+        {
+            structure.generate(world, x, z, primer);
+        }
     }
 
     //override this.
