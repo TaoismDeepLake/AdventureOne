@@ -6,6 +6,7 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.recipe.traditional.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -77,6 +78,12 @@ public class SuitRecipesInit {
                     if (result != null)
                     {
                         r.register(new RecipeArmorShoes(gem, result));
+                    }
+
+                    result = Item.getItemFromBlock(setTier.getGemBlock());
+                    if (result != null)
+                    {
+                        r.register(new RecipeGemBlock(gem, result));
                     }
                 }
             }
