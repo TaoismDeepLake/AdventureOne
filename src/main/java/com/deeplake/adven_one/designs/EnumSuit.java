@@ -22,7 +22,7 @@ public enum EnumSuit {
 
     SET_ONE("suit_test"),
     SET_TWO("suit_back"),//backup
-    ;
+    SET_CELESTIAL("suit_celestial");//for T4 colorless
 
     final String name;
     final HashMap<Integer, SetTier> tierHashMap;
@@ -32,8 +32,16 @@ public enum EnumSuit {
     Block stone;
 
     Biome biome = Biomes.OCEAN;
+    
+    boolean isHidden;
 
     EnumSuit(String name)
+    {
+        this.name = name;
+        tierHashMap = new HashMap<>();
+    }
+
+    EnumSuit(String name, boolean hidden)
     {
         this.name = name;
         tierHashMap = new HashMap<>();
@@ -140,5 +148,9 @@ public enum EnumSuit {
 
     public HashMap<Integer, SetTier> getTierMap() {
         return tierHashMap;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
     }
 }

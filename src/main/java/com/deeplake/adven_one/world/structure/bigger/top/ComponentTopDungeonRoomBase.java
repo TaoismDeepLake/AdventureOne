@@ -352,7 +352,7 @@ public class ComponentTopDungeonRoomBase extends ComponentBase {
         setBlockState(worldIn, WorldGenUtil.MOB_SPAWNER, posRel.getX(), posRel.getY(), posRel.getZ(), sbb);
 
         BlockPos blockpos = getWorldPos(posRel);
-        if (worldIn.getTileEntity(blockpos) instanceof TileEntityMobSpawner)//wrong
+        if (worldIn.getTileEntity(blockpos) instanceof TileEntityMobSpawner)
         {
             TileEntityMobSpawner tileEntityMobSpawner = (TileEntityMobSpawner) worldIn.getTileEntity(blockpos);
             assert tileEntityMobSpawner != null;

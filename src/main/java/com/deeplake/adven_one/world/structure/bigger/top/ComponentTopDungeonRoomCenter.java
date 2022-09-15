@@ -2,6 +2,8 @@ package com.deeplake.adven_one.world.structure.bigger.top;
 
 import com.deeplake.adven_one.entity.creatures.suit.EntityTier2Mob;
 import com.deeplake.adven_one.entity.creatures.suit.EntityTier2MobM;
+import com.deeplake.adven_one.entity.creatures.suit.EntityTier3Mob;
+import com.deeplake.adven_one.entity.creatures.suit.EntityTier3MobM;
 import com.deeplake.adven_one.world.structure.bigger.bottom.ComponentDungeonRoomBase;
 import com.deeplake.adven_one.world.structure.bigger.bottom.StructureBottomDungeon;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,10 +35,10 @@ public class ComponentTopDungeonRoomCenter extends ComponentTopDungeonRoomBase {
 
         BlockPos pos = new BlockPos(xzCenter - 1, yMin + 1, xzCenter - 1);
 
-        Class<? extends EntityLivingBase> entityClass = EntityTier2Mob.class;
+        Class<? extends EntityLivingBase> entityClass = EntityTier3Mob.class;
         setSpawner(worldIn, sbb, pos, entityClass);
 
-        entityClass = EntityTier2MobM.class;
+        entityClass = EntityTier3MobM.class;
         pos = new BlockPos(xzCenter + 1, yMin + 1, xzCenter + 1);
         setSpawner(worldIn, sbb, pos, entityClass);
     }
