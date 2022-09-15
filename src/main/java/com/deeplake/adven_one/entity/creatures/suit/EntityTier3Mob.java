@@ -1,5 +1,6 @@
 package com.deeplake.adven_one.entity.creatures.suit;
 
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityTier3Mob extends EntitySuitMob{
@@ -7,5 +8,11 @@ public class EntityTier3Mob extends EntitySuitMob{
         super(worldIn);
         setTierAll(2);
         melee_atk = true;
+    }
+
+    @Override
+    protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+        super.dropLoot(wasRecentlyHit, lootingModifier, source);
+        dropTier4Gem(wasRecentlyHit, lootingModifier);
     }
 }

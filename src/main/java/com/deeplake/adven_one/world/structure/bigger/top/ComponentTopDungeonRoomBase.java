@@ -117,9 +117,11 @@ public class ComponentTopDungeonRoomBase extends ComponentBase {
     @Override
     public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn) {
         EnumSuit suit = EnumSuit.getSuit(worldIn, structureBoundingBoxIn);
-        setWallState(suit.getWoodPlanks().getDefaultState());
-        setWall2(suit.getWoodLog().getDefaultState());
-        setFloor(suit.getDirt().getDefaultState());
+        SetTier tier3 = suit.getTierMap().get(3);
+        SetTier tier2 = suit.getTierMap().get(2);
+        setWallState(tier3.getGemBlock().getDefaultState());
+        setWall2(tier2.getGemBlock().getDefaultState());
+        setFloor(WorldGenUtil.CONCRETE);
 
         buildExteriorWallAndClean(worldIn, randomIn, structureBoundingBoxIn);
 
@@ -368,9 +370,9 @@ public class ComponentTopDungeonRoomBase extends ComponentBase {
             TileEntityChest teBox = (TileEntityChest) worldIn.getTileEntity(blockpos);
             assert teBox != null;
 
-            EnumSuit suit = EnumSuit.getSuit(worldIn, blockpos);
-            SetTier tier = suit.getTierMap().get(3);
-            //~4 ingot t3
+            EnumSuit suit = EnumSuit.SET_CELESTIAL;
+            SetTier tier = suit.getTierMap().get(4);
+            //~4 ingot t4
             if (tier != null)
             {
                 ItemStack stack = new ItemStack(tier.getGem(),

@@ -47,7 +47,7 @@ public class PeriodicBiomeProvider extends BiomeProvider {
         for(EnumSuit suit : EnumSuit.values())
         {
             Biome biome = suit.getBiome();
-            if (biome != null)
+            if (!suit.isHidden() && biome != null)
             {
                 biomesList.add(biome);
             }

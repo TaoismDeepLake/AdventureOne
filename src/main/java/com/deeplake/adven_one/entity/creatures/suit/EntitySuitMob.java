@@ -2,7 +2,6 @@ package com.deeplake.adven_one.entity.creatures.suit;
 
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.designs.SetTier;
-import com.deeplake.adven_one.entity.creatures.EntityGeneralMob;
 import com.deeplake.adven_one.entity.creatures.EntityMobRanged;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import net.minecraft.init.Items;
@@ -71,11 +70,28 @@ public class EntitySuitMob extends EntityMobRanged {
         }
     }
 
-    public void dropTier2Gem(boolean wasRecentlyHit, int lootingModifier) {
+    public void dropTier3Gem(boolean wasRecentlyHit, int lootingModifier) {
         if (wasRecentlyHit)
         {
             EnumSuit suit = EnumSuit.getSuit(world, getPosition());
-            SetTier tier = suit.getTierMap().get(2);
+            SetTier tier = suit.getTierMap().get(3);
+            if (tier != null)
+            {
+                Item gem = tier.getGem();
+                if (gem != null)
+                {
+                    boolean extra = 1 + rand.nextInt(lootingModifier + 2) > 1;
+                    dropItem(gem, extra ? 1 : 2);
+                }
+            }
+        }
+    }
+
+    public void dropTier4Gem(boolean wasRecentlyHit, int lootingModifier) {
+        if (wasRecentlyHit)
+        {
+            EnumSuit suit = EnumSuit.SET_CELESTIAL;
+            SetTier tier = suit.getTierMap().get(4);
             if (tier != null)
             {
                 Item gem = tier.getGem();
