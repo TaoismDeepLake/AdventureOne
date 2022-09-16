@@ -50,12 +50,19 @@ public class SetTier {
     public SetTier(int tier, String name, EnumSuit enumSuit) {
         this.tier = tier;
         this.suit = enumSuit;
+        if (tier == 1)
+        {
+            gemBlock = enumSuit.getWoodLog();
+        }
+        else {
+            gemBlock = new BlockMetalSuitBase(this);
+        }
         gem = new ItemGemSuit(this);
         gem_ore = new BlockOreSuitBase(this);
-        gemBlock = new BlockMetalSuitBase(this);
 
         toolMaterial = EnumHelper.addToolMaterial(name, tier, 100, 2*tier, 0.0f, 5 * tier).setRepairItem(new ItemStack(gem));
-        armorMaterial = EnumHelper.addArmorMaterial(name, name, tier * 5, REDUCTION_AMOUNTS_DIAMOND, 6 + 2 * tier, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0).setRepairItem(new ItemStack(gem));
+        armorMaterial = EnumHelper.addArmorMaterial(name, name, tier * 5, REDUCTION_AMOUNTS_DIAMOND, 6 + 2 * tier, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, tier-1).setRepairItem(new ItemStack(gem));
+
         sword = new ItemSwordSuitBase(this);
         pick = new ItemPickaxeSuitBase(this);
 

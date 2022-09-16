@@ -39,7 +39,7 @@ public class ModConfig {
 
     public static class DebugConf {
         public boolean DEBUG_MODE = false;
-        public boolean SHOW_DEBUG_ARMOR = true;
+        public boolean SHOW_DEBUG_ARMOR = false;
     }
 
     @Config.LangKey("configgui.idlframewok.category.Menu0.SpawnConf")
