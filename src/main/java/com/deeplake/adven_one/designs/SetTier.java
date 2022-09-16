@@ -60,8 +60,9 @@ public class SetTier {
         gem = new ItemGemSuit(this);
         gem_ore = new BlockOreSuitBase(this);
 
-        toolMaterial = EnumHelper.addToolMaterial(name, tier, 100, 2*tier, 0.0f, 5 * tier).setRepairItem(new ItemStack(gem));
-        armorMaterial = EnumHelper.addArmorMaterial(name, name, tier * 5, REDUCTION_AMOUNTS_DIAMOND, 6 + 2 * tier, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, tier-1).setRepairItem(new ItemStack(gem));
+        String name1 = String.format("%s:%s_%d", Idealland.MODID, name, tier);
+        toolMaterial = EnumHelper.addToolMaterial(name1, tier, 100, 2*tier, 0.0f, 5 * tier).setRepairItem(new ItemStack(gem));
+        armorMaterial = EnumHelper.addArmorMaterial(name1, name1, tier * 5, REDUCTION_AMOUNTS_DIAMOND, 6 + 2 * tier, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, tier-1).setRepairItem(new ItemStack(gem));
 
         sword = new ItemSwordSuitBase(this);
         pick = new ItemPickaxeSuitBase(this);
