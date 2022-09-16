@@ -130,6 +130,7 @@ public class ModConfig {
 
     public static class DungeonConf {
         public int BOTTOM_DUNGEON_Y = 32;
+        public int TOP_DUNGEON_Y = 216;
 
         //include exterior
         public int BOTTOM_DUNGEON_ROOM_XZ = 17;

@@ -8,6 +8,9 @@ import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 
 public class BlockMetalSuitBase extends BlockBase implements IHasModel, IBlockSuit {
@@ -27,5 +30,10 @@ public class BlockMetalSuitBase extends BlockBase implements IHasModel, IBlockSu
     public String getLocalizedName() {
         return I18n.format(Idealland.MODID+"."+NAME,
                 I18n.format(tier.getTransKey()));
+    }
+
+    @Override
+    public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
+        super.getSubBlocks(itemIn, items);
     }
 }

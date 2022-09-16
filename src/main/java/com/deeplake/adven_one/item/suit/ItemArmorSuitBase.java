@@ -28,12 +28,12 @@ public class ItemArmorSuitBase extends ItemArmorBase {
 
     static String getName(SetTier tier, EntityEquipmentSlot equipmentSlotIn)
     {
-        return String.format("%s_%d_armor%d", tier.getSuit().getName(), tier.getTier(), equipmentSlotIn.getIndex());
+        return String.format("%s_%d_armor%d", tier.getSuit().getName(), tier.getTier(), 3 - equipmentSlotIn.getIndex());
     }
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return I18n.format(String.format("%s.armor%d",Idealland.MODID, armorType.getIndex()),
+        return I18n.format(String.format("%s.armor%d",Idealland.MODID, 3 - armorType.getIndex()),
                 I18n.format(tier.getTransKey()));
     }
 
@@ -42,7 +42,7 @@ public class ItemArmorSuitBase extends ItemArmorBase {
         Multimap<String, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot, stack);
         if (equipmentSlot == this.armorType)
         {
-            map.put(ModAttributes.DEF_TIER.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[equipmentSlot.getIndex()], NAME_IN, tier.getTier()*0.25, 0));
+            map.put(ModAttributes.DEF_TIER.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[3 - equipmentSlot.getIndex()], NAME_IN, tier.getTier()*0.25, 0));
         }
 
         return map;

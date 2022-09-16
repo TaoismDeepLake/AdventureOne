@@ -13,6 +13,6 @@ public class EntityTier2MobM extends EntitySuitMob{
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
-        dropTier2Gem(wasRecentlyHit, lootingModifier);
+        dropTier3Gem(wasRecentlyHit, lootingModifier);
     }
 }

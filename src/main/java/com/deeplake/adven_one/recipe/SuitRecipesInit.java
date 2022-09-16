@@ -21,6 +21,11 @@ public class SuitRecipesInit {
 
         for (EnumSuit suit : EnumSuit.values())
         {
+            if (suit.isHidden())
+            {
+                continue;
+            }
+
             Item result;
             Item planks = Item.getItemFromBlock(suit.getWoodPlanks());
             Item log = Item.getItemFromBlock(suit.getWoodLog());
