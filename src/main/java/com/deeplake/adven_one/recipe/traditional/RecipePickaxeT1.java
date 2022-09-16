@@ -10,28 +10,26 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Objects;
 
-import static com.deeplake.adven_one.util.CraftUtil.SUIT;
+public class RecipePickaxeT1 extends ShapedRecipes {
 
-public class RecipeSword2 extends ShapedRecipes {
-
-    public RecipeSword2(Item gem, Item result, Item dirt) {
-        super(SUIT, 3, 3, NonNullList.create(), new ItemStack(result));
+    public RecipePickaxeT1(Item gem, Item result, Item dirt) {
+        super(CraftUtil.SUIT, 3, 3, NonNullList.create(), new ItemStack(result));
         Ingredient gemIng = Ingredient.fromItems(gem);
-        Ingredient dirtIng = Ingredient.fromItems(dirt);
         Ingredient stickIng = CraftUtil.create(OreDictionary.getOres(CraftUtil.STICK_WOOD));
+        Ingredient dirtIng = Ingredient.fromItems(dirt);
 
-        recipeItems.add(dirtIng);
         recipeItems.add(gemIng);
-        recipeItems.add(dirtIng);
-
-        recipeItems.add(dirtIng);
         recipeItems.add(gemIng);
-        recipeItems.add(dirtIng);
+        recipeItems.add(gemIng);
 
-        recipeItems.add(Ingredient.EMPTY);
+        recipeItems.add(dirtIng);
         recipeItems.add(stickIng);
-        recipeItems.add(Ingredient.EMPTY);
+        recipeItems.add(dirtIng);
 
-        setRegistryName(Objects.requireNonNull(result.getRegistryName()+"sp"));
+        recipeItems.add(dirtIng);
+        recipeItems.add(stickIng);
+        recipeItems.add(dirtIng);
+
+        setRegistryName(result.getRegistryName()+"sp");
     }
 }
