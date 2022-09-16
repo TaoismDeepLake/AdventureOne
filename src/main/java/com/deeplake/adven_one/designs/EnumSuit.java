@@ -73,23 +73,7 @@ public enum EnumSuit {
 
     public void createInternalDefault()
     {
-        if (isHidden)
-        {
-            switch (this)
-            {
-                case SET_ONE:
-                case SET_TWO:
-                    break;
-                case SET_CELESTIAL:
-                    createDefaultTier(4);
-                    break;
-                case SET_LUCK:
-                    createDefaultTier(1);
-                    createDefaultTier(2);
-                    break;
-            }
-        }
-        else {
+        if (!isHidden) {
             woodPlanks = new BlockPlanksSuitBase(this);
             woodLog = new BlockLogSuitBase(this);
             dirt = new BlockDirtSuitBase(this);
@@ -112,6 +96,9 @@ public enum EnumSuit {
     public static void init() {
         SET_ONE.createInternalDefault();
         SET_TWO.createInternalDefault();
+        SET_CELESTIAL.createDefaultTier(4);
+        SET_LUCK.createDefaultTier(1);
+        SET_LUCK.createDefaultTier(2);
     }
     public static void initOreDict() {
         SET_ONE.registerOreDict();
