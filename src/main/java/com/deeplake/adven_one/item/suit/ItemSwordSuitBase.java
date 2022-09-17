@@ -31,6 +31,11 @@ public class ItemSwordSuitBase extends ItemSwordBase {
         return false;
     }
 
+    @Override
+    public void setDamage(ItemStack stack, int damage) {
+        //do nothing
+    }
+
     static String getName(SetTier tier)
     {
         return String.format("%s_%d_sword", tier.getSuit().getName(), tier.getTier());

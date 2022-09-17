@@ -32,6 +32,11 @@ public class ItemArmorSuitBase extends ItemArmorBase {
         return false;
     }
 
+    @Override
+    public void setDamage(ItemStack stack, int damage) {
+        //do nothing
+    }
+
     static String getName(SetTier tier, EntityEquipmentSlot equipmentSlotIn)
     {
         return String.format("%s_%d_armor%d", tier.getSuit().getName(), tier.getTier(), 3 - equipmentSlotIn.getIndex());

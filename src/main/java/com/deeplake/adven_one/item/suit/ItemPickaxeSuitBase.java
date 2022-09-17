@@ -23,6 +23,11 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase {
         return false;
     }
 
+    @Override
+    public void setDamage(ItemStack stack, int damage) {
+        //do nothing
+    }
+
     static String getName(SetTier tier)
     {
         return String.format("%s_%d_pickaxe", tier.getSuit().getName(), tier.getTier());
