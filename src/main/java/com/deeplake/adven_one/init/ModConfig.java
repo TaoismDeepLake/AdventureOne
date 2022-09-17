@@ -83,6 +83,19 @@ public class ModConfig {
         public int SPAWN_T3M = 100;
     }
 
+    public static final QualityConf QUALITY_CONF = new QualityConf();
+
+    public static class QualityConf {
+        public double MIN_Q_PICKAXE = 0.5;
+        public double DELTA_Q_PICKAXE = 1.0;
+
+        public double MIN_Q_SWORD = 0.5;
+        public double DELTA_Q_SWORD = 1.0;
+
+        public double MIN_Q_ARMOR = 0.5;
+        public double DELTA_Q_ARMOR = 1.0;
+    }
+
     @Config.LangKey("configgui.idealland.category.Menu0.WorldGenConf")
     @Config.Comment("World Generate")
     public static final WorldGenConf WORLD_GEN_CONF = new WorldGenConf();

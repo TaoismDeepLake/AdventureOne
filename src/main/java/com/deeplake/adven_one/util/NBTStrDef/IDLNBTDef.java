@@ -260,6 +260,7 @@ public class IDLNBTDef {
 	public static final String DAMAGE_RATIO = "damageRatio";
 
 	public static final String NEED_FIRST_TICK = "needFirstTick";
+	public static final String QUALITY = "quality";
 
 	public static final String TOOL_CLASS_HAMMER = "hammer";
 	//Citadel

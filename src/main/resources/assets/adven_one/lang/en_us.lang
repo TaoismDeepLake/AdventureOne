@@ -30,6 +30,9 @@ adven_one.suit_back.3=Backup T3
 
 #Shared
 idealland.shared.press_shift=Hold SHIFT to examine info.
+adven_one.shared.quality_random=[Random Quality]
+adven_one.shared.quality_desc_bad=Quality: §c%s%%
+adven_one.shared.quality_desc_good=Quality: §a%s%%
 
 adven_one.gem=%s Unit
 adven_one.ore=%s Ore
