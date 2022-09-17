@@ -26,6 +26,11 @@ public class ItemSwordSuitBase extends ItemSwordBase {
     }
     SetTier tier;
 
+    @Override
+    public boolean isDamageable() {
+        return false;
+    }
+
     static String getName(SetTier tier)
     {
         return String.format("%s_%d_sword", tier.getSuit().getName(), tier.getTier());

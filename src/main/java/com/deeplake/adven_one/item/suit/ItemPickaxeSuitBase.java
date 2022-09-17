@@ -18,6 +18,11 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase {
     }
     SetTier tier;
 
+    @Override
+    public boolean isDamageable() {
+        return false;
+    }
+
     static String getName(SetTier tier)
     {
         return String.format("%s_%d_pickaxe", tier.getSuit().getName(), tier.getTier());

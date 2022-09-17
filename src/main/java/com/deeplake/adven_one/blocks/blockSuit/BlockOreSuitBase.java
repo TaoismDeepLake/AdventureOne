@@ -13,6 +13,7 @@ public class BlockOreSuitBase extends BlockOreBase implements IBlockSuit {
     public BlockOreSuitBase(SetTier tier) {
         super(String.format("%s_%d_%s", tier.getSuitName(), tier.getTier(), NAME), tier.getGem());
         this.tier = tier;
+        setHardness(tier.getTier() * 8);
     }
 
     @Override

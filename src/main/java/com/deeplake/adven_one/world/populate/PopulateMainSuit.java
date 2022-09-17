@@ -42,7 +42,7 @@ public class PopulateMainSuit {
 
             spreadOre(chunk, x, z, 96, 107, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY);
 
-            spreadOre(chunk, x, z, 64, 79, WorldGenUtil.LAVA, ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
+            spreadOre(chunk, x, z, 64, 78, WorldGenUtil.LAVA, ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
             spreadOre(chunk, x, z, 64, 79, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
 
             spreadOre(chunk, x, z, 48, 63, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY);

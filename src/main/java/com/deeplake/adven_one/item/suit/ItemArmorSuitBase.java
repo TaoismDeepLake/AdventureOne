@@ -23,8 +23,14 @@ public class ItemArmorSuitBase extends ItemArmorBase {
     public ItemArmorSuitBase(SetTier tier, EntityEquipmentSlot equipmentSlotIn) {
         super(getName(tier, equipmentSlotIn), tier.getArmorMaterial(), 0, equipmentSlotIn);
         this.tier = tier;
+
     }
     SetTier tier;
+
+    @Override
+    public boolean isDamageable() {
+        return false;
+    }
 
     static String getName(SetTier tier, EntityEquipmentSlot equipmentSlotIn)
     {
