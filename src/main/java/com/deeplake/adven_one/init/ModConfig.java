@@ -117,6 +117,7 @@ public class ModConfig {
         //Per Chunk
         public float TREE_DENSITY = 0.001f;
 
+        public int GLASS_BARRIER_DENSITY = 256;
         public int IRON_DENSITY = 16;
 
         public int REDSTONE_DENSITY = 8;
