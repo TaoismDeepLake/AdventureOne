@@ -1,6 +1,6 @@
 #PARSE_ESCAPES
 #tabs
-itemGroup.ideallandMiscTab=IDL Hall
+itemGroup.advenMiscTab=Adventure One Misc
 
 #config
 configgui.idealland.category.Menu0.GeneralConf=General Config
@@ -47,6 +47,7 @@ adven_one.log=%s Log
 adven_one.planks=%s Planks
 adven_one.dirt=%s Dirt
 adven_one.stone=%s Rock
+adven_one.wood_stairs=%s Wood Stairs
 
 #
 attribute.name.adven_one.attr.def_tier=Defense Tier

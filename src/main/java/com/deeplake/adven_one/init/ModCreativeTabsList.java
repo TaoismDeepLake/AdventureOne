@@ -12,7 +12,7 @@ public class ModCreativeTabsList {
         @SideOnly(Side.CLIENT)
         public ItemStack getTabIconItem()
         {
-            return new ItemStack(Items.QUARTZ);
+            return new ItemStack(Items.NETHER_STAR);
         }
     };
 }

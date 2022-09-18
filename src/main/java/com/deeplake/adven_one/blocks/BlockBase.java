@@ -21,7 +21,7 @@ public class BlockBase extends Block implements IHasModel
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(ModCreativeTabsList.IDL_MISC);;
+		setCreativeTab(ModCreativeTabsList.IDL_MISC);
 		
 		ModBlocks.BLOCKS.add(this);
 		if (this instanceof IBlockSuit)
@@ -31,12 +31,6 @@ public class BlockBase extends Block implements IHasModel
 		else {
 			ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 		}
-
-		setHardness(5.0F);
-		//setResistance(1000.0F);
-		//setHarvestLevel("pickaxe", 1);
-		//setLightLevel(1f);
-		setLightOpacity(1);
 	}
 
 	@Override
