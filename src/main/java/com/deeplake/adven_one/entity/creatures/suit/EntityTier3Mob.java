@@ -8,6 +8,7 @@ public class EntityTier3Mob extends EntitySuitMob{
         super(worldIn);
         setTierAll(2);
         melee_atk = true;
+        tier = 3;
     }
 
     @Override

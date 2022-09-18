@@ -32,6 +32,6 @@ public class RecipeSword2 extends ShapedRecipes {
         recipeItems.add(stickIng);
         recipeItems.add(Ingredient.EMPTY);
 
-        setRegistryName(Objects.requireNonNull(result.getRegistryName()));
+        setRegistryName(Objects.requireNonNull(result.getRegistryName()+"sp"));
     }
 }

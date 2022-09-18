@@ -41,6 +41,13 @@ public class SuitRecipesInit {
                 {
                     r.register(new RecipeSword2(planks, result, dirt));
                 }
+
+                result = suit.getTierMap().get(1).getPick();
+                if (result != null)
+                {
+                    //todo : not working
+                    r.register(new RecipePickaxeT1(planks, result, dirt));
+                }
             }
 
             for (SetTier setTier : suit.getTierMap().values())

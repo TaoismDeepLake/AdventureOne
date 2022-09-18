@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "adven_one:blocks/suit_luck_a_3_ore"
+	}
+}

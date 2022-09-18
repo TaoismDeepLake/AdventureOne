@@ -3,18 +3,24 @@ package com.deeplake.adven_one.item.suit;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
+import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemArmorBase;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Random;
 
-public class ItemArmorSuitBase extends ItemArmorBase {
+public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality{
     public static final String NAME_IN = "Armor modifier";
     //    public ItemArmorSuitBase(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
 //        super(name, materialIn, renderIndexIn, equipmentSlotIn);
@@ -23,8 +29,19 @@ public class ItemArmorSuitBase extends ItemArmorBase {
     public ItemArmorSuitBase(SetTier tier, EntityEquipmentSlot equipmentSlotIn) {
         super(getName(tier, equipmentSlotIn), tier.getArmorMaterial(), 0, equipmentSlotIn);
         this.tier = tier;
+
     }
     SetTier tier;
+
+    @Override
+    public boolean isDamageable() {
+        return false;
+    }
+
+    @Override
+    public void setDamage(ItemStack stack, int damage) {
+        //do nothing
+    }
 
     static String getName(SetTier tier, EntityEquipmentSlot equipmentSlotIn)
     {
@@ -37,20 +54,48 @@ public class ItemArmorSuitBase extends ItemArmorBase {
                 I18n.format(tier.getTransKey()));
     }
 
-    @Override
-    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot equipmentSlot, ItemStack stack) {
-        Multimap<String, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot, stack);
-        if (equipmentSlot == this.armorType)
-        {
-            map.put(ModAttributes.DEF_TIER.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[3 - equipmentSlot.getIndex()], NAME_IN, tier.getTier()*0.25, 0));
-        }
-
-        return map;
-    }
-
     @Nullable
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
     {
         return null;
+    }
+
+    @Override
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
+        if (needFirstTick(stack))
+        {
+            setQuality(stack, getRandomQuality(itemRand));
+        }
+    }
+
+    public static double getRandomQuality(Random random)
+    {
+        return ModConfig.QUALITY_CONF.MIN_Q_ARMOR + random.nextFloat() * ModConfig.QUALITY_CONF.DELTA_Q_ARMOR;
+    }
+
+    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
+        Multimap<String, AttributeModifier> multimap = HashMultimap.<String, AttributeModifier>create();
+
+        double quality = getQuality(stack);
+
+        if (slot == this.armorType)
+        {
+            multimap.put(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], "Armor modifier", (double)this.damageReduceAmount * quality, 0));
+            multimap.put(SharedMonsterAttributes.ARMOR_TOUGHNESS.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], "Armor toughness", (double)this.toughness * quality, 0));
+            multimap.put(ModAttributes.DEF_TIER.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], NAME_IN, tier.getTier()*0.25, 0));
+        }
+
+        return multimap;
+    }
+
+    @Override
+    public EnumRarity getRarity(ItemStack stack) {
+        return getRarityByQuality(stack);
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return false;
     }
 }

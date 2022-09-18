@@ -119,6 +119,8 @@ end
 --  GenItem("misc", "idl_ai_terminal");
 GenSet("suit_back")
 GenSet("suit_test")
+GenSet("suit_celestial")
+GenSet("suit_luck_a")
 
 
 -- GenBlock("suit_test_2_stone");

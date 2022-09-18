@@ -53,6 +53,7 @@ public class WorldGenUtil {
     public static IBlockState DIAMOND = Blocks.DIAMOND_ORE.getDefaultState();
     public static IBlockState IRON_FENCE = Blocks.IRON_BARS.getDefaultState();
     public static IBlockState CONCRETE = Blocks.CONCRETE.getDefaultState();
+    public static IBlockState GLASS = Blocks.GLASS.getDefaultState();
 
     static Rotation[] rotation = Rotation.values();
 

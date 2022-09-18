@@ -4,6 +4,7 @@ import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.EntityMobRanged;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
+import com.deeplake.adven_one.init.ModConfig;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -17,10 +18,12 @@ public class EntitySuitMob extends EntityMobRanged {
         super(worldIn);
     }
 
+    public int tier = 1;
+
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        setAttr(32, 0.3, 4, 0, 20);
+        setAttrByTier(tier, ModConfig.TIER_CONF.NORMAL_MOB);
     }
 
     public void setTierAll(float tierAll)
@@ -64,7 +67,7 @@ public class EntitySuitMob extends EntityMobRanged {
         super.setEquipmentBasedOnDifficulty(difficulty);
         if (melee_atk)
         {
-            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
+            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_AXE));
         }else {
             this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
         }
@@ -116,6 +119,32 @@ public class EntitySuitMob extends EntityMobRanged {
         if (rand.nextInt(10) == 0)
         {
             dropItem(Items.POTATO, 1);
+        }
+    }
+
+
+    public void setAttrByTier(int tier, ModConfig.MobAttrConf conf)
+    {
+        switch (tier)
+        {
+            case 2:
+                setAttr(32, 0.3,
+                        conf.ATK_BASE * conf.ATK_T2_RATIO,
+                        0,
+                        conf.HP_BASE * conf.HP_T2_RATIO);
+                break;
+            case 3:
+                setAttr(32, 0.3,
+                        conf.ATK_BASE * conf.ATK_T3_RATIO,
+                        0,
+                        conf.HP_BASE * conf.HP_T3_RATIO);
+                break;
+            default:
+                setAttr(32, 0.3,
+                        conf.ATK_BASE,
+                        0,
+                        conf.HP_BASE);
+                break;
         }
     }
 }

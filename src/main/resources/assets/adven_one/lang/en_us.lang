@@ -30,6 +30,9 @@ adven_one.suit_back.3=Backup T3
 
 #Shared
 idealland.shared.press_shift=Hold SHIFT to examine info.
+adven_one.shared.quality_random=[Random Quality]
+adven_one.shared.quality_desc_bad=Quality: §c%s%%
+adven_one.shared.quality_desc_good=Quality: §a%s%%
 
 adven_one.gem=%s Unit
 adven_one.ore=%s Ore
@@ -48,3 +51,10 @@ adven_one.stone=%s Rock
 #
 attribute.name.adven_one.attr.def_tier=Defense Tier
 attribute.name.adven_one.attr.atk_tier=Attack Tier
+
+#Vocal
+adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.
+adven_one.vocal.boss.steve.death=[Steve] If there is hope, there is rebirth...
+adven_one.vocal.boss.steve.deflect=[Steve] Vanilla mechanics, son.
+adven_one.vocal.boss.steve.kill=[Steve] Report to the Vanilla Soul - Mod players are defeated!
+adven_one.vocal.boss.steve.summon=[Steve] Go mobs, kill that player is more effective than protecting me!
