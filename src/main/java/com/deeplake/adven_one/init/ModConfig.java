@@ -31,6 +31,8 @@ public class ModConfig {
 //        @Config.LangKey("idlframewok.conf.general.welcome")
 //        @Config.Comment("The text shown when a player logs in. Can be a key or a string.")
 //        public String WELCOME_MSG = "idlframewok.msg.welcome";
+
+
     }
 
     @Config.LangKey("configgui.idlframewok.category.Menu0.DebugConf")
@@ -40,6 +42,59 @@ public class ModConfig {
     public static class DebugConf {
         public boolean DEBUG_MODE = false;
         public boolean SHOW_DEBUG_ARMOR = false;
+    }
+
+    public static final SpecialMobConf SPECIAL_MOB_CONF = new SpecialMobConf();
+
+    public static class SpecialMobConf {
+        @Config.RangeDouble(min = 0f, max = 1f)
+        public double BOSS_DEFLECT_CHANCE = 0.5f;
+
+        @Config.RangeDouble(min = 1f)
+        public double BOSS_STEVE_HP = 256f;
+
+        @Config.RangeDouble(min = 0f)
+        public double BOSS_STEVE_ATK = 1f;
+    }
+
+    public static final TierConf TIER_CONF = new TierConf();
+
+
+    public static class TierConf {
+        public static final TierConf MELEE_CONF = new TierConf();
+
+        @Config.RangeDouble(min = 0f)
+        public double SWORD_ATK_T1 = 4;
+
+        @Config.RangeDouble(min = 0f)
+        public double SWORD_ATK_T2 = 8;
+
+        @Config.RangeDouble(min = 0f)
+        public double SWORD_ATK_T3 = 24;
+
+    }
+
+    public static class MobAttrConf {
+        @Config.RangeDouble(min = 1f)
+        public double HP_BASE = 20;
+
+        //note that they have an axe +7
+        @Config.RangeDouble(min = 0.5f)
+        public double ATK_BASE = 1;
+
+        @Config.RangeDouble(min = 0.01f)
+        public double HP_T2_RATIO = 3;
+
+        @Config.RangeDouble(min = 0.01f)
+        public double ATK_T2_RATIO = 2;
+
+        //relatetive to T1
+        @Config.RangeDouble(min = 0.01f)
+        public double HP_T3_RATIO = 9;
+
+        //relatetive to T1
+        @Config.RangeDouble(min = 0.01f)
+        public double ATK_T3_RATIO = 3;
     }
 
     @Config.LangKey("configgui.idlframewok.category.Menu0.SpawnConf")

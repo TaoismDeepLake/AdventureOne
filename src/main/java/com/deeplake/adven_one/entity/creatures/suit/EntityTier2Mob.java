@@ -15,4 +15,10 @@ public class EntityTier2Mob extends EntitySuitMob{
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
         dropTier3Gem(wasRecentlyHit, lootingModifier);
     }
+
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        setAttr(32, 0.3, 4, 0, 20);
+    }
 }

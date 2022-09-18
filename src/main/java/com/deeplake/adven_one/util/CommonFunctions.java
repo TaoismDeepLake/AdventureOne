@@ -107,7 +107,7 @@ public class CommonFunctions {
         FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().sendMessage(new TextComponentTranslation(key, args));
     }
 
-    public static void SafeSendMsgToPlayer(EntityPlayer player, String key, Object... args)
+    public static void SafeSendMsgToPlayer(EntityLivingBase player, String key, Object... args)
     {
         //Please note that you can only put %s as arguments. If you put %d, it's not going to translate.
         if (player instanceof EntityPlayerMP)

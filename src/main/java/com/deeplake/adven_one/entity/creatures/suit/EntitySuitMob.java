@@ -64,7 +64,7 @@ public class EntitySuitMob extends EntityMobRanged {
         super.setEquipmentBasedOnDifficulty(difficulty);
         if (melee_atk)
         {
-            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
+            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_AXE));
         }else {
             this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
         }

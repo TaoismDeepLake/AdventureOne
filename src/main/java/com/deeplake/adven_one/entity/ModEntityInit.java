@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.entity;
 
 import com.deeplake.adven_one.Idealland;
+import com.deeplake.adven_one.entity.creatures.boss.EntityBossSteve;
 import com.deeplake.adven_one.entity.creatures.suit.*;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraft.entity.Entity;
@@ -19,6 +20,9 @@ public class ModEntityInit {
         registerEntity("default_mob_t2m", EntityTier2MobM.class);
         registerEntity("default_mob_t3", EntityTier3Mob.class);
         registerEntity("default_mob_t3m", EntityTier3MobM.class);
+
+        //kill @e[type=adven_one:boss_steve]
+        registerEntity("boss_steve", EntityBossSteve.class);
 
 //        registerEntity("moroon_tainter", EntityMoroonTainter.class,0xff00ff, 0x000033);
 //        registerEntity("idealland_whitetower_core", EntityIDLWhiteTowerCore.class, ENTITY_NEXT_ID, 128, 0xeeee00, 0xffffff);

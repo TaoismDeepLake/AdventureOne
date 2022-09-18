@@ -60,12 +60,27 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality {
         if (slot == EntityEquipmentSlot.MAINHAND)
         {
             double quality = getQuality(stack);
-            map.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, NAME_IN, getAttackDamage() * quality, 0));
+            map.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, NAME_IN, getSwordDamage(tier.getTier()) * quality, 0));
             map.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, -2.4000000953674316D, 0));
             map.put(ModAttributes.ATK_TIER.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, tier.getTier(), 0));
         }
 
         return map;
+    }
+
+    public static double getSwordDamage(int tier)
+    {
+        switch (tier)
+        {
+            case 1:
+                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T1;
+            case 2:
+                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T2;
+            case 3:
+                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T3;
+            default:
+                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T1 * tier;
+        }
     }
 
     public static double getRandomQuality(Random random)

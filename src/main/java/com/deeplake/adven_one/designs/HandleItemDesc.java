@@ -25,12 +25,10 @@ public class HandleItemDesc {
                 double quality = iHasQuality.getQuality(stack);
                 if (quality < 1.0f)
                 {
-                    event.getToolTip().add(I18n.format("adven_one.shared.quality_desc_bad", String.format("%.2f", quality) ));
+                    event.getToolTip().add(I18n.format("adven_one.shared.quality_desc_bad", String.format("%.2f", quality * 100) ));
                 }else {
-                    event.getToolTip().add(I18n.format("adven_one.shared.quality_desc_good", String.format("%.2f", quality) ));
+                    event.getToolTip().add(I18n.format("adven_one.shared.quality_desc_good", String.format("%.2f", quality * 100) ));
                 }
-
-
             }
         }
     }

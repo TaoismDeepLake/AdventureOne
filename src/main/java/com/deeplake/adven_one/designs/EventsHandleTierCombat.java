@@ -2,6 +2,7 @@ package com.deeplake.adven_one.designs;
 
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
+import com.deeplake.adven_one.entity.creatures.boss.EntityBossSteve;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -19,15 +20,23 @@ public class EventsHandleTierCombat {
         if (source.getTrueSource() instanceof EntityLivingBase)
         {
             EntityLivingBase livingBase = (EntityLivingBase) source.getTrueSource();
+            EntityLivingBase hurtOne = event.getEntityLiving();
+            if (livingBase instanceof EntityBossSteve || hurtOne instanceof EntityBossSteve)
+            {
+                //ignore this system
+                return;
+            }
+
             double atkTier = livingBase.getEntityAttribute(ModAttributes.ATK_TIER).getAttributeValue();
-            double defTier = event.getEntityLiving().getEntityAttribute(ModAttributes.DEF_TIER).getAttributeValue();
+
+            double defTier = hurtOne.getEntityAttribute(ModAttributes.DEF_TIER).getAttributeValue();
 
             double delta = atkTier - defTier;
             if (delta > -0.01)
             {
                 event.setAmount((float) ((1+delta) * event.getAmount()));
                 source.setDamageBypassesArmor();
-                event.getEntityLiving().hurtResistantTime = 0;
+                hurtOne.hurtResistantTime = 0;
             }
             else {
                 event.setAmount(1f);

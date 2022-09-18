@@ -47,7 +47,7 @@ public class EntityMobRanged extends EntityGeneralMob implements IRangedAttackMo
     }
 
     protected final EntityAIStrafeRangedAttack<EntityMobRanged> aiArrowAttack = new EntityAIStrafeRangedAttack<>(this, 1.0D, 5, 16.0F);
-    protected final EntityAIAttackMelee aiAttackOnCollide = new EntityAIAttackMelee(this, 1.2D, false)
+    protected EntityAIAttackMelee aiAttackOnCollide = new EntityAIAttackMelee(this, 1.2D, false)
     {
         /**
          * Reset the task's internal state. Called when this task is interrupted by another one
