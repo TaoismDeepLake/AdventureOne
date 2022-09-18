@@ -8,6 +8,7 @@ public class EntityTier2MobM extends EntitySuitMob{
         super(worldIn);
         setAtkTier(2);
         setDefTier(1);
+        tier = 2;
     }
 
     @Override

@@ -1,13 +1,16 @@
 package com.deeplake.adven_one.entity.creatures.suit;
 
+import com.deeplake.adven_one.init.ModConfig;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityTier2Mob extends EntitySuitMob{
+
     public EntityTier2Mob(World worldIn) {
         super(worldIn);
         setTierAll(2);
         melee_atk = true;
+        tier = 2;
     }
 
     @Override
@@ -19,6 +22,8 @@ public class EntityTier2Mob extends EntitySuitMob{
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        setAttr(32, 0.3, 4, 0, 20);
+
     }
+
+
 }

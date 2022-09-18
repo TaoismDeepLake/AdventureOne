@@ -72,6 +72,8 @@ public class ModConfig {
         @Config.RangeDouble(min = 0f)
         public double SWORD_ATK_T3 = 24;
 
+        public final MobAttrConf NORMAL_MOB = new MobAttrConf();
+
     }
 
     public static class MobAttrConf {
