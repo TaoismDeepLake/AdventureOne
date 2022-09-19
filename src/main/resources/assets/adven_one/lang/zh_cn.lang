@@ -1,9 +1,9 @@
 #PARSE_ESCAPES
 #tabs
-itemGroup.advenMiscTab=Adventure One Misc
+itemGroup.advenMiscTab=冒险一号
 
 #config
-configgui.idealland.category.Menu0.GeneralConf=General Config
+configgui.idealland.category.Menu0.GeneralConf=通用设置
 idealland.conf.general.welcome=Welcome Message Key
 
 #Entities

@@ -25,11 +25,15 @@ public enum EnumSuit {
 
     final String name;
     final HashMap<Integer, SetTier> tierHashMap;
-    Block woodPlanks;
+
     Block woodLog;
     Block dirt;
     Block stone;
+
+    //Wooden Block
+    Block woodPlanks;
     Block woodStairs;
+    Block woodFence;
 
     Biome biome = Biomes.OCEAN;
 
@@ -72,11 +76,14 @@ public enum EnumSuit {
     public void createInternalDefault()
     {
         if (!isHidden) {
-            woodPlanks = new BlockPlanksSuitBase(this);
             woodLog = new BlockLogSuitBase(this);
             dirt = new BlockDirtSuitBase(this);
             stone = new BlockStoneSuitBase(this);
+
+            //Wooden Block
+            woodPlanks = new BlockPlanksSuitBase(this);
             woodStairs = new BlockWoodStairsSuitBase(this);
+            woodFence = new BlockFenceSuitBase(this);
 
             createDefaultTier(1);
             createDefaultTier(2);
@@ -129,6 +136,8 @@ public enum EnumSuit {
     }
 
     public Block getWoodStairs() { return woodStairs;}
+
+    public Block getWoodFence() { return woodFence;}
 
     public IBlockState getOreByTier(int tier)
     {
