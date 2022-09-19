@@ -48,6 +48,7 @@ adven_one.planks=%s Planks
 adven_one.dirt=%s Dirt
 adven_one.stone=%s Rock
 adven_one.wood_stairs=%s Wood Stairs
+adven_one.wood_fence=%s Wood Fence
 
 #
 attribute.name.adven_one.attr.def_tier=Defense Tier
