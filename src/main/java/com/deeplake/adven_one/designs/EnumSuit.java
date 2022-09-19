@@ -1,10 +1,7 @@
 package com.deeplake.adven_one.designs;
 
 import com.deeplake.adven_one.Idealland;
-import com.deeplake.adven_one.blocks.blockSuit.BlockDirtSuitBase;
-import com.deeplake.adven_one.blocks.blockSuit.BlockLogSuitBase;
-import com.deeplake.adven_one.blocks.blockSuit.BlockPlanksSuitBase;
-import com.deeplake.adven_one.blocks.blockSuit.BlockStoneSuitBase;
+import com.deeplake.adven_one.blocks.blockSuit.*;
 import com.deeplake.adven_one.util.WorldGenUtil;
 import com.deeplake.adven_one.world.biome.BiomeSuit;
 import net.minecraft.block.Block;
@@ -32,6 +29,7 @@ public enum EnumSuit {
     Block woodLog;
     Block dirt;
     Block stone;
+    Block woodStairs;
 
     Biome biome = Biomes.OCEAN;
 
@@ -78,6 +76,7 @@ public enum EnumSuit {
             woodLog = new BlockLogSuitBase(this);
             dirt = new BlockDirtSuitBase(this);
             stone = new BlockStoneSuitBase(this);
+            woodStairs = new BlockWoodStairsSuitBase(this);
 
             createDefaultTier(1);
             createDefaultTier(2);
@@ -128,6 +127,8 @@ public enum EnumSuit {
     public Block getWoodLog() {
         return woodLog;
     }
+
+    public Block getWoodStairs() { return woodStairs;}
 
     public IBlockState getOreByTier(int tier)
     {
