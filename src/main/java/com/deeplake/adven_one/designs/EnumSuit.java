@@ -28,9 +28,13 @@ public enum EnumSuit {
 
     Block woodLog;
     Block dirt;
-    Block stone;
 
-    //Wooden Block
+    //stone block
+    Block stone;
+    Block stoneStairs;
+    Block stoneWall;
+
+    //wooden block
     Block woodPlanks;
     Block woodStairs;
     Block woodFence;
@@ -78,9 +82,13 @@ public enum EnumSuit {
         if (!isHidden) {
             woodLog = new BlockLogSuitBase(this);
             dirt = new BlockDirtSuitBase(this);
-            stone = new BlockStoneSuitBase(this);
 
-            //Wooden Block
+            //stone block
+            stone = new BlockStoneSuitBase(this);
+            stoneStairs = new BlockStoneStairsSuitBase(this);
+            stoneWall = new BlockWallSuitBase(this);
+
+            //wooden Block
             woodPlanks = new BlockPlanksSuitBase(this);
             woodStairs = new BlockWoodStairsSuitBase(this);
             woodFence = new BlockFenceSuitBase(this);
@@ -123,6 +131,10 @@ public enum EnumSuit {
         return stone;
     }
 
+    public Block getStoneStairs() { return stoneStairs; }
+
+    public Block getStoneWall() { return stoneWall; }
+
     public Biome getBiome() {
         return biome;
     }
@@ -135,9 +147,9 @@ public enum EnumSuit {
         return woodLog;
     }
 
-    public Block getWoodStairs() { return woodStairs;}
+    public Block getWoodStairs() { return woodStairs; }
 
-    public Block getWoodFence() { return woodFence;}
+    public Block getWoodFence() { return woodFence; }
 
     public IBlockState getOreByTier(int tier)
     {

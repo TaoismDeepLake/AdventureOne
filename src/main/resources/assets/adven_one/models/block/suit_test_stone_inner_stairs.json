@@ -1,0 +1,8 @@
+{
+	"parent": "block/inner_stairs",
+	"textures": {
+		"bottom": "adven_one:blocks/suit_test_stone",
+       "top": "adven_one:blocks/suit_test_stone",
+       "side": "adven_one:blocks/suit_test_stone"
+	}
+}

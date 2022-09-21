@@ -6,22 +6,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Objects;
 
-public class RecipeWoodStairs extends ShapedRecipes {
+public class RecipeStoneWall extends ShapedRecipes {
 
-    public RecipeWoodStairs(Item plank, Item result) {
-        super(CraftUtil.SUIT, 3, 3, NonNullList.create(), new ItemStack(result, 4));
-        Ingredient gemIng = Ingredient.fromItems(plank);
-
-        recipeItems.add(gemIng);
-        recipeItems.add(Ingredient.EMPTY);
-        recipeItems.add(Ingredient.EMPTY);
+    public RecipeStoneWall(Item stone, Item result) {
+        super(CraftUtil.SUIT, 3, 2, NonNullList.create(), new ItemStack(result, 6));
+        Ingredient gemIng = Ingredient.fromItems(stone);
 
         recipeItems.add(gemIng);
         recipeItems.add(gemIng);
-        recipeItems.add(Ingredient.EMPTY);
+        recipeItems.add(gemIng);
 
         recipeItems.add(gemIng);
         recipeItems.add(gemIng);
