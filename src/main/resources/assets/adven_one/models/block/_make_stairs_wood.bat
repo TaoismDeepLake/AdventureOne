@@ -25,17 +25,29 @@ for %%x in (%*) do (
 		echo }
 	) > %%x_wood_inner_stairs.json
 
-	echo Making %%x_wood_outer_stairs.json block
-    	(
-    		echo {
-    		echo 	"parent": "block/outer_stairs",
-    		echo 	"textures": {
-    		echo 		"bottom": "%modid%:blocks/%%x_planks",
-            echo        "top": "%modid%:blocks/%%x_planks",
-            echo        "side": "%modid%:blocks/%%x_planks"
-    		echo 	}
-    		echo }
-    	) > %%x_wood_outer_stairs.json
+	cho Making %%x_wood_stairs.json block
+        	(
+        		echo {
+                echo   "parent": "block/stairs",
+                echo    "textures": {
+                echo     "bottom": "%modid%:blocks/%%x_planks",
+                echo     "top": "%modid%:blocks/%%x_planks",
+                echo     "side": "%modid%:blocks/%%x_planks"
+                echo   }
+                echo }
+        	) > %%x_wood_stairs.json
+
+    echo Making %%x_wood_outer_stairs.json block
+        	(
+        		echo {
+        		echo 	"parent": "block/outer_stairs",
+        		echo 	"textures": {
+        		echo 		"bottom": "%modid%:blocks/%%x_planks",
+                echo        "top": "%modid%:blocks/%%x_planks",
+                echo        "side": "%modid%:blocks/%%x_planks"
+        		echo 	}
+        		echo }
+        	) > %%x_wood_outer_stairs.json
 
 	echo Making %%x_wood_stairs.json item
 	(

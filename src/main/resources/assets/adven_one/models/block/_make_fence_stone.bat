@@ -18,7 +18,7 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "block/fence_post",
 		echo 	"textures": {
-		echo 		"texture": "%modid%:blocks/%%x_planks"
+		echo 		"texture": "%modid%:blocks/%%x_stone"
 		echo 	}
 		echo }
 	) > %%x_stone_fence_post.json
@@ -28,7 +28,7 @@ for %%x in (%*) do (
     		echo {
     		echo 	"parent": "block/fence_side",
     		echo 	"textures": {
-    		echo 		"texture": "%modid%:blocks/%%x_planks"
+    		echo 		"texture": "%modid%:blocks/%%x_stone"
     		echo 	}
     		echo }
     	) > %%x_stone_fence_side.json
@@ -38,17 +38,17 @@ for %%x in (%*) do (
         		echo {
         		echo 	"parent": "block/fence_inventory",
         		echo 	"textures": {
-        		echo 		"texture": "%modid%:blocks/%%x_planks"
+        		echo 		"texture": "%modid%:blocks/%%x_stone"
         		echo 	}
         		echo }
-        	) > %%x_wood_fence_inventory.json
+        	) > %%x_stone_fence_inventory.json
 
 	echo Making %%x_stone_fence.json item
 	(
 		echo {
 		echo 	"parent": "%modid%:block/%%x_stone_fence_inventory"
 		echo }
-	) > ../item/%%x_wood_fence.json
+	) > ../item/%%x_stone_fence.json
 
 	echo Making %%x_stone_fence.json blockstate
 	(
