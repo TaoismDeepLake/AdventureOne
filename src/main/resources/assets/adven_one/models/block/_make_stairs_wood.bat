@@ -18,9 +18,9 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "block/inner_stairs",
 		echo 	"textures": {
-		echo 		"bottom": "%modid%:blocks/%%x",
-        echo        "top": "%modid%:blocks/%%x",
-        echo        "side": "%modid%:blocks/%%x"
+		echo 		"bottom": "%modid%:blocks/%%x_planks",
+        echo        "top": "%modid%:blocks/%%x_planks",
+        echo        "side": "%modid%:blocks/%%x_planks"
 		echo 	}
 		echo }
 	) > %%x_wood_inner_stairs.json
