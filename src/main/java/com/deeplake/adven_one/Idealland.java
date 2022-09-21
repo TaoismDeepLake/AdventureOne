@@ -20,8 +20,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 
-//To let the player be a traveling god who plays yin-yang magic.
-
 @Mod(modid = Idealland.MODID, name = Idealland.NAME, version = Idealland.VERSION)//dependencies = "required-after:Forge@[14.23.5.2705,)"
 public class Idealland {
     public static final String MODID = "adven_one";

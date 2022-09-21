@@ -1,6 +1,6 @@
 {
   "parent": "block/stairs",
-  "textures": {
+   "textures": {
     "bottom": "adven_one:blocks/suit_back_planks",
     "top": "adven_one:blocks/suit_back_planks",
     "side": "adven_one:blocks/suit_back_planks"
