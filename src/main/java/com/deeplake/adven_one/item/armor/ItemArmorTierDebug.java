@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.item.armor;
 
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
+import com.deeplake.adven_one.entity.creatures.model.ModelTestArmor;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
 import com.deeplake.adven_one.item.ItemArmorBase;
@@ -8,6 +9,7 @@ import com.deeplake.adven_one.util.CommonFunctions;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTUtil;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -19,6 +21,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 import static com.deeplake.adven_one.item.suit.ItemArmorSuitBase.NAME_IN;
 
@@ -62,5 +66,26 @@ public class ItemArmorTierDebug extends ItemArmorBase {
         }
 
         return map;
+    }
+
+    @Nullable
+    @Override
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
+        if (itemStack != ItemStack.EMPTY)
+        {
+            if (itemStack.getItem() instanceof ItemArmorTierDebug)
+            {
+                ModelTestArmor model = new ModelTestArmor();
+                model.bipedHead.showModel = armorSlot.equals(EntityEquipmentSlot.HEAD);
+                model.isChild = _default.isChild;
+                model.isRiding = _default.isRiding;
+                model.isSneak = _default.isSneak;
+                model.rightArmPose = _default.rightArmPose;
+                model.leftArmPose = _default.leftArmPose;
+
+                return model;
+            }
+        }
+        return null;
     }
 }

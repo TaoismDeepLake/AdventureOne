@@ -23,13 +23,13 @@ public class ModRecipes {
 			Item dirt = Item.getItemFromBlock(suit.getDirt());
 			Item stone = Item.getItemFromBlock(suit.getStone());
 
-			GameRegistry.addSmelting(planks,
-					new ItemStack(Items.COAL),
-					1f);
-
-			GameRegistry.addSmelting(dirt,
-					new ItemStack(Blocks.DIRT),
-					1f);
+//			GameRegistry.addSmelting(planks,
+//					new ItemStack(Items.COAL),
+//					1f);
+//
+//			GameRegistry.addSmelting(dirt,
+//					new ItemStack(Blocks.DIRT),
+//					1f);
 
 			GameRegistry.addSmelting(stone,
 					new ItemStack(Blocks.STONE),

@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.util;
 
 import com.deeplake.adven_one.Idealland;
+import com.deeplake.adven_one.blocks.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.state.IBlockState;
@@ -54,6 +55,8 @@ public class WorldGenUtil {
     public static IBlockState IRON_FENCE = Blocks.IRON_BARS.getDefaultState();
     public static IBlockState CONCRETE = Blocks.CONCRETE.getDefaultState();
     public static IBlockState GLASS = Blocks.GLASS.getDefaultState();
+    public static IBlockState BARRIER_SKY = ModBlocks.BARRIER_SKY.getDefaultState();
+    public static IBlockState BARRIER_EARTH = ModBlocks.BARRIER_EARTH.getDefaultState();
 
     static Rotation[] rotation = Rotation.values();
 

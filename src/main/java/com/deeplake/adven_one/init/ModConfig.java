@@ -72,6 +72,12 @@ public class ModConfig {
         @Config.RangeDouble(min = 0f)
         public double SWORD_ATK_T3 = 24;
 
+        @Config.RangeInt(min = 0)
+        public double EARTH_BARRIER_REQ_BIOME = 2;
+
+        @Config.RangeInt(min = 0)
+        public double SKY_BARRIER_REQ_BIOME = 2;
+
         public final MobAttrConf NORMAL_MOB = new MobAttrConf();
 
     }
