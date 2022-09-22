@@ -1,0 +1,7 @@
+{
+	"parent": "adven_one:item/handheld",
+   "textures": {
+   "layer0": "adven_one:items/misc/suit_test_4_sword"
+   "layer1":"adven_one:items/overlay_4"
+   }
+}
