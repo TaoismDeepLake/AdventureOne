@@ -3,7 +3,9 @@ package com.deeplake.adven_one.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.deeplake.adven_one.blocks.blockBasic.ModBlockGlassBase;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 
 public class ModBlocks {
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
@@ -16,5 +18,7 @@ public class ModBlocks {
 	 * -Add corresponding texture png
 	 */
 
-	//public static final Block GRID_BLOCK_1 = new BlockBase("test", Material.CLAY).setCreativeTab(ModCreativeTab.IDL_MISC).setHardness(15f);
+	//T3
+	public static final Block BARRIER_SKY = new ModBlockGlassBase("barrier_sky", Material.GLASS).setHardness(40f);
+	public static final Block BARRIER_EARTH = new ModBlockGlassBase("barrier_earth", Material.GLASS).setHardness(20f);
 }

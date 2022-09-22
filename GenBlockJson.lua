@@ -117,14 +117,14 @@ local function GenSet(_setName)
 end
 
 --  GenItem("misc", "idl_ai_terminal");
-GenSet("suit_back")
-GenSet("suit_test")
-GenSet("suit_celestial")
-GenSet("suit_luck_a")
+-- GenSet("suit_back")
+-- GenSet("suit_test")
+-- GenSet("suit_celestial")
+-- GenSet("suit_luck_a")
 
 
--- GenBlock("suit_test_2_stone");
--- GenBlock("suit_test_stone");
+GenBlock("barrier_sky");
+GenBlock("barrier_earth");
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");

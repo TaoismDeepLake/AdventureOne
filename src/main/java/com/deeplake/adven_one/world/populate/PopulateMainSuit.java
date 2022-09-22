@@ -30,7 +30,7 @@ public class PopulateMainSuit {
             BiomeSuit biomeSuit = (BiomeSuit) biome;
             Chunk chunk = chunkGenBase.world.getChunkFromChunkCoords(x, z);
 
-            spreadOre(chunk, x, z, 145, 150, WorldGenUtil.GLASS, ModConfig.WORLD_GEN_CONF.GLASS_BARRIER_DENSITY);
+            spreadOre(chunk, x, z, 145, 150, WorldGenUtil.BARRIER_SKY, ModConfig.WORLD_GEN_CONF.GLASS_BARRIER_DENSITY);
 
             spreadOre(chunk, x, z, 119, 119, WorldGenUtil.COAL, ModConfig.WORLD_GEN_CONF.COAL_DENSITY);
 
@@ -44,10 +44,12 @@ public class PopulateMainSuit {
 
             spreadOre(chunk, x, z, 96, 107, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY);
 
-            spreadOre(chunk, x, z, 64, 78, WorldGenUtil.LAVA, ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
-            spreadOre(chunk, x, z, 64, 78, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
+            spreadOre(chunk, x, z, 72, 78, WorldGenUtil.LAVA, ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
+            spreadOre(chunk, x, z, 72, 78, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
 
-            spreadOre(chunk, x, z, 48, 63, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY);
+            spreadOre(chunk, x, z, 56, 71, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY);
+
+            spreadOre(chunk, x, z, 48, 55, WorldGenUtil.BARRIER_SKY, ModConfig.WORLD_GEN_CONF.GLASS_BARRIER_DENSITY);
 
             spreadOre(chunk, x, z, 16, 31, WorldGenUtil.BEDROCK, ModConfig.WORLD_GEN_CONF.BEDROCK_DENSITY_PLUS);
             spreadOre(chunk, x, z, 16, 31, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);
