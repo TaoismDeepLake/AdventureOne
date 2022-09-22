@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_inventory",
+	"textures": {
+		"texture": "adven_one:blocks/suit_test_stone"
+	}
+}
