@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.item.armor;
 
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
+import com.deeplake.adven_one.entity.creatures.model.ModelLuckArmor;
 import com.deeplake.adven_one.entity.creatures.model.ModelTestArmor;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
@@ -75,7 +76,7 @@ public class ItemArmorTierDebug extends ItemArmorBase {
         {
             if (itemStack.getItem() instanceof ItemArmorTierDebug)
             {
-                ModelTestArmor model = new ModelTestArmor();
+                ModelLuckArmor model = new ModelLuckArmor();
                 model.bipedHead.showModel = armorSlot.equals(EntityEquipmentSlot.HEAD);
                 model.isChild = _default.isChild;
                 model.isRiding = _default.isRiding;

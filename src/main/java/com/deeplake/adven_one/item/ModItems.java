@@ -18,14 +18,14 @@ public class ModItems {
 			EnumHelper.addToolMaterial("test", 3, 512, 3.0F, 4F, 20);
 
 	public static final ItemArmor.ArmorMaterial MAT_ARMOR_TEST = EnumHelper.addArmorMaterial(
-            "adven_one:armor_moroon",
-			"adven_one:armor_moroon",
+            "adven_one:armor_test",
+			"adven_one:armor_test",
 			80, new int[] {3, 6, 8, 3},
 			2, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2);
 
 	public static final Item DEBUG_HELM =
 			new ItemArmorTierDebug("debug_helm",
-					ItemArmor.ArmorMaterial.CHAIN,
+					MAT_ARMOR_TEST,
 					0,
 					EntityEquipmentSlot.HEAD);
 //	public static final Item SUIT_A_GEM_T3 = new ItemBase("suit_a_gem_t3");

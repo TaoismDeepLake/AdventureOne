@@ -3,12 +3,16 @@ package com.deeplake.adven_one.item.suit;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
+import com.deeplake.adven_one.entity.creatures.model.ModelLuckArmor;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemArmorBase;
+import com.deeplake.adven_one.item.armor.ItemArmorTierDebug;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -97,5 +101,48 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality{
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;
+    }
+
+    @Nullable
+    @Override
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
+        if (itemStack != ItemStack.EMPTY)
+        {
+            ModelBiped biped = null;
+            switch (tier.getSuit())
+            {
+                case SET_ONE:
+                    break;
+                case SET_TWO:
+                    break;
+                case SET_CELESTIAL:
+                    break;
+                case SET_LUCK:
+                    biped = new ModelLuckArmor();
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + tier.getSuit());
+            }
+            if (biped != null)
+            {
+//                biped.bipedHead.showModel = armorSlot.equals(EntityEquipmentSlot.HEAD);
+//
+//                biped.bipedBody.showModel = armorSlot.equals(EntityEquipmentSlot.CHEST);
+//                biped.bipedLeftArm.showModel = armorSlot.equals(EntityEquipmentSlot.CHEST);
+//                biped.bipedRightArm.showModel = armorSlot.equals(EntityEquipmentSlot.CHEST);
+//
+//                biped.bipedLeftLeg.showModel = armorSlot.equals(EntityEquipmentSlot.LEGS);
+//                biped.bipedRightLeg.showModel = armorSlot.equals(EntityEquipmentSlot.LEGS);
+
+                biped.isChild = _default.isChild;
+                biped.isRiding = _default.isRiding;
+                biped.isSneak = _default.isSneak;
+                biped.rightArmPose = _default.rightArmPose;
+                biped.leftArmPose = _default.leftArmPose;
+
+                return biped;
+            }
+        }
+        return null;
     }
 }
