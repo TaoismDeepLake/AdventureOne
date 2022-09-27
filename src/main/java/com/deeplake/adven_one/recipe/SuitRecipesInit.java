@@ -6,7 +6,6 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.recipe.traditional.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -27,16 +26,26 @@ public class SuitRecipesInit {
             }
 
             Item result;
-            Item planks = Item.getItemFromBlock(suit.getWoodPlanks());
-            Item log = Item.getItemFromBlock(suit.getWoodLog());
+
             Item dirt = Item.getItemFromBlock(suit.getDirt());
+
+            //stone block
+            Item stone = Item.getItemFromBlock(suit.getStone());
+            Item stoneStairs = Item.getItemFromBlock(suit.getStoneStairs());
+            Item stoneWall = Item.getItemFromBlock(suit.getStoneWall());
+
+            //wooden block
+            Item log = Item.getItemFromBlock(suit.getWoodLog());
+            Item planks = Item.getItemFromBlock(suit.getWoodPlanks());
             Item woodStairs = Item.getItemFromBlock(suit.getWoodStairs());
             Item woodFence = Item.getItemFromBlock(suit.getWoodFence());
 
             r.register(new RecipeDoor(planks, Items.OAK_DOOR));
-            r.register(new RecipeWoodStairs(planks, woodStairs));
+            r.register(new RecipeStairs(planks, woodStairs));
+            r.register(new RecipeStairs(stone, stoneStairs));
             r.register(new RecipePlanks(log, planks));
             r.register(new RecipeWoodFence(planks, woodFence));
+            r.register(new RecipeStoneWall(stone, stoneWall));
 
             if (suit.getTierMap().get(1) != null)
             {

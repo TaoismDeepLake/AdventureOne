@@ -1,0 +1,6 @@
+{
+	"parent": "block/wall_post",
+	"textures": {
+		"wall": "adven_one:blocks/suit_test_stone"
+	}
+}
