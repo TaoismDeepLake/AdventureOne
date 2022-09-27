@@ -21,5 +21,5 @@ for %%x in (%*) do (
         echo    "layer0": "%modid%:items/%%x"
         echo    }
 		echo }
-	) > ../item/%%x.json
+	) > %%x.json
 )
