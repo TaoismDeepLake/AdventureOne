@@ -7,7 +7,6 @@ import com.deeplake.adven_one.recipe.special.RecipeIdentify;
 import com.deeplake.adven_one.recipe.traditional.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -31,9 +30,17 @@ public class SuitRecipesInit {
             }
 
             Item result;
-            Item planks = Item.getItemFromBlock(suit.getWoodPlanks());
-            Item log = Item.getItemFromBlock(suit.getWoodLog());
+
             Item dirt = Item.getItemFromBlock(suit.getDirt());
+
+            //stone block
+            Item stone = Item.getItemFromBlock(suit.getStone());
+            Item stoneStairs = Item.getItemFromBlock(suit.getStoneStairs());
+            Item stoneWall = Item.getItemFromBlock(suit.getStoneWall());
+
+            //wooden block
+            Item log = Item.getItemFromBlock(suit.getWoodLog());
+            Item planks = Item.getItemFromBlock(suit.getWoodPlanks());
             Item woodStairs = Item.getItemFromBlock(suit.getWoodStairs());
             Item woodFence = Item.getItemFromBlock(suit.getWoodFence());
 
@@ -53,9 +60,9 @@ public class SuitRecipesInit {
                     r.register(new RecipePlanks(log, planks));
                 }
             }
-
-
-
+            
+            r.register(new RecipeStairs(stone, stoneStairs));
+            r.register(new RecipeStoneWall(stone, stoneWall));
 
             if (suit.getTierMap().get(1) != null)
             {
