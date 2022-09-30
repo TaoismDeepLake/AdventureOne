@@ -53,16 +53,19 @@ public class SuitRecipesInit {
                 }
                 if (woodStairs != null)
                 {
-                    r.register(new RecipeWoodStairs(planks, woodStairs));
+                    r.register(new RecipeStairs(planks, woodStairs));
                 }
                 if (log != null)
                 {
                     r.register(new RecipePlanks(log, planks));
                 }
             }
-            
-            r.register(new RecipeStairs(stone, stoneStairs));
-            r.register(new RecipeStoneWall(stone, stoneWall));
+
+            if (stone != null && stone != Items.AIR)
+            {
+                r.register(new RecipeStairs(stone, stoneStairs));
+                r.register(new RecipeStoneWall(stone, stoneWall));
+            }
 
             if (suit.getTierMap().get(1) != null)
             {
