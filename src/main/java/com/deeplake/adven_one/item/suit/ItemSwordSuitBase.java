@@ -11,6 +11,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -73,13 +74,13 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality {
         switch (tier)
         {
             case 1:
-                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T1;
+                return ModConfig.TIER_CONF.SWORD_ATK_T1;
             case 2:
-                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T2;
+                return ModConfig.TIER_CONF.SWORD_ATK_T2;
             case 3:
-                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T3;
+                return ModConfig.TIER_CONF.SWORD_ATK_T3;
             default:
-                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T1 * tier;
+                return ModConfig.TIER_CONF.SWORD_ATK_T1 * tier;
         }
     }
 
@@ -106,4 +107,9 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality {
     public boolean isEnchantable(ItemStack stack) {
         return false;
     }
+
+//    @Override
+//    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
+//        super.onCreated(stack, worldIn, playerIn);
+//    }
 }

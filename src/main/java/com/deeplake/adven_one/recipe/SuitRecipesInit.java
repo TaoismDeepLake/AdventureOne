@@ -3,11 +3,13 @@ package com.deeplake.adven_one.recipe;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.designs.SetTier;
+import com.deeplake.adven_one.recipe.special.RecipeIdentify;
 import com.deeplake.adven_one.recipe.traditional.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -18,6 +20,8 @@ public class SuitRecipesInit {
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> evt) {
         IForgeRegistry<IRecipe> r = evt.getRegistry();
+
+        r.register(new RecipeIdentify().setRegistryName(new ResourceLocation(Idealland.MODID, "identify")));
 
         for (EnumSuit suit : EnumSuit.values())
         {
@@ -33,10 +37,25 @@ public class SuitRecipesInit {
             Item woodStairs = Item.getItemFromBlock(suit.getWoodStairs());
             Item woodFence = Item.getItemFromBlock(suit.getWoodFence());
 
-            r.register(new RecipeDoor(planks, Items.OAK_DOOR));
-            r.register(new RecipeWoodStairs(planks, woodStairs));
-            r.register(new RecipePlanks(log, planks));
-            r.register(new RecipeWoodFence(planks, woodFence));
+            if (planks != null && planks != Items.AIR)
+            {
+                r.register(new RecipeDoor(planks, Items.OAK_DOOR));
+                if (woodFence != null)
+                {
+                    r.register(new RecipeWoodFence(planks, woodFence));
+                }
+                if (woodStairs != null)
+                {
+                    r.register(new RecipeWoodStairs(planks, woodStairs));
+                }
+                if (log != null)
+                {
+                    r.register(new RecipePlanks(log, planks));
+                }
+            }
+
+
+
 
             if (suit.getTierMap().get(1) != null)
             {

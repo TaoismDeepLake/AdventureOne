@@ -100,7 +100,7 @@ public class ItemSpaceAnchor extends ItemBase {
         super.addInformation(stack, world, tooltip, flag);
 
         //tooltip.add(I18n.format("idlframewok.gua_enhance_total.desc", IDLSkillNBT.GetGuaEnhanceTotal(stack)));
-        tooltip.add(IDLNBTUtil.getNBT(stack).toString());
+        tooltip.add(IDLNBTUtil.getNBTReadOnly(stack).toString());
     }
 //    @Override
 //    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {

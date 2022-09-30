@@ -10,7 +10,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Objects;
 
-public class RecipeArmorHelm extends ShapedRecipes {
+public class RecipeArmorHelm extends RecipeShapedHasQuality {
 
     public RecipeArmorHelm(Item gem, Item result) {
         super(CraftUtil.SUIT, 3, 2, NonNullList.create(), new ItemStack(result));

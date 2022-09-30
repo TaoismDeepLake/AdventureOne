@@ -388,4 +388,14 @@ public class CommonFunctions {
         result.setCount(count);
         return result;
     }
+
+    public static int fromRandomFloat(double value, Random random)
+    {
+        double round = (int)value;
+        if (random.nextFloat() < (value - round))
+        {
+            return (int) (round + 1);
+        }
+        return (int) round;
+    }
 }

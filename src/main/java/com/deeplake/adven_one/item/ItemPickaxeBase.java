@@ -120,7 +120,7 @@ public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
 
 		if (logNBT)
 		{
-			tooltip.add(IDLNBTUtil.getNBT(stack).toString());
+			tooltip.add(IDLNBTUtil.getNBTReadOnly(stack).toString());
 		}
 	}
 

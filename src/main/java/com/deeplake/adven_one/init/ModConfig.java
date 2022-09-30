@@ -59,9 +59,8 @@ public class ModConfig {
 
     public static final TierConf TIER_CONF = new TierConf();
 
-
     public static class TierConf {
-        public static final TierConf MELEE_CONF = new TierConf();
+        //public static final TierConf MELEE_CONF = new TierConf();
 
         @Config.RangeDouble(min = 0f)
         public double SWORD_ATK_T1 = 4;
@@ -79,9 +78,28 @@ public class ModConfig {
         public double SKY_BARRIER_REQ_BIOME = 2;
 
         public final MobAttrConf NORMAL_MOB = new MobAttrConf();
+        public final EquipAttrConf EQUIP_ATTR_1 = new EquipAttrConf();
+        public final EquipAttrConf EQUIP_ATTR_2 = new EquipAttrConf();
+        public final EquipAttrConf EQUIP_ATTR_3 = new EquipAttrConf();
+        public final EquipAttrConf EQUIP_ATTR_4 = new EquipAttrConf();
 
+        @Config.Ignore()
+        public final EquipAttrConf[] EQUIP_ATTR_CONF = new EquipAttrConf[4];
+        {
+            EQUIP_ATTR_CONF[0] = EQUIP_ATTR_1;
+            EQUIP_ATTR_CONF[1] = EQUIP_ATTR_2;
+            EQUIP_ATTR_CONF[2] = EQUIP_ATTR_3;
+            EQUIP_ATTR_CONF[3] = EQUIP_ATTR_4;
+        }
     }
 
+    public static class EquipAttrConf {
+        @Config.RangeDouble(min = 0f)
+        public double MIN_GEM_QUALITY = 0.5f;
+
+        @Config.RangeDouble(min = 0f)
+        public double DELTA_GEM_QUALITY = 1f;
+    }
     public static class MobAttrConf {
         @Config.RangeDouble(min = 1f)
         public double HP_BASE = 20;

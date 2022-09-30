@@ -12,7 +12,7 @@ import java.util.Objects;
 
 import static com.deeplake.adven_one.util.CraftUtil.SUIT;
 
-public class RecipeSword2 extends ShapedRecipes {
+public class RecipeSword2 extends RecipeShapedHasQuality {
 
     public RecipeSword2(Item gem, Item result, Item dirt) {
         super(SUIT, 3, 3, NonNullList.create(), new ItemStack(result));

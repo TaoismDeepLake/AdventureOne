@@ -6,23 +6,38 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
 public interface IHasQuality {
-    public default boolean needFirstTick(ItemStack stack)
+    default boolean needFirstTick(ItemStack stack)
     {
         return IDLNBTUtil.GetBoolean(stack, IDLNBTDef.NEED_FIRST_TICK, true);
     }
 
-    public default void finishFirstTick(ItemStack stack)
+    default boolean setNeedFirstTick(ItemStack stack)
+    {
+        return IDLNBTUtil.SetBoolean(stack, IDLNBTDef.NEED_FIRST_TICK, true);
+    }
+
+    default boolean canIdentify(ItemStack stack)
+    {
+        return false;
+    }
+
+    default void finishFirstTick(ItemStack stack)
     {
         IDLNBTUtil.SetBoolean(stack, IDLNBTDef.NEED_FIRST_TICK, false);
     }
 
-    public default void setQuality(ItemStack stack, double value)
+    default void setQuality(ItemStack stack, double value)
     {
         IDLNBTUtil.SetDouble(stack, IDLNBTDef.QUALITY, value);
         finishFirstTick(stack);
     }
 
-    public default double getQuality(ItemStack stack)
+    default double getQuality(ItemStack stack)
+    {
+        return IDLNBTUtil.GetDouble(stack, IDLNBTDef.QUALITY, 1f);
+    }
+
+    default double getRandomQuality(ItemStack stack)
     {
         return IDLNBTUtil.GetDouble(stack, IDLNBTDef.QUALITY, 1f);
     }
