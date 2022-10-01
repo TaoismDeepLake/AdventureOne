@@ -289,6 +289,11 @@ public class IDLNBTDef {
 
 	public static final String KEY_NOT_NEW_PLAYER = "not_newbie";//first login
 
+	//Modifiers
+	public static final String KEY_MODIFIER_SEQ = "modf_seq";//first login
+
+
+
 	public enum SPAWNER_TYPE{
 		NONE,
 		ZOMBIE_BABY,

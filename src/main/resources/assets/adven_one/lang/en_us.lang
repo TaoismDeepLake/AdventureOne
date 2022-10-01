@@ -55,6 +55,7 @@ adven_one.wood_fence=%s Wood Fence
 #
 attribute.name.adven_one.attr.def_tier=Defense Tier
 attribute.name.adven_one.attr.atk_tier=Attack Tier
+attribute.name.adven_one.attr.effeciency=Efficiency
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.

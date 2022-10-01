@@ -1,5 +1,6 @@
 package com.deeplake.adven_one.init;
 
+import com.deeplake.adven_one.item.suit.modifiers.Modifier;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -100,6 +101,41 @@ public class ModConfig {
         @Config.RangeDouble(min = 0f)
         public double DELTA_GEM_QUALITY = 1f;
     }
+
+    public static class ModifierConf {
+        public ModifierConfGroup ATK_FIXED_GROUP = new ModifierConfGroup();
+        public ModifierConfGroup HP_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
+        public ModifierConfGroup EFFECIENCY_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
+    }
+
+    public static class ModifierConfGroup {
+        public ModifierConfGroup(double VALUE_A, double VALUE_B, double VALUE_C, double VALUE_D, double VALUE_E) {
+            this.VALUE_A = VALUE_A;
+            this.VALUE_B = VALUE_B;
+            this.VALUE_C = VALUE_C;
+            this.VALUE_D = VALUE_D;
+            this.VALUE_E = VALUE_E;
+        }
+
+        public ModifierConfGroup() {
+        }
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_A = 2f;
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_B = 1.5f;
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_C = 1f;
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_D = 0.5f;
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_E = 0.3f;
+    }
+
     public static class MobAttrConf {
         @Config.RangeDouble(min = 1f)
         public double HP_BASE = 20;

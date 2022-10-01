@@ -4,14 +4,17 @@ import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemBase;
+import com.deeplake.adven_one.item.suit.modifiers.Modifier;
+import com.deeplake.adven_one.item.suit.modifiers.ModifierList;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.HashMap;
 import java.util.Random;
 
-public class ItemGemSuit extends ItemBase implements IHasQuality {
+public class ItemGemSuit extends ItemBase implements IHasQuality, IHasModifers {
     static final String NAME = "gem";
     final SetTier tier;
     public ItemGemSuit(SetTier tier) {
@@ -28,13 +31,25 @@ public class ItemGemSuit extends ItemBase implements IHasQuality {
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
-        if (!worldIn.isRemote && stack.hasTagCompound())
+        if (!worldIn.isRemote && !canIdentify(stack))
         {
             if (needFirstTick(stack))
             {
                 setQuality(stack, getRandomQuality(itemRand));
+                storeAllToNBT(stack, getRandomModifierList(itemRand));
             }
         }
+    }
+
+    public HashMap<Modifier, Integer> getRandomModifierList(Random random)
+    {
+        HashMap<Modifier, Integer> result = new HashMap<>();
+
+        int level = 1 + random.nextInt(3);//test level
+        Modifier modifier = Modifier.values()[random.nextInt(Modifier.values().length)];
+        result.put(modifier, modifier.getClampedLevel(level));
+
+        return result;
     }
 
     public double getRandomQuality(Random random)
