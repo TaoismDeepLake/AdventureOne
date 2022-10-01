@@ -73,6 +73,11 @@ public interface IHasModifers extends IHasInit{
 
                 Modifier modifier = ModifierList.getFromID(id);
 
+                if (modifier == Modifier.BLANK)
+                {
+                    continue;
+                }
+
                 if (!attrMap.containsKey(modifier))
                 {
                     attrMap.put(modifier, level);

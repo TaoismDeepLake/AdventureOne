@@ -59,6 +59,11 @@ attribute.name.adven_one.attr.effeciency=Efficiency
 
 adven_one.desc.modifier=%s Lv.%d
 
+adven_one.modifiers.blank.name=§oNone
+adven_one.modifiers.atk_up.name=ATK+
+adven_one.modifiers.hp_up.name=HP+
+adven_one.modifiers.hardness.name=Hardness
+
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.
 adven_one.vocal.boss.steve.death=[Steve] If there is hope, there is rebirth...

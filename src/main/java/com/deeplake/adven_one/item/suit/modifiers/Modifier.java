@@ -26,17 +26,14 @@ public enum Modifier {
     final HashSet<EnumGeartype> applicable = new HashSet<>();
 
     Modifier(int id, String name) {
-        this.id = id;
-        this.name = name;
-        maxLv = 1;
-
-        ID_TO_ENUM.put(id, this);
+        this(id, name, 1);
     }
 
     Modifier(int id, String name, int maxLv) {
         this.id = id;
         this.name = name;
         this.maxLv = maxLv;
+        ID_TO_ENUM.put(id, this);
     }
 
     public void addGearTypes(EnumGeartype... gearTypes)
