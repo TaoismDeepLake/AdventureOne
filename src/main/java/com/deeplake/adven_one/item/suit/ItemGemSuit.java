@@ -6,7 +6,6 @@ import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemBase;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -40,13 +39,13 @@ public class ItemGemSuit extends ItemBase implements IHasQuality {
 
     public double getRandomQuality(Random random)
     {
-        ModConfig.EquipAttrConf conf;
+        ModConfig.TierQualityConf conf;
         try {
-            conf = ModConfig.TIER_CONF.EQUIP_ATTR_CONF[tier.getTier()-1];
+            conf = ModConfig.TIER_CONF.TIER_QUALITY_CONF[tier.getTier()-1];
         }
         catch (ArrayIndexOutOfBoundsException e)
         {
-            conf = ModConfig.TIER_CONF.EQUIP_ATTR_CONF[0];
+            conf = ModConfig.TIER_CONF.TIER_QUALITY_CONF[0];
         }
 
         if (conf == null)
@@ -60,5 +59,14 @@ public class ItemGemSuit extends ItemBase implements IHasQuality {
     @Override
     public boolean canIdentify(ItemStack stack) {
         return !stack.hasTagCompound();
+    }
+
+    @Override
+    public double getQuality(ItemStack stack) {
+        if (canIdentify(stack))
+        {
+            return ModConfig.TIER_CONF.UNIDENTIFIED_QUALITY;
+        }
+        return IHasQuality.super.getQuality(stack);
     }
 }

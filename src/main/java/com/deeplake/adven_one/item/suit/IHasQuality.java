@@ -5,26 +5,7 @@ import com.deeplake.adven_one.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public interface IHasQuality {
-    default boolean needFirstTick(ItemStack stack)
-    {
-        return IDLNBTUtil.GetBoolean(stack, IDLNBTDef.NEED_FIRST_TICK, true);
-    }
-
-    default boolean setNeedFirstTick(ItemStack stack)
-    {
-        return IDLNBTUtil.SetBoolean(stack, IDLNBTDef.NEED_FIRST_TICK, true);
-    }
-
-    default boolean canIdentify(ItemStack stack)
-    {
-        return false;
-    }
-
-    default void finishFirstTick(ItemStack stack)
-    {
-        IDLNBTUtil.SetBoolean(stack, IDLNBTDef.NEED_FIRST_TICK, false);
-    }
+public interface IHasQuality extends IHasInit {
 
     default void setQuality(ItemStack stack, double value)
     {

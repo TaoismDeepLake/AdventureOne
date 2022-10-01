@@ -28,11 +28,6 @@ public class ModConfig {
     public static final GeneralConf GeneralConf = new GeneralConf();
 
     public static class GeneralConf {
-//        @Config.LangKey("idlframewok.conf.general.welcome")
-//        @Config.Comment("The text shown when a player logs in. Can be a key or a string.")
-//        public String WELCOME_MSG = "idlframewok.msg.welcome";
-
-
     }
 
     @Config.LangKey("configgui.idlframewok.category.Menu0.DebugConf")
@@ -78,22 +73,27 @@ public class ModConfig {
         public double SKY_BARRIER_REQ_BIOME = 2;
 
         public final MobAttrConf NORMAL_MOB = new MobAttrConf();
-        public final EquipAttrConf EQUIP_ATTR_1 = new EquipAttrConf();
-        public final EquipAttrConf EQUIP_ATTR_2 = new EquipAttrConf();
-        public final EquipAttrConf EQUIP_ATTR_3 = new EquipAttrConf();
-        public final EquipAttrConf EQUIP_ATTR_4 = new EquipAttrConf();
 
+        //Crafting
+        public final TierQualityConf TIER_QUALITY_1 = new TierQualityConf();
+        public final TierQualityConf TIER_QUALITY_2 = new TierQualityConf();
+        public final TierQualityConf TIER_QUALITY_3 = new TierQualityConf();
+        public final TierQualityConf TIER_QUALITY_4 = new TierQualityConf();
+
+        @Config.RangeDouble(min = 0f)
+        public double UNIDENTIFIED_QUALITY = 0.45f;
         @Config.Ignore()
-        public final EquipAttrConf[] EQUIP_ATTR_CONF = new EquipAttrConf[4];
+        public final TierQualityConf[] TIER_QUALITY_CONF = new TierQualityConf[4];
         {
-            EQUIP_ATTR_CONF[0] = EQUIP_ATTR_1;
-            EQUIP_ATTR_CONF[1] = EQUIP_ATTR_2;
-            EQUIP_ATTR_CONF[2] = EQUIP_ATTR_3;
-            EQUIP_ATTR_CONF[3] = EQUIP_ATTR_4;
+            TIER_QUALITY_CONF[0] = TIER_QUALITY_1;
+            TIER_QUALITY_CONF[1] = TIER_QUALITY_2;
+            TIER_QUALITY_CONF[2] = TIER_QUALITY_3;
+            TIER_QUALITY_CONF[3] = TIER_QUALITY_4;
         }
     }
 
-    public static class EquipAttrConf {
+    public static class TierQualityConf {
+
         @Config.RangeDouble(min = 0f)
         public double MIN_GEM_QUALITY = 0.5f;
 
