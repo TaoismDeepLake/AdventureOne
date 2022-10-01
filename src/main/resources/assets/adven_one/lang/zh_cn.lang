@@ -62,7 +62,7 @@ adven_one.desc.modifier=§b%s %d级
 adven_one.modifiers.blank.name=§o§7（无）
 adven_one.modifiers.atk_up.name=攻击
 adven_one.modifiers.hp_up.name=生命
-adven_one.modifiers.hardness.name=坚固
+adven_one.modifiers.hardness.name=坚硬
 adven_one.modifiers.efficiency_up.name=效率
 
 #Vocal
