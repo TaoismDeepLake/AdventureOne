@@ -57,7 +57,7 @@ attribute.name.adven_one.attr.def_tier=Defense Tier
 attribute.name.adven_one.attr.atk_tier=Attack Tier
 attribute.name.adven_one.attr.effeciency=Efficiency
 
-adven_one.desc.modifier=%s Lv.%d
+adven_one.desc.modifier=§9%s Lv.%d
 
 adven_one.modifiers.blank.name=§oNone
 adven_one.modifiers.atk_up.name=ATK+

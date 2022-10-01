@@ -57,7 +57,7 @@ attribute.name.adven_one.attr.def_tier=防御阶级
 attribute.name.adven_one.attr.atk_tier=攻击阶级
 attribute.name.adven_one.attr.effeciency=挖掘效率
 
-adven_one.desc.modifier=%s %d级
+adven_one.desc.modifier=§9%s %d级
 
 adven_one.modifiers.blank.name=§o（无）
 adven_one.modifiers.atk_up.name=攻击+
