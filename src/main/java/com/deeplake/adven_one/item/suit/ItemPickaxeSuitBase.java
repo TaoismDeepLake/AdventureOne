@@ -23,7 +23,7 @@ import java.util.UUID;
 
 import static com.deeplake.adven_one.item.suit.ItemSwordSuitBase.NAME_IN;
 
-public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality{
+public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality, IHasModifers{
     protected static final UUID EFFCIENCY_MODIFIER = UUID.fromString("0468b7eb-3fb0-a205-2e07-fbb2c7759863");
 
     public ItemPickaxeSuitBase(SetTier tier) {

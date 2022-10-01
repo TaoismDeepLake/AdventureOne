@@ -57,6 +57,8 @@ attribute.name.adven_one.attr.def_tier=Defense Tier
 attribute.name.adven_one.attr.atk_tier=Attack Tier
 attribute.name.adven_one.attr.effeciency=Efficiency
 
+adven_one.desc.modifier=%s Lv.%d
+
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.
 adven_one.vocal.boss.steve.death=[Steve] If there is hope, there is rebirth...

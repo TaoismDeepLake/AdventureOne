@@ -1,7 +1,10 @@
 package com.deeplake.adven_one.item.suit.modifiers;
 
+import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 import static com.deeplake.adven_one.item.suit.modifiers.ModifierList.ID_TO_ENUM;
@@ -18,7 +21,9 @@ public enum Modifier {
     final String name;
     final int maxLv;
 
-    HashSet<EnumGeartype> applicable = new HashSet<>();
+    static final String NAME_KEY = Idealland.MODID + ".modifiers.%s.name";
+
+    final HashSet<EnumGeartype> applicable = new HashSet<>();
 
     Modifier(int id, String name) {
         this.id = id;
@@ -36,18 +41,12 @@ public enum Modifier {
 
     public void addGearTypes(EnumGeartype... gearTypes)
     {
-        for (EnumGeartype type : gearTypes)
-        {
-            applicable.add(type);
-        }
+        Collections.addAll(applicable, gearTypes);
     }
 
     public void addGearTypesAll()
     {
-        for (EnumGeartype type : EnumGeartype.values())
-        {
-            applicable.add(type);
-        }
+        applicable.addAll(Arrays.asList(EnumGeartype.values()));
     }
 
     public void addGearTypesAllArmor()
@@ -55,7 +54,7 @@ public enum Modifier {
         for (EnumGeartype type : EnumGeartype.values())
         {
             if (type.isArmor())
-            applicable.add(type);
+                applicable.add(type);
         }
     }
 
@@ -78,11 +77,12 @@ public enum Modifier {
             return 0;
         }
 
-        if (rawLevel > maxLv)
-        {
-            return maxLv;
-        }
+        return Math.min(rawLevel, maxLv);
 
-        return rawLevel;
+    }
+
+    public String getLangKey()
+    {
+        return String.format(NAME_KEY, name);
     }
 }

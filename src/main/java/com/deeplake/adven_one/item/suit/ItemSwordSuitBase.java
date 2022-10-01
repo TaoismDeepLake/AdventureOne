@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import java.util.Random;
 import java.util.UUID;
 
-public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality {
+public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHasModifers {
     //    public ItemSwordSuitBase(String name, ToolMaterial material) {
 //        super(name, material);
 //    }

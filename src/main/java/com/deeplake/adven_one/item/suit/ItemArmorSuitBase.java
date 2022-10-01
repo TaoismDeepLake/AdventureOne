@@ -20,11 +20,8 @@ import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Random;
 
-public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality{
+public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHasModifers{
     public static final String NAME_IN = "Armor modifier";
-    //    public ItemArmorSuitBase(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
-//        super(name, materialIn, renderIndexIn, equipmentSlotIn);
-//    }
 
     public ItemArmorSuitBase(SetTier tier, EntityEquipmentSlot equipmentSlotIn) {
         super(getName(tier, equipmentSlotIn), tier.getArmorMaterial(), 0, equipmentSlotIn);
