@@ -29,8 +29,6 @@ public class SuitRecipesInit {
                 continue;
             }
 
-            Item result;
-
             Item dirt = Item.getItemFromBlock(suit.getDirt());
 
             //stone block
@@ -44,95 +42,119 @@ public class SuitRecipesInit {
             Item woodStairs = Item.getItemFromBlock(suit.getWoodStairs());
             Item woodFence = Item.getItemFromBlock(suit.getWoodFence());
 
-            if (planks != null && planks != Items.AIR)
+            registerBuildingBlocks(r, stone, stoneStairs, stoneWall, log, planks, woodStairs, woodFence);
+
+            registerT1SpecialGear(r, suit, dirt, planks);
+
+            registerGeneralTierGear(r, suit);
+        }
+
+    }
+
+    private static void registerBuildingBlocks(IForgeRegistry<IRecipe> r, Item stone, Item stoneStairs, Item stoneWall, Item log, Item planks, Item woodStairs, Item woodFence) {
+        if (isValid(planks))
+        {
+            r.register(new RecipeDoor(planks, Items.OAK_DOOR));
+            if (isValid(woodFence))
             {
-                r.register(new RecipeDoor(planks, Items.OAK_DOOR));
-                if (woodFence != null)
-                {
-                    r.register(new RecipeWoodFence(planks, woodFence));
-                }
-                if (woodStairs != null)
-                {
-                    r.register(new RecipeStairs(planks, woodStairs));
-                }
-                if (log != null)
-                {
-                    r.register(new RecipePlanks(log, planks));
-                }
+                r.register(new RecipeWoodFence(planks, woodFence));
             }
-
-            if (stone != null && stone != Items.AIR)
+            if (isValid(woodStairs))
             {
-                r.register(new RecipeStairs(stone, stoneStairs));
-                r.register(new RecipeStoneWall(stone, stoneWall));
+                r.register(new RecipeStairs(planks, woodStairs));
             }
-
-            if (suit.getTierMap().get(1) != null)
+            if (isValid(log))
             {
-                result = suit.getTierMap().get(1).getSword();
-                if (result != null)
-                {
-                    r.register(new RecipeSword2(planks, result, dirt));
-                }
-
-                result = suit.getTierMap().get(1).getPick();
-                if (result != null)
-                {
-                    //todo : not working
-                    r.register(new RecipePickaxeT1(planks, result, dirt));
-                }
-            }
-
-            for (SetTier setTier : suit.getTierMap().values())
-            {
-                Item gem = setTier.getGem();
-
-                if (gem != null)
-                {
-                    result = setTier.getPick();
-                    if (result != null)
-                    {
-                        r.register(new RecipePickaxe(gem, result));
-                    }
-
-                    result = setTier.getSword();
-                    if (result != null)
-                    {
-                        r.register(new RecipeSword(gem, result));
-                    }
-
-                    result = setTier.getHead();
-                    if (result != null)
-                    {
-                        r.register(new RecipeArmorHelm(gem, result));
-                    }
-
-                    result = setTier.getChest();
-                    if (result != null)
-                    {
-                        r.register(new RecipeArmorChest(gem, result));
-                    }
-
-                    result = setTier.getLeg();
-                    if (result != null)
-                    {
-                        r.register(new RecipeArmorPants(gem, result));
-                    }
-
-                    result = setTier.getFeet();
-                    if (result != null)
-                    {
-                        r.register(new RecipeArmorShoes(gem, result));
-                    }
-
-                    result = Item.getItemFromBlock(setTier.getGemBlock());
-                    if (result != null)
-                    {
-                        r.register(new RecipeGemBlock(gem, result));
-                    }
-                }
+                r.register(new RecipePlanks(log, planks));
             }
         }
 
+        if (isValid(stone))
+        {
+            if (isValid(stoneStairs))
+            {
+                r.register(new RecipeStairs(stone, stoneStairs));
+            }
+
+            if (isValid(stoneWall))
+            {
+                r.register(new RecipeStoneWall(stone, stoneWall));
+            }
+        }
+    }
+
+    private static void registerT1SpecialGear(IForgeRegistry<IRecipe> r, EnumSuit suit, Item dirt, Item planks) {
+        Item result;
+        if (suit.getTierMap().get(1) != null)
+        {
+            result = suit.getTierMap().get(1).getSword();
+            if (isValid(result))
+            {
+                r.register(new RecipeSword2(planks, result, dirt));
+            }
+
+            result = suit.getTierMap().get(1).getPick();
+            if (isValid(result))
+            {
+                r.register(new RecipePickaxeT1(planks, result, dirt));
+            }
+        }
+    }
+
+    private static void registerGeneralTierGear(IForgeRegistry<IRecipe> r, EnumSuit suit) {
+        Item result;
+        for (SetTier setTier : suit.getTierMap().values())
+        {
+            Item gem = setTier.getGem();
+
+            if (isValid(gem))
+            {
+                result = setTier.getPick();
+                if (isValid(result))
+                {
+                    r.register(new RecipePickaxe(gem, result));
+                }
+
+                result = setTier.getSword();
+                if (isValid(result))
+                {
+                    r.register(new RecipeSword(gem, result));
+                }
+
+                result = setTier.getHead();
+                if (isValid(result))
+                {
+                    r.register(new RecipeArmorHelm(gem, result));
+                }
+
+                result = setTier.getChest();
+                if (isValid(result))
+                {
+                    r.register(new RecipeArmorChest(gem, result));
+                }
+
+                result = setTier.getLeg();
+                if (isValid(result))
+                {
+                    r.register(new RecipeArmorPants(gem, result));
+                }
+
+                result = setTier.getFeet();
+                if (isValid(result))
+                {
+                    r.register(new RecipeArmorShoes(gem, result));
+                }
+
+                result = Item.getItemFromBlock(setTier.getGemBlock());
+                if (isValid(result))
+                {
+                    r.register(new RecipeGemBlock(gem, result));
+                }
+            }
+        }
+    }
+
+    private static boolean isValid(Item planks) {
+        return planks != null && planks != Items.AIR;
     }
 }
