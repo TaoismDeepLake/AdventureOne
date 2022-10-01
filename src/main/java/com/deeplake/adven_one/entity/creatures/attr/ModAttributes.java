@@ -24,7 +24,7 @@ public class ModAttributes {
 
     public static final IAttribute DEF_TIER = getNewAttrNonpercent("def_tier");
     public static final IAttribute ATK_TIER = getNewAttrNonpercent("atk_tier");
-    public static final IAttribute EFFECIENCY = getNewAttrNonpercent("effeciency");
+    public static final IAttribute EFFECIENCY = getNewAttrNonpercent("efficiency");
 
     @SubscribeEvent
     public static void onConstruct(EntityEvent.EntityConstructing entityConstructing)

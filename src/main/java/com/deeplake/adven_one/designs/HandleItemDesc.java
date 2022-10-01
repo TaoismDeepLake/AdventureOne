@@ -1,7 +1,7 @@
 package com.deeplake.adven_one.designs;
 
 import com.deeplake.adven_one.Idealland;
-import com.deeplake.adven_one.item.suit.IHasModifers;
+import com.deeplake.adven_one.item.suit.IHasModifiers;
 import com.deeplake.adven_one.item.suit.IHasQuality;
 import com.deeplake.adven_one.item.suit.modifiers.Modifier;
 import net.minecraft.client.resources.I18n;
@@ -38,14 +38,14 @@ public class HandleItemDesc {
             }
         }
 
-        if (stack.getItem() instanceof IHasModifers) {
-            IHasModifers iHasModifers = (IHasModifers) stack.getItem();
-            if (iHasModifers.needFirstTick(stack)) {
+        if (stack.getItem() instanceof IHasModifiers) {
+            IHasModifiers iHasModifiers = (IHasModifiers) stack.getItem();
+            if (iHasModifiers.needFirstTick(stack)) {
                 //event.getToolTip().add(I18n.format("adven_one.shared.quality_random"));
             }
             else
             {
-                HashMap<Modifier, Integer> map = iHasModifers.getAllFromNBT(stack);
+                HashMap<Modifier, Integer> map = iHasModifiers.getAllFromNBT(stack);
                 for (Modifier modifier : map.keySet())
                 {
                     if (modifier.getMaxLv() == 1)

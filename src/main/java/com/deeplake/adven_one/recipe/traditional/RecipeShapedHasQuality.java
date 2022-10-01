@@ -1,8 +1,10 @@
 package com.deeplake.adven_one.recipe.traditional;
 
-import com.deeplake.adven_one.item.suit.IHasModifers;
+import com.deeplake.adven_one.item.suit.IHasModifiers;
 import com.deeplake.adven_one.item.suit.IHasQuality;
+import com.deeplake.adven_one.item.suit.modifiers.IHasType;
 import com.deeplake.adven_one.item.suit.modifiers.Modifier;
+import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -10,7 +12,6 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.util.NonNullList;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public class RecipeShapedHasQuality extends ShapedRecipes {
     public RecipeShapedHasQuality(String group, int width, int height, NonNullList<Ingredient> ingredients, ItemStack result) {
@@ -23,6 +24,8 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
         int count = 0;
 
         HashMap<Modifier, Integer> resultMap = new HashMap<>();
+
+        ItemStack rawResult = super.getCraftingResult(inv);
 
         for(int i = 0; i < inv.getSizeInventory(); i++) {
             ItemStack stack = inv.getStackInSlot(i);
@@ -43,36 +46,46 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
                     }
                 }
 
-                if (stack.getItem() instanceof IHasModifers)
+                if (stack.getItem() instanceof IHasModifiers)
                 {
-                    IHasModifers iHasModifers = (IHasModifers) stack.getItem();
-                    HashMap<Modifier, Integer> tempMap = iHasModifers.getAllFromNBT(stack);
+                    IHasModifiers iHasModifiers = (IHasModifiers) stack.getItem();
+                    HashMap<Modifier, Integer> tempMap = iHasModifiers.getAllFromNBT(stack);
+
+                    EnumGeartype enumGeartype = EnumGeartype.ALL;
+                    if (rawResult.getItem() instanceof IHasType)
+                    {
+                        enumGeartype = ((IHasType) rawResult.getItem()).getType(rawResult);
+                    }
+
                     for (Modifier modifier : tempMap.keySet())
                     {
-                        int newLevel = tempMap.get(modifier);
-                        if (resultMap.containsKey(modifier))
+                        if (modifier.isApplicable(enumGeartype))
                         {
-                            int oldLevel = resultMap.get(modifier);
-                            resultMap.replace(modifier, oldLevel + newLevel);//todo: come up with a better algorithm
-                        } else {
-                            resultMap.put(modifier, newLevel);
+                            //todo: modifiers count limit
+                            int newLevel = tempMap.get(modifier);
+                            if (resultMap.containsKey(modifier))
+                            {
+                                int oldLevel = resultMap.get(modifier);
+                                resultMap.replace(modifier, oldLevel + newLevel);//todo: come up with a better algorithm
+                            } else {
+                                resultMap.put(modifier, newLevel);
+                            }
                         }
                     }
                 }
             }
         }
 
-        ItemStack rawResult = super.getCraftingResult(inv);
         if (rawResult.getItem() instanceof IHasQuality && count > 0)
         {
             IHasQuality iHasQuality = (IHasQuality) rawResult.getItem();
             iHasQuality.setQuality(rawResult, sumQuality/count);
         }
 
-        if (rawResult.getItem() instanceof IHasModifers && resultMap.keySet().size() > 0)
+        if (rawResult.getItem() instanceof IHasModifiers && resultMap.keySet().size() > 0)
         {
-            IHasModifers iHasModifers = (IHasModifers) rawResult.getItem();
-            iHasModifers.storeAllToNBT(rawResult, resultMap);
+            IHasModifiers iHasModifiers = (IHasModifiers) rawResult.getItem();
+            iHasModifiers.storeAllToNBT(rawResult, resultMap);
         }
 
         return rawResult;

@@ -102,10 +102,11 @@ public class ModConfig {
         public double DELTA_GEM_QUALITY = 1f;
     }
 
+    public static final ModifierConf MODIFIER_CONF = new ModifierConf();
     public static class ModifierConf {
         public ModifierConfGroup ATK_FIXED_GROUP = new ModifierConfGroup();
         public ModifierConfGroup HP_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
-        public ModifierConfGroup EFFECIENCY_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
+        public ModifierConfGroup EFFECIENCY_FIXED_GROUP = new ModifierConfGroup(1,0.8,0.5,0.3,0.2);
     }
 
     public static class ModifierConfGroup {

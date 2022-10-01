@@ -5,7 +5,6 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemBase;
 import com.deeplake.adven_one.item.suit.modifiers.Modifier;
-import com.deeplake.adven_one.item.suit.modifiers.ModifierList;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -14,7 +13,7 @@ import net.minecraft.world.World;
 import java.util.HashMap;
 import java.util.Random;
 
-public class ItemGemSuit extends ItemBase implements IHasQuality, IHasModifers {
+public class ItemGemSuit extends ItemBase implements IHasQuality, IHasModifiers {
     static final String NAME = "gem";
     final SetTier tier;
     public ItemGemSuit(SetTier tier) {

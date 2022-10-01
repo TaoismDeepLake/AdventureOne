@@ -55,14 +55,15 @@ adven_one.wood_fence=%s Wood Fence
 #
 attribute.name.adven_one.attr.def_tier=Defense Tier
 attribute.name.adven_one.attr.atk_tier=Attack Tier
-attribute.name.adven_one.attr.effeciency=Efficiency
+attribute.name.adven_one.attr.efficiency=Efficiency
 
 adven_one.desc.modifier=§9%s Lv.%d
 
-adven_one.modifiers.blank.name=§oNone
-adven_one.modifiers.atk_up.name=ATK+
-adven_one.modifiers.hp_up.name=HP+
+adven_one.modifiers.blank.name=§o§7None
+adven_one.modifiers.atk_up.name=ATK
+adven_one.modifiers.hp_up.name=HP
 adven_one.modifiers.hardness.name=Hardness
+adven_one.modifiers.efficiency_up.name=Efficient
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.

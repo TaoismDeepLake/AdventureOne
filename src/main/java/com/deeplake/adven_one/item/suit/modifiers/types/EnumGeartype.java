@@ -3,6 +3,7 @@ package com.deeplake.adven_one.item.suit.modifiers.types;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
 public enum EnumGeartype {
+    ALL(true,true,true,true,true,true),
     SWORD(false, true,false,false,false,false),
     PICKAXE(true, false,false,false,false,false),
     ARMOR_HELMET(false, false,false,false,false,true),

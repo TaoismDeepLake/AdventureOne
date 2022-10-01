@@ -15,7 +15,8 @@ public enum Modifier {
     BLANK(0, "blank"),
     ATK_UP(1, "atk_up", MAX_LV),
     HP_UP(2, "hp_up", MAX_LV),
-    HARDNESS(3, "hardness", MAX_LV);
+    HARDNESS(3, "hardness", MAX_LV),
+    EFFICIENCY_UP(4, "efficiency_up", MAX_LV);
 
     final int id;
     final String name;

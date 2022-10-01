@@ -6,11 +6,10 @@ import com.deeplake.adven_one.item.suit.modifiers.ModifierList;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.event.RenderLivingEvent;
 
 import java.util.*;
 
-public interface IHasModifers extends IHasInit{
+public interface IHasModifiers extends IHasInit{
     int SHIFTER = 1000;
     default void setModifierLevel(ItemStack stack, Modifier modifier, int level)
     {

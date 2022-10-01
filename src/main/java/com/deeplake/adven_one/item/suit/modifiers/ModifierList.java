@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.item.suit.modifiers;
 
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.HashMap;
 
@@ -9,12 +10,13 @@ public class ModifierList {
 
     public static final int MAX_LV = 99;
 
-    {
+    public static void initModifier() {
         //Init modifier gear types
         Modifier.BLANK.addGearTypesAll();
-        Modifier.ATK_UP.addGearTypes(EnumGeartype.SWORD);
+        Modifier.ATK_UP.addGearTypes(EnumGeartype.SWORD, EnumGeartype.PICKAXE);
         Modifier.HP_UP.addGearTypesAllArmor();
         Modifier.HARDNESS.addGearTypesAll();
+        Modifier.EFFICIENCY_UP.addGearTypes(EnumGeartype.PICKAXE);
     }
 
     public static Modifier getFromID(int id)
