@@ -1,16 +1,10 @@
 package com.deeplake.adven_one.util;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-import javax.annotation.Nullable;
-
-import com.deeplake.adven_one.entity.creatures.ICustomFaction;
-import com.google.common.base.Predicate;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.entity.creatures.EntityModUnit;
+import com.deeplake.adven_one.entity.creatures.ICustomFaction;
 import com.deeplake.adven_one.meta.MetaUtil;
+import com.google.common.base.Predicate;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,6 +28,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+
+import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class EntityUtil {
@@ -489,6 +489,29 @@ public class EntityUtil {
             return 0;
         }
         return attribute.getBaseValue();
+    }
+
+    public static boolean boostAttrOverride(EntityLivingBase creature, IAttribute attrType, float amountFixed, UUID uuid)
+    {
+        float val = amountFixed;
+        IAttributeInstance attribute = creature.getEntityAttribute(attrType);
+
+        if (attribute == null)
+        {
+            //this happens on creatures with no attack.
+            //will surely happen.
+            return false;
+        }
+
+        AttributeModifier modifier = attribute.getModifier(uuid);
+        String NAME_IN = "booster";
+        if (modifier != null)
+        {
+            NAME_IN = modifier.getName();
+            attribute.removeModifier(modifier);
+        }
+        attribute.applyModifier(new AttributeModifier(uuid, NAME_IN,  val, 0));
+        return true;
     }
 
     public static boolean boostAttr(EntityLivingBase creature, IAttribute attrType, float amountFixed, UUID uuid)

@@ -24,9 +24,13 @@ public class ModConfig {
     }
 
     @Config.Comment("IdlFramework general config.")
-    public static final GeneralConf GeneralConf = new GeneralConf();
+    public static final GeneralConf GENERAL_CONF = new GeneralConf();
 
     public static class GeneralConf {
+        public int INIT_COST = 20;
+        public int ADVANCEMENT_COST = 1;
+        public int ADVANCEMENT_COST_GOAL = 2;
+        public int ADVANCEMENT_COST_CHALL = 5;
     }
 
     @Config.Comment("Config for developers")
@@ -87,6 +91,53 @@ public class ModConfig {
             TIER_QUALITY_CONF[1] = TIER_QUALITY_2;
             TIER_QUALITY_CONF[2] = TIER_QUALITY_3;
             TIER_QUALITY_CONF[3] = TIER_QUALITY_4;
+        }
+
+        public final CostConfigByTier COST_TIER_1 =
+                 new CostConfigByTier(20,20,30,50,40,30);
+        public final CostConfigByTier COST_TIER_2 =
+                 new CostConfigByTier(3,COST_TIER_1);
+        public final CostConfigByTier COST_TIER_3 =
+                 new CostConfigByTier(9,COST_TIER_1);
+        public final CostConfigByTier COST_TIER_4 =
+                 new CostConfigByTier(27,COST_TIER_1);
+
+        @Config.Ignore()
+        public final CostConfigByTier[] COST_TIER = new CostConfigByTier[4];
+        {
+            COST_TIER[0] = COST_TIER_1;
+            COST_TIER[1] = COST_TIER_2;
+            COST_TIER[2] = COST_TIER_3;
+            COST_TIER[3] = COST_TIER_4;
+        }
+    }
+
+    public static class CostConfigByTier{
+        //all actual cost is multiplied by this.
+        @Config.RangeInt(min = 0) public int FACTOR;
+        @Config.RangeInt(min = 0) public int SWORD_COST;
+        @Config.RangeInt(min = 0) public int PICK_COST;
+        @Config.RangeInt(min = 0) public int HEAD_COST;
+        @Config.RangeInt(min = 0) public int CHEST_COST;
+        @Config.RangeInt(min = 0) public int LEG_COST;
+        @Config.RangeInt(min = 0) public int FEET_COST;
+
+        public CostConfigByTier(int SWORD_COST, int PICK_COST, int HEAD_COST, int CHEST_COST, int LEG_COST, int FEET_COST) {
+            this(1,SWORD_COST,PICK_COST,HEAD_COST,CHEST_COST,LEG_COST,FEET_COST);
+        }
+
+        public CostConfigByTier(int FACTOR, CostConfigByTier parent) {
+            this(FACTOR,parent.SWORD_COST,parent.PICK_COST,parent.HEAD_COST,parent.CHEST_COST,parent.LEG_COST,parent.FEET_COST);
+        }
+
+        public CostConfigByTier(int FACTOR, int SWORD_COST, int PICK_COST, int HEAD_COST, int CHEST_COST, int LEG_COST, int FEET_COST) {
+            this.FACTOR = FACTOR;
+            this.SWORD_COST = SWORD_COST;
+            this.PICK_COST = PICK_COST;
+            this.HEAD_COST = HEAD_COST;
+            this.CHEST_COST = CHEST_COST;
+            this.LEG_COST = LEG_COST;
+            this.FEET_COST = FEET_COST;
         }
     }
 

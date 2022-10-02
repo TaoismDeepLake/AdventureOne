@@ -136,4 +136,35 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
     public EntityEquipmentSlot getEquipmentSlot(ItemStack stack) {
         return armorType;
     }
+
+    public int getCost(ItemStack stack)
+    {
+        int tierVal = tier.getTier();
+        try {
+            ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
+            int baseCost = 0;
+            //phase 1: no modifiers
+            switch (Objects.requireNonNull(getEquipmentSlot(stack)))
+            {
+                case FEET:
+                    baseCost = costConfig.FEET_COST;
+                    break;
+                case LEGS:
+                    baseCost = costConfig.LEG_COST;
+                    break;
+                case CHEST:
+                    baseCost = costConfig.CHEST_COST;
+                    break;
+                case HEAD:
+                    baseCost = costConfig.HEAD_COST;
+                    break;
+            }
+
+            return baseCost;
+        }catch (ArrayIndexOutOfBoundsException e)
+        {
+            return 0;
+        }
+    }
+
 }
