@@ -1,6 +1,5 @@
 package com.deeplake.adven_one.init;
 
-import com.deeplake.adven_one.item.suit.modifiers.Modifier;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -24,14 +23,12 @@ public class ModConfig {
         }
     }
 
-    @Config.LangKey("configgui.idlframewok.category.Menu0.GeneralConf")
     @Config.Comment("IdlFramework general config.")
     public static final GeneralConf GeneralConf = new GeneralConf();
 
     public static class GeneralConf {
     }
 
-    @Config.LangKey("configgui.idlframewok.category.Menu0.DebugConf")
     @Config.Comment("Config for developers")
     public static final DebugConf DEBUG_CONF = new DebugConf();
 
@@ -106,7 +103,7 @@ public class ModConfig {
     public static class ModifierConf {
         public ModifierConfGroup ATK_FIXED_GROUP = new ModifierConfGroup();
         public ModifierConfGroup HP_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
-        public ModifierConfGroup EFFECIENCY_FIXED_GROUP = new ModifierConfGroup(1,0.8,0.5,0.3,0.2);
+        public ModifierConfGroup EFFICIENCY_FIXED_GROUP = new ModifierConfGroup(1,0.8,0.5,0.3,0.2);
     }
 
     public static class ModifierConfGroup {
@@ -151,16 +148,16 @@ public class ModConfig {
         @Config.RangeDouble(min = 0.01f)
         public double ATK_T2_RATIO = 2;
 
-        //relatetive to T1
+        //relative to T1
         @Config.RangeDouble(min = 0.01f)
         public double HP_T3_RATIO = 9;
 
-        //relatetive to T1
+        //relative to T1
         @Config.RangeDouble(min = 0.01f)
         public double ATK_T3_RATIO = 3;
     }
 
-    @Config.LangKey("configgui.idlframewok.category.Menu0.SpawnConf")
+    @Config.LangKey("configgui.adven_one.category.Menu0.SpawnConf")
     @Config.Comment("Spawning")
     public static final SpawnConf SPAWN_CONF = new SpawnConf();
 

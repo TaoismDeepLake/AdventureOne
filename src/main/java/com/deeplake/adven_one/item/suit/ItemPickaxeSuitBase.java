@@ -100,7 +100,7 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
         {
             multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, NAME_IN, getAttack(stack), 0));
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, this.attackSpeed, 0));
-            multimap.put(ModAttributes.EFFECIENCY.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, getEffeciency(stack), 0));
+            multimap.put(ModAttributes.EFFICIENCY.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, getEffeciency(stack), 0));
         }
 
         return multimap;
@@ -124,10 +124,10 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
         double result = efficiency * getQuality(stack);
         HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
         int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
-        result += level * ModConfig.MODIFIER_CONF.EFFECIENCY_FIXED_GROUP.VALUE_E;
+        result += level * ModConfig.MODIFIER_CONF.EFFICIENCY_FIXED_GROUP.VALUE_E;
 
         level = attrMap.getOrDefault(Modifier.EFFICIENCY_UP, 0);
-        result += level * ModConfig.MODIFIER_CONF.EFFECIENCY_FIXED_GROUP.VALUE_C;
+        result += level * ModConfig.MODIFIER_CONF.EFFICIENCY_FIXED_GROUP.VALUE_C;
 
         return result;
     }

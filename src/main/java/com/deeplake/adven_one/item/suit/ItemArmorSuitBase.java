@@ -106,10 +106,10 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
         double result = 0;
         HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
         int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
-        result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
+        result += level * ModConfig.MODIFIER_CONF.HP_FIXED_GROUP.VALUE_E;
 
         level = attrMap.getOrDefault(Modifier.HP_UP, 0);
-        result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_C;
+        result += level * ModConfig.MODIFIER_CONF.HP_FIXED_GROUP.VALUE_C;
 
         return result;
     }

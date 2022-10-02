@@ -1,5 +1,6 @@
 package com.deeplake.adven_one.item.suit;
 
+import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.item.EnumRarity;
@@ -15,7 +16,7 @@ public interface IHasQuality extends IHasInit {
 
     default double getQuality(ItemStack stack)
     {
-        return IDLNBTUtil.GetDouble(stack, IDLNBTDef.QUALITY, 1f);
+        return IDLNBTUtil.GetDouble(stack, IDLNBTDef.QUALITY, ModConfig.TIER_CONF.UNIDENTIFIED_QUALITY);
     }
 
     default double getRandomQuality(ItemStack stack)
