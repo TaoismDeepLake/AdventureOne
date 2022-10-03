@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
-public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHasModifiers, IHasType {
+public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHasModifiers, IHasType, IHasCost {
     public static final String NAME_IN = "Armor modifier";
 
     public ItemArmorSuitBase(SetTier tier, EntityEquipmentSlot equipmentSlotIn) {
@@ -86,6 +86,7 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
             multimap.put(SharedMonsterAttributes.ARMOR_TOUGHNESS.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], "Armor toughness", (double)this.toughness * quality, 0));
             multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], "Armor HP", getHP(stack), 0));
             multimap.put(ModAttributes.DEF_TIER.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], NAME_IN, tier.getTier()*0.25, 0));
+            multimap.put(ModAttributes.COST.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], NAME_IN, -getCost(stack), 0));
         }
 
         return multimap;

@@ -22,6 +22,7 @@ public class ModAttributes {
     public static final IAttribute DEF_TIER = getNewAttrNonPercent("def_tier");
     public static final IAttribute ATK_TIER = getNewAttrNonPercent("atk_tier");
     public static final IAttribute EFFICIENCY = getNewAttrNonPercent("efficiency");
+    public static final IAttribute COST_MAX = getNewAttrNonPercent("cost_max");
     public static final IAttribute COST = getNewAttrNonPercent("cost");
 
     @SubscribeEvent

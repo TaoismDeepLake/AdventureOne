@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
-public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHasModifiers, IHasType {
+public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHasModifiers, IHasType, IHasCost {
     protected static final UUID ATK_DEF_MODIFIER = UUID.fromString("8b852fa8-e952-9989-5742-467809ab850c");
     public static final String NAME_IN = "Weapon modifier";
 
@@ -62,6 +62,7 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
             map.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, NAME_IN, getAttack(stack), 0));
             map.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, -2.4000000953674316D, 0));
             map.put(ModAttributes.ATK_TIER.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, tier.getTier(), 0));
+            map.put(ModAttributes.COST.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, -getCost(stack), 0));
         }
 
         return map;
@@ -128,5 +129,21 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
     @Override
     public EnumGeartype getType(ItemStack stack) {
         return EnumGeartype.SWORD;
+    }
+
+    public int getCost(ItemStack stack)
+    {
+        int tierVal = tier.getTier();
+        try {
+            ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
+            int baseCost = 0;
+            //phase 1: no modifiers
+            baseCost = costConfig.SWORD_COST;
+
+            return baseCost;
+        }catch (ArrayIndexOutOfBoundsException e)
+        {
+            return 0;
+        }
     }
 }

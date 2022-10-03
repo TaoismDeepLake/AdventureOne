@@ -8,7 +8,6 @@ import com.deeplake.adven_one.world.dimension.ChunkGenBase;
 import com.deeplake.adven_one.world.dimension.ChunkMainSuit;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
@@ -49,7 +48,7 @@ public class PopulateMainSuit {
 
             spreadOre(chunk, x, z, 56, 71, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY);
 
-            spreadOre(chunk, x, z, 48, 55, WorldGenUtil.BARRIER_SKY, ModConfig.WORLD_GEN_CONF.GLASS_BARRIER_DENSITY);
+            spreadOre(chunk, x, z, 48, 55, WorldGenUtil.BARRIER_EARTH, ModConfig.WORLD_GEN_CONF.GLASS_BARRIER_DENSITY);
 
             spreadOre(chunk, x, z, 16, 31, WorldGenUtil.BEDROCK, ModConfig.WORLD_GEN_CONF.BEDROCK_DENSITY_PLUS);
             spreadOre(chunk, x, z, 16, 31, biomeSuit.getSuit().getOreByTier(2), ModConfig.WORLD_GEN_CONF.T1_DENSITY_PLUS);

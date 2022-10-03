@@ -27,7 +27,6 @@ adven_one.suit_back.1=备用一阶
 adven_one.suit_back.2=备用二阶
 adven_one.suit_back.3=备用三阶
 
-
 #Shared
 idealland.shared.press_shift=Hold SHIFT to examine info.
 adven_one.shared.quality_random=[随机成色]
@@ -70,4 +69,15 @@ adven_one.vocal.boss.steve.birth=[Steve] 你和你的模组令我感到可笑。
 adven_one.vocal.boss.steve.death=[Steve] 如果能重生，就有希望……
 adven_one.vocal.boss.steve.deflect=[Steve] 香草机制，小子。
 adven_one.vocal.boss.steve.kill=[Steve] 向香草之魂报告：模组玩家，已被击败！
-adven_one.vocal.boss.steve.summon=[Steve] 去吧,杀掉那个玩家比试图保护我更有效。
+
+tile.barrier_sky.name=Sky Barrier
+tile.barrier_earth.name=Earth Barrier
+item.cost_measure.name=P.2.W. Chalice
+item.cost_measure_max.desc=Pay gold to increa
+adven_one.suit_luck_a.1=Treasure Hunter A1
+adven_one.suit_luck_a.2=Treasure Hunter A2
+adven_one.suit_luck_a.3=Treasure Hunter A3
+adven_one.suit_celestial.4=Celestial
+adven_one.block=%s Block
+attribute.name.adven_one.attr.cost=Cost
+attribute.name.adven_one.attr.cost_max=Costadven_one.vocal.boss.steve.summon=[Steve] 去吧,杀掉那个玩家比试图保护我更有效。

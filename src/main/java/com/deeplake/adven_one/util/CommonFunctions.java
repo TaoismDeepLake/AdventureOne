@@ -1,8 +1,5 @@
 package com.deeplake.adven_one.util;
 
-import java.util.Calendar;
-import java.util.Random;
-
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.ModBlocks;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
@@ -39,6 +36,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nullable;
+import java.util.Calendar;
+import java.util.Random;
 
 public class CommonFunctions {
     public static void init(Block block, String name) {
@@ -116,7 +115,7 @@ public class CommonFunctions {
         }
     }
 
-    public static void SafeSendMsgToPlayer(TextFormatting style, EntityPlayer player, String key, Object... args)
+    public static void SafeSendMsgToPlayer(TextFormatting style, EntityLivingBase player, String key, Object... args)
     {
         //Please note that you can only put %s as arguments. If you put %d, it's not going to translate.
         if (player instanceof EntityPlayerMP)

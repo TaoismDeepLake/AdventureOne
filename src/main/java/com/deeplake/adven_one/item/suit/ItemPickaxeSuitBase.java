@@ -27,12 +27,13 @@ import java.util.UUID;
 
 import static com.deeplake.adven_one.item.suit.ItemSwordSuitBase.NAME_IN;
 
-public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality, IHasModifiers, IHasType {
+public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality, IHasModifiers, IHasType, IHasCost {
     protected static final UUID EFFCIENCY_MODIFIER = UUID.fromString("0468b7eb-3fb0-a205-2e07-fbb2c7759863");
 
     public ItemPickaxeSuitBase(SetTier tier) {
         super(getName(tier), tier.getToolMaterial());
         this.tier = tier;
+        logNBT = true;
     }
     SetTier tier;
 
@@ -101,6 +102,7 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
             multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, NAME_IN, getAttack(stack), 0));
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, this.attackSpeed, 0));
             multimap.put(ModAttributes.EFFICIENCY.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, getEffeciency(stack), 0));
+            multimap.put(ModAttributes.COST.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, -getCost(stack), 0));
         }
 
         return multimap;
@@ -135,5 +137,21 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
     @Override
     public EnumGeartype getType(ItemStack stack) {
         return EnumGeartype.PICKAXE;
+    }
+
+    public int getCost(ItemStack stack)
+    {
+        int tierVal = tier.getTier();
+        try {
+            ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
+            int baseCost = 0;
+            //phase 1: no modifiers
+            baseCost = costConfig.SWORD_COST;
+
+            return baseCost;
+        }catch (ArrayIndexOutOfBoundsException e)
+        {
+            return 0;
+        }
     }
 }
