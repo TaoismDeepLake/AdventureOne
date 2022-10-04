@@ -1,6 +1,8 @@
 package com.deeplake.adven_one.item;
 
+import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.armor.ItemArmorTierDebug;
+import com.deeplake.adven_one.item.food.ItemFoodCost;
 import com.deeplake.adven_one.item.misc.ItemCostMeasure;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -31,6 +33,9 @@ public class ModItems {
 					EntityEquipmentSlot.HEAD);
 
 	public static final Item MEASURE = new ItemCostMeasure("cost_measure");
+	public static final Item FOOD_COST_SMALL = new ItemFoodCost("food_cost_small", ModConfig.TIER_CONF.COST_CONF.FOOD_COST_SMALL);
+	public static final Item FOOD_COST_NORM = new ItemFoodCost("food_cost_norm", ModConfig.TIER_CONF.COST_CONF.FOOD_COST_NORMAL);
+	public static final Item FOOD_COST_BIG = new ItemFoodCost("food_cost_big", ModConfig.TIER_CONF.COST_CONF.FOOD_COST_BIG);
 //	public static final Item SUIT_A_GEM_T3 = new ItemBase("suit_a_gem_t3");
 
 

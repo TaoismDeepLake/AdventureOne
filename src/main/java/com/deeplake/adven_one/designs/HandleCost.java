@@ -2,18 +2,14 @@ package com.deeplake.adven_one.designs;
 
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
-import com.deeplake.adven_one.init.ModAchivements;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.suit.IHasCost;
 import com.deeplake.adven_one.util.CommonFunctions;
 import com.deeplake.adven_one.util.EntityUtil;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTUtil;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -24,7 +20,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
-import java.util.Map;
 import java.util.UUID;
 
 
@@ -93,40 +88,36 @@ public class HandleCost {
     }
 
     @SubscribeEvent
+    public static void onRespawn(PlayerEvent.PlayerRespawnEvent event)
+    {
+        resetPlayerInitCost(event.player);
+    }
+
+    @SubscribeEvent
     public static void onAdvancement(AdvancementEvent event)
     {
         EntityPlayer player = event.getEntityPlayer();
         World world = player.world;
         if (!world.isRemote)
         {
-            resetPlayerInitCost(player);
-            EntityPlayerMP mp = (EntityPlayerMP) player;
-            Map<Advancement, AdvancementProgress> progressMap = ModAchivements.getAdvancements(mp);
-
+            DisplayInfo info = event.getAdvancement().getDisplay();
             int score = 0;
-            for (Advancement advancement : progressMap.keySet())
+            if (info != null)
             {
-                if (progressMap.get(advancement).isDone())
+                switch (info.getFrame())
                 {
-                    DisplayInfo info = advancement.getDisplay();
-                    if (info != null) {
-                        switch (info.getFrame())
-                        {
-                            case CHALLENGE:
-                                score += ModConfig.GENERAL_CONF.ADVANCEMENT_COST_CHALL;
-                                break;
-                            case GOAL:
-                                score += ModConfig.GENERAL_CONF.ADVANCEMENT_COST_GOAL;
-                                break;
-                            case TASK:
-                            default:
-                                score += ModConfig.GENERAL_CONF.ADVANCEMENT_COST;
-                        }
-                    }
+                    case CHALLENGE:
+                        score += ModConfig.TIER_CONF.COST_CONF.ADVANCEMENT_COST_CHALL;
+                        break;
+                    case GOAL:
+                        score += ModConfig.TIER_CONF.COST_CONF.ADVANCEMENT_COST_GOAL;
+                        break;
+                    case TASK:
+                    default:
+                        score += ModConfig.TIER_CONF.COST_CONF.ADVANCEMENT_COST;
                 }
             }
-
-            EntityUtil.boostAttrOverride(player, ModAttributes.COST_MAX, score, ADVANCEMENT_BUFF);
+            EntityUtil.boostAttr(player, ModAttributes.COST_MAX, score, ADVANCEMENT_BUFF);
             sendCostInfoMsg(player);
         }
     }

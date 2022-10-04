@@ -39,6 +39,7 @@ public class WorldGenUtil {
     public static final IBlockState FERN = Blocks.TALLGRASS.getDefaultState().withProperty(BlockTallGrass.TYPE, BlockTallGrass.EnumType.FERN);
     public static final IBlockState GRASS = Blocks.GRASS.getDefaultState();
     public static final IBlockState LAVA = Blocks.LAVA.getDefaultState();
+    public static final IBlockState WATER = Blocks.WATER.getDefaultState();
 
     public static final int PREVENT_CASCADE_FLAGS = BlockFlags.TO_CLIENT | BlockFlags.IGNORE_OB;
     public static final int PREVENT_CASCADE_FLAGS_2 = PREVENT_CASCADE_FLAGS | BlockFlags.CLIENT_DONT_RENDER;

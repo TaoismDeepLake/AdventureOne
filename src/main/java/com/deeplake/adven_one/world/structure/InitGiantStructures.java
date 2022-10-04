@@ -10,7 +10,7 @@ import net.minecraft.world.gen.structure.MapGenStructureIO;
 
 public class InitGiantStructures {
 
-    public static void registerWorldGen() {
+    public static void registerGiantStructure() {
            MapGenStructureIO.registerStructure(StructureBottomDungeon.Start.class, StructureBottomDungeon.NAME);
         MapGenStructureIO.registerStructureComponent(ComponentBottomDungeonRoomCenter.class, "BDungC");
         MapGenStructureIO.registerStructureComponent(ComponentBottomDungeonRoomSide.class, "BDungS");

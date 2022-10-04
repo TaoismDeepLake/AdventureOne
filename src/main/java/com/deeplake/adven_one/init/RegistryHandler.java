@@ -13,6 +13,7 @@ import com.deeplake.adven_one.item.suit.modifiers.ModifierList;
 import com.deeplake.adven_one.util.IHasModel;
 import com.deeplake.adven_one.util.ModSoundHandler;
 import com.deeplake.adven_one.world.dimension.InitDimension;
+import com.deeplake.adven_one.worldgen.InitWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -27,7 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.deeplake.adven_one.world.structure.InitGiantStructures.registerWorldGen;
+import static com.deeplake.adven_one.world.structure.InitGiantStructures.registerGiantStructure;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -96,7 +97,8 @@ public class RegistryHandler {
 
 		ModEntityInit.registerEntities();
 
-		registerWorldGen();
+		registerGiantStructure();
+		InitWorldGen.registerWorldGen();
 	}
 
 	public static void postInitReg()

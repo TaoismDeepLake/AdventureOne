@@ -28,9 +28,20 @@ public class ModConfig {
 
     public static class GeneralConf {
         public int INIT_COST = 20;
+
+    }
+
+    public static class CostConf {
         public int ADVANCEMENT_COST = 1;
         public int ADVANCEMENT_COST_GOAL = 2;
         public int ADVANCEMENT_COST_CHALL = 5;
+
+        @Config.RequiresMcRestart
+        public int FOOD_COST_SMALL = 1;
+        @Config.RequiresMcRestart
+        public int FOOD_COST_NORMAL = 2;
+        @Config.RequiresMcRestart
+        public int FOOD_COST_BIG = 5;
     }
 
     @Config.Comment("Config for developers")
@@ -92,6 +103,8 @@ public class ModConfig {
             TIER_QUALITY_CONF[2] = TIER_QUALITY_3;
             TIER_QUALITY_CONF[3] = TIER_QUALITY_4;
         }
+
+        public final CostConf COST_CONF = new CostConf();
 
         public final CostConfigByTier COST_TIER_1 =
                  new CostConfigByTier(20,20,30,50,40,30);

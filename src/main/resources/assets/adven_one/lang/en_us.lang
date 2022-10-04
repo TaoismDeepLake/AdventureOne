@@ -21,6 +21,15 @@ tile.barrier_earth.name=Earth Barrier
 item.cost_measure.name=Cost Meter
 item.cost_measure_max.desc=Displays Current cost info.
 
+item.food_cost_small.name=Lesser Cost Booster
+item.food_cost_small.desc=Boosts your cost.
+
+item.food_cost_norm.name=Cost Booster
+item.food_cost_norm.desc=Boosts your cost.
+
+item.food_cost_big.name=Great Cost Booster
+item.food_cost_big.desc=Boosts your cost.
+
 #Suits
 adven_one.suit_test=Test Suit
 adven_one.suit_test.1=Test Suit T1
