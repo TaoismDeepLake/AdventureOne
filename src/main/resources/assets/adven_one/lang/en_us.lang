@@ -100,9 +100,9 @@ adven_one.modifiers.cost_save.name=Cost Saver
 adven_one.modifiers.cost_save_sword.name=Cost Saver [Sword]
 adven_one.modifiers.cost_save_pick.name=Cost Saver [Pickaxe]
 adven_one.modifiers.cost_save_armor.name=Cost Saver [Armor]
-adven_one.modifiers.overload_sword.name=Efficient [Sword]
-adven_one.modifiers.overload_pick.name=Efficient [Pickaxe]
-adven_one.modifiers.overload_armor.name=Efficient [Armor]
+adven_one.modifiers.overload_sword.name=Overload [Sword]
+adven_one.modifiers.overload_pick.name=Overload [Pickaxe]
+adven_one.modifiers.overload_armor.name=Overload [Armor]
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.

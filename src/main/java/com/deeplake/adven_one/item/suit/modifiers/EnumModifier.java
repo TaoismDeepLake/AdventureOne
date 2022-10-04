@@ -29,15 +29,13 @@ public enum EnumModifier {
     KILL_SHEEP(108, "kill_sheep"),
     KILL_CHICK(109, "kill_chick"),
 
-    COST_SAVE(201, "cost_save"),
-    COST_SAVE_SWORD(202, "cost_save_sword"),
-    COST_SAVE_PICK(203, "cost_save_pick"),
-    COST_SAVE_ARMOR(204, "cost_save_armor"),
-    OVERLOAD_SWORD(205, "overload_sword"),
-    OVERLOAD_PICK(206, "overload_pick"),
-    OVERLOAD_ARMOR(207, "overload_armor"),
-
-
+    COST_SAVE(201, "cost_save", MAX_LV),
+    COST_SAVE_SWORD(202, "cost_save_sword", MAX_LV),
+    COST_SAVE_PICK(203, "cost_save_pick", MAX_LV),
+    COST_SAVE_ARMOR(204, "cost_save_armor", MAX_LV),
+    OVERLOAD_SWORD(205, "overload_sword", MAX_LV),
+    OVERLOAD_PICK(206, "overload_pick", MAX_LV),
+    OVERLOAD_ARMOR(207, "overload_armor", MAX_LV),
     ;
 
     final int id;
