@@ -82,6 +82,23 @@ adven_one.modifiers.atk_up.name=攻击
 adven_one.modifiers.hp_up.name=生命
 adven_one.modifiers.hardness.name=坚硬
 adven_one.modifiers.efficiency_up.name=效率
+adven_one.modifiers.weapon_up.name=剑魂
+adven_one.modifiers.kill_creeper.name=爬行者杀手
+adven_one.modifiers.kill_enderman.name=末影人杀手
+adven_one.modifiers.kill_player.name=玩家杀手
+adven_one.modifiers.kill_melee.name=近战杀手
+adven_one.modifiers.kill_bow.name=弓弩杀手
+adven_one.modifiers.kill_pig.name=宰猪
+adven_one.modifiers.kill_cow.name=宰牛
+adven_one.modifiers.kill_sheep.name=宰羊
+adven_one.modifiers.kill_chick.name=宰鸡
+adven_one.modifiers.cost_save.name=节能
+adven_one.modifiers.cost_save_sword.name=节能·剑
+adven_one.modifiers.cost_save_pick.name=节能·镐
+adven_one.modifiers.cost_save_armor.name=节能·衣
+adven_one.modifiers.overload_sword.name=过载·剑
+adven_one.modifiers.overload_pick.name=Overload [Pickaxe]
+adven_one.modifiers.overload_armor.name=Overload [Armor]
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] 你和你的模组令我感到可笑。
@@ -93,3 +110,4 @@ adven_one.vocal.boss.steve.summon=[Steve] 去吧,杀掉那个玩家比试图保�
 tile.barrier_sky.name=天空屏障
 item.cost_measure.name=回路计
 item.cost_measure_max.desc=显示自身魔力管线的使用状况。
+
