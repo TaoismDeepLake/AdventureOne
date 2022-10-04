@@ -1,5 +1,6 @@
 package com.deeplake.adven_one.item.food;
 
+import com.deeplake.adven_one.designs.HandleCost;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.util.EntityUtil;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,6 +21,7 @@ public class ItemFoodCost extends ItemFoodBase{
     @Override
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
-        EntityUtil.boostAttr(player, ModAttributes.COST, cost, FOOD_COST);
+        EntityUtil.boostAttr(player, ModAttributes.COST_MAX, cost, FOOD_COST);
+        HandleCost.sendCostInfoMsg(player);
     }
 }

@@ -122,7 +122,7 @@ public class HandleCost {
         }
     }
 
-    private static void sendCostInfoMsg(EntityLivingBase player) {
+    public static void sendCostInfoMsg(EntityLivingBase player) {
         String key = checkOverload(player) ?
                 MESSAGE_COST_OVERLOAD : MESSAGE_COST;
 

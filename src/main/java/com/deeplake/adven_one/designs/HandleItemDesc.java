@@ -3,7 +3,7 @@ package com.deeplake.adven_one.designs;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.item.suit.IHasModifiers;
 import com.deeplake.adven_one.item.suit.IHasQuality;
-import com.deeplake.adven_one.item.suit.modifiers.Modifier;
+import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -45,8 +45,8 @@ public class HandleItemDesc {
             }
             else
             {
-                HashMap<Modifier, Integer> map = iHasModifiers.getAllFromNBT(stack);
-                for (Modifier modifier : map.keySet())
+                HashMap<EnumModifier, Integer> map = iHasModifiers.getAllFromNBT(stack);
+                for (EnumModifier modifier : map.keySet())
                 {
                     if (modifier.getMaxLv() == 1)
                     {

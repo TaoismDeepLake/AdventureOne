@@ -5,8 +5,8 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemArmorBase;
+import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
 import com.deeplake.adven_one.item.suit.modifiers.IHasType;
-import com.deeplake.adven_one.item.suit.modifiers.Modifier;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -105,12 +105,15 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
     public double getHP(ItemStack stack)
     {
         double result = 0;
-        HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
-        int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
+        HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+        int level = attrMap.getOrDefault(EnumModifier.HARDNESS, 0);
         result += level * ModConfig.MODIFIER_CONF.HP_FIXED_GROUP.VALUE_E;
 
-        level = attrMap.getOrDefault(Modifier.HP_UP, 0);
+        level = attrMap.getOrDefault(EnumModifier.HP_UP, 0);
         result += level * ModConfig.MODIFIER_CONF.HP_FIXED_GROUP.VALUE_C;
+
+        level = attrMap.getOrDefault(EnumModifier.OVERLOAD_ARMOR, 0);
+        result += level * ModConfig.MODIFIER_CONF.HP_FIXED_GROUP.VALUE_A;
 
         return result;
     }
@@ -144,7 +147,6 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
         try {
             ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
             int baseCost = 0;
-            //phase 1: no modifiers
             switch (Objects.requireNonNull(getEquipmentSlot(stack)))
             {
                 case FEET:
@@ -159,6 +161,28 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
                 case HEAD:
                     baseCost = costConfig.HEAD_COST;
                     break;
+            }
+
+
+            HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+            if (attrMap == null)
+            {
+                Idealland.LogWarning("Error: Null list");
+            }
+            else {
+                int level = attrMap.getOrDefault(EnumModifier.COST_SAVE, 0);
+                baseCost -= level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
+
+                level = attrMap.getOrDefault(EnumModifier.COST_SAVE_ARMOR, 0);
+                baseCost -= level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_D;
+
+                level = attrMap.getOrDefault(EnumModifier.OVERLOAD_ARMOR, 0);
+                baseCost += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_C;
+            }
+
+            if (baseCost < 0)
+            {
+                baseCost = 0;
             }
 
             return baseCost;

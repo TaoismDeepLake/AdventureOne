@@ -2,8 +2,8 @@ package com.deeplake.adven_one.recipe.traditional;
 
 import com.deeplake.adven_one.item.suit.IHasModifiers;
 import com.deeplake.adven_one.item.suit.IHasQuality;
+import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
 import com.deeplake.adven_one.item.suit.modifiers.IHasType;
-import com.deeplake.adven_one.item.suit.modifiers.Modifier;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -23,7 +23,7 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
         double sumQuality = 0;
         int count = 0;
 
-        HashMap<Modifier, Integer> resultMap = new HashMap<>();
+        HashMap<EnumModifier, Integer> resultMap = new HashMap<>();
 
         ItemStack rawResult = super.getCraftingResult(inv);
 
@@ -49,7 +49,7 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
                 if (stack.getItem() instanceof IHasModifiers)
                 {
                     IHasModifiers iHasModifiers = (IHasModifiers) stack.getItem();
-                    HashMap<Modifier, Integer> tempMap = iHasModifiers.getAllFromNBT(stack);
+                    HashMap<EnumModifier, Integer> tempMap = iHasModifiers.getAllFromNBT(stack);
 
                     EnumGeartype enumGeartype = EnumGeartype.ALL;
                     if (rawResult.getItem() instanceof IHasType)
@@ -57,7 +57,7 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
                         enumGeartype = ((IHasType) rawResult.getItem()).getType(rawResult);
                     }
 
-                    for (Modifier modifier : tempMap.keySet())
+                    for (EnumModifier modifier : tempMap.keySet())
                     {
                         if (modifier.isApplicable(enumGeartype))
                         {

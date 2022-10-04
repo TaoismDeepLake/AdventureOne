@@ -168,6 +168,8 @@ public class ModConfig {
         public ModifierConfGroup ATK_FIXED_GROUP = new ModifierConfGroup();
         public ModifierConfGroup HP_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
         public ModifierConfGroup EFFICIENCY_FIXED_GROUP = new ModifierConfGroup(1,0.8,0.5,0.3,0.2);
+        public ModifierConfGroup COST_REDUCE_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
+        public ModifierConfGroup COST_UP_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
     }
 
     public static class ModifierConfGroup {
