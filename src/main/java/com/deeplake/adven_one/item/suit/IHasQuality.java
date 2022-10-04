@@ -1,28 +1,25 @@
 package com.deeplake.adven_one.item.suit;
 
+import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public interface IHasQuality {
-    public default boolean needFirstTick(ItemStack stack)
-    {
-        return IDLNBTUtil.GetBoolean(stack, IDLNBTDef.NEED_FIRST_TICK, true);
-    }
+public interface IHasQuality extends IHasInit {
 
-    public default void finishFirstTick(ItemStack stack)
-    {
-        IDLNBTUtil.SetBoolean(stack, IDLNBTDef.NEED_FIRST_TICK, false);
-    }
-
-    public default void setQuality(ItemStack stack, double value)
+    default void setQuality(ItemStack stack, double value)
     {
         IDLNBTUtil.SetDouble(stack, IDLNBTDef.QUALITY, value);
         finishFirstTick(stack);
     }
 
-    public default double getQuality(ItemStack stack)
+    default double getQuality(ItemStack stack)
+    {
+        return IDLNBTUtil.GetDouble(stack, IDLNBTDef.QUALITY, ModConfig.TIER_CONF.UNIDENTIFIED_QUALITY);
+    }
+
+    default double getRandomQuality(ItemStack stack)
     {
         return IDLNBTUtil.GetDouble(stack, IDLNBTDef.QUALITY, 1f);
     }

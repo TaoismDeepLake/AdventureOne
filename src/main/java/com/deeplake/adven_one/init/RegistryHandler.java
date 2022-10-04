@@ -9,6 +9,7 @@ import com.deeplake.adven_one.entity.ModEntityInit;
 import com.deeplake.adven_one.entity.RenderHandler;
 import com.deeplake.adven_one.item.ItemBlockBase;
 import com.deeplake.adven_one.item.ModItems;
+import com.deeplake.adven_one.item.suit.modifiers.ModifierList;
 import com.deeplake.adven_one.util.IHasModel;
 import com.deeplake.adven_one.util.ModSoundHandler;
 import com.deeplake.adven_one.world.dimension.InitDimension;
@@ -102,6 +103,7 @@ public class RegistryHandler {
 	{
 		//WorldType TYPE_ONE = new WorldTypeOne();
 		EnumSuit.initOreDict();
+		ModifierList.initModifier();
 	}
 
 	public static void initRegistries(FMLInitializationEvent event)

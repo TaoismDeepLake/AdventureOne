@@ -3,7 +3,7 @@
 itemGroup.advenMiscTab=冒险一号
 
 #config
-configgui.idealland.category.Menu0.GeneralConf=通用设置
+configgui.idealland.category.Menu0.GeneralConf=通用配置
 idealland.conf.general.welcome=Welcome Message Key
 
 #Entities
@@ -17,45 +17,67 @@ item.p2w_goblet.name=P.2.W. Chalice
 item.p2w_goblet.desc=Pay gold to increa
 
 #Suits
-adven_one.suit_test=Test Suit
-adven_one.suit_test.1=Test Suit T1
-adven_one.suit_test.2=Test Suit T2
-adven_one.suit_test.3=Test Suit T3
+adven_one.suit_test=测试套
+adven_one.suit_test.1=测试一阶
+adven_one.suit_test.2=测试二阶
+adven_one.suit_test.3=测试三阶
 
-adven_one.suit_back=Backup Suit
-adven_one.suit_back.1=Backup T1
-adven_one.suit_back.2=Backup T2
-adven_one.suit_back.3=Backup T3
-
+adven_one.suit_back=备用套
+adven_one.suit_back.1=备用一阶
+adven_one.suit_back.2=备用二阶
+adven_one.suit_back.3=备用三阶
 
 #Shared
 idealland.shared.press_shift=Hold SHIFT to examine info.
-adven_one.shared.quality_random=[Random Quality]
-adven_one.shared.quality_desc_bad=Quality: §c%s%%
-adven_one.shared.quality_desc_good=Quality: §a%s%%
+adven_one.shared.quality_random=[随机成色]
+adven_one.shared.quality_desc_bad=成色: §c%s%%
+adven_one.shared.quality_desc_good=成色: §a%s%%
 
-adven_one.gem=%s Unit
-adven_one.ore=%s Ore
-adven_one.pickaxe=%s Pickaxe
-adven_one.sword=%s Sword
-adven_one.armor0=%s Helm
-adven_one.armor1=%s T-shirt
-adven_one.armor2=%s Pants
-adven_one.armor3=%s Shoes
+adven_one.gem=%s锭
+adven_one.ore=%s矿
+adven_one.pickaxe=%s镐
+adven_one.sword=%s剑
+adven_one.armor0=%s盔
+adven_one.armor1=%s衣
+adven_one.armor2=%s裤
+adven_one.armor3=%s鞋
 
-adven_one.log=%s Log
-adven_one.planks=%s Planks
-adven_one.dirt=%s Dirt
-adven_one.stone=%s Rock
-adven_one.wood_stairs=%s Wood Stairs
+adven_one.log=%s原木
+adven_one.planks=%s木板
+adven_one.dirt=%s泥土
+adven_one.stone=%s石
+adven_one.stone_stairs=%s石楼梯
+adven_one.stone_wall=%s石围墙
+adven_one.wood_stairs=%s木楼梯
+adven_one.wood_fence=%s木围墙
 
 #
-attribute.name.adven_one.attr.def_tier=Defense Tier
-attribute.name.adven_one.attr.atk_tier=Attack Tier
+attribute.name.adven_one.attr.def_tier=防御阶级
+attribute.name.adven_one.attr.atk_tier=攻击阶级
+attribute.name.adven_one.attr.efficiency=挖掘效率
+
+adven_one.desc.modifier=§b%s %d级
+
+adven_one.modifiers.blank.name=§o§7（无）
+adven_one.modifiers.atk_up.name=攻击
+adven_one.modifiers.hp_up.name=生命
+adven_one.modifiers.hardness.name=坚硬
+adven_one.modifiers.efficiency_up.name=效率
 
 #Vocal
-adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.
-adven_one.vocal.boss.steve.death=[Steve] If there is hope, there is rebirth...
-adven_one.vocal.boss.steve.deflect=[Steve] Vanilla mechanics, son.
-adven_one.vocal.boss.steve.kill=[Steve] Report to the Vanilla Soul - Mod players are defeated!
-adven_one.vocal.boss.steve.summon=[Steve] Go mobs, kill that player is more effective than protecting me!
+adven_one.vocal.boss.steve.birth=[Steve] 你和你的模组令我感到可笑。
+adven_one.vocal.boss.steve.death=[Steve] 如果能重生，就有希望……
+adven_one.vocal.boss.steve.deflect=[Steve] 香草机制，小子。
+adven_one.vocal.boss.steve.kill=[Steve] 向香草之魂报告：模组玩家，已被击败！
+
+tile.barrier_sky.name=Sky Barrier
+tile.barrier_earth.name=Earth Barrier
+item.cost_measure.name=P.2.W. Chalice
+item.cost_measure_max.desc=Pay gold to increa
+adven_one.suit_luck_a.1=Treasure Hunter A1
+adven_one.suit_luck_a.2=Treasure Hunter A2
+adven_one.suit_luck_a.3=Treasure Hunter A3
+adven_one.suit_celestial.4=Celestial
+adven_one.block=%s Block
+attribute.name.adven_one.attr.cost=Cost
+attribute.name.adven_one.attr.cost_max=Costadven_one.vocal.boss.steve.summon=[Steve] 去吧,杀掉那个玩家比试图保护我更有效。

@@ -111,7 +111,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
 
         if (logNBT)
         {
-            tooltip.add(IDLNBTUtil.getNBT(stack).toString());
+            tooltip.add(IDLNBTUtil.getNBTReadOnly(stack).toString());
         }
     }
 

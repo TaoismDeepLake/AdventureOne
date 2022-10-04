@@ -6,15 +6,20 @@ itemGroup.advenMiscTab=Adventure One Misc
 configgui.idealland.category.Menu0.GeneralConf=General Config
 idealland.conf.general.welcome=Welcome Message Key
 
+#Messages
+adven_one.msg.cost_info=§aCurrent Cost Status: %s/%s
+adven_one.msg.cost_info_overload=§cCost Overload: %s/%s
+
 #Entities
 entity.moroon_tainter.name=Moroon Pathfinder
 
 #Blocks
-tile.idealland_light_basic.name=Idealland Lamp
+tile.barrier_sky.name=Sky Barrier
+tile.barrier_earth.name=Earth Barrier
 
 #Items
-item.p2w_goblet.name=P.2.W. Chalice
-item.p2w_goblet.desc=Pay gold to increa
+item.cost_measure.name=Cost Meter
+item.cost_measure_max.desc=Displays Current cost info.
 
 #Suits
 adven_one.suit_test=Test Suit
@@ -27,6 +32,11 @@ adven_one.suit_back.1=Backup T1
 adven_one.suit_back.2=Backup T2
 adven_one.suit_back.3=Backup T3
 
+adven_one.suit_luck_a.1=Treasure Hunter A1
+adven_one.suit_luck_a.2=Treasure Hunter A2
+adven_one.suit_luck_a.3=Treasure Hunter A3
+
+adven_one.suit_celestial.4=Celestial
 
 #Shared
 idealland.shared.press_shift=Hold SHIFT to examine info.
@@ -51,10 +61,22 @@ adven_one.stone_stairs=%s Rock Stairs
 adven_one.stone_wall=%s Rock Wall
 adven_one.wood_stairs=%s Wood Stairs
 adven_one.wood_fence=%s Wood Fence
+adven_one.block=%s Block
 
 #
 attribute.name.adven_one.attr.def_tier=Defense Tier
 attribute.name.adven_one.attr.atk_tier=Attack Tier
+attribute.name.adven_one.attr.efficiency=Efficiency
+attribute.name.adven_one.attr.cost=Cost
+attribute.name.adven_one.attr.cost_max=Cost
+
+adven_one.desc.modifier=§9%s Lv.%d
+
+adven_one.modifiers.blank.name=§o§7None
+adven_one.modifiers.atk_up.name=ATK
+adven_one.modifiers.hp_up.name=HP
+adven_one.modifiers.hardness.name=Hardness
+adven_one.modifiers.efficiency_up.name=Efficient
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.

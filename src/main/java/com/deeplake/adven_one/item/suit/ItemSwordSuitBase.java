@@ -5,6 +5,9 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemSwordBase;
+import com.deeplake.adven_one.item.suit.modifiers.IHasType;
+import com.deeplake.adven_one.item.suit.modifiers.Modifier;
+import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
@@ -16,14 +19,11 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
-public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality {
-    //    public ItemSwordSuitBase(String name, ToolMaterial material) {
-//        super(name, material);
-//    }
-
+public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHasModifiers, IHasType, IHasCost {
     protected static final UUID ATK_DEF_MODIFIER = UUID.fromString("8b852fa8-e952-9989-5742-467809ab850c");
     public static final String NAME_IN = "Weapon modifier";
 
@@ -56,13 +56,13 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality {
 
     @Override
     public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
-        Multimap<String, AttributeModifier> map = HashMultimap.<String, AttributeModifier>create();;
+        Multimap<String, AttributeModifier> map = HashMultimap.create();
         if (slot == EntityEquipmentSlot.MAINHAND)
         {
-            double quality = getQuality(stack);
-            map.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, NAME_IN, getSwordDamage(tier.getTier()) * quality, 0));
+            map.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, NAME_IN, getAttack(stack), 0));
             map.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, -2.4000000953674316D, 0));
             map.put(ModAttributes.ATK_TIER.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, tier.getTier(), 0));
+            map.put(ModAttributes.COST.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, -getCost(stack), 0));
         }
 
         return map;
@@ -73,13 +73,13 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality {
         switch (tier)
         {
             case 1:
-                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T1;
+                return ModConfig.TIER_CONF.SWORD_ATK_T1;
             case 2:
-                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T2;
+                return ModConfig.TIER_CONF.SWORD_ATK_T2;
             case 3:
-                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T3;
+                return ModConfig.TIER_CONF.SWORD_ATK_T3;
             default:
-                return ModConfig.TierConf.MELEE_CONF.SWORD_ATK_T1 * tier;
+                return ModConfig.TIER_CONF.SWORD_ATK_T1 * tier;
         }
     }
 
@@ -105,5 +105,45 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality {
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;
+    }
+
+    public double getAttack(ItemStack stack)
+    {
+        double result = getSwordDamage(tier.getTier()) * getQuality(stack);
+        HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
+        if (attrMap == null)
+        {
+            Idealland.LogWarning("Error: Null list");
+        }
+        else {
+            int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
+            result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
+
+            level = attrMap.getOrDefault(Modifier.ATK_UP, 0);
+            result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_D;
+        }
+
+        return result;
+    }
+
+    @Override
+    public EnumGeartype getType(ItemStack stack) {
+        return EnumGeartype.SWORD;
+    }
+
+    public int getCost(ItemStack stack)
+    {
+        int tierVal = tier.getTier();
+        try {
+            ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
+            int baseCost = 0;
+            //phase 1: no modifiers
+            baseCost = costConfig.SWORD_COST;
+
+            return baseCost;
+        }catch (ArrayIndexOutOfBoundsException e)
+        {
+            return 0;
+        }
     }
 }

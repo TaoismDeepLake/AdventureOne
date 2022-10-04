@@ -23,19 +23,16 @@ public class ModConfig {
         }
     }
 
-    @Config.LangKey("configgui.idlframewok.category.Menu0.GeneralConf")
     @Config.Comment("IdlFramework general config.")
-    public static final GeneralConf GeneralConf = new GeneralConf();
+    public static final GeneralConf GENERAL_CONF = new GeneralConf();
 
     public static class GeneralConf {
-//        @Config.LangKey("idlframewok.conf.general.welcome")
-//        @Config.Comment("The text shown when a player logs in. Can be a key or a string.")
-//        public String WELCOME_MSG = "idlframewok.msg.welcome";
-
-
+        public int INIT_COST = 20;
+        public int ADVANCEMENT_COST = 1;
+        public int ADVANCEMENT_COST_GOAL = 2;
+        public int ADVANCEMENT_COST_CHALL = 5;
     }
 
-    @Config.LangKey("configgui.idlframewok.category.Menu0.DebugConf")
     @Config.Comment("Config for developers")
     public static final DebugConf DEBUG_CONF = new DebugConf();
 
@@ -59,9 +56,8 @@ public class ModConfig {
 
     public static final TierConf TIER_CONF = new TierConf();
 
-
     public static class TierConf {
-        public static final TierConf MELEE_CONF = new TierConf();
+        //public static final TierConf MELEE_CONF = new TierConf();
 
         @Config.RangeDouble(min = 0f)
         public double SWORD_ATK_T1 = 4;
@@ -80,6 +76,113 @@ public class ModConfig {
 
         public final MobAttrConf NORMAL_MOB = new MobAttrConf();
 
+        //Crafting
+        public final TierQualityConf TIER_QUALITY_1 = new TierQualityConf();
+        public final TierQualityConf TIER_QUALITY_2 = new TierQualityConf();
+        public final TierQualityConf TIER_QUALITY_3 = new TierQualityConf();
+        public final TierQualityConf TIER_QUALITY_4 = new TierQualityConf();
+
+        @Config.RangeDouble(min = 0f)
+        public double UNIDENTIFIED_QUALITY = 0.45f;
+        @Config.Ignore()
+        public final TierQualityConf[] TIER_QUALITY_CONF = new TierQualityConf[4];
+        {
+            TIER_QUALITY_CONF[0] = TIER_QUALITY_1;
+            TIER_QUALITY_CONF[1] = TIER_QUALITY_2;
+            TIER_QUALITY_CONF[2] = TIER_QUALITY_3;
+            TIER_QUALITY_CONF[3] = TIER_QUALITY_4;
+        }
+
+        public final CostConfigByTier COST_TIER_1 =
+                 new CostConfigByTier(20,20,30,50,40,30);
+        public final CostConfigByTier COST_TIER_2 =
+                 new CostConfigByTier(3,COST_TIER_1);
+        public final CostConfigByTier COST_TIER_3 =
+                 new CostConfigByTier(9,COST_TIER_1);
+        public final CostConfigByTier COST_TIER_4 =
+                 new CostConfigByTier(27,COST_TIER_1);
+
+        @Config.Ignore()
+        public final CostConfigByTier[] COST_TIER = new CostConfigByTier[4];
+        {
+            COST_TIER[0] = COST_TIER_1;
+            COST_TIER[1] = COST_TIER_2;
+            COST_TIER[2] = COST_TIER_3;
+            COST_TIER[3] = COST_TIER_4;
+        }
+    }
+
+    public static class CostConfigByTier{
+        //all actual cost is multiplied by this.
+        @Config.RangeInt(min = 0) public int FACTOR;
+        @Config.RangeInt(min = 0) public int SWORD_COST;
+        @Config.RangeInt(min = 0) public int PICK_COST;
+        @Config.RangeInt(min = 0) public int HEAD_COST;
+        @Config.RangeInt(min = 0) public int CHEST_COST;
+        @Config.RangeInt(min = 0) public int LEG_COST;
+        @Config.RangeInt(min = 0) public int FEET_COST;
+
+        public CostConfigByTier(int SWORD_COST, int PICK_COST, int HEAD_COST, int CHEST_COST, int LEG_COST, int FEET_COST) {
+            this(1,SWORD_COST,PICK_COST,HEAD_COST,CHEST_COST,LEG_COST,FEET_COST);
+        }
+
+        public CostConfigByTier(int FACTOR, CostConfigByTier parent) {
+            this(FACTOR,parent.SWORD_COST,parent.PICK_COST,parent.HEAD_COST,parent.CHEST_COST,parent.LEG_COST,parent.FEET_COST);
+        }
+
+        public CostConfigByTier(int FACTOR, int SWORD_COST, int PICK_COST, int HEAD_COST, int CHEST_COST, int LEG_COST, int FEET_COST) {
+            this.FACTOR = FACTOR;
+            this.SWORD_COST = SWORD_COST;
+            this.PICK_COST = PICK_COST;
+            this.HEAD_COST = HEAD_COST;
+            this.CHEST_COST = CHEST_COST;
+            this.LEG_COST = LEG_COST;
+            this.FEET_COST = FEET_COST;
+        }
+    }
+
+    public static class TierQualityConf {
+
+        @Config.RangeDouble(min = 0f)
+        public double MIN_GEM_QUALITY = 0.5f;
+
+        @Config.RangeDouble(min = 0f)
+        public double DELTA_GEM_QUALITY = 1f;
+    }
+
+    public static final ModifierConf MODIFIER_CONF = new ModifierConf();
+    public static class ModifierConf {
+        public ModifierConfGroup ATK_FIXED_GROUP = new ModifierConfGroup();
+        public ModifierConfGroup HP_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
+        public ModifierConfGroup EFFICIENCY_FIXED_GROUP = new ModifierConfGroup(1,0.8,0.5,0.3,0.2);
+    }
+
+    public static class ModifierConfGroup {
+        public ModifierConfGroup(double VALUE_A, double VALUE_B, double VALUE_C, double VALUE_D, double VALUE_E) {
+            this.VALUE_A = VALUE_A;
+            this.VALUE_B = VALUE_B;
+            this.VALUE_C = VALUE_C;
+            this.VALUE_D = VALUE_D;
+            this.VALUE_E = VALUE_E;
+        }
+
+        public ModifierConfGroup() {
+        }
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_A = 2f;
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_B = 1.5f;
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_C = 1f;
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_D = 0.5f;
+
+        @Config.RangeDouble(min = 0f)
+        public double VALUE_E = 0.3f;
     }
 
     public static class MobAttrConf {
@@ -96,16 +199,16 @@ public class ModConfig {
         @Config.RangeDouble(min = 0.01f)
         public double ATK_T2_RATIO = 2;
 
-        //relatetive to T1
+        //relative to T1
         @Config.RangeDouble(min = 0.01f)
         public double HP_T3_RATIO = 9;
 
-        //relatetive to T1
+        //relative to T1
         @Config.RangeDouble(min = 0.01f)
         public double ATK_T3_RATIO = 3;
     }
 
-    @Config.LangKey("configgui.idlframewok.category.Menu0.SpawnConf")
+    @Config.LangKey("configgui.adven_one.category.Menu0.SpawnConf")
     @Config.Comment("Spawning")
     public static final SpawnConf SPAWN_CONF = new SpawnConf();
 

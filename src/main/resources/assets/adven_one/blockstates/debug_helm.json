@@ -1,0 +1,5 @@
+{
+	"variants": {
+		"normal": { "model": "adven_one:debug_helm" }
+	}
+}

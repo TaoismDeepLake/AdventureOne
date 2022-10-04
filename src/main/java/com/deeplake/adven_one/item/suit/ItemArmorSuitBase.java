@@ -5,6 +5,9 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemArmorBase;
+import com.deeplake.adven_one.item.suit.modifiers.IHasType;
+import com.deeplake.adven_one.item.suit.modifiers.Modifier;
+import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
@@ -18,13 +21,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 
-public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality{
+public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHasModifiers, IHasType, IHasCost {
     public static final String NAME_IN = "Armor modifier";
-    //    public ItemArmorSuitBase(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
-//        super(name, materialIn, renderIndexIn, equipmentSlotIn);
-//    }
 
     public ItemArmorSuitBase(SetTier tier, EntityEquipmentSlot equipmentSlotIn) {
         super(getName(tier, equipmentSlotIn), tier.getArmorMaterial(), 0, equipmentSlotIn);
@@ -75,7 +76,7 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality{
     }
 
     public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
-        Multimap<String, AttributeModifier> multimap = HashMultimap.<String, AttributeModifier>create();
+        Multimap<String, AttributeModifier> multimap = HashMultimap.create();
 
         double quality = getQuality(stack);
 
@@ -83,7 +84,9 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality{
         {
             multimap.put(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], "Armor modifier", (double)this.damageReduceAmount * quality, 0));
             multimap.put(SharedMonsterAttributes.ARMOR_TOUGHNESS.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], "Armor toughness", (double)this.toughness * quality, 0));
+            multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], "Armor HP", getHP(stack), 0));
             multimap.put(ModAttributes.DEF_TIER.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], NAME_IN, tier.getTier()*0.25, 0));
+            multimap.put(ModAttributes.COST.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], NAME_IN, -getCost(stack), 0));
         }
 
         return multimap;
@@ -98,4 +101,71 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality{
     public boolean isEnchantable(ItemStack stack) {
         return false;
     }
+
+    public double getHP(ItemStack stack)
+    {
+        double result = 0;
+        HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
+        int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
+        result += level * ModConfig.MODIFIER_CONF.HP_FIXED_GROUP.VALUE_E;
+
+        level = attrMap.getOrDefault(Modifier.HP_UP, 0);
+        result += level * ModConfig.MODIFIER_CONF.HP_FIXED_GROUP.VALUE_C;
+
+        return result;
+    }
+
+    @Override
+    public EnumGeartype getType(ItemStack stack) {
+        switch (Objects.requireNonNull(getEquipmentSlot(stack)))
+        {
+            case FEET:
+                return EnumGeartype.ARMOR_BOOTS;
+            case LEGS:
+                return EnumGeartype.ARMOR_LEGGINGS;
+            case CHEST:
+                return EnumGeartype.ARMOR_CHEST;
+            case HEAD:
+                return EnumGeartype.ARMOR_HELMET;
+            default:
+                throw new IllegalStateException("Unexpected value: " + getEquipmentSlot(stack));
+        }
+    }
+
+    @Nullable
+    @Override
+    public EntityEquipmentSlot getEquipmentSlot(ItemStack stack) {
+        return armorType;
+    }
+
+    public int getCost(ItemStack stack)
+    {
+        int tierVal = tier.getTier();
+        try {
+            ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
+            int baseCost = 0;
+            //phase 1: no modifiers
+            switch (Objects.requireNonNull(getEquipmentSlot(stack)))
+            {
+                case FEET:
+                    baseCost = costConfig.FEET_COST;
+                    break;
+                case LEGS:
+                    baseCost = costConfig.LEG_COST;
+                    break;
+                case CHEST:
+                    baseCost = costConfig.CHEST_COST;
+                    break;
+                case HEAD:
+                    baseCost = costConfig.HEAD_COST;
+                    break;
+            }
+
+            return baseCost;
+        }catch (ArrayIndexOutOfBoundsException e)
+        {
+            return 0;
+        }
+    }
+
 }

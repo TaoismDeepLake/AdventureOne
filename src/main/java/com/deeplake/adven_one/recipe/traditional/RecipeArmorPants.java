@@ -11,7 +11,7 @@ import java.util.Objects;
 
 import static net.minecraft.item.crafting.Ingredient.EMPTY;
 
-public class RecipeArmorPants extends ShapedRecipes {
+public class RecipeArmorPants extends RecipeShapedHasQuality {
 
     public RecipeArmorPants(Item gem, Item result) {
         super(CraftUtil.SUIT, 3, 3, NonNullList.create(), new ItemStack(result));

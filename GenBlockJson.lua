@@ -123,8 +123,8 @@ end
 -- GenSet("suit_luck_a")
 
 
-GenBlock("barrier_sky");
-GenBlock("barrier_earth");
+GenItem("misc", "cost_measure");
+GenItem("misc", "debug_helm");
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");

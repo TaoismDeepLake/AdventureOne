@@ -10,7 +10,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Objects;
 
-public class RecipePickaxeT1 extends ShapedRecipes {
+public class RecipePickaxeT1 extends RecipeShapedHasQuality {
 
     public RecipePickaxeT1(Item gem, Item result, Item dirt) {
         super(CraftUtil.SUIT, 3, 3, NonNullList.create(), new ItemStack(result));

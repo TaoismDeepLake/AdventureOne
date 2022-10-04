@@ -120,7 +120,7 @@ public class ItemSpadeBase extends ItemSpade implements IHasModel {
 
 		if (logNBT)
 		{
-			tooltip.add(IDLNBTUtil.getNBT(stack).toString());
+			tooltip.add(IDLNBTUtil.getNBTReadOnly(stack).toString());
 		}
 	}
 

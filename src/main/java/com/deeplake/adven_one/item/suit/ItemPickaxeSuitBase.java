@@ -2,26 +2,38 @@ package com.deeplake.adven_one.item.suit;
 
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.SetTier;
+import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemPickaxeBase;
+import com.deeplake.adven_one.item.suit.modifiers.IHasType;
+import com.deeplake.adven_one.item.suit.modifiers.Modifier;
+import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.HashMap;
 import java.util.Random;
+import java.util.UUID;
 
-public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality{
-//    public ItemPickaxeSuitBase(String name, ToolMaterial material) {
-//        super(name, material);
-//    }
+import static com.deeplake.adven_one.item.suit.ItemSwordSuitBase.NAME_IN;
+
+public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality, IHasModifiers, IHasType, IHasCost {
+    protected static final UUID EFFCIENCY_MODIFIER = UUID.fromString("0468b7eb-3fb0-a205-2e07-fbb2c7759863");
 
     public ItemPickaxeSuitBase(SetTier tier) {
         super(getName(tier), tier.getToolMaterial());
         this.tier = tier;
+        logNBT = true;
     }
     SetTier tier;
 
@@ -48,7 +60,13 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality{
 
     @Override
     public float getDestroySpeed(ItemStack stack, IBlockState state) {
-        return (float) (super.getDestroySpeed(stack, state) * getQuality(stack));
+        Material material = state.getMaterial();
+        if (material != Material.IRON && material != Material.ANVIL && material != Material.ROCK)
+        {
+            return super.getDestroySpeed(stack, state);
+        } else {
+            return (float) getEffeciency(stack);
+        }
     }
 
     @Override
@@ -73,5 +91,67 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality{
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;
+    }
+
+    @Override
+    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
+        Multimap<String, AttributeModifier> multimap = HashMultimap.<String, AttributeModifier>create();
+
+        if (slot == EntityEquipmentSlot.MAINHAND)
+        {
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, NAME_IN, getAttack(stack), 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, this.attackSpeed, 0));
+            multimap.put(ModAttributes.EFFICIENCY.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, getEffeciency(stack), 0));
+            multimap.put(ModAttributes.COST.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, -getCost(stack), 0));
+        }
+
+        return multimap;
+    }
+
+    public double getAttack(ItemStack stack)
+    {
+        double result = this.attackDamage;
+        HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
+        int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
+        result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
+
+        level = attrMap.getOrDefault(Modifier.ATK_UP, 0);
+        result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_D;
+
+        return result;
+    }
+
+    public double getEffeciency(ItemStack stack)
+    {
+        double result = efficiency * getQuality(stack);
+        HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
+        int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
+        result += level * ModConfig.MODIFIER_CONF.EFFICIENCY_FIXED_GROUP.VALUE_E;
+
+        level = attrMap.getOrDefault(Modifier.EFFICIENCY_UP, 0);
+        result += level * ModConfig.MODIFIER_CONF.EFFICIENCY_FIXED_GROUP.VALUE_C;
+
+        return result;
+    }
+
+    @Override
+    public EnumGeartype getType(ItemStack stack) {
+        return EnumGeartype.PICKAXE;
+    }
+
+    public int getCost(ItemStack stack)
+    {
+        int tierVal = tier.getTier();
+        try {
+            ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
+            int baseCost = 0;
+            //phase 1: no modifiers
+            baseCost = costConfig.SWORD_COST;
+
+            return baseCost;
+        }catch (ArrayIndexOutOfBoundsException e)
+        {
+            return 0;
+        }
     }
 }

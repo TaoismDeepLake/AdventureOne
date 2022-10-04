@@ -4,9 +4,7 @@ import com.deeplake.adven_one.Idealland;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -18,12 +16,14 @@ public class ModAttributes {
 
     static final double MIN = -9999999;
     static final double MAX = 999999f;
-    public static float BASE_CRIT_DMG = 50;
 
     public static final HashSet<IAttribute> allNewAttrs = new HashSet<>();
 
-    public static final IAttribute DEF_TIER = getNewAttrNonpercent("def_tier");
-    public static final IAttribute ATK_TIER = getNewAttrNonpercent("atk_tier");
+    public static final IAttribute DEF_TIER = getNewAttrNonPercent("def_tier");
+    public static final IAttribute ATK_TIER = getNewAttrNonPercent("atk_tier");
+    public static final IAttribute EFFICIENCY = getNewAttrNonPercent("efficiency");
+    public static final IAttribute COST_MAX = getNewAttrNonPercent("cost_max");
+    public static final IAttribute COST = getNewAttrNonPercent("cost");
 
     @SubscribeEvent
     public static void onConstruct(EntityEvent.EntityConstructing entityConstructing)
@@ -49,7 +49,7 @@ public class ModAttributes {
         return attribute;
     }
 
-    public static IAttribute getNewAttrNonpercent(String name)
+    public static IAttribute getNewAttrNonPercent(String name)
     {
         IAttribute attribute = new RangedAttribute(null, getAttrName(name), 0, MIN, MAX).setDescription(name).setShouldWatch(false);
         allNewAttrs.add(attribute);

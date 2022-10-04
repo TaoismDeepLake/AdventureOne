@@ -18,7 +18,10 @@ import java.util.HashMap;
 public enum EnumSuit {
 
     SET_ONE("suit_test"),
-    SET_TWO("suit_back"),//backup
+    SET_TWO("suit_back"),//water
+    SET_FIRE("suit_fire"),
+    SET_AIR("suit_air"),
+    SET_EARTH("suit_earth"),
     SET_CELESTIAL("suit_celestial", true),//for T4 colorless
     SET_LUCK("suit_luck_a", true);//for T1 T2 luck suit
 

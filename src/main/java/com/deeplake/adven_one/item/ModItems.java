@@ -1,14 +1,15 @@
 package com.deeplake.adven_one.item;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.deeplake.adven_one.item.armor.ItemArmorTierDebug;
+import com.deeplake.adven_one.item.misc.ItemCostMeasure;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModItems {
 
@@ -28,6 +29,8 @@ public class ModItems {
 					ItemArmor.ArmorMaterial.CHAIN,
 					0,
 					EntityEquipmentSlot.HEAD);
+
+	public static final Item MEASURE = new ItemCostMeasure("cost_measure");
 //	public static final Item SUIT_A_GEM_T3 = new ItemBase("suit_a_gem_t3");
 
 
