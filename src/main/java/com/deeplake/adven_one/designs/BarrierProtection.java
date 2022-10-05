@@ -4,12 +4,11 @@ import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.ModBlocks;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.util.CommonFunctions;
-import com.deeplake.adven_one.util.EntityUtil;
 import com.deeplake.adven_one.util.PlayerUtil;
+import com.deeplake.adven_one.world.dimension.DimensionMain;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFireball;
-import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -34,7 +33,7 @@ public class BarrierProtection {
         {
 
             World world = livingBase.world;
-            if (!world.isRemote && world.getWorldTime() % meteorPeriod == 0)
+            if (!world.isRemote && world.getWorldTime() % meteorPeriod == 0 && world.provider instanceof DimensionMain)
             {
                 float remainCount = 1f;
                 BlockPos pos = livingBase.getPosition();
