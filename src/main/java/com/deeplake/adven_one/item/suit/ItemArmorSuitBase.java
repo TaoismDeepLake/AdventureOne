@@ -87,6 +87,7 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
             multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], "Armor HP", getHP(stack), 0));
             multimap.put(ModAttributes.DEF_TIER.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], NAME_IN, tier.getTier()*0.25, 0));
             multimap.put(ModAttributes.COST.getName(), new AttributeModifier(ARMOR_MODIFIERS_OVERRIDE[slot.getIndex()], NAME_IN, -getCost(stack), 0));
+            multimap.putAll(sharedAttributeModifiers(stack));
         }
 
         return multimap;
@@ -163,6 +164,7 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
                     break;
             }
 
+            baseCost *= costConfig.FACTOR;
 
             HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
             if (attrMap == null)
@@ -171,13 +173,13 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
             }
             else {
                 int level = attrMap.getOrDefault(EnumModifier.COST_SAVE, 0);
-                baseCost -= level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_E;
 
                 level = attrMap.getOrDefault(EnumModifier.COST_SAVE_ARMOR, 0);
-                baseCost -= level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_D;
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_D;
 
                 level = attrMap.getOrDefault(EnumModifier.OVERLOAD_ARMOR, 0);
-                baseCost += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_C;
+                baseCost += level * ModConfig.MODIFIER_CONF.COST_UP_FIXED_GROUP.VALUE_C;
             }
 
             if (baseCost < 0)

@@ -65,11 +65,11 @@ public class PopulateCrater implements IWorldGenerator {
             }
 
             if (random.nextFloat() < shrinkChance) {
-                width--;
+                width-=2;
                 startX++;
                 startZ++;
-                xMax = startX + width - 1;
-                zMax = startZ + width - 1;
+                xMax--;
+                zMax--;
                 if (width <= 3) {
                     return;
                 }

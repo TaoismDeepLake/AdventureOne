@@ -14,9 +14,13 @@ adven_one.msg.cost_info_overload=§c魔力管线过载: %s/%s
 entity.moroon_tainter.name=Moroon Pathfinder
 
 #Blocks
+tile.barrier_sky.name=天空屏障
 tile.barrier_earth.name=地之屏障
 
 #Items
+item.cost_measure.name=回路计
+item.cost_measure_max.desc=显示自身魔力管线的使用状况。
+
 item.food_cost_small.name=魔力小果
 item.food_cost_small.desc=吃下后，自身会长出魔力管线
 
@@ -106,8 +110,3 @@ adven_one.vocal.boss.steve.death=[Steve] 如果能重生，就有希望……
 adven_one.vocal.boss.steve.deflect=[Steve] 香草机制，小子。
 adven_one.vocal.boss.steve.kill=[Steve] 向香草之魂报告：模组玩家，已被击败！
 adven_one.vocal.boss.steve.summon=[Steve] 去吧,杀掉那个玩家比试图保护我更有效。
-
-tile.barrier_sky.name=天空屏障
-item.cost_measure.name=回路计
-item.cost_measure_max.desc=显示自身魔力管线的使用状况。
-

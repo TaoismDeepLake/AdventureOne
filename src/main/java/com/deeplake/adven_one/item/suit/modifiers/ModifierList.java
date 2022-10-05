@@ -35,6 +35,9 @@ public class ModifierList {
         EnumModifier.OVERLOAD_SWORD.addGearTypesSword();
         EnumModifier.OVERLOAD_PICK.addGearTypesPickaxe();
         EnumModifier.OVERLOAD_ARMOR.addGearTypesAllArmor();
+
+        EnumModifier.ANTI_PRESSURE_DEPTH.addGearTypesAll();
+        EnumModifier.ANTI_PRESSURE_HEIGHT.addGearTypesAll();
     }
 
     public static EnumModifier getFromID(int id)

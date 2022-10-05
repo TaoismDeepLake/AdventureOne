@@ -20,7 +20,7 @@ public class ItemCostMeasure extends ItemBase {
         if (!worldIn.isRemote && entityIn instanceof EntityLivingBase)
         {
             EntityLivingBase livingBase = (EntityLivingBase) entityIn;
-            int used = 1 + (int) -livingBase.getEntityAttribute(ModAttributes.COST).getAttributeValue();
+            int used = (int) -livingBase.getEntityAttribute(ModAttributes.COST).getAttributeValue();
             int max = 1 + (int) livingBase.getEntityAttribute(ModAttributes.COST_MAX).getAttributeValue();
             IDLNBTUtil.setIntOptimized(stack, IDLNBTDef.STATE, max);
             setDamage(stack, used);

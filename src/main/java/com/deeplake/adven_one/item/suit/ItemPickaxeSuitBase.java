@@ -25,15 +25,13 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
-import static com.deeplake.adven_one.item.suit.ItemSwordSuitBase.NAME_IN;
-
 public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality, IHasModifiers, IHasType, IHasCost {
     protected static final UUID EFFCIENCY_MODIFIER = UUID.fromString("0468b7eb-3fb0-a205-2e07-fbb2c7759863");
 
     public ItemPickaxeSuitBase(SetTier tier) {
         super(getName(tier), tier.getToolMaterial());
         this.tier = tier;
-        logNBT = true;
+//        logNBT = true;
     }
     SetTier tier;
 
@@ -103,6 +101,7 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, this.attackSpeed, 0));
             multimap.put(ModAttributes.EFFICIENCY.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, getEffeciency(stack), 0));
             multimap.put(ModAttributes.COST.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, -getCost(stack), 0));
+            multimap.putAll(sharedAttributeModifiers(stack));
         }
 
         return multimap;
@@ -147,8 +146,7 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
         int tierVal = tier.getTier();
         try {
             ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
-            int baseCost = costConfig.SWORD_COST;
-
+            int baseCost = costConfig.PICK_COST * costConfig.FACTOR;
 
             HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
             if (attrMap == null)
@@ -157,13 +155,13 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
             }
             else {
                 int level = attrMap.getOrDefault(EnumModifier.COST_SAVE, 0);
-                baseCost -= level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_E;
 
                 level = attrMap.getOrDefault(EnumModifier.COST_SAVE_PICK, 0);
-                baseCost -= level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_D;
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_D;
 
                 level = attrMap.getOrDefault(EnumModifier.OVERLOAD_PICK, 0);
-                baseCost += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_C;
+                baseCost += level * ModConfig.MODIFIER_CONF.COST_UP_FIXED_GROUP.VALUE_C;
             }
 
             if (baseCost < 0)

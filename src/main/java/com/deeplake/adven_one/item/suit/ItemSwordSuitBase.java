@@ -63,6 +63,7 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
             map.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, -2.4000000953674316D, 0));
             map.put(ModAttributes.ATK_TIER.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, tier.getTier(), 0));
             map.put(ModAttributes.COST.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, -getCost(stack), 0));
+            map.putAll(sharedAttributeModifiers(stack));
         }
 
         return map;
@@ -142,7 +143,7 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
         int tierVal = tier.getTier();
         try {
             ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
-            int baseCost = costConfig.SWORD_COST;
+            int baseCost = costConfig.SWORD_COST * costConfig.FACTOR;
 
             HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
             if (attrMap == null)
@@ -151,13 +152,13 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
             }
             else {
                 int level = attrMap.getOrDefault(EnumModifier.COST_SAVE, 0);
-                baseCost -= level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_E;
 
                 level = attrMap.getOrDefault(EnumModifier.COST_SAVE_SWORD, 0);
-                baseCost -= level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_D;
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_D;
 
                 level = attrMap.getOrDefault(EnumModifier.OVERLOAD_SWORD, 0);
-                baseCost += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_C;
+                baseCost += level * ModConfig.MODIFIER_CONF.COST_UP_FIXED_GROUP.VALUE_C;
             }
 
             if (baseCost < 0)

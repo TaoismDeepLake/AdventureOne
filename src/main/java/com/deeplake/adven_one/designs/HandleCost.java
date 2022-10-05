@@ -132,7 +132,7 @@ public class HandleCost {
     }
 
     public static void resetPlayerInitCost(EntityPlayer player) {
-        player.getEntityAttribute(ModAttributes.COST_MAX).setBaseValue(ModConfig.GENERAL_CONF.INIT_COST);
+        player.getEntityAttribute(ModAttributes.COST_MAX).setBaseValue(ModConfig.TIER_CONF.COST_CONF.INIT_COST);
     }
 
     public static void overload(EntityLivingBase livingBase)

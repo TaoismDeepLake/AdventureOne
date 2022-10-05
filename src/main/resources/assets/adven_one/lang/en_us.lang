@@ -103,6 +103,8 @@ adven_one.modifiers.cost_save_armor.name=Cost Saver [Armor]
 adven_one.modifiers.overload_sword.name=Overload [Sword]
 adven_one.modifiers.overload_pick.name=Overload [Pickaxe]
 adven_one.modifiers.overload_armor.name=Overload [Armor]
+adven_one.modifiers.anti_p_down.name=Depth Adapt
+adven_one.modifiers.anti_p_up.name=Height Adapt
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.

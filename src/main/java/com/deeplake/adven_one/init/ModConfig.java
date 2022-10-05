@@ -27,11 +27,29 @@ public class ModConfig {
     public static final GeneralConf GENERAL_CONF = new GeneralConf();
 
     public static class GeneralConf {
-        public int INIT_COST = 20;
+        public WorldPressureConf CONF_UP = new WorldPressureConf(136,6.0,100.0);
+        public WorldPressureConf CONF_DOWN = new WorldPressureConf(125,3.0,10.0);
+    }
 
+    public static class WorldPressureConf {
+        public WorldPressureConf(double y_START, double DAMAGE_TAKEN_UP_RATIO, double DIG_TIME_UP_RATIO) {
+            Y_START = y_START;
+            this.DAMAGE_TAKEN_UP_RATIO = DAMAGE_TAKEN_UP_RATIO;
+            this.DIG_TIME_UP_RATIO = DIG_TIME_UP_RATIO;
+        }
+
+        @Config.Comment("from which Y the effect start counting")
+        public double Y_START;
+
+        @Config.Comment("1.0 = +100% damage taken per 100 blocks")
+        public double DAMAGE_TAKEN_UP_RATIO = 1.0;
+
+        @Config.Comment("1.0 = +100% dig time needed per 100 blocks")
+        public double DIG_TIME_UP_RATIO = 9.0;
     }
 
     public static class CostConf {
+        public int INIT_COST = 20;
         public int ADVANCEMENT_COST = 1;
         public int ADVANCEMENT_COST_GOAL = 2;
         public int ADVANCEMENT_COST_CHALL = 5;
@@ -68,7 +86,6 @@ public class ModConfig {
     public static final TierConf TIER_CONF = new TierConf();
 
     public static class TierConf {
-        //public static final TierConf MELEE_CONF = new TierConf();
 
         @Config.RangeDouble(min = 0f)
         public double SWORD_ATK_T1 = 4;
@@ -170,6 +187,12 @@ public class ModConfig {
         public ModifierConfGroup EFFICIENCY_FIXED_GROUP = new ModifierConfGroup(1,0.8,0.5,0.3,0.2);
         public ModifierConfGroup COST_REDUCE_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
         public ModifierConfGroup COST_UP_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
+
+        public ModifierConfGroup PRESSURE_DOWN_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
+    }
+
+    public enum EnumFixLevel{
+        A,B,C,D,E
     }
 
     public static class ModifierConfGroup {
@@ -183,6 +206,27 @@ public class ModConfig {
 
         public ModifierConfGroup() {
         }
+
+        public double getByLevel(EnumFixLevel level)
+        {
+            switch (level)
+            {
+                case A:
+                    return VALUE_A;
+                case B:
+                    return VALUE_B;
+                case C:
+                    return VALUE_C;
+                case D:
+                    return VALUE_D;
+                case E:
+                    return VALUE_E;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + level);
+            }
+
+        }
+
 
         @Config.RangeDouble(min = 0f)
         public double VALUE_A = 2f;

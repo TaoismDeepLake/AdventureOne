@@ -1,12 +1,19 @@
 package com.deeplake.adven_one.item.suit.modifiers;
 
 import com.deeplake.adven_one.Idealland;
+import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
+import com.google.common.collect.Multimap;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttribute;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 
+import static com.deeplake.adven_one.item.suit.IHasModifiers.GENERAL_MODIFIER;
+import static com.deeplake.adven_one.item.suit.IHasModifiers.NAME_IN;
 import static com.deeplake.adven_one.item.suit.modifiers.ModifierList.ID_TO_ENUM;
 import static com.deeplake.adven_one.item.suit.modifiers.ModifierList.MAX_LV;
 
@@ -36,6 +43,9 @@ public enum EnumModifier {
     OVERLOAD_SWORD(205, "overload_sword", MAX_LV),
     OVERLOAD_PICK(206, "overload_pick", MAX_LV),
     OVERLOAD_ARMOR(207, "overload_armor", MAX_LV),
+
+    ANTI_PRESSURE_DEPTH(301, "anti_p_down", MAX_LV),
+    ANTI_PRESSURE_HEIGHT(302, "anti_p_up", MAX_LV),
     ;
 
     final int id;
@@ -112,5 +122,14 @@ public enum EnumModifier {
     public String getLangKey()
     {
         return String.format(NAME_KEY, name);
+    }
+
+    public static void addToListFromConfig(Multimap<String, AttributeModifier> result, HashMap<EnumModifier, Integer> attrMap,
+                                                   IAttribute attribute, EnumModifier modifier, ModConfig.ModifierConfGroup confGroup, ModConfig.EnumFixLevel enumFixLevel) {
+        result.put(attribute.getName(),
+                new AttributeModifier(GENERAL_MODIFIER,
+                        NAME_IN,
+                        attrMap.getOrDefault(modifier, 0) * confGroup.getByLevel(enumFixLevel),
+                        0));
     }
 }

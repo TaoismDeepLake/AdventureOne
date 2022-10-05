@@ -1,0 +1,158 @@
+#PARSE_ESCAPES
+#tabs
+itemGroup.advenMiscTab=冒险一号
+
+#config
+configgui.idealland.category.Menu0.GeneralConf=通用配置
+idealland.conf.general.welcome=Welcome Message Key
+
+#Messages
+adven_one.msg.cost_info=§a魔力管线使用状况: %s/%s
+adven_one.msg.cost_info_overload=§c魔力管线过载: %s/%s
+
+#Entities
+entity.moroon_tainter.name=Moroon Pathfinder
+
+#Blocks
+tile.barrier_sky.name=天空屏障
+tile.barrier_earth.name=地之屏障
+
+#Items
+item.cost_measure.name=回路计
+item.cost_measure_max.desc=显示自身魔力管线的使用状况。
+
+item.food_cost_small.name=魔力小果
+item.food_cost_small.desc=吃下后，自身会长出魔力管线
+
+item.food_cost_norm.name=魔力果
+item.food_cost_norm.desc=吃下后，自身会长出魔力管线
+
+item.food_cost_big.name=魔力大果
+item.food_cost_big.desc=吃下后，自身会长出魔力管线
+
+#Suits
+adven_one.suit_test=测试套
+adven_one.suit_test.1=测试一阶
+adven_one.suit_test.2=测试二阶
+adven_one.suit_test.3=测试三阶
+
+adven_one.suit_back=备用套
+adven_one.suit_back.1=备用一阶
+adven_one.suit_back.2=备用二阶
+adven_one.suit_back.3=备用三阶
+
+adven_one.suit_luck_a.1=寻宝者1
+adven_one.suit_luck_a.2=猎宝人2
+adven_one.suit_luck_a.3=Treasure Hunter A3
+
+adven_one.suit_celestial.4=星魂
+
+#Shared
+idealland.shared.press_shift=长按 SHIFT 查看详情
+adven_one.shared.quality_random=[随机成色]
+adven_one.shared.quality_desc_bad=成色: §c%s%%
+adven_one.shared.quality_desc_good=成色: §a%s%%
+
+adven_one.gem=%s锭
+adven_one.ore=%s矿
+adven_one.pickaxe=%s镐
+adven_one.sword=%s剑
+adven_one.armor0=%s盔
+adven_one.armor1=%s衣
+adven_one.armor2=%s裤
+adven_one.armor3=%s鞋
+
+adven_one.log=%s原木
+adven_one.planks=%s木板
+adven_one.dirt=%s泥土
+adven_one.stone=%s石
+adven_one.stone_stairs=%s石楼梯
+adven_one.stone_wall=%s石围墙
+adven_one.wood_stairs=%s木楼梯
+adven_one.wood_fence=%s木围墙
+adven_one.block=%s块
+
+#
+attribute.name.adven_one.attr.def_tier=防御阶级
+attribute.name.adven_one.attr.atk_tier=攻击阶级
+attribute.name.adven_one.attr.efficiency=挖掘效率
+attribute.name.adven_one.attr.cost=魔力管线
+attribute.name.adven_one.attr.cost_max=魔力管线
+
+adven_one.desc.modifier=§b%s %d级
+
+adven_one.modifiers.blank.name=§o§7（无）
+adven_one.modifiers.atk_up.name=攻击
+adven_one.modifiers.hp_up.name=生命
+adven_one.modifiers.hardness.name=坚硬
+adven_one.modifiers.efficiency_up.name=效率
+adven_one.modifiers.weapon_up.name=剑魂
+adven_one.modifiers.kill_creeper.name=爬行者杀手
+adven_one.modifiers.kill_enderman.name=末影人杀手
+adven_one.modifiers.kill_player.name=玩家杀手
+adven_one.modifiers.kill_melee.name=近战杀手
+adven_one.modifiers.kill_bow.name=弓弩杀手
+adven_one.modifiers.kill_pig.name=宰猪
+adven_one.modifiers.kill_cow.name=宰牛
+adven_one.modifiers.kill_sheep.name=宰羊
+adven_one.modifiers.kill_chick.name=宰鸡
+adven_one.modifiers.cost_save.name=节能
+adven_one.modifiers.cost_save_sword.name=节能·剑
+adven_one.modifiers.cost_save_pick.name=节能·镐
+adven_one.modifiers.cost_save_armor.name=节能·衣
+adven_one.modifiers.overload_sword.name=过载·剑
+adven_one.modifiers.overload_pick.name=Overload [Pickaxe]
+adven_one.modifiers.overload_armor.name=Overload [Armor]
+
+#Vocal
+adven_one.vocal.boss.steve.birth=[Steve] 你和你的模组令我感到可笑。
+adven_one.vocal.boss.steve.death=[Steve] 如果能重生，就有希望……
+adven_one.vocal.boss.steve.deflect=[Steve] 香草机制，小子。
+adven_one.vocal.boss.steve.kill=[Steve] 向香草之魂报告：模组玩家，已被击败！
+adven_one.vocal.boss.steve.summon=[Steve] 去吧,杀掉那个玩家比试图保护我更有效。
+
+
+以下是多余的部分
+
+
+
+
+
+
+
+
+
+
+
+
+adven_one.suit_luck_a.4=Treasure Hunter A3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

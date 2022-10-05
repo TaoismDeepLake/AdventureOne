@@ -24,6 +24,8 @@ public class ModAttributes {
     public static final IAttribute EFFICIENCY = getNewAttrNonPercent("efficiency");
     public static final IAttribute COST_MAX = getNewAttrNonPercent("cost_max");
     public static final IAttribute COST = getNewAttrNonPercent("cost");
+    public static final IAttribute ANTI_PRESSURE_EARTH = getNewAttrNonPercent("anti_pressure_earth");
+    public static final IAttribute ANTI_PRESSURE_SKY = getNewAttrNonPercent("anti_pressure_sky");
 
     @SubscribeEvent
     public static void onConstruct(EntityEvent.EntityConstructing entityConstructing)
