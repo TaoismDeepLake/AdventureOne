@@ -29,6 +29,27 @@ public class ModConfig {
     public static class GeneralConf {
         public WorldPressureConf CONF_UP = new WorldPressureConf(136,6.0,100.0);
         public WorldPressureConf CONF_DOWN = new WorldPressureConf(125,3.0,10.0);
+
+        public MeteorConf METEOR_CONF = new MeteorConf();
+    }
+
+    public static class MeteorConf {
+        public boolean ENABLE_METEOR_RAIN = true;
+        @Config.RangeInt(min = 1)
+        @Config.Comment("Smaller number means dense meteor rain.")
+        public int METEOR_PERIOD = 1;
+        @Config.RangeDouble(min = Float.MIN_VALUE)
+        public float STANDARD_RATE = 1f;
+        @Config.Comment("If the place can not see sky.")
+        public float COVERED_REDUCTION = 1f;
+
+        @Config.Comment("Higher places get bonus rate.")
+        public float HEIGHT_BONUS = 0.03f;
+
+        public float METEOR_RADIUS = 32f;
+
+        @Config.RangeDouble(min = Float.MIN_VALUE)
+        public float METEOR_SPEED = 3f;
     }
 
     public static class WorldPressureConf {
@@ -42,10 +63,10 @@ public class ModConfig {
         public double Y_START;
 
         @Config.Comment("1.0 = +100% damage taken per 100 blocks")
-        public double DAMAGE_TAKEN_UP_RATIO = 1.0;
+        public double DAMAGE_TAKEN_UP_RATIO;
 
         @Config.Comment("1.0 = +100% dig time needed per 100 blocks")
-        public double DIG_TIME_UP_RATIO = 9.0;
+        public double DIG_TIME_UP_RATIO;
     }
 
     public static class CostConf {
