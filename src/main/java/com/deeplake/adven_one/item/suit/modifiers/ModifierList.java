@@ -1,6 +1,8 @@
 package com.deeplake.adven_one.item.suit.modifiers;
 
+import com.deeplake.adven_one.item.suit.IHasModifiers;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
+import net.minecraft.item.ItemStack;
 
 import java.util.HashMap;
 
@@ -50,4 +52,33 @@ public class ModifierList {
         return result;
     }
 
+    public static void mergeModifiersToStack(HashMap<EnumModifier, Integer> resultMap, ItemStack rawResult, HashMap<EnumModifier, Integer> tempMap) {
+        EnumGeartype enumGeartype = EnumGeartype.ALL;
+        if (rawResult.getItem() instanceof IHasType)
+        {
+            enumGeartype = ((IHasType) rawResult.getItem()).getType(rawResult);
+        }
+
+        for (EnumModifier modifier : tempMap.keySet())
+        {
+            if (modifier.isApplicable(enumGeartype))
+            {
+                //todo: modifiers count limit
+                int newLevel = tempMap.get(modifier);
+                if (resultMap.containsKey(modifier))
+                {
+                    int oldLevel = resultMap.get(modifier);
+                    resultMap.replace(modifier, oldLevel + newLevel);
+                } else {
+                    resultMap.put(modifier, newLevel);
+                }
+            }
+        }
+
+        if (rawResult.getItem() instanceof IHasModifiers && resultMap.keySet().size() > 0)
+        {
+            IHasModifiers iHasModifiers = (IHasModifiers) rawResult.getItem();
+            iHasModifiers.storeAllToNBT(rawResult, resultMap);
+        }
+    }
 }

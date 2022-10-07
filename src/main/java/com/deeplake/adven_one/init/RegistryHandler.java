@@ -28,6 +28,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Objects;
+
 import static com.deeplake.adven_one.world.structure.InitGiantStructures.registerGiantStructure;
 
 @EventBusSubscriber
@@ -58,10 +60,10 @@ public class RegistryHandler {
 	{
 		if (block instanceof IBlockSuit)
 		{
-			ModItems.ITEMS.add(new ItemBlockBase(block).setRegistryName(block.getRegistryName()));
+			ModItems.ITEMS.add(new ItemBlockBase(block).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
 		}
 		else {
-			ModItems.ITEMS.add(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+			ModItems.ITEMS.add(new ItemBlock(block).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
 		}
 	}
 
@@ -91,6 +93,7 @@ public class RegistryHandler {
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
 		EnumSuit.init();
+		EnumSuit.initLeavesColor();
 
 		InitBiome.registerBiomes();
 		InitDimension.registerDimensions();

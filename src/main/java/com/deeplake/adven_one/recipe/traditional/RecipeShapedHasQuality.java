@@ -3,8 +3,7 @@ package com.deeplake.adven_one.recipe.traditional;
 import com.deeplake.adven_one.item.suit.IHasModifiers;
 import com.deeplake.adven_one.item.suit.IHasQuality;
 import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
-import com.deeplake.adven_one.item.suit.modifiers.IHasType;
-import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
+import com.deeplake.adven_one.item.suit.modifiers.ModifierList;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -29,10 +28,7 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
 
         for(int i = 0; i < inv.getSizeInventory(); i++) {
             ItemStack stack = inv.getStackInSlot(i);
-            if(stack.isEmpty()) {
-                continue;
-            }
-            else {
+            if (!stack.isEmpty()) {
                 if (stack.getItem() instanceof IHasQuality)
                 {
                     count++;
@@ -51,27 +47,7 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
                     IHasModifiers iHasModifiers = (IHasModifiers) stack.getItem();
                     HashMap<EnumModifier, Integer> tempMap = iHasModifiers.getAllFromNBT(stack);
 
-                    EnumGeartype enumGeartype = EnumGeartype.ALL;
-                    if (rawResult.getItem() instanceof IHasType)
-                    {
-                        enumGeartype = ((IHasType) rawResult.getItem()).getType(rawResult);
-                    }
-
-                    for (EnumModifier modifier : tempMap.keySet())
-                    {
-                        if (modifier.isApplicable(enumGeartype))
-                        {
-                            //todo: modifiers count limit
-                            int newLevel = tempMap.get(modifier);
-                            if (resultMap.containsKey(modifier))
-                            {
-                                int oldLevel = resultMap.get(modifier);
-                                resultMap.replace(modifier, oldLevel + newLevel);//todo: come up with a better algorithm
-                            } else {
-                                resultMap.put(modifier, newLevel);
-                            }
-                        }
-                    }
+                    ModifierList.mergeModifiersToStack(resultMap, rawResult, tempMap);
                 }
             }
         }
@@ -80,12 +56,6 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
         {
             IHasQuality iHasQuality = (IHasQuality) rawResult.getItem();
             iHasQuality.setQuality(rawResult, sumQuality/count);
-        }
-
-        if (rawResult.getItem() instanceof IHasModifiers && resultMap.keySet().size() > 0)
-        {
-            IHasModifiers iHasModifiers = (IHasModifiers) rawResult.getItem();
-            iHasModifiers.storeAllToNBT(rawResult, resultMap);
         }
 
         return rawResult;

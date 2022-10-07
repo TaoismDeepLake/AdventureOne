@@ -11,10 +11,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
+import net.minecraftforge.event.terraingen.BiomeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.HashMap;
 
+@Mod.EventBusSubscriber(modid = Idealland.MODID)
 public enum EnumSuit {
 
     SET_ONE("suit_test"),
@@ -28,6 +32,8 @@ public enum EnumSuit {
 
     final String name;
     final HashMap<Integer, SetTier> tierHashMap;
+
+    int color = 0xcccccccc;
 
     Block woodLog;
     Block dirt;
@@ -129,6 +135,11 @@ public enum EnumSuit {
 //        SET_FIRE.registerOreDict();
     }
 
+    public static void initLeavesColor() {
+        SET_ONE.color = 0x7f54a5;
+        SET_TWO.color = 0x00aaea;
+    }
+
     public Block getWoodPlanks() {
         return woodPlanks;
     }
@@ -193,4 +204,24 @@ public enum EnumSuit {
     public boolean isHidden() {
         return isHidden;
     }
+
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    @SubscribeEvent
+    public static void onGetLeavesColor(BiomeEvent.GetFoliageColor event){
+        Biome biome1 = event.getBiome();
+        if (biome1 instanceof BiomeSuit)
+        {
+            BiomeSuit biomeSuit = (BiomeSuit) biome1;
+            event.setNewColor(biomeSuit.getSuit().getColor());
+        }
+    }
+
 }

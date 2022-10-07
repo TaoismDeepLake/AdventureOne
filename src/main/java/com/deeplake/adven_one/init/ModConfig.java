@@ -332,6 +332,8 @@ public class ModConfig {
     public static final QualityConf QUALITY_CONF = new QualityConf();
 
     public static class QualityConf {
+        public double QUALITY_PER_DUST = 0.01;
+
         public double MIN_Q_PICKAXE = 0.5;
         public double DELTA_Q_PICKAXE = 1.0;
 
@@ -382,6 +384,12 @@ public class ModConfig {
         @Config.Comment("Sparseness of hole")
         public int CHUNK_PER_HOLE = 20;
 
+        public CraterConf CRATER_CONF = new CraterConf();
+    }
+
+    public static class CraterConf{
+        @Config.RangeDouble(min = 0, max = 1)
+        public double CRATER_TREE_CHANCE = 0.3f;
     }
 
     @Config.LangKey("configgui.idealland.category.Menu0.DungeonGenConf")

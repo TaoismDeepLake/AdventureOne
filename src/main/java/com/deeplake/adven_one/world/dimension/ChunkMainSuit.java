@@ -66,7 +66,7 @@ public class ChunkMainSuit extends WorldChunkBase {
 
                 for (int _z = 0; _z < CHUNK_SIZE; _z++)
                 {
-                    //walls that saparate the biomes
+                    //walls that separate the biomes
                     int extraHeight = 0;
                     if (phase < mountainThickness)
                     {
@@ -130,9 +130,7 @@ public class ChunkMainSuit extends WorldChunkBase {
 
                     depth = 10;
                     curY -= depth;
-//                    for (int _y = curY + depth; _y >= curY; _y--) {
-//                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, AIR);
-//                    }
+//                  air here
 
                     depth = 1;
                     curY -= depth;
@@ -149,31 +147,6 @@ public class ChunkMainSuit extends WorldChunkBase {
 
                     curY -= depth;
                     fill(curY, depth, chunk, _x, _z, WorldGenUtil.LANTERN);
-                }
-            }
-
-//            for (int _y = 100; _y < seaLevel; _y++) {
-//                for (int _x = 0; _x < CHUNK_SIZE; _x++)
-//                {
-//                    for (int _z = 0; _z < CHUNK_SIZE; _z++)
-//                    {
-//                        WorldGenUtil.setBlockState(chunk, _x, _y, _z, WATER);
-//                    }
-//                }
-//            }
-
-            //trees, best fit in populate, not here
-            for (int _x = 0; _x < CHUNK_SIZE; _x++)
-            {
-                for (int _z = 0; _z < CHUNK_SIZE; _z++)
-                {
-                    if (rand.nextFloat() < ModConfig.WORLD_GEN_CONF.TREE_DENSITY)
-                    {
-                        int height = 2 + rand.nextInt(7);
-                        for (int _y = seaLevel; _y < seaLevel+height; _y++) {
-                            WorldGenUtil.setBlockState(chunk, _x, _y, _z, SUIT_LOGS);
-                        }
-                    }
                 }
             }
         }

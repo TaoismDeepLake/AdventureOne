@@ -4,27 +4,27 @@ import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.armor.ItemArmorTierDebug;
 import com.deeplake.adven_one.item.food.ItemFoodCost;
 import com.deeplake.adven_one.item.misc.ItemCostMeasure;
-import net.minecraft.init.SoundEvents;
+import com.deeplake.adven_one.item.suit.ItemQualityDust;
+import com.deeplake.adven_one.item.suit.modifiers.ItemModifierShifter;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ModItems {
 
-	public static final List<Item> ITEMS = new ArrayList<Item>();
+	public static final List<Item> ITEMS = new ArrayList<>();
 
-	public static final Item.ToolMaterial MAT_TOOL_TEST =
-			EnumHelper.addToolMaterial("test", 3, 512, 3.0F, 4F, 20);
+//	public static final Item.ToolMaterial MAT_TOOL_TEST =
+//			EnumHelper.addToolMaterial("test", 3, 512, 3.0F, 4F, 20);
 
-	public static final ItemArmor.ArmorMaterial MAT_ARMOR_TEST = EnumHelper.addArmorMaterial(
-            "adven_one:armor_moroon",
-			"adven_one:armor_moroon",
-			80, new int[] {3, 6, 8, 3},
-			2, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2);
+//	public static final ItemArmor.ArmorMaterial MAT_ARMOR_TEST = EnumHelper.addArmorMaterial(
+//            "adven_one:armor_moroon",
+//			"adven_one:armor_moroon",
+//			80, new int[] {3, 6, 8, 3},
+//			2, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 2);
 
 	public static final Item DEBUG_HELM =
 			new ItemArmorTierDebug("debug_helm",
@@ -36,13 +36,10 @@ public class ModItems {
 	public static final Item FOOD_COST_SMALL = new ItemFoodCost("food_cost_small", ModConfig.TIER_CONF.COST_CONF.FOOD_COST_SMALL);
 	public static final Item FOOD_COST_NORM = new ItemFoodCost("food_cost_norm", ModConfig.TIER_CONF.COST_CONF.FOOD_COST_NORMAL);
 	public static final Item FOOD_COST_BIG = new ItemFoodCost("food_cost_big", ModConfig.TIER_CONF.COST_CONF.FOOD_COST_BIG);
-//	public static final Item SUIT_A_GEM_T3 = new ItemBase("suit_a_gem_t3");
 
-
-
-	//Basic
-	//public static final Item PAPER_BLOOD = new ItemBase("paper_blood");
-
+	//Crafting
+	public static final Item QUALITY_DUST = new ItemQualityDust("quality_dust");
+	public static final Item MOD_SHIFTER = new ItemModifierShifter("mod_shifter");
 
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),
