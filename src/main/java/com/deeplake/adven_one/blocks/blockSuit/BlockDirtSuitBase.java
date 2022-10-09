@@ -16,6 +16,7 @@ public class BlockDirtSuitBase extends BlockBase implements IHasModel, IBlockSui
         super(String.format("%s_"+NAME,suit.getName()), Material.GROUND);
 
         setHardness(0.5F);
+        setHarvestLevel("shovel", 0);
         setSoundType(SoundType.GROUND);
         this.suit = suit;
     }

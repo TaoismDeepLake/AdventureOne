@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "adven_one:blocks/suit_back_dirt",
+		"down": "adven_one:blocks/suit_back_dirt",
+		"up": "adven_one:blocks/suit_back_grass_top",
+		"north": "adven_one:blocks/suit_back_grass_side",
+		"south": "adven_one:blocks/suit_back_grass_side",
+		"west": "adven_one:blocks/suit_back_grass_side",
+		"east": "adven_one:blocks/suit_back_grass_side"
+	}
+}
