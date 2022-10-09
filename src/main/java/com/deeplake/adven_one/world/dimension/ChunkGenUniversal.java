@@ -3,7 +3,6 @@ package com.deeplake.adven_one.world.dimension;
 import com.deeplake.adven_one.util.WorldGenUtil;
 import com.deeplake.adven_one.world.biome.BiomeSuit;
 import com.deeplake.adven_one.world.populate.PopulateMainSuit;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;

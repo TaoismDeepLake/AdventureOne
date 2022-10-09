@@ -4,12 +4,11 @@ import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.ModBlocks;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.util.CommonFunctions;
-import com.deeplake.adven_one.util.EntityUtil;
 import com.deeplake.adven_one.util.PlayerUtil;
+import com.deeplake.adven_one.world.dimension.DimensionMain;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFireball;
-import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -23,42 +22,48 @@ import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class BarrierProtection {
-
-    static int meteorPeriod = 3;
+    private static ModConfig.MeteorConf meteorConf;
 
     @SubscribeEvent
     public static void onPlayerTick(LivingEvent.LivingUpdateEvent event)
     {
-        EntityLivingBase livingBase = event.getEntityLiving();
-        if (livingBase instanceof EntityPlayer)
+        meteorConf = ModConfig.GENERAL_CONF.METEOR_CONF;
+        if (meteorConf.ENABLE_METEOR_RAIN)
         {
-
-            World world = livingBase.world;
-            if (!world.isRemote && world.getWorldTime() % meteorPeriod == 0)
+            EntityLivingBase livingBase = event.getEntityLiving();
+            if (livingBase instanceof EntityPlayer)
             {
-                float remainCount = 1f;
-                BlockPos pos = livingBase.getPosition();
-                if (!world.canBlockSeeSky(pos))
+                World world = livingBase.world;
+                int meteorPeriod = meteorConf.METEOR_PERIOD;
+                if (!world.isRemote
+                        && world.getWorldTime() % meteorPeriod == 0
+                        && world.provider instanceof DimensionMain)
                 {
-                    remainCount -= 0.8f;
-                }
+                    float remainCount = meteorConf.STANDARD_RATE;
+                    BlockPos pos = livingBase.getPosition();
+                    if (!world.canBlockSeeSky(pos))
+                    {
+                        remainCount -= meteorConf.COVERED_REDUCTION;
+                    }
 
-                int seaLevel = world.getSeaLevel();
-                int y = pos.getY();
-                int delta = y - seaLevel;
-                if (seaLevel - y > 0)
-                {
-                    remainCount += 0.2 * delta;
-                } else {
-                    remainCount += 0.4 * delta;
-                }
+                    int seaLevel = world.getSeaLevel();
+                    int y = pos.getY();
+                    int delta = y - seaLevel;
+                    double heightBonus = meteorConf.HEIGHT_BONUS;
+                    if (seaLevel - y > 0)
+                    {
+                        remainCount += heightBonus * delta;
+                    } else {
+                        remainCount += heightBonus * delta * 2;
+                    }
 
-                Random rng = livingBase.getRNG();
-                int cycleTimes = CommonFunctions.fromRandomFloat(remainCount, rng);
-                while (cycleTimes > 0)
-                {
-                    summonMeteroidAround(livingBase.getPositionVector(), rng, world);
-                    cycleTimes--;
+                    Random rng = livingBase.getRNG();
+                    int cycleTimes = CommonFunctions.fromRandomFloat(remainCount, rng);
+                    while (cycleTimes > 0)
+                    {
+                        summonMeteroidAround(livingBase.getPositionVector(), rng, world);
+                        cycleTimes--;
+                    }
                 }
             }
         }
@@ -66,7 +71,8 @@ public class BarrierProtection {
 
     static void summonMeteroidAround(Vec3d pos, Random random, World world)
     {
-        float maxRange = 32f;
+        ModConfig.MeteorConf meteor_conf = ModConfig.GENERAL_CONF.METEOR_CONF;
+        float maxRange = meteor_conf.METEOR_RADIUS;
         float range = random.nextFloat() * maxRange;
         float theta = 360 * random.nextFloat();
 
@@ -74,8 +80,8 @@ public class BarrierProtection {
 
         Vec3d target = Vec3d.fromPitchYaw(0f, theta).scale(range).add(pos);
         EntityFireball fireball = new EntitySmallFireball(world,
-                target.x, target.y+dy, target.z,
-                0d, -4, 0d
+                target.x, Math.max(target.y+dy, 260), target.z,
+                0d, -meteor_conf.METEOR_RADIUS, 0d
         );
         world.spawnEntity(fireball);
     }

@@ -13,6 +13,7 @@ import com.deeplake.adven_one.item.suit.modifiers.ModifierList;
 import com.deeplake.adven_one.util.IHasModel;
 import com.deeplake.adven_one.util.ModSoundHandler;
 import com.deeplake.adven_one.world.dimension.InitDimension;
+import com.deeplake.adven_one.worldgen.InitWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -27,7 +28,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.deeplake.adven_one.world.structure.InitGiantStructures.registerWorldGen;
+import java.util.Objects;
+
+import static com.deeplake.adven_one.world.structure.InitGiantStructures.registerGiantStructure;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -57,10 +60,10 @@ public class RegistryHandler {
 	{
 		if (block instanceof IBlockSuit)
 		{
-			ModItems.ITEMS.add(new ItemBlockBase(block).setRegistryName(block.getRegistryName()));
+			ModItems.ITEMS.add(new ItemBlockBase(block).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
 		}
 		else {
-			ModItems.ITEMS.add(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+			ModItems.ITEMS.add(new ItemBlock(block).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
 		}
 	}
 
@@ -90,13 +93,15 @@ public class RegistryHandler {
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
 		EnumSuit.init();
+		EnumSuit.initLeavesColor();
 
 		InitBiome.registerBiomes();
 		InitDimension.registerDimensions();
 
 		ModEntityInit.registerEntities();
 
-		registerWorldGen();
+		registerGiantStructure();
+		InitWorldGen.registerWorldGen();
 	}
 
 	public static void postInitReg()

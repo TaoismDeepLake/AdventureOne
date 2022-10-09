@@ -5,8 +5,8 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemPickaxeBase;
+import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
 import com.deeplake.adven_one.item.suit.modifiers.IHasType;
-import com.deeplake.adven_one.item.suit.modifiers.Modifier;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -25,15 +25,13 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
-import static com.deeplake.adven_one.item.suit.ItemSwordSuitBase.NAME_IN;
-
 public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality, IHasModifiers, IHasType, IHasCost {
     protected static final UUID EFFCIENCY_MODIFIER = UUID.fromString("0468b7eb-3fb0-a205-2e07-fbb2c7759863");
 
     public ItemPickaxeSuitBase(SetTier tier) {
         super(getName(tier), tier.getToolMaterial());
         this.tier = tier;
-        logNBT = true;
+//        logNBT = true;
     }
     SetTier tier;
 
@@ -103,6 +101,7 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, this.attackSpeed, 0));
             multimap.put(ModAttributes.EFFICIENCY.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, getEffeciency(stack), 0));
             multimap.put(ModAttributes.COST.getName(), new AttributeModifier(EFFCIENCY_MODIFIER, NAME_IN, -getCost(stack), 0));
+            multimap.putAll(sharedAttributeModifiers(stack));
         }
 
         return multimap;
@@ -111,11 +110,11 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
     public double getAttack(ItemStack stack)
     {
         double result = this.attackDamage;
-        HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
-        int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
+        HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+        int level = attrMap.getOrDefault(EnumModifier.HARDNESS, 0);
         result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
 
-        level = attrMap.getOrDefault(Modifier.ATK_UP, 0);
+        level = attrMap.getOrDefault(EnumModifier.ATK_UP, 0);
         result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_D;
 
         return result;
@@ -124,12 +123,15 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
     public double getEffeciency(ItemStack stack)
     {
         double result = efficiency * getQuality(stack);
-        HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
-        int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
+        HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+        int level = attrMap.getOrDefault(EnumModifier.HARDNESS, 0);
         result += level * ModConfig.MODIFIER_CONF.EFFICIENCY_FIXED_GROUP.VALUE_E;
 
-        level = attrMap.getOrDefault(Modifier.EFFICIENCY_UP, 0);
+        level = attrMap.getOrDefault(EnumModifier.EFFICIENCY_UP, 0);
         result += level * ModConfig.MODIFIER_CONF.EFFICIENCY_FIXED_GROUP.VALUE_C;
+
+        level = attrMap.getOrDefault(EnumModifier.OVERLOAD_PICK, 0);
+        result += level * ModConfig.MODIFIER_CONF.EFFICIENCY_FIXED_GROUP.VALUE_A;
 
         return result;
     }
@@ -144,9 +146,28 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
         int tierVal = tier.getTier();
         try {
             ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
-            int baseCost = 0;
-            //phase 1: no modifiers
-            baseCost = costConfig.SWORD_COST;
+            int baseCost = costConfig.PICK_COST * costConfig.FACTOR;
+
+            HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+            if (attrMap == null)
+            {
+                Idealland.LogWarning("Error: Null list");
+            }
+            else {
+                int level = attrMap.getOrDefault(EnumModifier.COST_SAVE, 0);
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_E;
+
+                level = attrMap.getOrDefault(EnumModifier.COST_SAVE_PICK, 0);
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_D;
+
+                level = attrMap.getOrDefault(EnumModifier.OVERLOAD_PICK, 0);
+                baseCost += level * ModConfig.MODIFIER_CONF.COST_UP_FIXED_GROUP.VALUE_C;
+            }
+
+            if (baseCost < 0)
+            {
+                baseCost = 0;
+            }
 
             return baseCost;
         }catch (ArrayIndexOutOfBoundsException e)

@@ -21,7 +21,7 @@ public interface IHasQuality extends IHasInit {
 
     default double getRandomQuality(ItemStack stack)
     {
-        return IDLNBTUtil.GetDouble(stack, IDLNBTDef.QUALITY, 1f);
+        return IDLNBTUtil.GetDouble(stack, IDLNBTDef.QUALITY, ModConfig.TIER_CONF.UNIDENTIFIED_QUALITY);
     }
 
     //not very good, as quality range may be configured. I don't have time for that now.
@@ -41,5 +41,16 @@ public interface IHasQuality extends IHasInit {
         {
             return EnumRarity.EPIC;
         }
+    }
+
+    //todo: add min max interface here.
+    default double getMinQuality(ItemStack stack)
+    {
+        return 0;
+    }
+
+    default double getMaxQuality(ItemStack stack)
+    {
+        return 1.5;
     }
 }

@@ -123,8 +123,10 @@ end
 -- GenSet("suit_luck_a")
 
 
-GenItem("misc", "cost_measure");
-GenItem("misc", "debug_helm");
+GenItem("food", "food_cost_small");
+GenItem("food", "food_cost_norm");
+GenItem("food", "food_cost_big");
+
 
 -- GenItem("misc", "nano_mender_greater");
 -- GenItem("misc", "package_fade_armor_diamond");

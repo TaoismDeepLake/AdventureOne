@@ -27,10 +27,60 @@ public class ModConfig {
     public static final GeneralConf GENERAL_CONF = new GeneralConf();
 
     public static class GeneralConf {
+        public WorldPressureConf CONF_UP = new WorldPressureConf(136,6.0,100.0);
+        public WorldPressureConf CONF_DOWN = new WorldPressureConf(125,3.0,10.0);
+
+        public MeteorConf METEOR_CONF = new MeteorConf();
+    }
+
+    public static class MeteorConf {
+        public boolean ENABLE_METEOR_RAIN = true;
+        @Config.RangeInt(min = 1)
+        @Config.Comment("Smaller number means dense meteor rain.")
+        public int METEOR_PERIOD = 1;
+        @Config.RangeDouble(min = Float.MIN_VALUE)
+        public float STANDARD_RATE = 1f;
+        @Config.Comment("If the place can not see sky.")
+        public float COVERED_REDUCTION = 1f;
+
+        @Config.Comment("Higher places get bonus rate.")
+        public float HEIGHT_BONUS = 0.03f;
+
+        public float METEOR_RADIUS = 32f;
+
+        @Config.RangeDouble(min = Float.MIN_VALUE)
+        public float METEOR_SPEED = 3f;
+    }
+
+    public static class WorldPressureConf {
+        public WorldPressureConf(double y_START, double DAMAGE_TAKEN_UP_RATIO, double DIG_TIME_UP_RATIO) {
+            Y_START = y_START;
+            this.DAMAGE_TAKEN_UP_RATIO = DAMAGE_TAKEN_UP_RATIO;
+            this.DIG_TIME_UP_RATIO = DIG_TIME_UP_RATIO;
+        }
+
+        @Config.Comment("from which Y the effect start counting")
+        public double Y_START;
+
+        @Config.Comment("1.0 = +100% damage taken per 100 blocks")
+        public double DAMAGE_TAKEN_UP_RATIO;
+
+        @Config.Comment("1.0 = +100% dig time needed per 100 blocks")
+        public double DIG_TIME_UP_RATIO;
+    }
+
+    public static class CostConf {
         public int INIT_COST = 20;
         public int ADVANCEMENT_COST = 1;
         public int ADVANCEMENT_COST_GOAL = 2;
         public int ADVANCEMENT_COST_CHALL = 5;
+
+        @Config.RequiresMcRestart
+        public int FOOD_COST_SMALL = 1;
+        @Config.RequiresMcRestart
+        public int FOOD_COST_NORMAL = 2;
+        @Config.RequiresMcRestart
+        public int FOOD_COST_BIG = 5;
     }
 
     @Config.Comment("Config for developers")
@@ -57,7 +107,6 @@ public class ModConfig {
     public static final TierConf TIER_CONF = new TierConf();
 
     public static class TierConf {
-        //public static final TierConf MELEE_CONF = new TierConf();
 
         @Config.RangeDouble(min = 0f)
         public double SWORD_ATK_T1 = 4;
@@ -92,6 +141,8 @@ public class ModConfig {
             TIER_QUALITY_CONF[2] = TIER_QUALITY_3;
             TIER_QUALITY_CONF[3] = TIER_QUALITY_4;
         }
+
+        public final CostConf COST_CONF = new CostConf();
 
         public final CostConfigByTier COST_TIER_1 =
                  new CostConfigByTier(20,20,30,50,40,30);
@@ -155,6 +206,14 @@ public class ModConfig {
         public ModifierConfGroup ATK_FIXED_GROUP = new ModifierConfGroup();
         public ModifierConfGroup HP_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
         public ModifierConfGroup EFFICIENCY_FIXED_GROUP = new ModifierConfGroup(1,0.8,0.5,0.3,0.2);
+        public ModifierConfGroup COST_REDUCE_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
+        public ModifierConfGroup COST_UP_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
+
+        public ModifierConfGroup PRESSURE_DOWN_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
+    }
+
+    public enum EnumFixLevel{
+        A,B,C,D,E
     }
 
     public static class ModifierConfGroup {
@@ -168,6 +227,27 @@ public class ModConfig {
 
         public ModifierConfGroup() {
         }
+
+        public double getByLevel(EnumFixLevel level)
+        {
+            switch (level)
+            {
+                case A:
+                    return VALUE_A;
+                case B:
+                    return VALUE_B;
+                case C:
+                    return VALUE_C;
+                case D:
+                    return VALUE_D;
+                case E:
+                    return VALUE_E;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + level);
+            }
+
+        }
+
 
         @Config.RangeDouble(min = 0f)
         public double VALUE_A = 2f;
@@ -252,6 +332,8 @@ public class ModConfig {
     public static final QualityConf QUALITY_CONF = new QualityConf();
 
     public static class QualityConf {
+        public double QUALITY_PER_DUST = 0.01;
+
         public double MIN_Q_PICKAXE = 0.5;
         public double DELTA_Q_PICKAXE = 1.0;
 
@@ -302,6 +384,12 @@ public class ModConfig {
         @Config.Comment("Sparseness of hole")
         public int CHUNK_PER_HOLE = 20;
 
+        public CraterConf CRATER_CONF = new CraterConf();
+    }
+
+    public static class CraterConf{
+        @Config.RangeDouble(min = 0, max = 1)
+        public double CRATER_TREE_CHANCE = 0.3f;
     }
 
     @Config.LangKey("configgui.idealland.category.Menu0.DungeonGenConf")

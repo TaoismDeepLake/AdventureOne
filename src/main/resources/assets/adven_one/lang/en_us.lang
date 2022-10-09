@@ -21,6 +21,15 @@ tile.barrier_earth.name=Earth Barrier
 item.cost_measure.name=Cost Meter
 item.cost_measure_max.desc=Displays Current cost info.
 
+item.food_cost_small.name=Lesser Cost Booster
+item.food_cost_small.desc=Boosts your cost.
+
+item.food_cost_norm.name=Cost Booster
+item.food_cost_norm.desc=Boosts your cost.
+
+item.food_cost_big.name=Great Cost Booster
+item.food_cost_big.desc=Boosts your cost.
+
 #Suits
 adven_one.suit_test=Test Suit
 adven_one.suit_test.1=Test Suit T1
@@ -77,6 +86,25 @@ adven_one.modifiers.atk_up.name=ATK
 adven_one.modifiers.hp_up.name=HP
 adven_one.modifiers.hardness.name=Hardness
 adven_one.modifiers.efficiency_up.name=Efficient
+adven_one.modifiers.weapon_up.name=ATK [SWORD]
+adven_one.modifiers.kill_creeper.name=Creeper Killer
+adven_one.modifiers.kill_enderman.name=Enderman Killer
+adven_one.modifiers.kill_player.name=Player Killer
+adven_one.modifiers.kill_melee.name=Melee Killer
+adven_one.modifiers.kill_bow.name=Bowman Killer
+adven_one.modifiers.kill_pig.name=Pig Butcher
+adven_one.modifiers.kill_cow.name=Cow Butcher
+adven_one.modifiers.kill_sheep.name=Sheep Butcher
+adven_one.modifiers.kill_chick.name=Chick Butcher
+adven_one.modifiers.cost_save.name=Cost Saver
+adven_one.modifiers.cost_save_sword.name=Cost Saver [Sword]
+adven_one.modifiers.cost_save_pick.name=Cost Saver [Pickaxe]
+adven_one.modifiers.cost_save_armor.name=Cost Saver [Armor]
+adven_one.modifiers.overload_sword.name=Overload [Sword]
+adven_one.modifiers.overload_pick.name=Overload [Pickaxe]
+adven_one.modifiers.overload_armor.name=Overload [Armor]
+adven_one.modifiers.anti_p_down.name=Depth Adapt
+adven_one.modifiers.anti_p_up.name=Height Adapt
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.

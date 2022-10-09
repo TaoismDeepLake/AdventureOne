@@ -6,7 +6,7 @@ import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemSwordBase;
 import com.deeplake.adven_one.item.suit.modifiers.IHasType;
-import com.deeplake.adven_one.item.suit.modifiers.Modifier;
+import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -63,6 +63,7 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
             map.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, NAME_IN, -2.4000000953674316D, 0));
             map.put(ModAttributes.ATK_TIER.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, tier.getTier(), 0));
             map.put(ModAttributes.COST.getName(), new AttributeModifier(ATK_DEF_MODIFIER, NAME_IN, -getCost(stack), 0));
+            map.putAll(sharedAttributeModifiers(stack));
         }
 
         return map;
@@ -110,17 +111,23 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
     public double getAttack(ItemStack stack)
     {
         double result = getSwordDamage(tier.getTier()) * getQuality(stack);
-        HashMap<Modifier, Integer> attrMap = getAllFromNBT(stack);
+        HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
         if (attrMap == null)
         {
             Idealland.LogWarning("Error: Null list");
         }
         else {
-            int level = attrMap.getOrDefault(Modifier.HARDNESS, 0);
+            int level = attrMap.getOrDefault(EnumModifier.HARDNESS, 0);
             result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
 
-            level = attrMap.getOrDefault(Modifier.ATK_UP, 0);
+            level = attrMap.getOrDefault(EnumModifier.ATK_UP, 0);
             result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_D;
+
+            level = attrMap.getOrDefault(EnumModifier.WEAPON_UP, 0);
+            result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_C;
+
+            level = attrMap.getOrDefault(EnumModifier.OVERLOAD_SWORD, 0);
+            result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_A;
         }
 
         return result;
@@ -136,9 +143,28 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
         int tierVal = tier.getTier();
         try {
             ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
-            int baseCost = 0;
-            //phase 1: no modifiers
-            baseCost = costConfig.SWORD_COST;
+            int baseCost = costConfig.SWORD_COST * costConfig.FACTOR;
+
+            HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+            if (attrMap == null)
+            {
+                Idealland.LogWarning("Error: Null list");
+            }
+            else {
+                int level = attrMap.getOrDefault(EnumModifier.COST_SAVE, 0);
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_E;
+
+                level = attrMap.getOrDefault(EnumModifier.COST_SAVE_SWORD, 0);
+                baseCost -= level * ModConfig.MODIFIER_CONF.COST_REDUCE_FIXED_GROUP.VALUE_D;
+
+                level = attrMap.getOrDefault(EnumModifier.OVERLOAD_SWORD, 0);
+                baseCost += level * ModConfig.MODIFIER_CONF.COST_UP_FIXED_GROUP.VALUE_C;
+            }
+
+            if (baseCost < 0)
+            {
+                baseCost = 0;
+            }
 
             return baseCost;
         }catch (ArrayIndexOutOfBoundsException e)

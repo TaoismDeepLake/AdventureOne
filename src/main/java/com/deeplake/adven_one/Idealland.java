@@ -24,7 +24,7 @@ import org.apache.logging.log4j.Logger;
 public class Idealland {
     public static final String MODID = "adven_one";
     public static final String NAME = "Adventure One";
-    public static final String VERSION = "1.3.1";
+    public static final String VERSION = "1.3.2";
 
     public static Logger logger;
 
@@ -93,8 +93,6 @@ public class Idealland {
     }
 
     private static void RegisterTileEntity() {
-//        GameRegistry.registerTileEntity(TileEntityDeBoomOrb.class, new ResourceLocation(MODID, "deboom_orb_basic"));
-
         //GameRegistry.registerTileEntity(TileEntityBuilderFarm.class, new ResourceLocation(MODID, "builder_farm_basic"));
         //GameRegistry.registerTileEntity(TileEntityBuilderOne.class, new ResourceLocation(MODID, "builder.builder_one"));
     }

@@ -4,7 +4,7 @@ import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemBase;
-import com.deeplake.adven_one.item.suit.modifiers.Modifier;
+import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -40,12 +40,12 @@ public class ItemGemSuit extends ItemBase implements IHasQuality, IHasModifiers 
         }
     }
 
-    public HashMap<Modifier, Integer> getRandomModifierList(Random random)
+    public HashMap<EnumModifier, Integer> getRandomModifierList(Random random)
     {
-        HashMap<Modifier, Integer> result = new HashMap<>();
+        HashMap<EnumModifier, Integer> result = new HashMap<>();
 
         int level = 1 + random.nextInt(3);//test level
-        Modifier modifier = Modifier.values()[random.nextInt(Modifier.values().length)];
+        EnumModifier modifier = EnumModifier.values()[random.nextInt(EnumModifier.values().length)];
         result.put(modifier, modifier.getClampedLevel(level));
 
         return result;
