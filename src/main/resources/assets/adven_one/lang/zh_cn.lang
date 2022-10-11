@@ -69,8 +69,10 @@ adven_one.grass=%s草方块
 adven_one.stone=%s石
 adven_one.stone_stairs=%s石楼梯
 adven_one.stone_wall=%s石围墙
+adven_one.stone_slab=%s石台阶
 adven_one.wood_stairs=%s木楼梯
 adven_one.wood_fence=%s木围墙
+adven_one.wood_slab=%s木台阶
 adven_one.block=%s块
 
 #

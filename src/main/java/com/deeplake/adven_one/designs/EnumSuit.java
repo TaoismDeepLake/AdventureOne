@@ -5,6 +5,7 @@ import com.deeplake.adven_one.blocks.blockSuit.*;
 import com.deeplake.adven_one.util.WorldGenUtil;
 import com.deeplake.adven_one.world.biome.BiomeSuit;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
@@ -43,11 +44,15 @@ public enum EnumSuit {
     Block stone;
     Block stoneStairs;
     Block stoneWall;
+    BlockSlab stoneSlab;
+    BlockSlab stoneSlabDouble;
 
     //wooden block
     Block woodPlanks;
     Block woodStairs;
     Block woodFence;
+    BlockSlab woodSlab;
+    BlockSlab woodSlabDouble;
 
     Biome biome = Biomes.OCEAN;
 
@@ -98,11 +103,17 @@ public enum EnumSuit {
             stone = new BlockStoneSuitBase(this);
             stoneStairs = new BlockStoneStairsSuitBase(this);
             stoneWall = new BlockWallSuitBase(this);
+            stoneSlabDouble = new BlockStoneSlabSuitBase(this, true, null);
+            stoneSlab = new BlockStoneSlabSuitBase(this, false, stoneSlabDouble);
+            ((BlockStoneSlabSuitBase)stoneSlabDouble).setDropped(stoneSlab);
 
             //wooden Block
             woodPlanks = new BlockPlanksSuitBase(this);
             woodStairs = new BlockWoodStairsSuitBase(this);
             woodFence = new BlockFenceSuitBase(this);
+            woodSlabDouble = new BlockWoodSlabSuitBase(this, true, null);
+            woodSlab = new BlockWoodSlabSuitBase(this, false, woodSlabDouble);
+            ((BlockWoodSlabSuitBase)woodSlabDouble).setDropped(woodSlab);
 
             createDefaultTier(1);
             createDefaultTier(2);
@@ -129,6 +140,7 @@ public enum EnumSuit {
         SET_LUCK.createDefaultTier(1);
         SET_LUCK.createDefaultTier(2);
     }
+
     public static void initOreDict() {
         SET_ONE.registerOreDict();
         SET_TWO.registerOreDict();
@@ -159,6 +171,14 @@ public enum EnumSuit {
     public Block getStoneStairs() { return stoneStairs; }
 
     public Block getStoneWall() { return stoneWall; }
+
+    public Block getStoneSlab() { return stoneSlab; }
+
+    public Block getStoneSlabDouble() { return stoneSlabDouble; }
+
+    public Block getWoodSlab() { return woodSlab; }
+
+    public Block getWoodSlabDouble() { return woodSlabDouble; }
 
     public Biome getBiome() {
         return biome;

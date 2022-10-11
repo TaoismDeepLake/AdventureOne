@@ -69,8 +69,10 @@ adven_one.grass=%s Grass
 adven_one.stone=%s Rock
 adven_one.stone_stairs=%s Rock Stairs
 adven_one.stone_wall=%s Rock Wall
+adven_one.stone_slab=%s Rock Slab
 adven_one.wood_stairs=%s Wood Stairs
 adven_one.wood_fence=%s Wood Fence
+adven_one.wood_slab=%s Wood Slab
 adven_one.block=%s Block
 
 #
