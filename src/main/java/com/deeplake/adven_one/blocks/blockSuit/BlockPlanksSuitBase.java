@@ -26,6 +26,7 @@ public class BlockPlanksSuitBase extends BlockBase implements IHasModel, IBlockS
 
         setHardness(2.0F);
         setResistance(5.0F);
+        setHarvestLevel("axe", 0);
         setSoundType(SoundType.WOOD);
         this.suit = suit;
     }

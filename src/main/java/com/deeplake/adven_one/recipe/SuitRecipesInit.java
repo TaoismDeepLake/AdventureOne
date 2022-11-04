@@ -35,14 +35,16 @@ public class SuitRecipesInit {
             Item stone = Item.getItemFromBlock(suit.getStone());
             Item stoneStairs = Item.getItemFromBlock(suit.getStoneStairs());
             Item stoneWall = Item.getItemFromBlock(suit.getStoneWall());
+            Item stoneSlab = Item.getItemFromBlock(suit.getStoneSlab());
 
             //wooden block
             Item log = Item.getItemFromBlock(suit.getWoodLog());
             Item planks = Item.getItemFromBlock(suit.getWoodPlanks());
             Item woodStairs = Item.getItemFromBlock(suit.getWoodStairs());
             Item woodFence = Item.getItemFromBlock(suit.getWoodFence());
+            Item woodSlab = Item.getItemFromBlock(suit.getWoodSlab());
 
-            registerBuildingBlocks(r, stone, stoneStairs, stoneWall, log, planks, woodStairs, woodFence);
+            registerBuildingBlocks(r, stone, stoneStairs, stoneWall, stoneSlab, log, planks, woodStairs, woodFence, woodSlab);
 
             registerT1SpecialGear(r, suit, dirt, planks);
 
@@ -51,7 +53,7 @@ public class SuitRecipesInit {
 
     }
 
-    private static void registerBuildingBlocks(IForgeRegistry<IRecipe> r, Item stone, Item stoneStairs, Item stoneWall, Item log, Item planks, Item woodStairs, Item woodFence) {
+    private static void registerBuildingBlocks(IForgeRegistry<IRecipe> r, Item stone, Item stoneStairs, Item stoneWall, Item stoneSlab, Item log, Item planks, Item woodStairs, Item woodFence, Item woodSlab) {
         if (isValid(planks))
         {
             r.register(new RecipeDoor(planks, Items.OAK_DOOR));
@@ -62,6 +64,10 @@ public class SuitRecipesInit {
             if (isValid(woodStairs))
             {
                 r.register(new RecipeStairs(planks, woodStairs));
+            }
+            if (isValid(woodSlab))
+            {
+                r.register(new RecipeWoodSlab(planks, woodSlab));
             }
             if (isValid(log))
             {
@@ -79,6 +85,10 @@ public class SuitRecipesInit {
             if (isValid(stoneWall))
             {
                 r.register(new RecipeStoneWall(stone, stoneWall));
+            }
+            if (isValid(woodSlab))
+            {
+                r.register(new RecipeStoneSlab(stone, stoneSlab));
             }
         }
     }
@@ -154,7 +164,7 @@ public class SuitRecipesInit {
         }
     }
 
-    private static boolean isValid(Item planks) {
-        return planks != null && planks != Items.AIR;
+    private static boolean isValid(Item itemIn) {
+        return itemIn != null && itemIn != Items.AIR;
     }
 }

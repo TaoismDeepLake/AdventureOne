@@ -17,6 +17,7 @@ public class BlockStoneSuitBase extends BlockBase implements IHasModel, IBlockSu
 
         setHardness(1.5F);
         setResistance(10.0F);
+        setHarvestLevel("pickaxe", 0);
         setSoundType(SoundType.STONE);
         this.suit = suit;
     }
