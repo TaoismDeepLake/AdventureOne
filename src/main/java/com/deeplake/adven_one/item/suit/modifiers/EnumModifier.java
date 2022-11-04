@@ -65,6 +65,7 @@ public enum EnumModifier {
         this.name = name;
         this.maxLv = maxLv;
         ID_TO_ENUM.put(id, this);
+        applicable.add(EnumGeartype.ALL);
     }
 
     public void addGearTypes(EnumGeartype... gearTypes)

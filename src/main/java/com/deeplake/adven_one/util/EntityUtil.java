@@ -510,7 +510,7 @@ public class EntityUtil {
             NAME_IN = modifier.getName();
             attribute.removeModifier(modifier);
         }
-        attribute.applyModifier(new AttributeModifier(uuid, NAME_IN,  val, 0));
+        attribute.applyModifier(new AttributeModifier(uuid, NAME_IN,  val, 0).setSaved(true));
         return true;
     }
 
@@ -536,7 +536,7 @@ public class EntityUtil {
             val += modifier.getAmount();
             attribute.removeModifier(modifier);
         }
-        attribute.applyModifier(new AttributeModifier(uuid, "pwr up",  val, 0));
+        attribute.applyModifier(new AttributeModifier(uuid, "pwr up",  val, 0).setSaved(true));
         double valueAfter = attribute.getAttributeValue();
 
         if (modifier == null)
@@ -570,7 +570,7 @@ public class EntityUtil {
             val += modifier.getAmount();
             attribute.removeModifier(modifier);
         }
-        attribute.applyModifier(new AttributeModifier(uuid, "pwr up percent",  val, 1));
+        attribute.applyModifier(new AttributeModifier(uuid, "pwr up percent",  val, 1).setSaved(true));
         double valueAfter = attribute.getAttributeValue();
 
         if (modifier == null)
