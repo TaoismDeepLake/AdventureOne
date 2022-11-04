@@ -26,14 +26,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockWoodSlabSuitBase extends BlockSlab implements IHasModel, IItemProvider, IBlockSuit{
-    private boolean isDouble;
+public class BlockWoodSlabSuitBase extends BlockSlab implements IHasModel, IBlockSuit{
+    private final boolean isDouble;
     public Block dropBlock;
-    private BlockSlab doubleSlab;
+    private final BlockSlab doubleSlab;
     static final String NAME = "wood_slab";
     EnumSuit suit;
 
-    public static final PropertyEnum<BlockWoodSlabSuitBase.Variant> VARIANT = PropertyEnum.<BlockWoodSlabSuitBase.Variant>create("variant", BlockWoodSlabSuitBase.Variant.class);
+    public static final PropertyEnum<BlockWoodSlabSuitBase.Variant> VARIANT = PropertyEnum.create("variant", BlockWoodSlabSuitBase.Variant.class);
 
     public BlockWoodSlabSuitBase(EnumSuit suit, boolean isDouble, BlockSlab doubleSlab)
     {
@@ -57,7 +57,7 @@ public class BlockWoodSlabSuitBase extends BlockSlab implements IHasModel, IItem
 
         ModBlocks.BLOCKS.add(this);
 
-        ItemBlock itemBlock = this.createItemBlock();
+        ItemBlock itemBlock = new ItemSlabBase(this, this, doubleSlab);
         IBlockState iblockstate = this.blockState.getBaseState();
         if (!this.isDouble())
         {
@@ -68,12 +68,8 @@ public class BlockWoodSlabSuitBase extends BlockSlab implements IHasModel, IItem
 
         setDefaultState(iblockstate.withProperty(VARIANT, BlockWoodSlabSuitBase.Variant.DEFAULT));
 
-
         useNeighborBrightness = true;
     }
-
-    @Override
-    public ItemBlock createItemBlock() { return new ItemSlabBase(this, this, doubleSlab);}
 
     @Override
     public void registerModels() {
@@ -89,7 +85,7 @@ public class BlockWoodSlabSuitBase extends BlockSlab implements IHasModel, IItem
     @Override
     protected BlockStateContainer createBlockState() {
 //      return new BlockStateContainer(this, HALF);
-        return this.isDouble() ? new BlockStateContainer(this, new IProperty[] {VARIANT}) : new BlockStateContainer(this, new IProperty[] {HALF, VARIANT});
+        return this.isDouble() ? new BlockStateContainer(this, VARIANT) : new BlockStateContainer(this, HALF, VARIANT);
     }
 
     public String getUnlocalizedName(int meta)
@@ -160,7 +156,7 @@ public class BlockWoodSlabSuitBase extends BlockSlab implements IHasModel, IItem
         }
     }
 
-    public static enum Variant implements IStringSerializable
+    public enum Variant implements IStringSerializable
     {
         DEFAULT;
 

@@ -1,9 +1,5 @@
 package com.deeplake.adven_one.item;
 
-import java.util.List;
-import java.util.UUID;
-import javax.annotation.Nonnull;
-
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
 import com.deeplake.adven_one.util.CommonFunctions;
@@ -24,6 +20,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.UUID;
 
 public class ItemBase extends Item implements IHasModel {
 	private boolean overrideRarity = false;
