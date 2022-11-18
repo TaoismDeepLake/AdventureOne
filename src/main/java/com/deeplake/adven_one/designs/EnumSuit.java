@@ -39,6 +39,7 @@ public enum EnumSuit {
     Block woodLog;
     Block dirt;
     Block grass;
+    Block tallGrass;
 
     //stone block
     Block stone;
@@ -98,6 +99,7 @@ public enum EnumSuit {
             woodLog = new BlockLogSuitBase(this);
             dirt = new BlockDirtSuitBase(this);
             grass = new BlockGrassSuitBase(this);
+            tallGrass = new BlockTallGrassSuitBase(this);
 
             //stone block
             stone = new BlockStoneSuitBase(this);
@@ -163,6 +165,8 @@ public enum EnumSuit {
     }
 
     public Block getGrass() { return grass; }
+
+    public Block getTallGrass() { return tallGrass; }
 
     public Block getStone() {
         return stone;

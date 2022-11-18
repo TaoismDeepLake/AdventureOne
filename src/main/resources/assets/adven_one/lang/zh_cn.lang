@@ -66,6 +66,7 @@ adven_one.log=%s原木
 adven_one.planks=%s木板
 adven_one.dirt=%s泥土
 adven_one.grass=%s草方块
+adven_one.tall_grass=%s草
 adven_one.stone=%s石
 adven_one.stone_stairs=%s石楼梯
 adven_one.stone_wall=%s石围墙
