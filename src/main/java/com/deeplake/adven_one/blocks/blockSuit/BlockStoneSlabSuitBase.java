@@ -26,14 +26,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockStoneSlabSuitBase extends BlockSlab implements IHasModel, IItemProvider, IBlockSuit{
-    private boolean isDouble;
+public class BlockStoneSlabSuitBase extends BlockSlab implements IHasModel, IBlockSuit{
+    private final boolean isDouble;
     public Block dropBlock;
-    private BlockSlab doubleSlab;
+    private final BlockSlab doubleSlab;
     static final String NAME = "stone_slab";
     EnumSuit suit;
 
-    public static final PropertyEnum<BlockStoneSlabSuitBase.Variant> VARIANT = PropertyEnum.<BlockStoneSlabSuitBase.Variant>create("variant", BlockStoneSlabSuitBase.Variant.class);
+    public static final PropertyEnum<BlockStoneSlabSuitBase.Variant> VARIANT = PropertyEnum.create("variant", BlockStoneSlabSuitBase.Variant.class);
 
     public BlockStoneSlabSuitBase(EnumSuit suit, boolean isDouble, BlockSlab doubleSlab)
     {
@@ -48,7 +48,6 @@ public class BlockStoneSlabSuitBase extends BlockSlab implements IHasModel, IIte
         this.setRegistryName(name);
         this.setUnlocalizedName(name);
 
-
         setHardness(2.0F);
         setResistance(10.0F);
         setSoundType(SoundType.STONE);
@@ -58,7 +57,7 @@ public class BlockStoneSlabSuitBase extends BlockSlab implements IHasModel, IIte
 
         ModBlocks.BLOCKS.add(this);
 
-        ItemBlock itemBlock = this.createItemBlock();
+        ItemBlock itemBlock = new ItemSlabBase(this, this, doubleSlab);
         IBlockState iblockstate = this.blockState.getBaseState();
         if (!this.isDouble())
         {
@@ -74,9 +73,6 @@ public class BlockStoneSlabSuitBase extends BlockSlab implements IHasModel, IIte
     }
 
     @Override
-    public ItemBlock createItemBlock() { return new ItemSlabBase(this, this, doubleSlab);}
-
-    @Override
     public void registerModels() {
         if(!this.isDouble()) Idealland.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
     }
@@ -90,7 +86,7 @@ public class BlockStoneSlabSuitBase extends BlockSlab implements IHasModel, IIte
     @Override
     protected BlockStateContainer createBlockState() {
 //      return new BlockStateContainer(this, HALF);
-        return this.isDouble() ? new BlockStateContainer(this, new IProperty[] {VARIANT}) : new BlockStateContainer(this, new IProperty[] {HALF, VARIANT});
+        return this.isDouble() ? new BlockStateContainer(this, VARIANT) : new BlockStateContainer(this, HALF, VARIANT);
     }
 
     public String getUnlocalizedName(int meta)
@@ -161,7 +157,7 @@ public class BlockStoneSlabSuitBase extends BlockSlab implements IHasModel, IIte
         }
     }
 
-    public static enum Variant implements IStringSerializable
+    public enum Variant implements IStringSerializable
     {
         DEFAULT;
 
