@@ -130,6 +130,20 @@ public class EntityUtil {
         return !modid.equals("minecraft");
     }
 
+    //Note: this returns 0 if no buff.
+    public static int getBuffLevelIDL(EntityLivingBase livingBase, Potion potion) {
+        if (livingBase == null || potion == null) {
+            Idealland.LogWarning("TRYING_TO_APPLY_ILLEGAL_POTION");
+            return 0;
+        }
+        PotionEffect effect = livingBase.getActivePotionEffect(potion);
+        if (effect == null) {
+            return 0;
+        } else {
+            return effect.getAmplifier() + 1;
+        }
+    }
+
     public static boolean isIdeallandTeam(EntityLivingBase creature)
     {
         return (creature instanceof EntityModUnit && ((EntityModUnit) creature).isIdealland);

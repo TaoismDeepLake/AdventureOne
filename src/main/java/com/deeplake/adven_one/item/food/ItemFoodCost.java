@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import java.util.UUID;
 
 public class ItemFoodCost extends ItemFoodBase{
-    static final UUID FOOD_COST = UUID.fromString("3ffdd93b-f040-2065-8eab-b048a5f01829");
+    public static final UUID FOOD_COST = UUID.fromString("3ffdd93b-f040-2065-8eab-b048a5f01829");
     final int cost;
     public ItemFoodCost(String name, int cost) {
         super(name, 1, 0.6f, false);

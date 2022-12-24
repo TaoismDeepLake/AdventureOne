@@ -15,6 +15,7 @@ import java.util.HashMap;
 @Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class HandleItemDesc {
     static final String MODIFIER_LEVEL_FORMAT = Idealland.MODID + ".desc.modifier";
+    static final String MODIFIER_LEVEL_FORMAT_NO_LVL = Idealland.MODID + ".desc.modifier.nolvl";
 
     @SubscribeEvent
     public static void onToolTip(ItemTooltipEvent event)
@@ -50,7 +51,7 @@ public class HandleItemDesc {
                 {
                     if (modifier.getMaxLv() == 1)
                     {
-                        event.getToolTip().add(I18n.format(modifier.getLangKey()));
+                        event.getToolTip().add(I18n.format(MODIFIER_LEVEL_FORMAT_NO_LVL, modifier.getLangKey()));
                     }
                     else {
                         int lv = map.get(modifier);

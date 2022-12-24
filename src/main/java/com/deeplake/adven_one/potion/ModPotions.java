@@ -23,10 +23,16 @@ public class ModPotions {
     public static final List<Potion> INSTANCES = new ArrayList<Potion>();
 
     public static final Potion TERRAIN_HINDER =
-            new BaseSimplePotion(false, 0x333333, "terrain_hinder", 0)
+            new BaseSimplePotion(true, 0x333333, "terrain_hinder", 0)
                     .registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, UUID_TERRAIN_HINDER.toString(), -0.25f, 2);
 //    public static final PotionDeadly DEADLY = new PotionDeadly(false, 0x333333, "deadly", 0);
 //    public static final PotionZenHeart ZEN_HEART = new PotionZenHeart(false, 0xcccc00, "zen_heart", 1);
+
+    public static final Potion TERRAIN_DEFENCE_UP =
+            new BaseSimplePotion(false, 0x333333, "terrain_defence", 1);
+
+    public static final Potion TERRAIN_DEFENCE_DOWN =
+            new BaseSimplePotion(false, 0x333333, "terrain_defence_down", 2);
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)

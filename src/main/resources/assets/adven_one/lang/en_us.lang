@@ -83,6 +83,7 @@ attribute.name.adven_one.attr.cost=Cost
 attribute.name.adven_one.attr.cost_max=Cost
 
 adven_one.desc.modifier=§9%s Lv.%d
+adven_one.desc.modifier.nolvl=§9%s
 
 adven_one.modifiers.blank.name=§o§7None
 adven_one.modifiers.atk_up.name=ATK

@@ -2,6 +2,7 @@ package com.deeplake.adven_one.init;
 
 import com.deeplake.adven_one.blocks.ModBlocks;
 import com.deeplake.adven_one.blocks.blockSuit.IBlockSuit;
+import com.deeplake.adven_one.command.CommandAddCost;
 import com.deeplake.adven_one.command.CommandDimTeleport;
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.enchantments.ModEnchantmentInit;
@@ -119,5 +120,6 @@ public class RegistryHandler {
 	public static void serverRegistries(FMLServerStartingEvent event)
     {
         event.registerServerCommand(new CommandDimTeleport());
+        event.registerServerCommand(new CommandAddCost());
     }
 }
