@@ -10,6 +10,7 @@ public class ModifierList {
     static HashMap<Integer, EnumModifier> ID_TO_ENUM = new HashMap<>();
 
     public static final int MAX_LV = 99;
+    public static final int MAX_LV_WALKER = 1;
 
     public static void initModifier() {
         //Init modifier gear types
@@ -40,6 +41,13 @@ public class ModifierList {
 
         EnumModifier.ANTI_PRESSURE_DEPTH.addGearTypesAll();
         EnumModifier.ANTI_PRESSURE_HEIGHT.addGearTypesAll();
+
+        EnumModifier.FOREST_WALK.addGearTypes(EnumGeartype.ARMOR_BOOTS);
+        EnumModifier.MOUNTAIN_WALK.addGearTypes(EnumGeartype.ARMOR_BOOTS);
+        EnumModifier.SWAMP_WALK.addGearTypes(EnumGeartype.ARMOR_BOOTS);
+        EnumModifier.PLAINS_WALK.addGearTypes(EnumGeartype.ARMOR_BOOTS);
+        EnumModifier.ISLAND_WALK.addGearTypes(EnumGeartype.ARMOR_BOOTS);
+        EnumModifier.PATH_FINDER.addGearTypes(EnumGeartype.ARMOR_BOOTS);
     }
 
     public static EnumModifier getFromID(int id)

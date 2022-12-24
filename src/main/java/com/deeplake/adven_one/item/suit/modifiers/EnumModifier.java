@@ -14,8 +14,7 @@ import java.util.HashSet;
 
 import static com.deeplake.adven_one.item.suit.IHasModifiers.GENERAL_MODIFIER;
 import static com.deeplake.adven_one.item.suit.IHasModifiers.NAME_IN;
-import static com.deeplake.adven_one.item.suit.modifiers.ModifierList.ID_TO_ENUM;
-import static com.deeplake.adven_one.item.suit.modifiers.ModifierList.MAX_LV;
+import static com.deeplake.adven_one.item.suit.modifiers.ModifierList.*;
 
 public enum EnumModifier {
 
@@ -46,6 +45,15 @@ public enum EnumModifier {
 
     ANTI_PRESSURE_DEPTH(301, "anti_p_down", MAX_LV),
     ANTI_PRESSURE_HEIGHT(302, "anti_p_up", MAX_LV),
+
+
+    FOREST_WALK(303, "forest_walk", MAX_LV_WALKER),
+
+    MOUNTAIN_WALK(304, "mountain_walk", MAX_LV_WALKER),
+    SWAMP_WALK(305, "swamp_walk", MAX_LV_WALKER),
+    PLAINS_WALK(306, "plains_walk", MAX_LV_WALKER),
+    ISLAND_WALK(307, "island_walk", MAX_LV_WALKER),
+    PATH_FINDER(308, "path_finder", MAX_LV_WALKER),
     ;
 
     final int id;

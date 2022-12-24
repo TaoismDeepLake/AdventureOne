@@ -122,23 +122,10 @@ end
 -- GenSet("suit_celestial")
 -- GenSet("suit_luck_a")
 
+GenBlock("forest_terrain");
+GenBlock("mountain_terrain");
+GenBlock("swamp_terrain");
 
-GenItem("food", "food_cost_small");
-GenItem("food", "food_cost_norm");
-GenItem("food", "food_cost_big");
-
-
--- GenItem("misc", "nano_mender_greater");
--- GenItem("misc", "package_fade_armor_diamond");
--- for i = 1,4 do 
--- 	GenItem("misc", "armor_qsh_"..i);
--- end
-
--- for i = 1,4 do 
--- 	GenItem("misc", "mor_armor_"..i);
--- end
---GenBlock("builder_farm_sin");
---GenBlock("de_water_orb");
 
 --GenItem("misc", "water_extractor")
 --GenItem("misc", "disturb_measure")
