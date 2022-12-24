@@ -108,6 +108,12 @@ adven_one.modifiers.overload_pick.name=Overload [Pickaxe]
 adven_one.modifiers.overload_armor.name=Overload [Armor]
 adven_one.modifiers.anti_p_down.name=Depth Adapt
 adven_one.modifiers.anti_p_up.name=Height Adapt
+adven_one.modifiers.forest_walk.name=Forestwalk
+adven_one.modifiers.mountain_walk.name=Mountainwalk
+adven_one.modifiers.swamp_walk.name=Swampwalk
+adven_one.modifiers.plains_walk.name=§o§7Plainswalk
+adven_one.modifiers.island_walk.name=§o§7Islandwalk
+adven_one.modifiers.path_finder.name=Pathfinder
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.

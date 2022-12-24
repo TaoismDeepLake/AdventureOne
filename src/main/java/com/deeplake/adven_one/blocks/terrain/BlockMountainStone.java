@@ -24,7 +24,7 @@ public class BlockMountainStone extends BlockBase {
         {
             if (par7Entity instanceof EntityLivingBase)
             {
-                int lv = HandleWalker.getSwampWalkLevel(par7Entity);
+                int lv = HandleWalker.getMountainWalkLevel(par7Entity);
                 if (lv <= 0) {
                     //with walker, pass as if nothing
                     super.addCollisionBoxToList(state, world, pos, par5AxisAlignedBB, stacks, par7Entity, isActualState);
