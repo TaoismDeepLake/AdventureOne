@@ -31,7 +31,7 @@ public class BlockSwampSink extends BlockBase {
             int lv = HandleWalker.getSwampWalkLevel(entityIn);
             if (lv <= 0)
             {
-                EntityUtil.ApplyBuff(livingBase, ModPotions.TERRAIN_HINDER, 1, 2f);
+                EntityUtil.ApplyBuff(livingBase, ModPotions.TERRAIN_HINDER, 2, 1f);
             }
         }
         else {

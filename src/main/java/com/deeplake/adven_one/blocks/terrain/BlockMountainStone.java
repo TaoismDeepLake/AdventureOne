@@ -18,6 +18,9 @@ public class BlockMountainStone extends BlockBase {
         super(name, material);
     }
 
+    //set adven_one:mountain_terrain
+    //set adven_one:swamp_terrain
+
     @Override
     public void addCollisionBoxToList(IBlockState state, @Nonnull World world, @Nonnull BlockPos pos, @Nonnull AxisAlignedBB par5AxisAlignedBB, @Nonnull List<AxisAlignedBB> stacks, Entity par7Entity, boolean isActualState) {
         if (par7Entity != null)

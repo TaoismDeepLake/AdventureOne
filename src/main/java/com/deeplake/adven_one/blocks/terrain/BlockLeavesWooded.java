@@ -9,15 +9,20 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
 public class BlockLeavesWooded extends BlockBase {
+    protected boolean leavesFancy;
+
     public BlockLeavesWooded(String name, Material material) {
         super(name, material);
     }
@@ -30,7 +35,7 @@ public class BlockLeavesWooded extends BlockBase {
             int lv = HandleWalker.getForestWalkLevel(entityIn);
             if (lv <= 0)
             {
-                EntityUtil.ApplyBuff(livingBase, ModPotions.TERRAIN_HINDER, 1, 2f);
+                EntityUtil.ApplyBuff(livingBase, ModPotions.TERRAIN_HINDER, 1, 1f);
             }
         }
         else {
@@ -61,5 +66,11 @@ public class BlockLeavesWooded extends BlockBase {
     public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
     {
         return BlockFaceShape.UNDEFINED;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer()
+    {
+        return BlockRenderLayer.CUTOUT_MIPPED;
     }
 }

@@ -3,21 +3,25 @@ package com.deeplake.adven_one.blocks.blockSuit;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.BlockBase;
 import com.deeplake.adven_one.designs.EnumSuit;
+import com.deeplake.adven_one.item.suit.modifiers.HandleWalker;
 import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.BlockLog;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 public class BlockLogSuitBase extends BlockBase implements IHasModel, IBlockSuit {
     public static final PropertyEnum<BlockLog.EnumAxis> LOG_AXIS = PropertyEnum.<BlockLog.EnumAxis>create("axis", BlockLog.EnumAxis.class);
@@ -118,5 +122,21 @@ public class BlockLogSuitBase extends BlockBase implements IHasModel, IBlockSuit
     protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, LOG_AXIS);
+    }
+
+    @Override
+    public void addCollisionBoxToList(IBlockState state, @Nonnull World world, @Nonnull BlockPos pos, @Nonnull AxisAlignedBB par5AxisAlignedBB, @Nonnull List<AxisAlignedBB> stacks, Entity par7Entity, boolean isActualState) {
+        if (par7Entity != null)
+        {
+            //allows passing through log blocks
+            if (par7Entity instanceof EntityLivingBase)
+            {
+                int lv = HandleWalker.getForestWalkLevel(par7Entity);
+                if (lv <= 0) {
+                    //walk as if solid, unless sneaking
+                    super.addCollisionBoxToList(state, world, pos, par5AxisAlignedBB, stacks, par7Entity, isActualState);
+                }
+            }
+        }
     }
 }
