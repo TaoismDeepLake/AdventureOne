@@ -22,9 +22,10 @@ import java.util.HashMap;
 @Mod.EventBusSubscriber(modid = Idealland.MODID)
 public enum EnumSuit {
 
+    //remember to init and init oredict at belows
     SET_ONE("suit_test"),
     SET_TWO("suit_back"),//water
-    SET_FIRE("suit_fire", true),
+    SET_FIRE("suit_fire"),
     SET_AIR("suit_air", true),
     SET_EARTH("suit_earth", true),
     SET_CELESTIAL("suit_celestial", true),//for T4 colorless
@@ -134,7 +135,7 @@ public enum EnumSuit {
         SET_TWO.createInternalDefault();
 //        SET_AIR.createInternalDefault();
 //        SET_EARTH.createInternalDefault();
-//        SET_FIRE.createInternalDefault();
+        SET_FIRE.createInternalDefault();
 
         SET_CELESTIAL.createDefaultTier(4);
         SET_LUCK.createDefaultTier(1);
@@ -146,7 +147,7 @@ public enum EnumSuit {
         SET_TWO.registerOreDict();
 //        SET_AIR.registerOreDict();
 //        SET_EARTH.registerOreDict();
-//        SET_FIRE.registerOreDict();
+        SET_FIRE.registerOreDict();
     }
 
     public static void initLeavesColor() {

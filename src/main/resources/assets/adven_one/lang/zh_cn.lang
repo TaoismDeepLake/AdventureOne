@@ -41,6 +41,11 @@ adven_one.suit_back.1=备用一阶
 adven_one.suit_back.2=备用二阶
 adven_one.suit_back.3=备用三阶
 
+adven_one.suit_fire=火套
+adven_one.suit_fire.1=火一阶
+adven_one.suit_fire.2=火二阶
+adven_one.suit_fire.3=火三阶
+
 adven_one.suit_luck_a.1=寻宝者1
 adven_one.suit_luck_a.2=猎宝人2
 adven_one.suit_luck_a.3=Treasure Hunter A3
@@ -104,8 +109,10 @@ adven_one.modifiers.cost_save_sword.name=节能·剑
 adven_one.modifiers.cost_save_pick.name=节能·镐
 adven_one.modifiers.cost_save_armor.name=节能·衣
 adven_one.modifiers.overload_sword.name=过载·剑
-adven_one.modifiers.overload_pick.name=Overload [Pickaxe]
-adven_one.modifiers.overload_armor.name=Overload [Armor]
+adven_one.modifiers.overload_pick.name=过载·镐
+adven_one.modifiers.overload_armor.name=过载·衣
+adven_one.modifiers.anti_p_down.name=适应深度
+adven_one.modifiers.anti_p_up.name=适应高度
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] 你和你的模组令我感到可笑。

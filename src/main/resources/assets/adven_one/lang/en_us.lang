@@ -41,6 +41,11 @@ adven_one.suit_back.1=Backup T1
 adven_one.suit_back.2=Backup T2
 adven_one.suit_back.3=Backup T3
 
+adven_one.suit_fire=Fire Suit
+adven_one.suit_fire.1=Fire T1
+adven_one.suit_fire.2=Fire T2
+adven_one.suit_fire.3=Fire T3
+
 adven_one.suit_luck_a.1=Treasure Hunter A1
 adven_one.suit_luck_a.2=Treasure Hunter A2
 adven_one.suit_luck_a.3=Treasure Hunter A3
