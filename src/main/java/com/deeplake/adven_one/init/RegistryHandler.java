@@ -13,6 +13,7 @@ import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.item.suit.modifiers.ModifierList;
 import com.deeplake.adven_one.util.IHasModel;
 import com.deeplake.adven_one.util.ModSoundHandler;
+import com.deeplake.adven_one.world.biome.InitBiome;
 import com.deeplake.adven_one.world.dimension.InitDimension;
 import com.deeplake.adven_one.worldgen.InitWorldGen;
 import net.minecraft.block.Block;
