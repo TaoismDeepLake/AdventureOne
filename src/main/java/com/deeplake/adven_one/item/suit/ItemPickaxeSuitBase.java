@@ -12,7 +12,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -52,8 +52,8 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return I18n.format(String.format("%s.pickaxe", Idealland.MODID),
-                I18n.format(tier.getTransKey()));
+        return I18n.translateToLocalFormatted(String.format("%s.pickaxe", Idealland.MODID),
+                I18n.translateToLocalFormatted(tier.getTransKey()));
     }
 
     @Override

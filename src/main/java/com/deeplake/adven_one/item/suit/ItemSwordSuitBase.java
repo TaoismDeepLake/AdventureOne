@@ -5,18 +5,18 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemSwordBase;
-import com.deeplake.adven_one.item.suit.modifiers.IHasType;
 import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
+import com.deeplake.adven_one.item.suit.modifiers.IHasType;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 import java.util.HashMap;
@@ -50,8 +50,8 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return I18n.format(String.format("%s.sword", Idealland.MODID),
-                I18n.format(tier.getTransKey()));
+        return I18n.translateToLocalFormatted(String.format("%s.sword", Idealland.MODID),
+                I18n.translateToLocalFormatted(tier.getTransKey()));
     }
 
     @Override

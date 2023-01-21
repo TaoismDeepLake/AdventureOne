@@ -21,6 +21,9 @@ tile.barrier_earth.name=Earth Barrier
 item.cost_measure.name=Cost Meter
 item.cost_measure_max.desc=Displays Current cost info.
 
+item.tp_food.name=TP Food
+item.tp_food.desc=Adventure One starts.
+
 item.food_cost_small.name=Lesser Cost Booster
 item.food_cost_small.desc=Boosts your cost.
 

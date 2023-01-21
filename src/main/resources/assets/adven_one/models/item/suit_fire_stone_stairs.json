@@ -1,3 +1,8 @@
 {
-	"parent": "adven_one:block/suit_fire_stone_stairs"
+  "parent": "block/stairs",
+   "textures": {
+    "bottom": "adven_one:blocks/suit_fire_stone",
+    "top": "adven_one:blocks/suit_fire_stone",
+    "side": "adven_one:blocks/suit_fire_stone"
+  }
 }
