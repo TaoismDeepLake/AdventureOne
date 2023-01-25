@@ -73,7 +73,7 @@ for %%x in (%*) do (
         echo		    "facing=south,half=top,shape=straight": { "model": "%modid%:%%x_stone_stairs", "x": 180, "y": 90, "uvlock": true },
         echo	    	"facing=north,half=top,shape=straight": { "model": "%modid%:%%x_stone_stairs", "x": 180, "y": 270, "uvlock": true },
         echo	    	"facing=east,half=top,shape=outer_right":  { "model": "%modid%:%%x_stone_outer_stairs", "x": 180, "y": 90, "uvlock": true },
-        echo	    	"facing=west,half=top,shape=outer_right":  { "model": "%modid%:%%x__stone_outer_stairs", "x": 180, "y": 270, "uvlock": true },
+        echo	    	"facing=west,half=top,shape=outer_right":  { "model": "%modid%:%%x_stone_outer_stairs", "x": 180, "y": 270, "uvlock": true },
         echo	    	"facing=south,half=top,shape=outer_right": { "model": "%modid%:%%x_stone_outer_stairs", "x": 180, "y": 180, "uvlock": true },
         echo	    	"facing=north,half=top,shape=outer_right": { "model": "%modid%:%%x_stone_outer_stairs", "x": 180, "uvlock": true },
         echo	    	"facing=east,half=top,shape=outer_left":  { "model": "%modid%:%%x_stone_outer_stairs", "x": 180, "uvlock": true },

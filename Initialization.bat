@@ -11,9 +11,9 @@ for %%x in (%*) do (
     .\_make_grass.bat %%x
     cd ..\item
     ..\item\_make.bat %%x_1_gem %%x_2_gem %%x_3_gem %%x_4_gem
-    ..\item\_make_armor1.bat %%x_1 %%x_2 %%x_3 %%x_4
-    ..\item\_make_armor2.bat %%x_1 %%x_2 %%x_3 %%x_4
-    ..\item\_make_armor3.bat %%x_1 %%x_2 %%x_3 %%x_4
-    ..\item\_make_armor4.bat %%x_1 %%x_2 %%x_3 %%x_4
+    ..\item\_make_armor1.bat %%x_1
+    ..\item\_make_armor2.bat %%x_2
+    ..\item\_make_armor3.bat %%x_3
+    ..\item\_make_armor4.bat %%x_4
     ..\item\_make_tool.bat %%x
 )
