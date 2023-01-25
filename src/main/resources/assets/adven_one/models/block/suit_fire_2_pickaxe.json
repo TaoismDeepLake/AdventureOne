@@ -1,7 +1,0 @@
-{
-	"parent": "minecraft:item/handheld",
-   "textures": {
-   "layer0": "adven_one:items/misc/suit_fire_2_pickaxe"
-   "layer1":"adven_one:items/overlay_2"
-   }
-}

@@ -1,6 +1,0 @@
-{
-	"parent": "block/cube_all",
-	"textures": {
-		"all": "adven_one:blocks/suit_fire_3_block"
-	}
-}

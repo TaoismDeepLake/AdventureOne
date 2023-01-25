@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-   "textures": {
-    "bottom": "adven_one:blocks/suit_fire_planks",
-    "top": "adven_one:blocks/suit_fire_planks",
-    "side": "adven_one:blocks/suit_fire_planks"
-  }
-}
