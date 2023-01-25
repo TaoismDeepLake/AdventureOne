@@ -1,3 +1,6 @@
 {
-	"parent": "adven_one:block/suit_fire_stone"
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "adven_one:blocks/suit_fire_stone"
+	}
 }

@@ -46,7 +46,7 @@ public class Teleport extends Teleporter {
             throw new IllegalArgumentException(String.format("[IDL]Teleporting dimension: %d does not exist", dimension));
         }
 
-        worldServerNew.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new Teleport(worldServerNew, x,y,z));
-        player.setPositionAndUpdate(x,y,z);
+        worldServerNew.getMinecraftServer().getPlayerList().transferPlayerToDimension(entityPlayerMP, dimension, new Teleport(worldServerNew, x,worldServerNew.getSeaLevel()+5,z));
+        player.setPositionAndUpdate(x,worldServerNew.getSeaLevel()+5,z);
     }
 }

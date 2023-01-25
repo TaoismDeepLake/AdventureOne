@@ -8,7 +8,7 @@ import com.deeplake.adven_one.item.ItemBlockBase;
 import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.BlockWall;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -38,8 +38,8 @@ public class BlockWallSuitBase extends BlockWall implements IHasModel, IBlockSui
 
     @Override
     public String getLocalizedName() {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(Idealland.MODID+"."+suit.getName()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(Idealland.MODID+"."+suit.getName()));
     }
 
     @Override

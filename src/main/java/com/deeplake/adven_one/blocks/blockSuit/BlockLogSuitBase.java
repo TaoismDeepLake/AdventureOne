@@ -5,14 +5,12 @@ import com.deeplake.adven_one.blocks.BlockBase;
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.BlockLog;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Rotation;
@@ -36,8 +34,8 @@ public class BlockLogSuitBase extends BlockBase implements IHasModel, IBlockSuit
 
     @Override
     public String getLocalizedName() {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(Idealland.MODID+"."+suit.getName()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(Idealland.MODID+"."+suit.getName()));
     }
 
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)

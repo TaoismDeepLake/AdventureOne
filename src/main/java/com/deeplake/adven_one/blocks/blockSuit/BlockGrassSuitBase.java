@@ -2,18 +2,14 @@ package com.deeplake.adven_one.blocks.blockSuit;
 
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.BlockBase;
-import com.deeplake.adven_one.blocks.ModBlocks;
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.util.IHasModel;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -34,8 +30,8 @@ public class BlockGrassSuitBase extends BlockBase implements IHasModel, IBlockSu
 
     @Override
     public String getLocalizedName() {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(Idealland.MODID+"."+suit.getName()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(Idealland.MODID+"."+suit.getName()));
     }
 
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)

@@ -1,0 +1,6 @@
+{
+	"parent": "adven_one:item/generated",
+   "textures": {
+   "layer0": "adven_one:items/suit_fire_2_gem"
+   }
+}
