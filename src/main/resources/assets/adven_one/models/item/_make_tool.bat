@@ -18,7 +18,7 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "minecraft:item/handheld",
         echo    "textures": {
-        echo    "layer0": "%modid%:items/misc/%%x_1_pickaxe"
+        echo    "layer0": "%modid%:items/misc/%%x_1_pickaxe",
         echo    "layer1":"%modid%:items/overlay_1"
         echo    }
 		echo }
@@ -29,7 +29,7 @@ for %%x in (%*) do (
     		echo {
     		echo 	"parent": "minecraft:item/handheld",
             echo    "textures": {
-            echo    "layer0": "%modid%:items/misc/%%x_1_sword"
+            echo    "layer0": "%modid%:items/misc/%%x_1_sword",
             echo    "layer1":"%modid%:items/overlay_1"
             echo    }
     		echo }
@@ -40,7 +40,7 @@ for %%x in (%*) do (
     		echo {
     		echo 	"parent": "minecraft:item/handheld",
             echo    "textures": {
-            echo    "layer0": "%modid%:items/misc/%%x_2_pickaxe"
+            echo    "layer0": "%modid%:items/misc/%%x_2_pickaxe",
             echo    "layer1":"%modid%:items/overlay_2"
             echo    }
     		echo }
@@ -51,7 +51,7 @@ for %%x in (%*) do (
         		echo {
         		echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
-                echo    "layer0": "%modid%:items/misc/%%x_2_sword"
+                echo    "layer0": "%modid%:items/misc/%%x_2_sword",
                 echo    "layer1":"%modid%:items/overlay_2"
                 echo    }
         		echo }
@@ -62,7 +62,7 @@ for %%x in (%*) do (
     		echo {
     		echo 	"parent": "minecraft:item/handheld",
             echo    "textures": {
-            echo    "layer0": "%modid%:items/misc/%%x_3_pickaxe"
+            echo    "layer0": "%modid%:items/misc/%%x_3_pickaxe",
             echo    "layer1":"%modid%:items/overlay_3"
             echo    }
     		echo }
@@ -73,7 +73,7 @@ for %%x in (%*) do (
         		echo {
         		echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
-                echo    "layer0": "%modid%:items/misc/%%x_3_sword"
+                echo    "layer0": "%modid%:items/misc/%%x_3_sword",
                 echo    "layer1":"%modid%:items/overlay_3"
                 echo    }
         		echo }
@@ -84,7 +84,7 @@ for %%x in (%*) do (
     		echo {
     		echo 	"parent": "minecraft:item/handheld",
             echo    "textures": {
-            echo    "layer0": "%modid%:items/misc/%%x_4_pickaxe"
+            echo    "layer0": "%modid%:items/misc/%%x_4_pickaxe",
             echo    "layer1":"%modid%:items/overlay_4"
             echo    }
     		echo }
@@ -95,7 +95,7 @@ for %%x in (%*) do (
         		echo {
         		echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
-                echo    "layer0": "%modid%:items/misc/%%x_4_sword"
+                echo    "layer0": "%modid%:items/misc/%%x_4_sword",
                 echo    "layer1":"%modid%:items/overlay_4"
                 echo    }
         		echo }
