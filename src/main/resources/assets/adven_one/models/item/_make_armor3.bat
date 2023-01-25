@@ -16,7 +16,7 @@ for %%x in (%*) do (
 	echo Making %%x_armor0.json item
         	(
         		echo {
-        		echo 	"parent": "%modid%:item/handheld",
+        		echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
                 echo    "layer0": "%modid%:items/misc/%%x_armor0",
                 echo    "layer1":"%modid%:items/overlay_3"
@@ -27,7 +27,7 @@ for %%x in (%*) do (
         	echo Making %%x_armor1.json item
             (
             	echo {
-            	echo 	"parent": "%modid%:item/handheld",
+            	echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
                 echo    "layer0": "%modid%:items/misc/%%x_armor1",
                 echo    "layer1":"%modid%:items/overlay_3"
@@ -38,7 +38,7 @@ for %%x in (%*) do (
             echo Making %%x_armor2.json item
             (
                 echo {
-                echo 	"parent": "%modid%:item/handheld",
+                echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
                 echo    "layer0": "%modid%:items/misc/%%x_armor2",
                 echo    "layer1":"%modid%:items/overlay_3"
@@ -49,7 +49,7 @@ for %%x in (%*) do (
             echo Making %%x_armor3.json item
             (
                  echo {
-                 echo 	"parent": "%modid%:item/handheld",
+                 echo 	"parent": "minecraft:item/handheld",
                  echo    "textures": {
                  echo    "layer0": "%modid%:items/misc/%%x_armor3",
                  echo    "layer1":"%modid%:items/overlay_3"
