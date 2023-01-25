@@ -25,6 +25,30 @@ for %%x in (%*) do (
 		echo }
 	) > %%x_wood_inner_stairs.json
 
+	echo Making %%x_wood_slab_half.json block
+    	(
+    		echo {
+    		echo 	"parent": "block/half_slab",
+    		echo 	"textures": {
+    		echo 		"bottom": "%modid%:blocks/%%x_planks",
+            echo        "top": "%modid%:blocks/%%x_planks",
+            echo        "side": "%modid%:blocks/%%x_planks"
+    		echo 	}
+    		echo }
+    	) > %%x_wood_slab_half.json
+
+	echo Making %%x_wood_slab_upper.json block
+    	(
+    		echo {
+    		echo 	"parent": "block/upper_slab",
+    		echo 	"textures": {
+    		echo 		"bottom": "%modid%:blocks/%%x_planks",
+            echo        "top": "%modid%:blocks/%%x_planks",
+            echo        "side": "%modid%:blocks/%%x_planks"
+    		echo 	}
+    		echo }
+    	) > %%x_wood_slab_upper.json
+
 	cho Making %%x_wood_stairs.json block
         	(
         		echo {
@@ -56,6 +80,19 @@ for %%x in (%*) do (
 		echo }
 	) > ../item/%%x_wood_stairs.json
 
+	echo Making %%x_wood_slab.json item
+    	(
+    		echo {
+    		echo 	"parent": "%modid%:block/%%x_wood_slab_half"
+    		echo }
+    	) > ../item/%%x_wood_slab.json
+
+	echo Making %%x_wood_slab_double.json item
+    	(
+    		echo {
+    		echo 	"parent": "%modid%:block/%%x_planks"
+    		echo }
+    	) > ../item/%%x_wood_slab_double.json
 	echo Making %%x_wood_stairs.json blockstate
 	(
 		echo {
