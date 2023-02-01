@@ -49,6 +49,26 @@ for %%x in (%*) do (
             echo }
     	) > %%x_stone_stairs.json
 
+    echo Making %%x_stone_slab.json blockstates
+        (
+        		echo {
+        		echo 	"variants": {
+        		echo 		"half=bottom,variant=default": { "model": "%modid%:%%x_stone_slab_half" },
+        		echo 		"half=top,variant=default": { "model": "%modid%:%%x_stone_slab_upper" }
+        		echo 	}
+        		echo }
+        	) > ../../blockstates/%%x_stone_slab.json
+
+    echo Making %%x_stone_slab_double.json blockstates
+            (
+            		echo {
+            		echo 	"variants": {
+            		echo 		"half=bottom,variant=default": { "model": "%modid%:%%x_stone" },
+            		echo 		"half=top,variant=default": { "model": "%modid%:%%x_stone" }
+            		echo 	}
+            		echo }
+            	) > ../../blockstates/%%x_stone_slab_double.json
+
 	echo Making %%x_stone_stairs.json item
 	(
 		echo {
