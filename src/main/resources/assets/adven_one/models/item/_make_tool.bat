@@ -16,9 +16,9 @@ for %%x in (%*) do (
 	echo Making %%x_1_pickaxe.json item
 	(
 		echo {
-		echo 	"parent": "%modid%:item/handheld",
+		echo 	"parent": "minecraft:item/handheld",
         echo    "textures": {
-        echo    "layer0": "%modid%:items/misc/%%x_1_pickaxe"
+        echo    "layer0": "%modid%:items/misc/%%x_1_pickaxe",
         echo    "layer1":"%modid%:items/overlay_1"
         echo    }
 		echo }
@@ -27,9 +27,9 @@ for %%x in (%*) do (
 	echo Making %%x_1_sword.json item
     	(
     		echo {
-    		echo 	"parent": "%modid%:item/handheld",
+    		echo 	"parent": "minecraft:item/handheld",
             echo    "textures": {
-            echo    "layer0": "%modid%:items/misc/%%x_1_sword"
+            echo    "layer0": "%modid%:items/misc/%%x_1_sword",
             echo    "layer1":"%modid%:items/overlay_1"
             echo    }
     		echo }
@@ -38,9 +38,9 @@ for %%x in (%*) do (
     echo Making %%x_2_pickaxe.json item
     	(
     		echo {
-    		echo 	"parent": "%modid%:item/handheld",
+    		echo 	"parent": "minecraft:item/handheld",
             echo    "textures": {
-            echo    "layer0": "%modid%:items/misc/%%x_2_pickaxe"
+            echo    "layer0": "%modid%:items/misc/%%x_2_pickaxe",
             echo    "layer1":"%modid%:items/overlay_2"
             echo    }
     		echo }
@@ -49,9 +49,9 @@ for %%x in (%*) do (
     	echo Making %%x_2_sword.json item
         	(
         		echo {
-        		echo 	"parent": "%modid%:item/handheld",
+        		echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
-                echo    "layer0": "%modid%:items/misc/%%x_2_sword"
+                echo    "layer0": "%modid%:items/misc/%%x_2_sword",
                 echo    "layer1":"%modid%:items/overlay_2"
                 echo    }
         		echo }
@@ -60,9 +60,9 @@ for %%x in (%*) do (
     echo Making %%x_3_pickaxe.json item
     	(
     		echo {
-    		echo 	"parent": "%modid%:item/handheld",
+    		echo 	"parent": "minecraft:item/handheld",
             echo    "textures": {
-            echo    "layer0": "%modid%:items/misc/%%x_3_pickaxe"
+            echo    "layer0": "%modid%:items/misc/%%x_3_pickaxe",
             echo    "layer1":"%modid%:items/overlay_3"
             echo    }
     		echo }
@@ -71,9 +71,9 @@ for %%x in (%*) do (
     	echo Making %%x_3_sword.json item
         	(
         		echo {
-        		echo 	"parent": "%modid%:item/handheld",
+        		echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
-                echo    "layer0": "%modid%:items/misc/%%x_3_sword"
+                echo    "layer0": "%modid%:items/misc/%%x_3_sword",
                 echo    "layer1":"%modid%:items/overlay_3"
                 echo    }
         		echo }
@@ -82,9 +82,9 @@ for %%x in (%*) do (
     echo Making %%x_4_pickaxe.json item
     	(
     		echo {
-    		echo 	"parent": "%modid%:item/handheld",
+    		echo 	"parent": "minecraft:item/handheld",
             echo    "textures": {
-            echo    "layer0": "%modid%:items/misc/%%x_4_pickaxe"
+            echo    "layer0": "%modid%:items/misc/%%x_4_pickaxe",
             echo    "layer1":"%modid%:items/overlay_4"
             echo    }
     		echo }
@@ -93,9 +93,9 @@ for %%x in (%*) do (
     	echo Making %%x_4_sword.json item
         	(
         		echo {
-        		echo 	"parent": "%modid%:item/handheld",
+        		echo 	"parent": "minecraft:item/handheld",
                 echo    "textures": {
-                echo    "layer0": "%modid%:items/misc/%%x_4_sword"
+                echo    "layer0": "%modid%:items/misc/%%x_4_sword",
                 echo    "layer1":"%modid%:items/overlay_4"
                 echo    }
         		echo }

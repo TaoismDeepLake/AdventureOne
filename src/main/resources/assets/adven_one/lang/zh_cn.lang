@@ -120,3 +120,6 @@ adven_one.vocal.boss.steve.death=[Steve] 如果能重生，就有希望……
 adven_one.vocal.boss.steve.deflect=[Steve] 香草机制，小子。
 adven_one.vocal.boss.steve.kill=[Steve] 向香草之魂报告：模组玩家，已被击败！
 adven_one.vocal.boss.steve.summon=[Steve] 去吧,杀掉那个玩家比试图保护我更有效。
+
+item.tp_food.name=传送果
+item.tp_food.desc=开始或结束冒险一号。

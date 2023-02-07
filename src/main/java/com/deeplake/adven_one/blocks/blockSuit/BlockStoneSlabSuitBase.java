@@ -16,7 +16,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -96,8 +96,8 @@ public class BlockStoneSlabSuitBase extends BlockSlab implements IHasModel, IBlo
 
     @Override
     public String getLocalizedName() {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(Idealland.MODID+"."+suit.getName()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(Idealland.MODID+"."+suit.getName()));
     }
 
     public IProperty<?> getVariantProperty()

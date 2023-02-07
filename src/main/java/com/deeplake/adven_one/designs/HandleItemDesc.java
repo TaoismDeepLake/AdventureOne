@@ -9,10 +9,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.HashMap;
 
-@Mod.EventBusSubscriber(modid = Idealland.MODID)
+@Mod.EventBusSubscriber(modid = Idealland.MODID,value = Side.CLIENT)
 public class HandleItemDesc {
     static final String MODIFIER_LEVEL_FORMAT = Idealland.MODID + ".desc.modifier";
 

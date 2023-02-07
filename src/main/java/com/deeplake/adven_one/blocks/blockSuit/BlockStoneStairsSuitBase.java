@@ -9,7 +9,7 @@ import com.deeplake.adven_one.item.ModItems;
 import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.SoundType;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 
@@ -36,8 +36,8 @@ public class BlockStoneStairsSuitBase extends BlockStairs implements IHasModel, 
 
     @Override
     public String getLocalizedName() {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(Idealland.MODID+"."+suit.getName()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(Idealland.MODID+"."+suit.getName()));
     }
 
     @Override

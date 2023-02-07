@@ -2,16 +2,14 @@ package com.deeplake.adven_one.blocks.blockSuit;
 
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.BlockBase;
-import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.minecraft.util.text.translation.I18n;
 
 public class BlockMetalSuitBase extends BlockBase implements IHasModel, IBlockSuit {
     static final String NAME = "block";
@@ -28,8 +26,8 @@ public class BlockMetalSuitBase extends BlockBase implements IHasModel, IBlockSu
 
     @Override
     public String getLocalizedName() {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(tier.getTransKey()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(tier.getTransKey()));
     }
 
     @Override

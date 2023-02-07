@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"half=bottom,variant=default": { "model": "adven_one:suit_fire_stone_slab_half" },
+		"half=top,variant=default": { "model": "adven_one:suit_fire_stone_slab_upper" }
+	}
+}
