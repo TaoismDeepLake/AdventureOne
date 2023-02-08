@@ -73,6 +73,30 @@ for %%x in (%*) do (
         		echo }
         	) > %%x_wood_outer_stairs.json
 
+    echo Making %%x_wood_slab_upper.json block
+            	(
+            		echo {
+            		echo 	"parent": "block/upper_slab",
+            		echo 	"textures": {
+            		echo 		"bottom": "%modid%:blocks/%%x_planks",
+                    echo        "top": "%modid%:blocks/%%x_planks",
+                    echo        "side": "%modid%:blocks/%%x_planks"
+            		echo 	}
+            		echo }
+            	) > %%x_wood_slab_upper.json
+
+    echo Making %%x_wood_slab_half.json block
+                	(
+                		echo {
+                		echo 	"parent": "block/half_slab",
+                		echo 	"textures": {
+                		echo 		"bottom": "%modid%:blocks/%%x_planks",
+                        echo        "top": "%modid%:blocks/%%x_planks",
+                        echo        "side": "%modid%:blocks/%%x_planks"
+                		echo 	}
+                		echo }
+                	) > %%x_wood_slab_half.json
+
 	echo Making %%x_wood_stairs.json item
 	(
 		echo {
@@ -93,6 +117,27 @@ for %%x in (%*) do (
     		echo 	"parent": "%modid%:block/%%x_planks"
     		echo }
     	) > ../item/%%x_wood_slab_double.json
+
+    echo Making %%x_wood_slab.json blockstates
+    (
+    		echo {
+    		echo 	"variants": {
+    		echo 		"half=bottom,variant=default": { "model": "%modid%:%%x_wood_slab_half" },
+    		echo 		"half=top,variant=default": { "model": "%modid%:%%x_wood_slab_upper" }
+    		echo 	}
+    		echo }
+    	) > ../../blockstates/%%x_wood_slab.json
+
+    echo Making %%x_wood_slab_double.json blockstates
+        (
+        		echo {
+        		echo 	"variants": {
+        		echo 		"half=bottom,variant=default": { "model": "%modid%:%%x_planks" },
+        		echo 		"half=top,variant=default": { "model": "%modid%:%%x_planks" }
+        		echo 	}
+        		echo }
+        	) > ../../blockstates/%%x_wood_slab_double.json
+
 	echo Making %%x_wood_stairs.json blockstate
 	(
 		echo {
