@@ -1,1 +1,7 @@
-{"parent": "item/handheld","textures": {"layer0":"adven_one:items/food/food_cost_big"}}
+{
+  "parent": "item/generated",
+  "textures":
+  {
+    "layer0":"adven_one:items/misc/food_cost_big"
+  }
+}

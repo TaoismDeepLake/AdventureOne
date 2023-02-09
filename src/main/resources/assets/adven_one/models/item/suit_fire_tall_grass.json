@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "adven_one:blocks/suit_fire_tall_grass"
+  }
+}

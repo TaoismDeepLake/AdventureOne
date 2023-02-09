@@ -4,6 +4,7 @@ import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.blocks.BlockBase;
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.util.IHasModel;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockGrassSuitBase extends BlockBase implements IHasModel, IBlockSuit, IGrowable{
+public class BlockGrassSuitBase extends BlockBase implements IHasModel, IBlockSuit, IGrowable {
     static final String NAME = "grass";
     EnumSuit suit;
     public BlockGrassSuitBase(EnumSuit suit)
