@@ -123,9 +123,9 @@ end
 -- GenSet("suit_luck_a")
 
 
-GenItem("food", "food_cost_small");
-GenItem("food", "food_cost_norm");
-GenItem("food", "food_cost_big");
+GenItem("food", "tp_food");
+-- GenItem("food", "food_cost_norm");
+-- GenItem("food", "food_cost_big");
 
 
 -- GenItem("misc", "nano_mender_greater");

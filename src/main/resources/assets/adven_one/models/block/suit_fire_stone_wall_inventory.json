@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/wall_inventory",
+   "textures": {
+       "wall": "adven_one:blocks/suit_fire_stone"
+   }
+}

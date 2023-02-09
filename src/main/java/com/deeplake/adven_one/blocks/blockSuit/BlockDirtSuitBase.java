@@ -6,7 +6,8 @@ import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.util.IHasModel;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
+
 
 public class BlockDirtSuitBase extends BlockBase implements IHasModel, IBlockSuit {
     static final String NAME = "dirt";
@@ -23,7 +24,7 @@ public class BlockDirtSuitBase extends BlockBase implements IHasModel, IBlockSui
 
     @Override
     public String getLocalizedName() {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(Idealland.MODID+"."+suit.getName()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(Idealland.MODID+"."+suit.getName()));
     }
 }

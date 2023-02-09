@@ -43,7 +43,7 @@ if (useMirror) apply from: "mirror.gradle"
 apply plugin: "net.minecraftforge.gradle.forge"
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
-version = "1.2"
+version = "1.4.1"
 group = "com.deeplake.adven_one" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "adven_one"
 

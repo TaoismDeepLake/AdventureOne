@@ -3,6 +3,7 @@ package com.deeplake.adven_one.item;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.armor.ItemArmorTierDebug;
 import com.deeplake.adven_one.item.food.ItemFoodCost;
+import com.deeplake.adven_one.item.food.ItemFoodTP;
 import com.deeplake.adven_one.item.misc.ItemCostMeasure;
 import com.deeplake.adven_one.item.suit.ItemQualityDust;
 import com.deeplake.adven_one.item.suit.modifiers.ItemModifierShifter;
@@ -40,6 +41,7 @@ public class ModItems {
 	//Crafting
 	public static final Item QUALITY_DUST = new ItemQualityDust("quality_dust");
 	public static final Item MOD_SHIFTER = new ItemModifierShifter("mod_shifter");
+	public static final Item TELEPORT_FOOD = new ItemFoodTP("tp_food",0,0,false);
 
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),

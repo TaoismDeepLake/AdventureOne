@@ -5,7 +5,7 @@ import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.item.ItemBase;
 import com.deeplake.adven_one.item.suit.modifiers.EnumModifier;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -23,8 +23,8 @@ public class ItemGemSuit extends ItemBase implements IHasQuality, IHasModifiers 
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(tier.getTransKey()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(tier.getTransKey()));
     }
 
     @Override

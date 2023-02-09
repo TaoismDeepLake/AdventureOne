@@ -5,7 +5,6 @@ import com.deeplake.adven_one.entity.creatures.model.ModelTestArmor;
 import com.deeplake.adven_one.init.ModConfig;
 import com.deeplake.adven_one.init.ModCreativeTabsList;
 import com.deeplake.adven_one.item.ItemArmorBase;
-import com.deeplake.adven_one.util.CommonFunctions;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTUtil;
 import com.google.common.collect.Multimap;
@@ -15,12 +14,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
-import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
@@ -68,6 +66,7 @@ public class ItemArmorTierDebug extends ItemArmorBase {
         return map;
     }
 
+    @SideOnly(Side.CLIENT)
     @Nullable
     @Override
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {

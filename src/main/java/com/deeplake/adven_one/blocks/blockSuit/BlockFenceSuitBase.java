@@ -11,8 +11,8 @@ import net.minecraft.block.BlockFence;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
+import net.minecraft.util.text.translation.I18n;
 
 public class BlockFenceSuitBase extends BlockFence implements IHasModel, IBlockSuit  {
     static final String NAME = "wood_fence";
@@ -38,8 +38,8 @@ public class BlockFenceSuitBase extends BlockFence implements IHasModel, IBlockS
 
     @Override
     public String getLocalizedName() {
-        return I18n.format(Idealland.MODID+"."+NAME,
-                I18n.format(Idealland.MODID+"."+suit.getName()));
+        return I18n.translateToLocalFormatted(Idealland.MODID+"."+NAME,
+                I18n.translateToLocalFormatted(Idealland.MODID+"."+suit.getName()));
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.deeplake.adven_one.command;
 
-import java.util.List;
-
 import com.deeplake.adven_one.Idealland;
-import com.google.common.collect.Lists;
 import com.deeplake.adven_one.util.CommonFunctions;
 import com.deeplake.adven_one.util.Teleport;
+import com.google.common.collect.Lists;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -13,6 +11,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextFormatting;
+
+import java.util.List;
 
 public class CommandDimTeleport extends CommandBase {
 
@@ -37,6 +37,11 @@ public class CommandDimTeleport extends CommandBase {
     @Override
     public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
         return true;
+    }
+
+    @Override
+    public int getRequiredPermissionLevel() {
+        return 2;
     }
 
     @Override

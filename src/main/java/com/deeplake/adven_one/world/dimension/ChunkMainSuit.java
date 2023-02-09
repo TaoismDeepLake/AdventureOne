@@ -43,6 +43,7 @@ public class ChunkMainSuit extends WorldChunkBase {
             EnumSuit suit = ((BiomeSuit) mainBiome).getSuit();
             //thread safe
             IBlockState SUIT_DIRT = suit.getDirt().getDefaultState();
+            IBlockState SUIT_GRASS = suit.getGrass().getDefaultState();
             IBlockState SUIT_STONE = suit.getStone().getDefaultState();
             IBlockState SUIT_PLANKS = suit.getWoodPlanks().getDefaultState();
             IBlockState SUIT_LOGS = suit.getWoodLog().getDefaultState();
@@ -77,7 +78,11 @@ public class ChunkMainSuit extends WorldChunkBase {
                     }
 
                     int curY = 127;
-                    int depth = 4;
+                    int depth = 1;
+                    curY -= depth;
+                    fill(curY, depth+extraHeight, chunk, _x, _z, SUIT_GRASS);
+
+                    depth = 3;
                     curY -= depth;
                     fill(curY, depth+extraHeight, chunk, _x, _z, SUIT_DIRT);
 
