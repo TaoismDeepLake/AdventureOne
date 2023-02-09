@@ -1,0 +1,6 @@
+{
+	"parent": "block/tinted_cross",
+	"textures": {
+		"cross": "adven_one:blocks/suit_test_tall_grass"
+	}
+}
