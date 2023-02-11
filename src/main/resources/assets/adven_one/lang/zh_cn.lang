@@ -38,6 +38,11 @@ item.food_cost_norm.desc=吃下后，自身会长出魔力管线
 item.food_cost_big.name=魔力大果
 item.food_cost_big.desc=吃下后，自身会长出魔力管线
 
+item.fibre.name=异域纤维
+
+item.mod_stick.name=耐用手柄
+item.mod_stick.desc=合成模组工具或武器
+
 #Suits
 adven_one.suit_test=测试
 adven_one.suit_test.1=测试一阶

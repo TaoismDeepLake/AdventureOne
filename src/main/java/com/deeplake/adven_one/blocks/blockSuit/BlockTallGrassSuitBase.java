@@ -100,7 +100,11 @@ public class BlockTallGrassSuitBase extends BlockBush implements IHasModel, IBlo
 
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return null;
+        if(rand.nextFloat() < 0.4)
+        {
+            return ModItems.FIBRE;
+        }
+        else return null;
     }
 
     public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)

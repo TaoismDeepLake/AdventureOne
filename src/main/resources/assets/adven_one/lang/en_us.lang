@@ -40,6 +40,11 @@ item.food_cost_norm.desc=Boosts your cost
 item.food_cost_big.name=Great Cost Booster
 item.food_cost_big.desc=Boosts your cost
 
+item.fibre.name=Fibre
+
+item.mod_stick.name=Handle
+item.mod_stick.desc=Use for mod's weapons or tools
+
 #Suits
 adven_one.suit_test=Test Suit
 adven_one.suit_test.1=Test Suit T1
