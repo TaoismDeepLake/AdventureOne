@@ -16,10 +16,18 @@ entity.moroon_tainter.name=Moroon Pathfinder
 #Blocks
 tile.barrier_sky.name=天空屏障
 tile.barrier_earth.name=地之屏障
+tile.cost_ore.name=魔力矿
 
 #Items
-item.cost_measure.name=回路计
-item.cost_measure_max.desc=显示自身魔力管线的使用状况。
+
+item.cost_measure.name=管线指示计
+item.cost_measure.desc=显示自身魔力管线的使用状况
+
+item.quality_dust.name=质量粉尘
+item.quality_dust.desc=在铁砧中提升物品质量
+
+item.mod_shifter.name=词条转移石板
+item.mod_shifter.desc=可以吸收或灌注词条
 
 item.food_cost_small.name=魔力小果
 item.food_cost_small.desc=吃下后，自身会长出魔力管线
@@ -30,25 +38,30 @@ item.food_cost_norm.desc=吃下后，自身会长出魔力管线
 item.food_cost_big.name=魔力大果
 item.food_cost_big.desc=吃下后，自身会长出魔力管线
 
+item.fibre.name=异域纤维
+
+item.mod_stick.name=耐用手柄
+item.mod_stick.desc=合成模组工具或武器
+
 #Suits
-adven_one.suit_test=测试套
+adven_one.suit_test=测试
 adven_one.suit_test.1=测试一阶
 adven_one.suit_test.2=测试二阶
 adven_one.suit_test.3=测试三阶
 
-adven_one.suit_back=备用套
-adven_one.suit_back.1=备用一阶
-adven_one.suit_back.2=备用二阶
-adven_one.suit_back.3=备用三阶
+adven_one.suit_back=寒冰
+adven_one.suit_back.1=寒冰
+adven_one.suit_back.2=凛冬
+adven_one.suit_back.3=永冻
 
-adven_one.suit_fire=火套
-adven_one.suit_fire.1=火一阶
-adven_one.suit_fire.2=火二阶
-adven_one.suit_fire.3=火三阶
+adven_one.suit_fire=火焰
+adven_one.suit_fire.1=火焰
+adven_one.suit_fire.2=烈炎
+adven_one.suit_fire.3=焚天
 
-adven_one.suit_luck_a.1=寻宝者1
-adven_one.suit_luck_a.2=猎宝人2
-adven_one.suit_luck_a.3=Treasure Hunter A3
+adven_one.suit_luck_a.1=寻宝者 A1
+adven_one.suit_luck_a.2=宝藏猎人 A2
+adven_one.suit_luck_a.3=盗神 A3
 
 adven_one.suit_celestial.4=星魂
 

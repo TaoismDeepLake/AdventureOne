@@ -3,6 +3,7 @@ package com.deeplake.adven_one.recipe;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.designs.SetTier;
+import com.deeplake.adven_one.recipe.misc.RecipeHandle;
 import com.deeplake.adven_one.recipe.special.RecipeIdentify;
 import com.deeplake.adven_one.recipe.traditional.*;
 import net.minecraft.init.Items;
@@ -21,6 +22,8 @@ public class SuitRecipesInit {
         IForgeRegistry<IRecipe> r = evt.getRegistry();
 
         r.register(new RecipeIdentify().setRegistryName(new ResourceLocation(Idealland.MODID, "identify")));
+
+        registerMisc(r);
 
         for (EnumSuit suit : EnumSuit.values())
         {
@@ -46,7 +49,7 @@ public class SuitRecipesInit {
 
             registerBuildingBlocks(r, stone, stoneStairs, stoneWall, stoneSlab, log, planks, woodStairs, woodFence, woodSlab);
 
-            registerT1SpecialGear(r, suit, dirt, planks);
+            registerT1SpecialGear(r, suit, planks);
 
             registerGeneralTierGear(r, suit);
         }
@@ -93,20 +96,20 @@ public class SuitRecipesInit {
         }
     }
 
-    private static void registerT1SpecialGear(IForgeRegistry<IRecipe> r, EnumSuit suit, Item dirt, Item planks) {
+    private static void registerT1SpecialGear(IForgeRegistry<IRecipe> r, EnumSuit suit, Item planks) {
         Item result;
         if (suit.getTierMap().get(1) != null)
         {
             result = suit.getTierMap().get(1).getSword();
             if (isValid(result))
             {
-                r.register(new RecipeSword2(planks, result, dirt));
+                r.register(new RecipeSword2(planks, result));
             }
 
             result = suit.getTierMap().get(1).getPick();
             if (isValid(result))
             {
-                r.register(new RecipePickaxeT1(planks, result, dirt));
+                r.register(new RecipePickaxeT1(planks, result));
             }
         }
     }
@@ -162,6 +165,11 @@ public class SuitRecipesInit {
                 }
             }
         }
+    }
+
+    private static void registerMisc(IForgeRegistry<IRecipe> r)
+    {
+        r.register(new RecipeHandle());
     }
 
     private static boolean isValid(Item itemIn) {

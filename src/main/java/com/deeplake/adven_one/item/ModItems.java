@@ -42,6 +42,8 @@ public class ModItems {
 	public static final Item QUALITY_DUST = new ItemQualityDust("quality_dust");
 	public static final Item MOD_SHIFTER = new ItemModifierShifter("mod_shifter");
 	public static final Item TELEPORT_FOOD = new ItemFoodTP("tp_food",0,0,false);
+	public static final Item FIBRE = new ItemBase("fibre");
+	public static final Item MOD_STICK = new ItemBase("mod_stick");
 
 	/*
 	WOOD(0, 59, 2.0F, 0.0F, 15),
