@@ -3,6 +3,10 @@ package com.deeplake.adven_one.entity;
 import com.deeplake.adven_one.Idealland;
 import com.deeplake.adven_one.entity.creatures.boss.EntityBossSteve;
 import com.deeplake.adven_one.entity.creatures.suit.*;
+import com.deeplake.adven_one.entity.creatures.suit.prototype.EntityTestCreeper;
+import com.deeplake.adven_one.entity.creatures.suit.prototype.EntityTestSkeleton;
+import com.deeplake.adven_one.entity.creatures.suit.prototype.EntityTestSlime;
+import com.deeplake.adven_one.entity.creatures.suit.prototype.EntityTestZombie;
 import com.deeplake.adven_one.util.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -21,6 +25,10 @@ public class ModEntityInit {
         registerEntity("default_mob_t3", EntityTier3Mob.class);
         registerEntity("default_mob_t3m", EntityTier3MobM.class);
 
+        registerEntity("debug_creeper", EntityTestCreeper.class);
+        registerEntity("debug_zombie", EntityTestZombie.class);
+        registerEntity("debug_skeleton", EntityTestSkeleton.class);
+        registerEntity("debug_slime", EntityTestSlime.class);
         //kill @e[type=adven_one:boss_steve]
         registerEntity("boss_steve", EntityBossSteve.class);
 

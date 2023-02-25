@@ -1,42 +1,11 @@
 package com.deeplake.adven_one.entity.creatures;
 
-import java.util.UUID;
-import javax.annotation.Nullable;
-
 import com.deeplake.adven_one.Idealland;
-import com.deeplake.adven_one.item.ModItems;
-import com.deeplake.adven_one.potion.ModPotions;
-import com.deeplake.adven_one.util.PlayerUtil;
-import com.google.common.base.Predicate;
 import com.deeplake.adven_one.blocks.blockMoroon.BlockMoroonBase;
-import com.deeplake.adven_one.util.CommonDef;
 import com.deeplake.adven_one.util.EntityUtil;
 import com.deeplake.adven_one.util.NBTStrDef.IDLNBTDef;
-import net.minecraft.block.material.EnumPushReaction;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.EnumDifficulty;
-import net.minecraft.world.EnumSkyBlock;
-import net.minecraft.world.World;
+import com.deeplake.adven_one.util.PlayerUtil;
+import com.google.common.base.Predicate;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -72,6 +41,8 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.HashSet;
@@ -817,5 +788,14 @@ public class EntityModUnit extends EntityCreature {
         }
     }
 
+    @SideOnly(Side.CLIENT)
+    public boolean isSwingingArms()
+    {
+        return ((Boolean)this.dataManager.get(SWINGING_ARMS)).booleanValue();
+    }
+
+    public void setSwingingArms(boolean swingingArms) {
+        this.dataManager.set(SWINGING_ARMS, Boolean.valueOf(swingingArms));
+    }
 }
 
