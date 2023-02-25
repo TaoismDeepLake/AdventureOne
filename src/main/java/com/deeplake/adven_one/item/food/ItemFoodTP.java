@@ -19,7 +19,7 @@ public class ItemFoodTP extends ItemFoodBase
         if (!worldIn.isRemote)
         {
             int providerDimension = sender.getEntityWorld().provider.getDimension();
-            if (providerDimension != ModConfig.WORLD_GEN_CONF.DIM_ONE_ID)
+            if (providerDimension == ModConfig.WORLD_GEN_CONF.DIM_ONE_ID)
             {
                 Teleport.teleportToDim(sender, 0, sender.posX, sender.posY, sender.posZ);
             }

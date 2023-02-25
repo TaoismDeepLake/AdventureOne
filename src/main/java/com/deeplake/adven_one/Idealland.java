@@ -24,7 +24,7 @@ import org.apache.logging.log4j.Logger;
 public class Idealland {
     public static final String MODID = "adven_one";
     public static final String NAME = "Adventure One";
-    public static final String VERSION = "1.3.2";
+    public static final String VERSION = "1.5";
 
     public static Logger logger;
 
