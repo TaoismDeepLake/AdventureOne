@@ -22,6 +22,10 @@ public class PopulateCrater implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+        if (world.provider.getDimension() != ModConfig.WORLD_GEN_CONF.DIM_ONE_ID)
+        {
+            return;
+        }
         int maxHeight = 6;
         int startX = chunkX * 16 + 3 + random.nextInt(9) + random.nextInt(9);//max20
         int startZ = chunkZ * 16 + 3 + random.nextInt(9) + random.nextInt(9);//max20

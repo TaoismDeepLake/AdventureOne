@@ -41,7 +41,7 @@ public class ItemArmorTierDebug extends ItemArmorBase {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        super.getSubItems(tab, items);
+//        super.getSubItems(tab, items);
         if (ModConfig.DEBUG_CONF.SHOW_DEBUG_ARMOR && tab == ModCreativeTabsList.IDL_MISC)
         {
             for (float tier = 0.25f; tier <= 4f; tier += 0.25f)
