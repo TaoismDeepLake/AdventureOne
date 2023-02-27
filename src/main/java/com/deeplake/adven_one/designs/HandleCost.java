@@ -108,17 +108,20 @@ public class HandleCost {
                 {
                     case CHALLENGE:
                         score += ModConfig.TIER_CONF.COST_CONF.ADVANCEMENT_COST_CHALL;
+                        sendCostInfoMsg(player);
                         break;
                     case GOAL:
                         score += ModConfig.TIER_CONF.COST_CONF.ADVANCEMENT_COST_GOAL;
+                        sendCostInfoMsg(player);
                         break;
                     case TASK:
                     default:
                         score += ModConfig.TIER_CONF.COST_CONF.ADVANCEMENT_COST;
+                        sendCostInfoMsg(player);
                 }
             }
             EntityUtil.boostAttr(player, ModAttributes.COST_MAX, score, ADVANCEMENT_BUFF);
-            sendCostInfoMsg(player);
+
         }
     }
 

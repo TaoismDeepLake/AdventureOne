@@ -18,7 +18,7 @@ for %%x in (%*) do (
 		echo {
 		echo 	"parent": "minecraft:item/generated",
         echo    "textures": {
-        echo    "layer0": "%modid%:items/%%x"
+        echo    "layer0": "%modid%:items/misc/%%x"
         echo    }
 		echo }
 	) > %%x.json

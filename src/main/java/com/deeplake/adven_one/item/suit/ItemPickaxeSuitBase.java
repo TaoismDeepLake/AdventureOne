@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.item.suit;
 
 import com.deeplake.adven_one.Idealland;
+import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
@@ -12,6 +13,8 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -174,5 +177,18 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
         {
             return 0;
         }
+    }
+
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (tier.getTier() == 4)
+        {
+            return;
+        }
+        if (tier.getSuit() == EnumSuit.SET_LUCK)
+        {
+            return;
+        }
+        super.getSubItems(tab, items);
     }
 }

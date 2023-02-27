@@ -1,6 +1,7 @@
 package com.deeplake.adven_one.item.suit;
 
 import com.deeplake.adven_one.Idealland;
+import com.deeplake.adven_one.designs.EnumSuit;
 import com.deeplake.adven_one.designs.SetTier;
 import com.deeplake.adven_one.entity.creatures.attr.ModAttributes;
 import com.deeplake.adven_one.init.ModConfig;
@@ -10,12 +11,14 @@ import com.deeplake.adven_one.item.suit.modifiers.IHasType;
 import com.deeplake.adven_one.item.suit.modifiers.types.EnumGeartype;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
@@ -171,5 +174,18 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
         {
             return 0;
         }
+    }
+
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (tier.getTier() == 4)
+        {
+            return;
+        }
+        if (tier.getSuit() == EnumSuit.SET_LUCK)
+        {
+            return;
+        }
+        super.getSubItems(tab, items);
     }
 }
