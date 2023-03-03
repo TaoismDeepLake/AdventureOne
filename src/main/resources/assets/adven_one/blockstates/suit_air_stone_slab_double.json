@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"half=bottom,variant=default": { "model": "adven_one:suit_air_stone" },
+		"half=top,variant=default": { "model": "adven_one:suit_air_stone" }
+	}
+}

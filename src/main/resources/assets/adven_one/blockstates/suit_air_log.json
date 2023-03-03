@@ -1,0 +1,8 @@
+{
+  "variants": {
+      "axis=y":  { "model": "adven_one:suit_air_log" },
+      "axis=z":   { "model": "adven_one:suit_air_log", "x": 90 },
+      "axis=x":   { "model": "adven_one:suit_air_log", "x": 90, "y": 90 },
+      "axis=none": { "model": "adven_one:suit_air_log" }
+  }
+}

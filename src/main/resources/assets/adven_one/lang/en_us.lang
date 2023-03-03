@@ -61,6 +61,11 @@ adven_one.suit_fire.1=Fire T1
 adven_one.suit_fire.2=Fire T2
 adven_one.suit_fire.3=Fire T3
 
+adven_one.suit_air=Air Suit
+adven_one.suit_air.1=Air T1
+adven_one.suit_air.2=Air T2
+adven_one.suit_air.3=Air T3
+
 adven_one.suit_luck_a.1=Treasure Hunter A1
 adven_one.suit_luck_a.2=Treasure Hunter A2
 adven_one.suit_luck_a.3=Treasure Hunter A3

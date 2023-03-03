@@ -1,0 +1,7 @@
+{
+	"parent": "block/cube_column",
+	"textures": {
+		"end": "adven_one:blocks/suit_air_log_top",
+       "side": "adven_one:blocks/suit_air_log"
+	}
+}

@@ -26,7 +26,7 @@ public enum EnumSuit {
     SET_ONE("suit_test"),
     SET_TWO("suit_back"),//water
     SET_FIRE("suit_fire"),
-    SET_AIR("suit_air", true),
+    SET_AIR("suit_air", false),
     SET_EARTH("suit_earth", true),
     SET_CELESTIAL("suit_celestial", true),//for T4 colorless
     SET_LUCK("suit_luck_a", true);//for T1 T2 luck suit
@@ -135,7 +135,7 @@ public enum EnumSuit {
     public static void init() {
         SET_ONE.createInternalDefault();
         SET_TWO.createInternalDefault();
-//        SET_AIR.createInternalDefault();
+        SET_AIR.createInternalDefault();
 //        SET_EARTH.createInternalDefault();
         SET_FIRE.createInternalDefault();
 
@@ -147,7 +147,7 @@ public enum EnumSuit {
     public static void initOreDict() {
         SET_ONE.registerOreDict();
         SET_TWO.registerOreDict();
-//        SET_AIR.registerOreDict();
+        SET_AIR.registerOreDict();
 //        SET_EARTH.registerOreDict();
         SET_FIRE.registerOreDict();
     }

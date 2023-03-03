@@ -59,6 +59,11 @@ adven_one.suit_fire.1=火焰
 adven_one.suit_fire.2=烈炎
 adven_one.suit_fire.3=焚天
 
+adven_one.suit_air=空气
+adven_one.suit_air.1=气流
+adven_one.suit_air.2=疾风
+adven_one.suit_air.3=龙卷
+
 adven_one.suit_luck_a.1=寻宝者 A1
 adven_one.suit_luck_a.2=宝藏猎人 A2
 adven_one.suit_luck_a.3=盗神 A3

@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:item/handheld",
+   "textures": {
+   "layer0": "adven_one:items/misc/suit_air_2_armor0",
+   "layer1":"adven_one:items/overlay_2"
+   }
+}
