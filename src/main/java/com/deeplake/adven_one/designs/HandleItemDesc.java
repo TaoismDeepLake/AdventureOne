@@ -46,7 +46,7 @@ public class HandleItemDesc {
             }
             else
             {
-                HashMap<EnumModifier, Integer> map = iHasModifiers.getAllFromNBT(stack);
+                HashMap<EnumModifier, Integer> map = iHasModifiers.getAllModiFromNBT(stack);
                 for (EnumModifier modifier : map.keySet())
                 {
                     if (modifier.getMaxLv() == 1)

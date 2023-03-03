@@ -35,7 +35,7 @@ public class ItemGemSuit extends ItemBase implements IHasQuality, IHasModifiers 
             if (needFirstTick(stack))
             {
                 setQuality(stack, getRandomQuality(itemRand));
-                storeAllToNBT(stack, getRandomModifierList(itemRand));
+                storeAllModiToNBT(stack, getRandomModifierList(itemRand));
             }
         }
     }

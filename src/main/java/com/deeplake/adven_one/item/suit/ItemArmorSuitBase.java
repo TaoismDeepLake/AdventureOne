@@ -108,7 +108,7 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
     public double getHP(ItemStack stack)
     {
         double result = 0;
-        HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+        HashMap<EnumModifier, Integer> attrMap = getAllModiFromNBT(stack);
         int level = attrMap.getOrDefault(EnumModifier.HARDNESS, 0);
         result += level * ModConfig.MODIFIER_CONF.HP_FIXED_GROUP.VALUE_E;
 
@@ -168,7 +168,7 @@ public class ItemArmorSuitBase extends ItemArmorBase implements IHasQuality, IHa
 
             baseCost *= costConfig.FACTOR;
 
-            HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+            HashMap<EnumModifier, Integer> attrMap = getAllModiFromNBT(stack);
             if (attrMap == null)
             {
                 Idealland.LogWarning("Error: Null list");

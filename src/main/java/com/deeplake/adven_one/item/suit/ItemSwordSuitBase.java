@@ -114,7 +114,7 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
     public double getAttack(ItemStack stack)
     {
         double result = getSwordDamage(tier.getTier()) * getQuality(stack);
-        HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+        HashMap<EnumModifier, Integer> attrMap = getAllModiFromNBT(stack);
         if (attrMap == null)
         {
             Idealland.LogWarning("Error: Null list");
@@ -148,7 +148,7 @@ public class ItemSwordSuitBase extends ItemSwordBase implements IHasQuality, IHa
             ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
             int baseCost = costConfig.SWORD_COST * costConfig.FACTOR;
 
-            HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+            HashMap<EnumModifier, Integer> attrMap = getAllModiFromNBT(stack);
             if (attrMap == null)
             {
                 Idealland.LogWarning("Error: Null list");
