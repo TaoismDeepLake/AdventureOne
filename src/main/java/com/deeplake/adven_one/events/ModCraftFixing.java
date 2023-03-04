@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = Idealland.MODID)
 public class ModCraftFixing {
@@ -63,7 +64,7 @@ public class ModCraftFixing {
                     stack.setCount(maxStackSize);
                     i -= maxStackSize;
                 }
-                event.player.dropItem(stack, false);
+                Objects.requireNonNull(event.player.dropItem(stack, false)).setNoPickupDelay();
             }
         }
 
