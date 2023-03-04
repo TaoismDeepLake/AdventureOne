@@ -107,14 +107,14 @@ public interface IHasModifiers extends IHasInit{
         {
             list.add(modifier.getId() * SHIFTER + attrMap.get(modifier));
         }
-        IDLNBTUtil.SetIntArray(stack, IDLNBTDef.KEY_MODIFIER_SEQ, Arrays.stream(list.toArray(new Integer[0])).mapToInt(Integer::valueOf).toArray());
+        IDLNBTUtil.SetIntArray(stack, IDLNBTDef.KEY_FEATURE_SEQ, Arrays.stream(list.toArray(new Integer[0])).mapToInt(Integer::valueOf).toArray());
     }
 
     default HashMap<EnumFeature, Integer> getAllFeatureFromNBT(ItemStack stack)
     {
         HashMap<EnumFeature, Integer> attrMap = new HashMap<>();
 
-        int[] array = IDLNBTUtil.GetIntArray(stack, IDLNBTDef.KEY_MODIFIER_SEQ);
+        int[] array = IDLNBTUtil.GetIntArray(stack, IDLNBTDef.KEY_FEATURE_SEQ);
 
         for (int num:
                 array) {

@@ -291,11 +291,11 @@ public class IDLNBTDef {
 
 	//Modifiers
 	public static final String KEY_MODIFIER_SEQ = "modf_seq";
-	public static final String KEY_FEATURE_SEQ = "modf_seq2";//will not inherit
+	public static final String KEY_FEATURE_SEQ = "feat_seq";//will not inherit
+    public static final String EXTRA_COUNT_NBT = "extra_count";
 
 
-
-	public enum SPAWNER_TYPE{
+    public enum SPAWNER_TYPE{
 		NONE,
 		ZOMBIE_BABY,
 		VINDICATOR,

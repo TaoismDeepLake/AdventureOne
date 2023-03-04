@@ -19,7 +19,8 @@ import static com.deeplake.adven_one.item.suit.modifiers.ModifierList.*;
 public enum EnumFeature {
 
     BLANK(0, "blank"),
-    ATK_UP(1, "atk_up", MAX_LV),
+    EXTRA_COUNT(1, "extra_count", 64),
+    MAX_COUNT(2, "max_count"),
     ;
 
     final int id;

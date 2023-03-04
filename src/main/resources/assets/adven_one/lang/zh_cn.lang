@@ -141,4 +141,9 @@ adven_one.vocal.boss.steve.kill=[Steve] 向香草之魂报告：模组玩家，�
 adven_one.vocal.boss.steve.summon=[Steve] 去吧,杀掉那个玩家比试图保护我更有效。
 
 item.tp_food.name=传送果
+
+adven_one.desc.feature=§6[%s +%d]
+adven_one.desc.feature.no_lv=§6[%s]
+adven_one.features.extra_count.name=调合 产物数量
+adven_one.features.max_count.name=调合 产物MAX
 item.tp_food.desc=开始或结束冒险一号。

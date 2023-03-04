@@ -109,6 +109,8 @@ attribute.name.adven_one.attr.cost=Cost
 attribute.name.adven_one.attr.cost_max=Cost
 
 adven_one.desc.modifier=§9%s Lv.%d
+adven_one.desc.feature=§6[%s +%d]
+adven_one.desc.feature.no_lv=§6[%s]
 
 adven_one.modifiers.blank.name=§o§7None
 adven_one.modifiers.atk_up.name=ATK
@@ -134,6 +136,9 @@ adven_one.modifiers.overload_pick.name=Overload [Pickaxe]
 adven_one.modifiers.overload_armor.name=Overload [Armor]
 adven_one.modifiers.anti_p_down.name=Depth Adapt
 adven_one.modifiers.anti_p_up.name=Height Adapt
+
+adven_one.features.extra_count.name=Extra Count
+adven_one.features.max_count.name=Max Count
 
 #Vocal
 adven_one.vocal.boss.steve.birth=[Steve] You and your mods amuse me.

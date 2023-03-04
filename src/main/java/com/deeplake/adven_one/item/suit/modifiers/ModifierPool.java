@@ -35,14 +35,14 @@ public class ModifierPool {
     public static void initModifierPool()
     {
         List<ModifierGroup> list = new ArrayList<>();
+        add(list,W_NORMAL * 10,EnumModifier.BLANK);
         add(list,W_NORMAL,EnumModifier.KILL_CHICK);
         add(list,W_NORMAL,EnumModifier.KILL_PIG);
         add(list,W_NORMAL,EnumModifier.KILL_SHEEP);
         add(list,W_NORMAL,EnumModifier.KILL_COW);
-        add(list,W_NORMAL,EnumModifier.KILL_ENDERMAN);
-        add(list,W_NORMAL,EnumModifier.KILL_CREEPER);
-        add(list,W_NORMAL,EnumModifier.KILL_PLAYER);
-        add(list,W_NORMAL,EnumModifier.BLANK);
+        add(list,W_NORMAL,EnumModifier.KILL_ENDERMAN,3);
+        add(list,W_NORMAL,EnumModifier.KILL_CREEPER,3);
+        add(list,W_NORMAL,EnumModifier.KILL_PLAYER,3);
         add(list,W_NORMAL,EnumModifier.ATK_UP);
         add(list,W_NORMAL,EnumModifier.HP_UP);
         add(list,W_NORMAL,EnumModifier.HARDNESS);
@@ -51,7 +51,12 @@ public class ModifierPool {
 
         modifierLists.put(1,list);
 
+        List<ModifierGroup> listPrev = list;
         list = new ArrayList<>();
+        for (int i = 0; i < listPrev.size(); i++) {
+            add(list, listPrev.get(i).itemWeight, listPrev.get(i).modifier);
+        }
+
         add(list,W_NORMAL_2,EnumModifier.ATK_UP_2);
         add(list,W_NORMAL_2,EnumModifier.HP_UP_2);
         add(list,W_NORMAL_2,EnumModifier.COST_SAVE);
@@ -69,6 +74,10 @@ public class ModifierPool {
     public static void add(List<ModifierGroup> list, int weight, EnumModifier modifier)
     {
         list.add(new ModifierGroup(weight, modifier));
+    }
+    public static void add(List<ModifierGroup> list, int weight, EnumModifier modifier, int maxLv)
+    {
+        list.add(new ModifierGroup(weight, modifier, 1, maxLv));
     }
 
 }

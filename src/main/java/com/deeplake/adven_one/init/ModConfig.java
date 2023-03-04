@@ -78,9 +78,9 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public int FOOD_COST_SMALL = 1;
         @Config.RequiresMcRestart
-        public int FOOD_COST_NORMAL = 2;
+        public int FOOD_COST_NORMAL = 10;
         @Config.RequiresMcRestart
-        public int FOOD_COST_BIG = 5;
+        public int FOOD_COST_BIG = 100;
     }
 
     @Config.Comment("Config for developers")
@@ -434,5 +434,11 @@ public class ModConfig {
         public int stickPerBottomChestMin = 1;
         @Config.RangeInt(min = 0)
         public int stickPerBottomChestDelta = 7;
+    }
+
+    public static final ToolTipConf TOOL_TIP_CONF = new ToolTipConf();
+
+    public static class ToolTipConf{
+        public boolean SHOW_ORE_DICT = true;
     }
 }
