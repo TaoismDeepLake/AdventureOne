@@ -38,11 +38,16 @@ public class ItemAlchemyMaterial extends ItemBase implements IHasQuality, IHasMo
     public HashMap<EnumFeature, Integer> getRandomFeatureList(Random random)
     {
         HashMap<EnumFeature, Integer> result = new HashMap<>();
-        if (random.nextBoolean())
+        int extraCount = 0;
+        while (random.nextDouble() < ModConfig.FEATURE_CONF.EXTRA_CHANCE && extraCount < 16)
+        {
+            extraCount++;
+        }
+        if (extraCount>0)
         {
             result.put(EnumFeature.EXTRA_COUNT, 1+random.nextInt(3));
         }
-        if (random.nextBoolean())
+        if (random.nextDouble() < ModConfig.FEATURE_CONF.MAX_CHANCE)
         {
             result.put(EnumFeature.MAX_COUNT,1);
         }

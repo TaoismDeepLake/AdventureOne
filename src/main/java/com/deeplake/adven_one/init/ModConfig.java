@@ -201,10 +201,20 @@ public class ModConfig {
         public double DELTA_GEM_QUALITY = 1f;
     }
 
-    public static final ModifierConf MODIFIER_CONF = new ModifierConf();
-    public static class ModifierConf {
+    public static final FeatureConf FEATURE_CONF = new FeatureConf();
+    public static class FeatureConf {
         @Config.RangeInt(min = 0)
         public int MAX_FEATURES = 4;
+
+        @Config.RangeDouble(min = 0, max = 1)
+        public double EXTRA_CHANCE = 0.1;
+
+        @Config.RangeDouble(min = 0, max = 1)
+        public double MAX_CHANCE = 0.05;
+    }
+
+    public static final ModifierConf MODIFIER_CONF = new ModifierConf();
+    public static class ModifierConf {
         @Config.RangeInt(min = 0)
         public int MAX_MODIFIERS = 3;
         public ModifierConfGroup ATK_FIXED_GROUP = new ModifierConfGroup();
