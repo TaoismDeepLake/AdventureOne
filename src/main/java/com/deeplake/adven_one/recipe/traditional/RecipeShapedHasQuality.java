@@ -45,7 +45,7 @@ public class RecipeShapedHasQuality extends ShapedRecipes {
                 if (stack.getItem() instanceof IHasModifiers)
                 {
                     IHasModifiers iHasModifiers = (IHasModifiers) stack.getItem();
-                    HashMap<EnumModifier, Integer> tempMap = iHasModifiers.getAllFromNBT(stack);
+                    HashMap<EnumModifier, Integer> tempMap = iHasModifiers.getAllModiFromNBT(stack);
 
                     ModifierList.mergeModifiersToStack(resultMap, rawResult, tempMap);
                 }

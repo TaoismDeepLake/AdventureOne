@@ -8,8 +8,12 @@ import java.util.HashMap;
 
 public class ModifierList {
     static HashMap<Integer, EnumModifier> ID_TO_ENUM = new HashMap<>();
+    static HashMap<Integer, EnumFeature> ID_TO_FEAT = new HashMap<>();
 
     public static final int MAX_LV = 99;
+    public static final int MAX_LV_1 = 15;
+    public static final int MAX_LV_2 = 30;
+    public static final int MAX_LV_3 = 45;
 
     public static void initModifier() {
         //Init modifier gear types
@@ -42,12 +46,21 @@ public class ModifierList {
         EnumModifier.ANTI_PRESSURE_HEIGHT.addGearTypesAll();
     }
 
-    public static EnumModifier getFromID(int id)
+    public static EnumModifier getModiFromID(int id)
     {
         EnumModifier result = EnumModifier.BLANK;
         if (ID_TO_ENUM.containsKey(id))
         {
             result = ID_TO_ENUM.get(id);
+        }
+        return result;
+    }
+    public static EnumFeature getFeatFromID(int id)
+    {
+        EnumFeature result = EnumFeature.BLANK;
+        if (ID_TO_FEAT.containsKey(id))
+        {
+            result = ID_TO_FEAT.get(id);
         }
         return result;
     }
@@ -78,7 +91,7 @@ public class ModifierList {
         if (rawResult.getItem() instanceof IHasModifiers && resultMap.keySet().size() > 0)
         {
             IHasModifiers iHasModifiers = (IHasModifiers) rawResult.getItem();
-            iHasModifiers.storeAllToNBT(rawResult, resultMap);
+            iHasModifiers.storeAllModiToNBT(rawResult, resultMap);
         }
     }
 }

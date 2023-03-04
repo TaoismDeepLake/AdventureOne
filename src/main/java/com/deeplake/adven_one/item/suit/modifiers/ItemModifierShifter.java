@@ -30,9 +30,9 @@ public class ItemModifierShifter extends ItemBase implements IHasModifiers {
             if (_left instanceof ItemModifierShifter || _right instanceof ItemModifierShifter)
             {
                 ItemStack result = left.copy();
-                HashMap<EnumModifier, Integer> resultMap = _left.getAllFromNBT(result);
-                ModifierList.mergeModifiersToStack(resultMap, result, _right.getAllFromNBT(right));
-                _left.storeAllToNBT(result, resultMap);
+                HashMap<EnumModifier, Integer> resultMap = _left.getAllModiFromNBT(result);
+                ModifierList.mergeModifiersToStack(resultMap, result, _right.getAllModiFromNBT(right));
+                _left.storeAllModiToNBT(result, resultMap);
 
                 event.setMaterialCost(1);
                 event.setCost(resultMap.size());

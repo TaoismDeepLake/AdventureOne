@@ -113,7 +113,7 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
     public double getAttack(ItemStack stack)
     {
         double result = this.attackDamage;
-        HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+        HashMap<EnumModifier, Integer> attrMap = getAllModiFromNBT(stack);
         int level = attrMap.getOrDefault(EnumModifier.HARDNESS, 0);
         result += level * ModConfig.MODIFIER_CONF.ATK_FIXED_GROUP.VALUE_E;
 
@@ -126,7 +126,7 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
     public double getEffeciency(ItemStack stack)
     {
         double result = efficiency * getQuality(stack);
-        HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+        HashMap<EnumModifier, Integer> attrMap = getAllModiFromNBT(stack);
         int level = attrMap.getOrDefault(EnumModifier.HARDNESS, 0);
         result += level * ModConfig.MODIFIER_CONF.EFFICIENCY_FIXED_GROUP.VALUE_E;
 
@@ -151,7 +151,7 @@ public class ItemPickaxeSuitBase extends ItemPickaxeBase implements IHasQuality,
             ModConfig.CostConfigByTier costConfig = ModConfig.TIER_CONF.COST_TIER[tierVal];
             int baseCost = costConfig.PICK_COST * costConfig.FACTOR;
 
-            HashMap<EnumModifier, Integer> attrMap = getAllFromNBT(stack);
+            HashMap<EnumModifier, Integer> attrMap = getAllModiFromNBT(stack);
             if (attrMap == null)
             {
                 Idealland.LogWarning("Error: Null list");
