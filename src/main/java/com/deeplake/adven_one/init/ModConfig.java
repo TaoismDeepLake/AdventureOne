@@ -78,9 +78,9 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public int FOOD_COST_SMALL = 1;
         @Config.RequiresMcRestart
-        public int FOOD_COST_NORMAL = 2;
+        public int FOOD_COST_NORMAL = 10;
         @Config.RequiresMcRestart
-        public int FOOD_COST_BIG = 5;
+        public int FOOD_COST_BIG = 100;
     }
 
     @Config.Comment("Config for developers")
@@ -201,8 +201,22 @@ public class ModConfig {
         public double DELTA_GEM_QUALITY = 1f;
     }
 
+    public static final FeatureConf FEATURE_CONF = new FeatureConf();
+    public static class FeatureConf {
+        @Config.RangeInt(min = 0)
+        public int MAX_FEATURES = 4;
+
+        @Config.RangeDouble(min = 0, max = 1)
+        public double EXTRA_CHANCE = 0.1;
+
+        @Config.RangeDouble(min = 0, max = 1)
+        public double MAX_CHANCE = 0.05;
+    }
+
     public static final ModifierConf MODIFIER_CONF = new ModifierConf();
     public static class ModifierConf {
+        @Config.RangeInt(min = 0)
+        public int MAX_MODIFIERS = 3;
         public ModifierConfGroup ATK_FIXED_GROUP = new ModifierConfGroup();
         public ModifierConfGroup HP_FIXED_GROUP = new ModifierConfGroup(5,4,3,2,1);
         public ModifierConfGroup EFFICIENCY_FIXED_GROUP = new ModifierConfGroup(1,0.8,0.5,0.3,0.2);
@@ -210,6 +224,7 @@ public class ModConfig {
         public ModifierConfGroup COST_UP_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
 
         public ModifierConfGroup PRESSURE_DOWN_FIXED_GROUP = new ModifierConfGroup(10,5,3,2,1);
+
     }
 
     public enum EnumFixLevel{
@@ -429,5 +444,11 @@ public class ModConfig {
         public int stickPerBottomChestMin = 1;
         @Config.RangeInt(min = 0)
         public int stickPerBottomChestDelta = 7;
+    }
+
+    public static final ToolTipConf TOOL_TIP_CONF = new ToolTipConf();
+
+    public static class ToolTipConf{
+        public boolean SHOW_ORE_DICT = true;
     }
 }

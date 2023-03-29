@@ -16,58 +16,30 @@ import static com.deeplake.adven_one.item.suit.IHasModifiers.GENERAL_MODIFIER;
 import static com.deeplake.adven_one.item.suit.IHasModifiers.NAME_IN;
 import static com.deeplake.adven_one.item.suit.modifiers.ModifierList.*;
 
-public enum EnumModifier {
+public enum EnumFeature {
 
     BLANK(0, "blank"),
-    ATK_UP(1, "atk_up", MAX_LV_1),
-    HP_UP(2, "hp_up", MAX_LV_1),
-    HARDNESS(3, "hardness", MAX_LV_1),
-    EFFICIENCY_UP(4, "efficiency_up", MAX_LV_1),
-    WEAPON_UP(5, "weapon_up", MAX_LV_1),
-    ATK_UP_2(6, "atk_up_2", MAX_LV_2),
-    ATK_UP_3(7, "atk_up_3", MAX_LV_3),
-    HP_UP_2(8, "hp_up_2", MAX_LV_2),
-    HP_UP_3(9, "hp_up_3", MAX_LV_3),
-    KILL_CREEPER(101, "kill_creeper", MAX_LV),
-    KILL_ENDERMAN(102, "kill_enderman", MAX_LV),
-    KILL_PLAYER(103, "kill_player", MAX_LV),
-
-    KILL_MELEE(104, "kill_melee", MAX_LV_1),
-    KILL_BOW(105, "kill_bow", MAX_LV_1),
-    KILL_PIG(106, "kill_pig"),
-    KILL_COW(107, "kill_cow"),
-    KILL_SHEEP(108, "kill_sheep"),
-    KILL_CHICK(109, "kill_chick"),
-
-    COST_SAVE(201, "cost_save", MAX_LV_2),
-    COST_SAVE_SWORD(202, "cost_save_sword", MAX_LV_2),
-    COST_SAVE_PICK(203, "cost_save_pick", MAX_LV_2),
-    COST_SAVE_ARMOR(204, "cost_save_armor", MAX_LV_2),
-    OVERLOAD_SWORD(205, "overload_sword", MAX_LV_2),
-    OVERLOAD_PICK(206, "overload_pick", MAX_LV_2),
-    OVERLOAD_ARMOR(207, "overload_armor", MAX_LV_2),
-
-    ANTI_PRESSURE_DEPTH(301, "anti_p_down", MAX_LV_2),
-    ANTI_PRESSURE_HEIGHT(302, "anti_p_up", MAX_LV_2),
+    EXTRA_COUNT(1, "extra_count", 64),
+    MAX_COUNT(2, "max_count"),
     ;
 
     final int id;
     final String name;
     final int maxLv;
 
-    static final String NAME_KEY = Idealland.MODID + ".modifiers.%s.name";
+    static final String NAME_KEY = Idealland.MODID + ".features.%s.name";
 
     final HashSet<EnumGeartype> applicable = new HashSet<>();
 
-    EnumModifier(int id, String name) {
+    EnumFeature(int id, String name) {
         this(id, name, 1);
     }
 
-    EnumModifier(int id, String name, int maxLv) {
+    EnumFeature(int id, String name, int maxLv) {
         this.id = id;
         this.name = name;
         this.maxLv = maxLv;
-        ID_TO_ENUM.put(id, this);
+        ID_TO_FEAT.put(id, this);
         applicable.add(EnumGeartype.ALL);
     }
 
@@ -128,8 +100,8 @@ public enum EnumModifier {
         return String.format(NAME_KEY, name);
     }
 
-    public static void addToListFromConfig(Multimap<String, AttributeModifier> result, HashMap<EnumModifier, Integer> attrMap,
-                                                   IAttribute attribute, EnumModifier modifier, ModConfig.ModifierConfGroup confGroup, ModConfig.EnumFixLevel enumFixLevel) {
+    public static void addToListFromConfig(Multimap<String, AttributeModifier> result, HashMap<EnumFeature, Integer> attrMap,
+                                           IAttribute attribute, EnumFeature modifier, ModConfig.ModifierConfGroup confGroup, ModConfig.EnumFixLevel enumFixLevel) {
         result.put(attribute.getName(),
                 new AttributeModifier(GENERAL_MODIFIER,
                         NAME_IN,

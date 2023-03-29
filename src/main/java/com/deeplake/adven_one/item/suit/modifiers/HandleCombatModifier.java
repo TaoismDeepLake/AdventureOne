@@ -40,7 +40,7 @@ public class HandleCombatModifier {
                 if (mainHand.getItem() instanceof IHasModifiers)
                 {
                     IHasModifiers modified = (IHasModifiers) mainHand.getItem();
-                    HashMap<EnumModifier, Integer> map = modified.getAllFromNBT(mainHand);
+                    HashMap<EnumModifier, Integer> map = modified.getAllModiFromNBT(mainHand);
 
                     damageBonus = getDamageBonusA(map, EnumModifier.KILL_ENDERMAN, hurtOne instanceof EntityEnderman, damageBonus);
                     damageBonus = getDamageBonusA(map, EnumModifier.KILL_CREEPER, hurtOne instanceof EntityCreeper, damageBonus);
@@ -84,7 +84,7 @@ public class HandleCombatModifier {
                 ItemStack mainHand = attacker.getHeldItemMainhand();
                 if (mainHand.getItem() instanceof IHasModifiers) {
                     IHasModifiers modified = (IHasModifiers) mainHand.getItem();
-                    HashMap<EnumModifier, Integer> map = modified.getAllFromNBT(mainHand);
+                    HashMap<EnumModifier, Integer> map = modified.getAllModiFromNBT(mainHand);
 
                     checkCrit(event, hurtOne, EntityPig.class, EnumModifier.KILL_PIG, map);
                     checkCrit(event, hurtOne, EntityChicken.class, EnumModifier.KILL_CHICK, map);
